@@ -385,567 +385,62 @@
         // Define the lesson topic(s) based on the new PDF
 
 const Topics = {
-    CHEMISTRY_BONDS_LESSON4: 'Chapter 3: Physical bonds (Lesson Four)',
-    MODEL_EXAM_CHAPTER3: 'Model Exam on Chapter 3',
-    CHEMISTRY_SB_LESSON1: 'Chapter 4: The Representative Elements of Some Regular Groups in the Periodic Table (Lesson One)'
+    ALKALI_METALS: 'Alkali Metals'
 };
 
 const allQuestions = [
-    // Chapter 3: Physical bonds (Lesson Four) MCQs - Pages 77-78
     {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 1,
-        question: "1) The bonds which are formed between water molecules are .........",
-        options: [
-            "a) hydrogen bonds.",
-            "b) ionic bonds.",
-            "c) coordinate bonds.",
-            "d) metallic bonds."
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) hydrogen bonds.",
-        explanation: "According to page 72, hydrogen bonds are the physical bonds formed between water molecules, specifically between the hydrogen atom of one molecule and the highly electronegative oxygen atom of another. Ionic bonds (page 82) are formed by electron transfer. Metallic bonds (page 75) exist in metals. Coordinate bonds (page 72) can be formed by water in specific reactions (e.g., forming H₃O⁺) but are not the primary bond type between pure water molecules."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 2,
-        question: "2) Hydrogen bonds are found between the molecules of each of the following compounds, except .........",
-        options: [
-            "a) HF",
-            "b) NH₃",
-            "c) HCl",
-            "d) H₂O"
-        ],
-        correctAnswer: 2,
-        correctAnswerText: "c) HCl",
-        explanation: "Page 72 lists HF, H₂O, and NH₃ as examples of compounds with hydrogen bonds. It specifies that hydrogen bonding occurs when hydrogen is bonded to highly electronegative atoms like F, O, and N. While HCl has a polar H-Cl bond, chlorine is less electronegative than F, O, or N, and HCl does not form significant hydrogen bonds compared to the other options listed. Thus, HCl is the exception among the given options."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 3,
-        question: "3) What are the types of the bonds which are found in ethanol CH₃CH₂OH ?",
-        options: [
-            "a) Single and double covalent bonds.",
-            "b) Single covalent bonds and hydrogen bonds.",
-            "c) Double covalent bonds and hydrogen bonds.",
-            "d) Single and double covalent bonds, and hydrogen bonds."
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) Single covalent bonds and hydrogen bonds.",
-        explanation: "Within an ethanol molecule (CH₃CH₂OH), the atoms are linked by single covalent bonds (C-C, C-H, O-H). The presence of the polar O-H group allows ethanol molecules to form hydrogen bonds with each other (similar to water on page 72). Ethanol does not contain double covalent bonds. Therefore, the bonds present are single covalent bonds and hydrogen bonds."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 4,
-        question: "4) Which two compounds can bind to each other through hydrogen bonds ?",
-        options: [
-            "a) CH₃COOH and C₂H₅OH",
-            "b) C₂H₄ and HCOOC₄H₉",
-            "c) CH₃COOH and CH₃CH₃",
-            "d) PH₃ and HF"
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) CH₃COOH and C₂H₅OH",
-        explanation: "Hydrogen bonds form between molecules containing an H atom bonded to a highly electronegative atom (O, N, F) and an electronegative atom with a lone pair in another molecule (Page 72). Both acetic acid (CH₃COOH) and ethanol (C₂H₅OH) contain O-H groups, making them capable of forming hydrogen bonds with each other. Option b includes ethene (C₂H₄), which cannot form hydrogen bonds. Option c includes ethane (CH₃CH₃), which cannot form hydrogen bonds. Option d includes PH₃ which does not form significant hydrogen bonds."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 5,
-        question: "5) Pure water contains .........",
-        options: [
-            "a) hydrogen bonds only.",
-            "b) ionic bonds only.",
-            "c) covalent bonds only.",
-            "d) both covalent and hydrogen bonds."
-        ],
-        correctAnswer: 3,
-        correctAnswerText: "d) both covalent and hydrogen bonds.",
-        explanation: "Pure water (H₂O) molecules contain polar covalent bonds between the oxygen and hydrogen atoms within the molecule. Between water molecules, hydrogen bonds are formed (Page 72). Thus, pure water contains both types of bonds."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 6,
-        question: "6) The ratio between the number of the covalent bonds to the number of hydrogen bonds in a sample of water is .........",
-        options: [
-            "a) equal to 1",
-            "b) less than 1",
-            "c) higher than 1",
-            "d) equal to 3"
-        ],
-        correctAnswer: 2,
-        correctAnswerText: "c) higher than 1",
-        explanation: "Each water molecule has 2 covalent O-H bonds. In liquid water, each molecule is involved in an average of less than 4 hydrogen bonds. Since each hydrogen bond connects two molecules, the total number of hydrogen bonds is less than twice the number of molecules. The total number of covalent bonds is twice the number of molecules. Therefore, the ratio of covalent bonds to hydrogen bonds (2N / (N * avg_H_bonds / 2) = 4 / avg_H_bonds) is greater than 1, as avg_H_bonds < 4."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 7,
-        question: "7) How many hydrogen bonds can be formed by one molecule of water ?",
-        options: [
-            "a) 1",
-            "b) 2",
-            "c) 3",
-            "d) 4"
-        ],
-        correctAnswer: 3,
-        correctAnswerText: "d) 4",
-        explanation: "A single water molecule can act as both a hydrogen bond donor (via its two H atoms) and a hydrogen bond acceptor (via its two lone pairs on O). The diagram on page 72 illustrates a central water molecule forming four hydrogen bonds with surrounding molecules. Therefore, one water molecule can form up to 4 hydrogen bonds."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 8,
-        question: "8) Which of the molecules below can form both hydrogen and coordinate bonds ?",
-        options: [
-            "a) Cl₂",
-            "b) HCl",
-            "c) CH₄",
-            "d) H₂O"
-        ],
-        correctAnswer: 3,
-        correctAnswerText: "d) H₂O",
-        explanation: "Water (H₂O) forms hydrogen bonds between molecules (Page 72). Water can also form coordinate bonds, for example, by donating a lone pair from its oxygen atom to a proton (H⁺) to form the hydronium ion (H₃O⁺), as described on page 72. Cl₂, HCl, and CH₄ do not readily form both types of bonds. While HCl can form weak hydrogen bonds, its ability to form coordinate bonds is not typical in this context."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 9,
-        question: "9) The hydrogen bond is .........",
-        options: [
-            "a) stronger and longer than the covalent bond.",
-            "b) weaker and shorter than the covalent bond.",
-            "c) weaker and longer than the covalent bond.",
-            "d) stronger and shorter than the ionic bond."
-        ],
-        correctAnswer: 2,
-        correctAnswerText: "c) weaker and longer than the covalent bond.",
-        explanation: "Page 73 explicitly states that the hydrogen bond is far weaker than the covalent bond and that the hydrogen bond length (~3 Å) is longer than the covalent bond length (~1 Å). Thus, hydrogen bonds are weaker and longer than covalent bonds."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 10,
-        question: "10) The boiling point of NH₃ is much higher than that of PH₃, because NH₃ .........",
-        options: [
-            "a) is alkaline.",
-            "b) has three-base pyramid stereostructure.",
-            "c) contains three covalent bonds.",
-            "d) can form hydrogen bonds."
-        ],
-        correctAnswer: 3,
-        correctAnswerText: "d) can form hydrogen bonds.",
-        explanation: "NH₃ forms hydrogen bonds due to the polar N-H bonds and the presence of a lone pair on the highly electronegative Nitrogen atom (Page 72). PH₃ does not form significant hydrogen bonds. Hydrogen bonding is a strong intermolecular force that requires more energy to overcome, leading to a much higher boiling point for NH₃ compared to PH₃ (Page 71-72). The other options describe properties of NH₃ but do not explain the difference in boiling point compared to PH₃, which is primarily due to the presence of hydrogen bonding in NH₃."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 11,
-        question: "11) What is the correct order of the boiling points of these compounds ?",
-        options: [
-            "a) HF > NH₃ > H₂S",
-            "b) H₂S > NH₃ > HF",
-            "c) HF > H₂S > NH₃",
-            "d) H₂S > HF > NH₃"
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) HF > NH₃ > H₂S",
-        explanation: "The boiling points of HF, NH₃, and H₂O are higher than expected based on their molar masses due to hydrogen bonding (Page 71-72). H₂S does not form significant hydrogen bonds (Page 71). The strength of hydrogen bonding affects boiling points (Page 72 G.R.). Hydrogen bonds in HF are generally stronger than in NH₃ (due to larger electronegativity difference and geometry effects, Page 73-74). NH₃ hydrogen bonds are weaker than in H₂O (Page 74). H₂S has a very low boiling point (-61°C, Page 71). Among the given options, the order HF > NH₃ > H₂S correctly reflects the relative influence of hydrogen bonding on boiling points."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 12,
-        question: "12) Three students assumed three factors which affect the strength of hydrogen bond :\n• Factor (1) : The angle between the hydrogen bond and the polar bond in the same molecule.\n• Factor (2) : The number of bond pairs of electrons in the central atom.\n• Factor (3) : The difference in electronegativity between hydrogen atom\nand the other atom which binds to it.\nWhich of these factors are correct ?",
-        options: [
-            "a) (1) and (2).",
-            "b) (1) and (3).",
-            "c) (2) and (3).",
-            "d) (1), (2) and (3)."
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) (1) and (3).",
-        explanation: "Page 73-74 lists factors affecting hydrogen bond strength. Factor (1) is correct as strength increases when the hydrogen bond is in a straight line with the polar covalent bond. Factor (3) is correct as strength increases with the difference in electronegativity between hydrogen and the bonded atom. Factor (2), the number of bond pairs, is not directly listed as a factor affecting the strength of the hydrogen bond itself, although it affects the molecular geometry and presence of lone pairs."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 13,
-        question: "13) The bond in an aluminum rod is .........",
-        options: [
-            "a) ionic.",
-            "b) covalent.",
-            "c) coordinate.",
-            "d) metallic."
-        ],
-        correctAnswer: 3,
-        correctAnswerText: "d) metallic.",
-        explanation: "Aluminum is a metal. Page 75 describes the metallic bond as the cloud of valence electrons surrounding the positive ions of the metal, which holds the metal atoms together in a crystal lattice (like an aluminum rod)."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 14,
-        question: "14) The number of valence electrons in a metal atom plays an important role\nin the strength of the .........",
-        options: [
-            "a) ionic bond.",
-            "b) metallic bond.",
-            "c) covalent bond.",
-            "d) coordinate bond."
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) metallic bond.",
-        explanation: "Page 75 explicitly states that The strength of the metallic bond depends mainly on the number of the valence electrons of the metal. As the number of valence electrons increases, the metallic bond becomes stronger, affecting properties like hardness and melting point."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 15,
-        question: "15) Iron is harder than sodium, because iron has .........",
-        options: [
-            "a) smaller atoms.",
-            "b) higher electronegativity.",
-            "c) higher number of valence electrons.",
-            "d) higher activity."
-        ],
-        correctAnswer: 2,
-        correctAnswerText: "c) higher number of valence electrons.",
-        explanation: "The hardness of a metal is related to the strength of its metallic bond (Page 75). The metallic bond strength increases with the number of valence electrons contributing to the electron cloud (Page 75). Sodium (Na) is an alkali metal with 1 valence electron (Page 76). Iron (Fe) is a transition metal with more valence electrons participating in metallic bonding. Therefore, irons metallic bond is stronger, making it harder than sodium."
-    },
-    {
-        topic: Topics.CHEMISTRY_BONDS_LESSON4,
-        originalNumber: 16,
-        question: "16) The diagram represents a section in the periodic table.\nWhich of the following two elements their hardness equals 0.5 on Mohs scale ?",
-        options: [
-            "a) (A), (B).",
-            "b) (C), (D).",
-            "c) (E), (F).",
-            "d) (G), (H)."
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) (A), (B).",
-        explanation: "Element (A) is in Period 3, Group 1A (Sodium, Na). The table on page 76 lists the hardness of Sodium as 0.5 on the Mohs scale. Element (B) is below (A) in Group 1A (Potassium, K). Alkali metals are known for being very soft (Page 91 G.R.), among the softest metals. While Potassiums hardness isnt explicitly given as 0.5, it is expected to be very soft, similar to Sodium. Thus, (A) and (B), representing Sodium and Potassium, are the elements known for their extreme softness."
-    },
-
-    // Model Exam on Chapter 3 MCQs - Pages 82-84
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 1,
-        question: "1) Ionic bond originates between .........",
-        options: [
-            "a) a cation of a nonmetal and an anion of a metal.",
-            "b) a metal with large atomic size and a nonmetal with high electron affinity.",
-            "c) two elements having the same electron configuration.",
-            "d) any two elements in the groups 6A, 7A"
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) a metal with large atomic size and a nonmetal with high electron affinity.",
-        explanation: "This concept is likely covered in a previous lesson, as ionic bond definition is not explicitly on pages 82-85. Ionic bonds are formed by the electrostatic attraction between a cation (positive ion, usually from a metal) and an anion (negative ion, usually from a nonmetal). Metals that readily form ionic bonds tend to have large atomic size and low ionization energy, easily losing electrons. Nonmetals that readily gain electrons, like halogens (Group 7A, seen on page 83) and elements from Group 6A (seen on page 83), typically have high electron affinities and high electronegativities. Option b accurately describes these characteristics."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 2,
-        question: "2) Which of the following represents a crystal of rock salt ?",
-        options: [
-            "a) [Diagram of hexagonally arranged atoms]",
-            "b) [Diagram of layers of stacked hexagonal lattices]",
-            "c) [Diagram of alternating positive and negative ions in a cubic lattice]",
-            "d) [Diagram of positive ions surrounded by electron cloud]"
-        ],
-        correctAnswer: 2,
-        correctAnswerText: "c) [Diagram of alternating positive and negative ions in a cubic lattice]",
-        explanation: "Rock salt is Sodium chloride (NaCl), an ionic compound. Ionic compounds form crystal lattices consisting of a regular arrangement of positive and negative ions held together by electrostatic attraction. The diagram in option c illustrates this structure, showing alternating spheres representing cations and anions in a lattice. Diagram d represents metallic bonding (Page 75)."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 3,
-        question: "3) Which of the following molecules contains 3 bond pairs of electrons ?",
-        options: [
-            "a) C₂H₄",
-            "b) N₂",
-            "c) H₂S",
-            "d) SF₆"
-        ],
-        correctAnswer: 2, // Answer based on the provided key on Page 46.
-        correctAnswerText: "c) H₂S",
-        explanation: "According to standard chemical bonding principles, bond pairs are the pairs of electrons shared between atoms. In C₂H₄ (ethene), there are 5 bond pairs (1 C=C double bond and 4 C-H single bonds). In N₂ (nitrogen), there is 1 N≡N triple bond, consisting of 3 bond pairs. In H₂S (hydrogen sulfide), there are 2 S-H single bonds, consisting of 2 bond pairs. In SF₆ (sulfur hexafluoride), there are 6 S-F single bonds, consisting of 6 bond pairs. Based on this standard counting, N₂ contains 3 bond pairs. However, the provided answer key indicates that H₂S (option c) contains 3 bond pairs. This contradicts the standard definition and counting method. The answer is provided according to the key, while highlighting this discrepancy."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 4,
-        question: "4) Which of the following orbitals in carbon atom its electron(s) do (does) not\nparticipate in forming (C – C) bond in ethane molecule C₂H₆ ?",
-        options: [
-            "a) 1s only.",
-            "b) 2s only.",
-            "c) 2p only.",
-            "d) 2s and 2p"
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) 1s only.",
-        explanation: "In ethane (C₂H₆), each carbon atom undergoes sp³ hybridization, mixing one 2s orbital and three 2p atomic orbitals to form four equivalent sp³ hybrid orbitals, which are then used to form sigma bonds (C-C and C-H) via overlap. The electrons in the 1s orbital are core electrons and are not involved in valence bonding, including the formation of the C-C bond. Therefore, the carbon 1s orbital does not participate in forming the C-C bond."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 5,
-        question: "5) Which of the following compounds its correct structure can not be explained\nwithout the concept of the hybridized orbitals ?",
-        options: [
-            "a) H₂",
-            "b) C",
-            "c) PH₃",
-            "d) Li₃N"
-        ],
-        correctAnswer: 3,
-        correctAnswerText: "d) Li₃N",
-        explanation: "The concept of hybridized orbitals is primarily used to explain the molecular geometry and bonding in covalent compounds. H₂ is a simple diatomic covalent molecule explained by direct orbital overlap. Elemental Carbon (C) exists as a covalent network forms (diamond or graphite) whose structures involve hybridization. PH₃ is a covalent molecule whose trigonal pyramidal structure is explained using hybridization. Li₃N (Lithium nitride) is an ionic compound composed of Li⁺ and N³⁻ ions in a crystal lattice. The structure of ionic compounds is explained by electrostatic attraction and crystal packing, not by covalent bonding concepts like hybridization. Therefore, the structure of Li₃N does not require the concept of hybridized orbitals."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 6,
-        question: "6) The orbitals in each of the following molecules overlap, except in .........",
-        options: [
-            "a) NaCl",
-            "b) N₂",
-            "c) C₂H₄",
-            "d) NH₃"
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) NaCl",
-        explanation: "Orbital overlap is fundamental to the formation of covalent bonds. N₂ (N≡N), C₂H₄ (C=C, C-H), and NH₃ (N-H) are all covalent molecules involving the sharing of electrons through the overlap of atomic or hybrid orbitals. NaCl (Sodium chloride) is an ionic compound formed by electron transfer, held together by electrostatic attraction between ions (Na⁺ and Cl⁻). There is no significant sharing of electrons through orbital overlap in ionic bonding. Therefore, orbitals do not overlap in the bonding of NaCl."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 7,
-        question: "7) Which of these bonds is the most polar ?\n[The electronegativities of the elements are : N = 3, Bi = 1.8, Sb = 1.9, As = 2, P = 2.1]",
-        options: [
-            "a) N - Bi",
-            "b) N - Sb",
-            "c) N - As",
-            "d) N - P"
-        ],
-        correctAnswer: 3, // Answer based on the provided key on Page 46.
-        correctAnswerText: "d) N - P",
-        explanation: "Bond polarity is determined by the difference in electronegativity between the bonded atoms. A larger difference indicates greater polarity. Using the given electronegativity values:\n|EN(N) - EN(Bi)| = |3.0 - 1.8| = 1.2\n|EN(N) - EN(Sb)| = |3.0 - 1.9| = 1.1\n|EN(N) - EN(As)| = |3.0 - 2.0| = 1.0\n|EN(N) - EN(P)| = |3.0 - 2.1| = 0.9\nBased on these calculations, the N-Bi bond has the largest electronegativity difference (1.2), making it the most polar. However, the provided answer key indicates that the N-P bond (difference 0.9) is the most polar (option d). This contradicts the calculation based on the provided data. The answer is provided according to the key, noting this discrepancy."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 8,
-        question: "8) Which of the following represents H₂S molecule ?",
-        options: [
-            "a) Its stereostructure is angular.",
-            "b) It contains one lone pair of electrons.",
-            "c) The angle between its bonds is 180°",
-            "d) It contains 6 bond electrons."
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) Its stereostructure is angular.",
-        explanation: "The H₂S molecule has a central Sulfur atom bonded to two Hydrogen atoms and contains two lone pairs of electrons. According to VSEPR theory, the electron domains (2 bonding pairs and 2 lone pairs) arrange tetrahedrally around the Sulfur. However, the molecular geometry or stereostructure, which considers only the atoms, is bent or angular due to the repulsion from the lone pairs. Option b is incorrect; Sulfur has two lone pairs. Option c is incorrect; a 180° angle is for linear molecules. Option d is incorrect; H₂S has two S-H single bonds, containing a total of 4 bonding electrons."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 9,
-        question: "9) What is the ion which is difficult to exist in nature ?",
-        options: [
-            "a) Li⁺",
-            "b) F⁻",
-            "c) Fe²⁺",
-            "d) Ne⁻"
-        ],
-        correctAnswer: 3,
-        correctAnswerText: "d) Ne⁻",
-        explanation: "Li⁺, F⁻, and Fe²⁺ are common and relatively stable ions found in nature, formed by atoms achieving stable electron configurations. Ne (Neon) is a noble gas with a complete and highly stable electron shell. Noble gases have very low reactivity and little tendency to form ions. Forming a Ne⁻ ion would involve adding an electron to a higher energy level, which is energetically very unfavorable, making the Ne⁻ ion highly unstable and difficult to exist in nature."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 10,
-        question: "10) What is the number of single electrons in Lewis electron-dot symbol of\nthe atom of an element whose electron configuration ends with 3p¹?",
-        options: [
-            "a) Zero.",
-            "b) 1",
-            "c) 2",
-            "d) 4"
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) 1",
-        explanation: "An element with electron configuration ending in 3p¹ has valence electrons in the 3s and 3p orbitals. Assuming 3s is filled, the configuration is ...3s² 3p¹. The valence electrons are 2 in 3s (paired) and 1 in 3p (unpaired). In the Lewis electron-dot symbol, these are represented as dots. The 3s² electrons are shown as a pair of dots, and the 3p¹ electron is shown as a single dot. Thus, there is 1 single (unpaired) electron."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 11,
-        question: "11) In CS₂ molecule, the central carbon atom binds to each of the two sulphur atoms\nwith .........",
-        options: [
-            "a) 1 σ bond only.",
-            "b) 1 σ bond and 1 π bond.",
-            "c) 2 π bonds.",
-            "d) 2 σ bonds."
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) 1 σ bond and 1 π bond.",
-        explanation: "CS₂ (carbon disulfide) has a linear structure S=C=S. The central carbon atom forms a double bond with each sulfur atom. A double bond consists of one sigma (σ) bond and one pi (π) bond. Therefore, the central carbon atom is bonded to each of the two sulfur atoms by one σ bond and one π bond."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 12,
-        question: "12) Which of the following represents the arrangement of the mentioned molecules\naccording to the values of the angles between the bonds ?",
-        options: [
-            "a) CH₄ < BF₃ < NH₃",
-            "b) H₂O < CO₂ < BF₃",
-            "c) NH₃ < CH₄ < CO₂",
-            "d) NH₃ < CH₄ < H₂O"
-        ],
-        correctAnswer: 2,
-        correctAnswerText: "c) NH₃ < CH₄ < CO₂",
-        explanation: "The approximate bond angles are: NH₃ (~107°), CH₄ (~109.5°), and CO₂ (180°). Arranging these in increasing order of angle gives NH₃ < CH₄ < CO₂. Other angles mentioned in options: H₂O (~104.5°), BF₃ (120°)."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 13,
-        question: "13) Which of the following pairs contains both covalent bonds and coordinate bonds ?",
-        options: [
-            "a) NH₃, NH₄⁺",
-            "b) PH₃, H₃O⁺",
-            "c) H₃O⁺, H₂O",
-            "d) H₂O, HCl"
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) PH₃, H₃O⁺",
-        explanation: "Coordinate bonds are formed when one atom donates a lone pair to another atom or ion to form a covalent bond. H₃O⁺ (hydronium ion) is formed by H₂O accepting an H⁺, with oxygen donating a lone pair to form a coordinate bond. H₃O⁺ also contains O-H covalent bonds. Thus, H₃O⁺ contains both covalent and coordinate bonds (Page 72). PH₃ (phosphine) contains P-H covalent bonds and a lone pair on phosphorus, enabling it to form coordinate bonds (e.g., in PH₄⁺). While PH₃ itself only contains covalent bonds, H₃O⁺ contains both. This option pairs a species with both types (H₃O⁺) with a species containing covalent bonds and capable of forming coordinate bonds (PH₃)."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 14,
-        question: "14) Element (X) reacts with dilute hydrochloric acid forming the salt (Y)\nwith the evolution of hydrogen gas.\nWhat is the type of bonding in each of element (X) and salt (Y) respectively ?",
-        options: [
-            "a) Covalent / Covalent.",
-            "b) Metallic / Ionic.",
-            "c) Metallic / Covalent.",
-            "d) Covalent / Ionic."
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) Metallic / Ionic.",
-        explanation: "An element that reacts with dilute acid to produce hydrogen gas is a reactive metal. Metals are characterized by metallic bonding (Page 75). The salt formed between a metal and an acid like HCl (containing the nonmetal Cl) is typically an ionic compound (Page 91, Page 76 Worked Example describes ionic substance). Therefore, element (X) is metallic, and salt (Y) is ionic."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 15,
-        question: "15) Both the molecules of water and methane are similar in .........",
-        options: [
-            "a) the value of the angle between the bonds.",
-            "b) the stereostructure.",
-            "c) the arrangement of the electron pairs.",
-            "d) the difference in electronegativity between their elements."
-        ],
-        correctAnswer: 2,
-        correctAnswerText: "c) the arrangement of the electron pairs.",
-        explanation: "In both water (H₂O) and methane (CH₄), there are four electron domains (bonding pairs and lone pairs) around the central atom (O or C). These electron domains are arranged tetrahedrally to minimize repulsion. In H₂O, there are 2 bonding pairs and 2 lone pairs, leading to a bent molecular shape (~104.5°). In CH₄, there are 4 bonding pairs and 0 lone pairs, leading to a tetrahedral molecular shape (~109.5°). While angles and molecular shapes differ, the underlying arrangement of the electron pairs is the same (tetrahedral)."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 16,
-        question: "16) All the following are correct about NH₃ molecule, except .........",
-        options: [
-            "a) the hybridization in the central atom is sp³",
-            "b) its stereostructure is tetrahedron.",
-            "c) its abbreviation is AX₃E",
-            "d) the angle between the bonds in it is 107°"
-        ],
-        correctAnswer: 1,
-        correctAnswerText: "b) its stereostructure is tetrahedron.",
-        explanation: "In NH₃, the central N atom is sp³ hybridized, surrounded by 3 bonding pairs and 1 lone pair. The electron domains are arranged tetrahedrally. The molecular shape (stereostructure), which considers only the atoms, is trigonal pyramidal. The VSEPR abbreviation is AX₃E. The bond angle is approximately 107°. Therefore, the statement that its stereostructure is tetrahedral is incorrect; it is trigonal pyramidal."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 17,
-        question: "17) How many sigma bonds are found in one molecule of CH₃COONa ?",
-        options: [
-            "a) 5",
-            "b) 6",
-            "c) 7",
-            "d) 8"
-        ],
-        correctAnswer: 2, // Answer based on the provided key on Page 46.
-        correctAnswerText: "c) 7",
-        explanation: "Sodium acetate (CH₃COONa) is an ionic compound consisting of Na⁺ cations and acetate anions (CH₃COO⁻). Sigma bonds are covalent bonds formed by head-to-head overlap of orbitals. Within the acetate anion (H₃C-C(=O)-O⁻), there are: 3 C-H sigma bonds, 1 C-C sigma bond, 1 sigma bond in the C=O double bond, and 1 C-O⁻ sigma bond. This totals 6 sigma bonds within the acetate anion. The bond between Na⁺ and CH₃COO⁻ is ionic, not covalent (sigma). The provided answer key indicates that there are 7 sigma bonds (option c). This number contradicts the standard counting of 6 sigma bonds within the acetate anion. The provided text does not contain information to explain how to arrive at 7 sigma bonds in this context. The answer is provided according to the key, noting this discrepancy."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 18,
-        question: "18) In the shown water molecule, the repulsion forces are\nthe strongest between the two pairs of electrons .........",
-        options: [
-            "a) W and X",
-            "b) X and Y",
-            "c) Y and Z",
-            "d) W and Z"
-        ],
-        correctAnswer: 1, // Answer based on the provided key on Page 46.
-        correctAnswerText: "b) X and Y",
-        explanation: "The diagram shows labels for electron domains in a water molecule (lone pairs and bonding pairs). Electron domain repulsion strength follows the order: Lone pair-Lone pair > Lone pair-Bond pair > Bond pair-Bond pair. W represents a lone pair domain, and X, Y, Z represent parts of bonding pair domains. The repulsion between a lone pair and a bonding pair (like W and X, or W and Y, or W and Z) is stronger than the repulsion between two bonding pairs (like X and Y, or Y and Z, or X and Z). Thus, the strongest repulsion involving the labeled parts should be between a lone pair and a bonding pair. However, the provided answer key indicates that the strongest repulsion is between X and Y (option b), which are parts of two different bonding pairs, representing a bond pair-bond pair repulsion. This contradicts the standard VSEPR theory repulsion order, which ranks bond pair-bond pair repulsion as the weakest type. The answer is provided according to the key, noting this discrepancy with standard VSEPR theory which predicts LP-BP repulsion to be stronger than BP-BP repulsion."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 19,
-        question: "19) In the molecule illustrated in the opposite figure :\nHow many lone pairs of electrons are found ?",
-        options: [
-            "a) 1 pair.",
-            "b) 2 pairs.",
-            "c) 3 pairs.",
-            "d) 4 pairs."
-        ],
-        correctAnswer: 0, // Answer based on the provided key on Page 46.
-        correctAnswerText: "a) 1 pair.",
-        explanation: "The figure shows the structure H-O-C-C-NH₂. Let's count the lone pairs on each atom based on completing their octets and respecting valencies (H=1, O=2, C=4, N=3 bonds typically). Oxygen (O) forms 2 bonds (to H and C) and has 6 valence electrons, so it has 6 - 2(shared) = 4 non-bonding electrons, forming 2 lone pairs. Carbon (C) atoms form 4 bonds and have 0 lone pairs. Nitrogen (N) forms 3 bonds (to C and 2 H) and has 5 valence electrons, so it has 5 - 3(shared) = 2 non-bonding electrons, forming 1 lone pair. The total number of lone pairs in the molecule is 2 (on O) + 1 (on N) = 3 lone pairs. However, the provided answer key indicates that there is only 1 lone pair (option a). This contradicts the standard method of counting lone pairs in this molecule. The answer is provided according to the key, noting this discrepancy with the standard chemical structure and lone pair count."
-    },
-    {
-        topic: Topics.MODEL_EXAM_CHAPTER3,
-        originalNumber: 20,
-        question: "20) What is the type of bonding between the two atoms of the elements (₁₁X) and (₈Y),\nwhen they form a compound ?\nWhat is the formula of this compound ?",
-        options: [
-            "a) Ionic bonding / X₂Y",
-            "b) Covalent bonding / X₂Y",
-            "c) Ionic bonding / Y₂X",
-            "d) Covalent bonding / Y₂X"
-        ],
-        correctAnswer: 0,
-        correctAnswerText: "a) Ionic bonding / X₂Y",
-        explanation: "Element ₁₁X (Z=11) is Sodium (Na), which is in Group 1A, Period 3. It is a metal that forms a +1 ion (X⁺) (Page 90-91). Element ₈Y (Z=8) is Oxygen (O), which is in Group 6A, Period 2. It is a nonmetal that forms a -2 ion (Y²⁻). The compound formed between a Group 1A metal and a Group 6A nonmetal is typically ionic. To form a neutral compound, two X⁺ ions are needed for every one Y²⁻ ion, resulting in the formula X₂Y. Thus, the bonding is ionic, and the formula is X₂Y."
-    },
-
-    // Chapter 4: The Representative Elements of Some Regular Groups in the Periodic Table (Lesson One) MCQs - Pages 107-110
-    {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
-        originalNumber: 1,
-        question: "1) Each of the following represents the electron configuration of\nan alkali metal, except .........",
+        question: "Each of the following represents the electron configuration of an alkali metal, except .........",
         options: [
             "a) 2, 1",
             "b) [Ne], 4s¹",
             "c) [Ar], 4s², 3d¹⁰, 4p⁶, 5s¹",
             "d) [Xe], 6s¹"
         ],
-        correctAnswer: 2, // Answer based on the provided key on Page 47.
-        correctAnswerText: "c) [Ar], 4s², 3d¹⁰, 4p⁶, 5s¹",
-        explanation: "Alkali metals are elements in Group 1A (except H) with a valence electron configuration of ns¹ (Page 90). Option a (2,1) is 1s² 2s¹ (Li). Option b is likely a typo and meant [Ar] 4s¹ (K). Option d is [Xe] 6s¹ (Cs). These are all alkali metals. Option c lists [Ar] followed by 4s², 3d¹⁰, 4p⁶, 5s¹. While the filling order is shown incorrectly, the total electrons after [Ar] (18) are 2+10+6+1 = 19, total Z=18+19=37, which is Rubidium (Rb). Rubidium has the configuration [Kr] 5s¹, where [Kr] = [Ar] 3d¹⁰ 4s² 4p⁶. Thus, option c, despite its presentation, describes Rubidium, which is an alkali metal. The provided answer key states that option c is the exception (not an alkali metal), which contradicts the definition and composition of alkali metals listed on page 90. The answer is provided according to the key, noting this significant discrepancy."
+        correctAnswer: 1,
+        correctAnswerText: "b) [Ne], 4s¹",
+        explanation: "Alkali metals are Group 1 elements with a valence electron configuration of ns¹. Option a) 2, 1 represents 1s² 2s¹ (Lithium). Option c) [Ar], 4s², 3d¹⁰, 4p⁶, 5s¹ is equivalent to [Kr] 5s¹ (Rubidium). Option d) [Xe], 6s¹ represents Cesium. Option b) [Ne], 4s¹ does not represent a correct ground state electron configuration for an alkali metal, as electrons fill the 3s and 3p orbitals before the 4s orbital. This configuration does not fit the ns¹ pattern for alkali metals where the core is the nearest noble gas.",
+        page: 107,
+        section: "Abundance of alkali metals in nature"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 2,
-        question: "2) Which of the following represents a crystal of rock salt ?",
+        question: "Which of the following represents a crystal of rock salt ?",
         options: [
-            "a) [Diagram of hexagonally arranged atoms]",
-            "b) [Diagram of layers of stacked hexagonal lattices]",
-            "c) [Diagram of alternating positive and negative ions in a cubic lattice]",
-            "d) [Diagram of positive ions surrounded by electron cloud]"
+            "a) [Diagram a]",
+            "b) [Diagram b]",
+            "c) [Diagram c]",
+            "d) [Diagram d]"
         ],
-        correctAnswer: 2,
-        correctAnswerText: "c) [Diagram of alternating positive and negative ions in a cubic lattice]",
-        explanation: "Rock salt is Sodium chloride (NaCl), an ionic compound. The structure of ionic solids consists of a regular arrangement of alternating positive (Na⁺) and negative (Cl⁻) ions in a crystal lattice, as shown in diagram c. Diagram d represents metallic bonding (Page 75)."
+        correctAnswer: 3,
+        correctAnswerText: "d) [Diagram d]",
+        explanation: "Rock salt (NaCl) forms a cubic crystal lattice structure where Na⁺ and Cl⁻ ions are arranged in an alternating, regular pattern. Diagram d shows this characteristic cubic arrangement of positive and negative ions.",
+        page: 107,
+        section: "Abundance of alkali metals in nature"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 3,
-        question: "3) The molecular formula of carnallite is .........",
+        question: "The molecular formula of carnallite is .........",
         options: [
             "a) ClH₁₂KMgO",
             "b) Cl₃H₁₂KMgO₆",
             "c) Cl₃H₂KMgO",
-            "d) KCl.MgCl₂.6H₂O"
+            "d) KCl.MgCl.6H₂O"
         ],
-        correctAnswer: 3,
-        correctAnswerText: "d) KCl.MgCl₂.6H₂O",
-        explanation: "Page 88 lists Carnallite deposits (KCl.MgCl₂.6H₂O) as an important ore of Potassium. Option d matches this chemical formula."
+        correctAnswer: 1,
+        correctAnswerText: "b) Cl₃H₁₂KMgO₆",
+        explanation: "Carnallite is a hydrated double salt with the chemical formula KCl·MgCl₂·6H₂O. Option b) Cl₃H₁₂KMgO₆ is an alternative way of writing the elements present in KCl·MgCl₂·6H₂O (K:1, Mg:1, Cl:3, O:6, H:12). Option d) is incorrect as magnesium chloride is MgCl₂, not MgCl.",
+        page: 107,
+        section: "Abundance of alkali metals in nature"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 4,
-        question: "4) A sample of francium has a mass equals 20 mg, its mass after a period of time\nbecomes .........",
+        question: "A sample of francium has a mass equals 20 mg, its mass after a period of time becomes .........",
         options: [
             "a) 20 mg",
             "b) more than 20 mg",
@@ -954,12 +449,14 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) less than 20 mg",
-        explanation: "Francium (Fr) is a radioactive element with a very short half-life of twenty minutes (Page 89). Radioactive elements undergo decay, converting into other elements. Therefore, the mass of the original Francium sample will decrease over time as it decays. After any period longer than zero, the mass will be less than the initial mass."
+        explanation: "Francium (Fr) is a radioactive alkali metal. Radioactive isotopes undergo nuclear decay, converting into other elements and emitting particles, which results in a decrease in the total mass of the original substance over time. Therefore, the mass of a sample of francium will decrease after a period of time.",
+        page: 107,
+        section: "Abundance of alkali metals in nature"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 5,
-        question: "5) The chemically active metal .........",
+        question: "The chemically active metal .........",
         options: [
             "a) loses its valence electrons easily.",
             "b) forms unstable compounds.",
@@ -968,12 +465,14 @@ const allQuestions = [
         ],
         correctAnswer: 0,
         correctAnswerText: "a) loses its valence electrons easily.",
-        explanation: "Chemically active metals, particularly alkali metals discussed in this lesson, are characterized by their high reactivity, which stems from their low ionization potentials and large atomic sizes, allowing them to easily lose their valence electron (Page 90-92). This ability to easily lose electrons makes them strong reducing agents (Page 91). Option b is incorrect; active metals tend to form stable ionic compounds. Option c is incorrect; metal oxides are generally basic, not acidic, and while alkali metals burn easily, the oxide is basic. Option d is incorrect; oxides of highly active metals are often difficult to reduce."
+        explanation: "Chemically active metals, particularly alkali metals which are the most active, readily lose their valence electron(s) due to low ionization energy (as implied by question 6 and 10, and explicitly stated as strong reducing agents in question 11d). They form stable ionic compounds, their normal oxides are basic, and their oxides are difficult to reduce.",
+        page: 107,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 6,
-        question: "6) It is not normal for sodium to exist in the oxidation state +2, because of its .........",
+        question: "It is not normal for sodium to exist in the oxidation state +2, because of its .........",
         options: [
             "a) high first ionization potential.",
             "b) high second ionization potential.",
@@ -982,12 +481,14 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) high second ionization potential.",
-        explanation: "Alkali metals readily lose their single valence electron to form a +1 ion because their first ionization potentials are low (Page 90). However, removing a second electron from a sodium atom (or any alkali metal) requires removing it from a very stable, complete electron shell (noble gas configuration). This requires a very high amount of energy, described as a high second ionization potential (Page 90, G.R.). Thus, the +2 oxidation state is not normally observed for sodium because its second ionization potential is exceptionally high."
+        explanation: "Sodium (Na) has one valence electron in the 3s orbital ([Ne] 3s¹). It easily loses this electron to form Na⁺ (oxidation state +1). The first ionization potential is low. However, removing a second electron requires breaking into the stable noble gas electron configuration of Na⁺ ([Ne]), which requires a very high amount of energy, i.e., a very high second ionization potential. This makes the +2 oxidation state unstable and not normal for sodium.",
+        page: 108,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 7,
-        question: "7) Alkali metals are characterized by their large .........",
+        question: "Alkali metals are characterized by their large .........",
         options: [
             "a) densities.",
             "b) ionization potentials.",
@@ -996,12 +497,14 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) atomic radii.",
-        explanation: "Page 92 explicitly states that alkali metals have the largest atomic sizes (atomic radii) in their respective periods. This large size is a defining characteristic that leads to other properties like low ionization potentials and low electronegativities."
+        explanation: "Alkali metals are located in Group 1 of the periodic table and have the largest atomic radii within their respective periods. They also have the lowest ionization potentials and lowest electronegativities in their periods. Their densities are relatively low compared to other metals, and not consistently large (Li, Na, K are less dense than water).",
+        page: 108,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 8,
-        question: "8) The similarity of the chemical properties of the alkali metals is attributed to that .........",
+        question: "The similarity of the chemical properties of the alkali metals is attributed to that .........",
         options: [
             "a) they all have the same electron configuration of the nearest noble gas.",
             "b) the valence electron of each of them has the same four quantum numbers.",
@@ -1009,28 +512,31 @@ const allQuestions = [
             "d) the valence shell of each of them contains one electron."
         ],
         correctAnswer: 3,
-        correctAnswerText: "d) the valence shell of each of them contains one electron."
-        ,
-        explanation: "Page 90 states that all elements of Group 1A (alkali metals) are characterized by the presence of one single electron in the outermost energy level (ns¹). This shared valence electron configuration dictates their similar chemical behavior, particularly their tendency to easily lose this electron and form +1 ions. Option a is incorrect; they achieve the nearest noble gas configuration after losing the electron. Options b and c are incorrect generalizations about quantum numbers and energy."
+        correctAnswerText: "d) the valence shell of each of them contains one electron.",
+        explanation: "Elements in the same group of the periodic table exhibit similar chemical properties primarily because they have the same number of valence electrons and similar valence electron configurations. All alkali metals are in Group 1 and have one electron in their outermost (valence) shell (ns¹). This common valence electron structure dictates their chemical behavior, such as readily losing this electron to form +1 ions.",
+        page: 108,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 9,
-        question: "9) By comparing cesium and potassium, it is concluded that cesium .........",
+        question: "By comparing cesium and potassium, it is concluded that cesium .........",
         options: [
             "a) has less atomic mass.",
             "b) has larger atomic size.",
             "c) has lower ability to be ionized.",
             "d) is less active."
         ],
-        correctAnswer: 2, // Answer based on the provided key on Page 47.
-        correctAnswerText: "c) has lower ability to be ionized.",
-        explanation: "Potassium (K) and Cesium (Cs) are both alkali metals, with Cs located below K in Group 1A. Atomic mass (a) increases down the group. Atomic size (b) increases down the group (Page 92), so Cs has a larger atomic size than K. Chemical activity (d) increases down the group (Page 92), so Cs is more active than K. Ionization potential decreases down the group (Page 90), meaning it is easier to remove an electron (higher ability to be ionized). Thus, Cs has a lower ionization potential than K, implying a higher ability to be ionized. The phrase lower ability to be ionized in option c appears to be an error in wording and likely meant lower ionization potential or higher ability to be ionized. The provided answer key indicates option c is correct. Assuming lower ability to be ionized is meant to imply some characteristic that differentiates it from K in the intended answer, and acknowledging the conflict with standard chemical trends, the answer is provided according to the key, noting the discrepancy in phrasing or underlying concept."
+        correctAnswer: 1,
+        correctAnswerText: "b) has larger atomic size.",
+        explanation: "Cesium (Cs) is located below Potassium (K) in Group 1 of the periodic table. Moving down Group 1, atomic mass increases, atomic size (radius) increases, ionization energy decreases (meaning higher ability to be ionized), and chemical reactivity increases. Therefore, Cesium has a larger atomic size, higher atomic mass, higher ability to be ionized, and is more active than Potassium.",
+        page: 108,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 10,
-        question: "10) Which of the following elements loses its valence electron most easily ?",
+        question: "Which of the following elements loses its valence electron most easily ?",
         options: [
             "a) Li",
             "b) Na",
@@ -1039,26 +545,30 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) Cs",
-        explanation: "The ease of losing a valence electron is measured by the ionization potential. For alkali metals (Li, Na, K, Cs), the ionization potential decreases down the group as atomic size increases and the valence electron is further from the nucleus and more shielded (Page 90). Therefore, Cesium (Cs), being at the bottom of the list and group, has the lowest ionization potential and loses its valence electron most easily."
+        explanation: "The ease with which an element loses its valence electron is measured by its ionization energy. Alkali metals have low ionization energies, which decrease down the group. Among the given options (Li, Na, K, Cs), Cesium (Cs) is lowest in the group and therefore has the lowest ionization energy, meaning it loses its valence electron most easily. This also corresponds to increasing reactivity down the group.",
+        page: 108,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 11,
-        question: "11) Each of the following statements is correct, except .........",
+        question: "Each of the following statements is correct, except .........",
         options: [
             "a) alkali metals are similar in their electronegativities.",
             "b) lithium properties differ from some of magnesium properties.",
-            "c) photoelectric phenomenon increases by increasing the atomic number.",
+            "c) photoelectric phenomenon of alkali metals increases by increasing the atomic number.",
             "d) alkali metals are very strong reducing agents."
         ],
         correctAnswer: 0,
         correctAnswerText: "a) alkali metals are similar in their electronegativities.",
-        explanation: "Option d is correct; alkali metals are strong reducing agents due to their low ionization energy (Page 91). Option c is correct; the photoelectric phenomenon (ease of electron liberation) increases down the group (with increasing atomic number) due to decreasing ionization energy (Page 92 G.R.). Option b is correct; Lithium shows some anomalous properties and a diagonal relationship with Magnesium. Option a is incorrect; electronegativity decreases significantly down Group 1A (e.g., Li=1.0, Na=0.9, K=0.8, Cs=0.7), so their electronegativities are not similar."
+        explanation: "Statement b) is correct due to the diagonal relationship between Li and Mg. Statement c) is correct because ionization energy decreases down the group, making it easier to remove electrons (photoelectric effect). Statement d) is correct because alkali metals easily lose electrons, acting as strong reducing agents. Statement a) is incorrect; while all alkali metals have low electronegativity, there is a significant decrease down the group (e.g., Li 0.98, Cs 0.79), making them not particularly 'similar' compared to other properties or variations across the periodic table.",
+        page: 108,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 12,
-        question: "12) Which of the following salts its cation yields a yellowish green colour in the dry test ?",
+        question: "Which of the following salts its cation yields a yellowish green colour in the dry test ?",
         options: [
             "a) NaCl",
             "b) LiCl",
@@ -1067,12 +577,14 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) BaCO₃",
-        explanation: "The dry test (flame test) produces characteristic colors for metal cations (Page 93). Alkali metal cations show specific colors: Li⁺ (Crimson), Na⁺ (Golden yellow), K⁺ (Pale violet). NaCl contains Na⁺ (Golden yellow flame). LiCl contains Li⁺ (Crimson flame). K₂CO₃ contains K⁺ (Pale violet flame). BaCO₃ contains the cation Ba²⁺. Barium (Ba) is an alkaline earth metal (Group 2A), not an alkali metal. Although in the alkali metal section, the question asks about cations. Barium gives a characteristic green flame, sometimes described as yellowish-green or apple green. Since BaCO₃ contains the Ba²⁺ ion, it will produce a green flame. None of the alkali metals give a yellowish green flame, but Barium does give a green flame often perceived with a yellowish tint. Therefore, BaCO₃ is the intended answer."
+        explanation: "The dry test (flame test) is used to identify certain metal cations by the characteristic color they impart to a flame. Na⁺ gives a yellow flame. Li⁺ gives a red flame. K⁺ gives a lilac/violet flame. Ba²⁺ gives a yellowish-green or pale green flame. The salt BaCO₃ contains the Ba²⁺ cation, which produces a yellowish-green color in the flame test.",
+        page: 108,
+        section: null // General knowledge related to metal properties
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 13,
-        question: "13) When lithium reacts with nitrogen of the atmospheric air by heating, then water is\nadded to the product, a gas evolves which is .........",
+        question: "When lithium reacts with nitrogen of the atmospheric air by heating, then water is added to the product, a gas evolves which is .........",
         options: [
             "a) oxygen.",
             "b) hydrogen.",
@@ -1081,54 +593,62 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) ammonia.",
-        explanation: "Page 94 describes the reaction of Lithium with nitrogen upon heating to form Lithium nitride (Li₃N). It then states that Lithium nitride reacts with water to produce ammonia gas (NH₃): Li₃N(s) + 3H₂O(l) → 3LiOH(aq) + NH₃(g)↑. Thus, the gas evolved is ammonia."
+        explanation: "Lithium is the only alkali metal that reacts directly with nitrogen gas upon heating to form a nitride (Li₃N): 6Li(s) + N₂(g) → 2Li₃N(s). Metal nitrides, including Li₃N, react with water in a hydrolysis reaction to produce the metal hydroxide and ammonia gas: Li₃N(s) + 3H₂O(l) → 3LiOH(aq) + NH₃(g). Therefore, adding water to the product (Li₃N) evolves ammonia gas.",
+        page: 108,
+        section: null // Reaction with nitrogen and hydrolysis of nitride
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 14,
-        question: "14) Which of these hydroxides is the most basic ?",
+        question: "Which of these hydroxides is the most basic ?",
         options: [
             "a) NaOH",
             "b) LiOH",
             "c) RbOH",
             "d) KOH"
         ],
-        correctAnswer: 3, // Answer based on the provided key on Page 47.
-        correctAnswerText: "d) KOH",
-        explanation: "Alkali metal hydroxides (MOH) are strong bases (Page 96). Basicity increases down the group as the ionic character of the M-OH bond increases, making dissociation easier. The order of increasing basicity in Group 1A is LiOH < NaOH < KOH < RbOH < CsOH. Among the options provided (NaOH, LiOH, RbOH, KOH), RbOH is the strongest base, followed by KOH, NaOH, and LiOH. The provided answer key indicates KOH (option d) is the most basic among the options. This contradicts the standard trend where RbOH is more basic than KOH. The answer is provided according to the key, noting this discrepancy with the established trend of basicity increasing down Group 1A."
+        correctAnswer: 2,
+        correctAnswerText: "c) RbOH",
+        explanation: "Alkali metal hydroxides are strong bases. The basic strength of alkali metal hydroxides increases down the group as the ionic radius of the metal increases and the bond between the metal cation and the hydroxide anion becomes weaker, leading to easier dissociation of OH⁻. The order of increasing basic strength is LiOH < NaOH < KOH < RbOH < CsOH. Among the given options, RbOH is furthest down the group (below Li, Na, and K) and is therefore the most basic.",
+        page: 108,
+        section: "General properties of alkali metals"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 15,
-        question: "15) The combination of sodium with oxygen produces an oxide containing the ion .........",
+        question: "The combination of sodium with oxygen produces an oxide containing the ion .........",
         options: [
             "a) O⁺",
             "b) O₂²⁻",
             "c) O⁻",
-            "d) O²⁻"
+            "d) O₂⁻"
         ],
-        correctAnswer: 1,
-        correctAnswerText: "b) O₂²⁻",
-        explanation: "Page 95 states that when Sodium (Na) is burnt in pure oxygen, it gives Sodium peroxide (Na₂O₂). Sodium peroxide contains the peroxide ion, which has the formula O₂²⁻. Option b matches this ion."
+        correctAnswer: 2,
+        correctAnswerText: "c) O⁻",
+        explanation: "Alkali metals react with oxygen to form various oxides depending on the metal and conditions: normal oxides (containing O²⁻), peroxides (containing O₂²⁻), and superoxides (containing O₂⁻). Sodium primarily forms sodium peroxide (Na₂O₂) when burned in excess oxygen, containing the peroxide ion O₂²⁻. It can also form sodium oxide (Na₂O) containing O²⁻, and sodium superoxide (NaO₂) containing O₂⁻ under specific conditions. The O⁻ ion is not typically found in stable sodium oxides. According to the provided answer key, the correct option is O⁻. However, this is not a common or stable ion in bulk sodium oxides.",
+        page: 108,
+        section: null // Types of alkali metal oxides
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 16,
-        question: "16) The compound of an alkali metal whose formula is XO₂ is .........",
+        question: "The compound of an alkali metal whose formula is XO₂ is .........",
         options: [
-            "a) a normal oxide and the metal oxidation number is -½",
+            "a) a normal oxide and the metal oxidation number is -1/2",
             "b) a peroxide and the metal oxidation number is +1",
             "c) a superoxide and the metal oxidation number is +1",
-            "d) a superoxide and the oxygen oxidation number is +½"
+            "d) a superoxide and the oxygen oxidation number is +1/2"
         ],
         correctAnswer: 2,
         correctAnswerText: "c) a superoxide and the metal oxidation number is +1",
-        explanation: "Page 95 states that alkali metals Potassium (K), Rubidium (Rb), and Cesium (Cs) form superoxides with the formula MO₂ when burnt in pure oxygen. These compounds contain the superoxide ion (O₂⁻). In ionic compounds of alkali metals, the metal always has an oxidation number of +1 (Page 90). In the superoxide ion O₂⁻, the total charge is -1, so the oxidation number of oxygen is -½ (2 * ON(O) = -1, ON(O) = -½, as listed on page 95). Therefore, a compound with formula XO₂ formed by an alkali metal is a superoxide, and the metals oxidation number is +1. Option c matches this description."
+        explanation: "In the compound XO₂, X is an alkali metal, which typically has an oxidation state of +1. For the compound to be neutral, the total charge of the O₂ unit must be -1. This corresponds to the superoxide ion, O₂⁻. Thus, XO₂ is a superoxide. In the superoxide ion O₂⁻, the oxidation state of each oxygen atom is -1/2, not +1/2.",
+        page: 108,
+        section: null // Types of alkali metal oxides
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 17,
-        question: "17) All the following chemical formulas represent peroxides, except .........",
+        question: "All the following chemical formulas represent peroxides, except .........",
         options: [
             "a) Na₂O₂",
             "b) H₂O₂",
@@ -1137,12 +657,14 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) KO₂",
-        explanation: "Peroxides are compounds containing the peroxide ion (O₂²⁻), in which the oxidation number of oxygen is -1 (Page 95). Let's determine the oxidation number of oxygen in each compound: a) Na₂O₂: Na is +1, so 2(+1) + 2(ON) = 0, ON = -1 (Peroxide). b) H₂O₂: H is +1, so 2(+1) + 2(ON) = 0, ON = -1 (Peroxide). d) BaO₂: Ba is in Group 2A, so its +2. +2 + 2(ON) = 0, ON = -1 (Peroxide). c) KO₂: K is +1, so +1 + 2(ON) = 0, ON = -½. A compound with oxygen oxidation number -½ is a superoxide (Page 95). Therefore, KO₂ is a superoxide and is the exception."
+        explanation: "Peroxides contain the O₂²⁻ ion, where the oxidation state of oxygen is -1. Superoxides contain the O₂⁻ ion, where the oxidation state of oxygen is -1/2. Normal oxides contain the O²⁻ ion, where the oxidation state of oxygen is -2. a) Na₂O₂ contains Na⁺ (+1) and O₂²⁻ (-2 total, -1 per O), a peroxide. b) H₂O₂ contains H⁺ (+1) and O₂²⁻ (-2 total, -1 per O), hydrogen peroxide. c) KO₂ contains K⁺ (+1) and O₂⁻ (-1 total, -1/2 per O), a superoxide. d) BaO₂ contains Ba²⁺ (+2) and O₂²⁻ (-2 total, -1 per O), a peroxide. Therefore, KO₂ is the exception as it is a superoxide.",
+        page: 109,
+        section: null // Types of oxides
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 18,
-        question: "18) RbO₂ is .........",
+        question: "RbO₂ is .........",
         options: [
             "a) a normal oxide.",
             "b) a peroxide.",
@@ -1151,40 +673,46 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) a superoxide.",
-        explanation: "Page 95 states that Rubidium (Rb), along with Potassium (K) and Cesium (Cs), forms superoxides with the formula MO₂ when burnt in pure oxygen. Therefore, RbO₂ is a superoxide. Normal oxides have the formula M₂O, peroxides have the formula M₂O₂. Alkali metal oxides are basic, not acidic (Page 96)."
+        explanation: "Rb is an alkali metal (Group 1), typically having a +1 oxidation state in compounds. In RbO₂, the formula is XO₂ type. For the compound to be neutral, the O₂ unit must have a charge of -1 (since Rb is +1). O₂⁻ is the superoxide ion. Thus, RbO₂ is a superoxide. Oxides of metals are generally basic, not acidic.",
+        page: 109,
+        section: null // Types of oxides
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 19,
-        question: "19) Metal (M) has the largest atomic size in its period, its electrons are distributed in\n6 energy sublevels.\nWhat is the chemical formula of (M) oxide which is formed when (M) is burnt in\npure oxygen ?",
+        question: "Metal (M) has the largest atomic size in its period, its electrons are distributed in 6 energy sublevels. What is the chemical formula of (M) oxide which is formed when (M) is burnt in pure oxygen ?",
         options: [
             "a) MO₂",
             "b) M₂O₂",
             "c) M₂O",
             "d) MO"
         ],
-        correctAnswer: 2, // Answer based on the provided key on Page 47.
-        correctAnswerText: "c) M₂O",
-        explanation: "A metal with the largest atomic size in its period is an alkali metal (Group 1A) (Page 92). The phrase electrons are distributed in 6 energy sublevels is unclear and appears inconsistent with alkali metals, implying a potential error in the questions description. Ignoring this potentially erroneous part, we focus on M being an alkali metal. Page 95 describes the oxides formed when alkali metals are burnt in pure oxygen: Li forms M₂O (normal oxide), Na forms M₂O₂ (peroxide), and K, Rb, Cs form MO₂ (superoxides). M₂O is the formula for a normal oxide. While burning in pure oxygen typically produces peroxide or superoxide for most alkali metals, Lithium forms Li₂O (M₂O). Given that M₂O (option c) is provided as the correct answer in the key, it suggests that the intended metal M is Lithium, and the question is asking for the formula of Lithium oxide formed upon burning in oxygen. Therefore, the formula of the oxide formed is M₂O, which is a normal oxide."
+        correctAnswer: 0,
+        correctAnswerText: "a) MO₂",
+        explanation: "A metal with the largest atomic size in its period is in Group 1 (an alkali metal). Electrons distributed in 6 energy sublevels (1s, 2s, 2p, 3s, 3p, 3d) would mean the highest filled principal shell is n=3 or n=4, including the 3d sublevel. An element whose electrons occupy up to the 3d sublevel would be in the 4th period (e.g., transition metals, Ga, Ge, As, Se, Br, Kr). However, if 'distributed in 6 energy sublevels' refers to the types of sublevels occupied (1s, 2s, 2p, 3s, 3p, 4s), this corresponds to elements in Period 4 like Potassium (K) and Calcium (Ca). Among elements in Period 4, Potassium (K) has the largest atomic size. Potassium is an alkali metal. When alkali metals are burnt in pure (excess) oxygen, lithium forms normal oxide (Li₂O), sodium forms peroxide (Na₂O₂), and potassium, rubidium, and cesium form superoxides (KO₂, RbO₂, CsO₂). Since M is K, and it's burnt in pure oxygen, the product is KO₂, which has the formula MO₂.",
+        page: 109,
+        section: null // Identification of element and reaction with oxygen
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 20,
-        question: "20) Three alkali metals (X), (Y) and (Z) react with oxygen as follows :\n•X <sup>O₂/Δ</sup> X₂O\n•Υ <sup>O₂/Δ</sup> Y₂O₂\n•Ζ <sup>O₂/Δ</sup> ZO₂\nWhich of the following is correct ?",
+        question: "Three alkali metals (X), (Y) and (Z) react with oxygen as follows : X --O₂/Δ--> X₂O ; Y --O₂/Δ--> Y₂O₂ ; Z --O₂/Δ--> ZO₂. Which of the following is correct ?",
         options: [
             "a) According to the chemical activity : Z < Y < X",
             "b) Z can be rubidium.",
             "c) Y₂O₂ is a strong reducing agent.",
-            "d) According to the oxidation number : Z < Y < X"
+            "d) According to the oxidation number : Z < Y < X."
         ],
-        correctAnswer: 0, // Answer based on the provided key on Page 47.
-        correctAnswerText: "a) According to the chemical activity : Z < Y < X",
-        explanation: "Based on the oxide formed when burnt in pure oxygen (Page 95): X forms X₂O (normal oxide), so X is Lithium (Li). Y forms Y₂O₂ (peroxide), so Y is Sodium (Na). Z forms ZO₂ (superoxide), so Z is Potassium (K), Rubidium (Rb), or Cesium (Cs). The chemical activity of alkali metals increases down the group (Li < Na < K < Rb < Cs) (Page 92). Thus, the order of activity is X < Y < Z. Option b is correct; Z can be Rubidium as Rb forms a superoxide. Option c is incorrect; peroxides like Y₂O₂ are strong oxidizing agents (Page 96). Option d refers to oxidation numbers of oxygen: in Z (superoxide, -½), Y (peroxide, -1), X (normal oxide, -2) (Page 95). The order of oxidation number is -½ > -1 > -2, so Z > Y > X. The order of absolute values is ½ < 1 < 2, so Z < Y < X. Let's check option a. It states the chemical activity order is Z < Y < X. This contradicts the established trend X < Y < Z. Given that the provided answer key states option a is correct, there is a significant discrepancy regarding the chemical activity trend presented in option a. The answer is provided according to the key, highlighting this contradiction with the trend of increasing activity down Group 1A (Li < Na < K < Rb < Cs)."
+        correctAnswer: 1,
+        correctAnswerText: "b) Z can be rubidium.",
+        explanation: "X forms normal oxide (X₂O), typical of Lithium (Li). Y forms peroxide (Y₂O₂), typical of Sodium (Na). Z forms superoxide (ZO₂), typical of Potassium (K), Rubidium (Rb), and Cesium (Cs). The order of alkali metals in the group is Li, Na, K, Rb, Cs. Chemical activity increases down the group (X < Y < Z). Therefore, Z is further down the group than Y and X, meaning Z can be Rubidium or Cesium. Option b) Z can be rubidium is correct. Option a) is incorrect as activity is X < Y < Z. Option c) Peroxides and superoxides are strong oxidizing agents. Option d) The oxidation numbers of oxygen are -2 in X₂O, -1 in Y₂O₂, and -1/2 in ZO₂. The order of oxygen oxidation numbers is ZO₂ (-1/2) > Y₂O₂ (-1) > X₂O (-2), which doesn't match Z < Y < X for the metals.",
+        page: 109,
+        section: null // Types of alkali metal oxides and reactivity trend
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 21,
-        question: "21) What is the chemical formula of the ideal oxide of alkali element (M) ?",
+        question: "What is the chemical formula of the ideal oxide of alkali element (M) ?",
         options: [
             "a) M₂O₂",
             "b) MO",
@@ -1193,12 +721,14 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) M₂O",
-        explanation: "Page 96 describes the ideal oxide of alkali metal as having the formula (M₂O), where M is the metal. This is the formula for a normal oxide, where the oxidation state of oxygen is -2 and the alkali metal is +1."
+        explanation: "The ideal or normal oxide of an alkali metal (M, oxidation state +1) contains the oxide ion (O²⁻, oxidation state -2). To balance the charges in a neutral compound, two M⁺ ions are needed for each O²⁻ ion. Therefore, the chemical formula of the normal oxide of an alkali metal is M₂O.",
+        page: 109,
+        section: null // Types of oxides
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 22,
-        question: "22) What is the correct classification of cesium oxide ?",
+        question: "What is the correct classification of cesium oxide ?",
         options: [
             "a) Very strong base.",
             "b) Weak base.",
@@ -1207,26 +737,30 @@ const allQuestions = [
         ],
         correctAnswer: 0,
         correctAnswerText: "a) Very strong base.",
-        explanation: "Cesium (Cs) is an alkali metal. Alkali metal oxides (M₂O, M₂O₂, MO₂) are strong basic oxides (Page 96). Cesium is at the bottom of Group 1A, and the basicity of alkali metal oxides increases down the group. Therefore, Cesium oxide (Cs₂O, Cs₂O₂, or CsO₂) is expected to be a very strong base when it reacts with water to form CsOH (a very strong alkali) (Page 96)."
+        explanation: "Cesium is an alkali metal. Oxides of alkali metals are strongly basic. Basic strength increases down the group. Cesium (Cs) is at the bottom of Group 1, making its oxide (and hydroxide, CsOH) the most basic among the alkali metals. Therefore, cesium oxide is a very strong base.",
+        page: 109,
+        section: null // Basic character of alkali metal oxides/hydroxides
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 23,
-        question: "23) Upon using 60 mol of KO₂ to purify the air in a submarine, X mol of CO₂ gas\nare consumed, and Y mol of O₂ gas are produced.\nWhat are the numbers of the moles (X) and (Y) ?",
+        question: "Upon using 60 mol of KO₂ to purify the air in a submarine, X mol of CO₂ gas are consumed, and Y mol of O₂ gas are produced. What are the numbers of the moles (X) and (Y) ?",
         options: [
             "a) 20 mol of CO₂ / 30 mol of O₂",
             "b) 30 mol of CO₂ / 40 mol of O₂",
             "c) 30 mol of CO₂ / 45 mol of O₂",
             "d) 40 mol of CO₂ / 50 mol of O₂"
         ],
-        correctAnswer: 2,
-        correctAnswerText: "c) 30 mol of CO₂ / 45 mol of O₂",
-        explanation: "Page 96 provides the equation for the reaction of Potassium superoxide (KO₂) with carbon dioxide gas (CO₂): 4KO₂(s) + 2CO₂(g) → 2K₂CO₃(s) + 3O₂(g). The stoichiometry of the reaction shows that 4 moles of KO₂ react with 2 moles of CO₂ to produce 3 moles of O₂. We are given 60 mol of KO₂. We can use the mole ratios from the balanced equation to find the moles of CO₂ consumed (X) and O₂ produced (Y): For CO₂ (X): (60 mol KO₂) * (2 mol CO₂ / 4 mol KO₂) = 30 mol CO₂. For O₂ (Y): (60 mol KO₂) * (3 mol O₂ / 4 mol KO₂) = 45 mol O₂. Therefore, X = 30 mol and Y = 45 mol. Option c matches these values."
+        correctAnswer: 0,
+        correctAnswerText: "a) 20 mol of CO₂ / 30 mol of O₂",
+        explanation: "The reaction between potassium superoxide (KO₂) and carbon dioxide (CO₂) is used for air purification: 4KO₂(s) + 2CO₂(g) → 2K₂CO₃(s) + 3O₂(g). According to the stoichiometry, 4 moles of KO₂ react with 2 moles of CO₂ to produce 3 moles of O₂. If 60 mol of KO₂ are used, the moles of CO₂ consumed (X) = (60 mol KO₂) * (2 mol CO₂ / 4 mol KO₂) = 30 mol CO₂. The moles of O₂ produced (Y) = (60 mol KO₂) * (3 mol O₂ / 4 mol KO₂) = 45 mol O₂. Based on standard stoichiometry, option c) 30 mol CO₂ / 45 mol O₂ is correct. However, the provided answer key indicates option a) 20 mol of CO₂ / 30 mol of O₂ is correct. This suggests an error in the provided key or question values, as the ratio 4:2:3 from the balanced equation is not reflected in option a.",
+        page: 109,
+        section: null // Reaction of KO2 with CO2
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 24,
-        question: "24) Which of the following sodium halides has the highest melting point ?",
+        question: "Which of the following sodium halides has the highest melting point ?",
         options: [
             "a) NaF",
             "b) NaCl",
@@ -1235,12 +769,14 @@ const allQuestions = [
         ],
         correctAnswer: 0,
         correctAnswerText: "a) NaF",
-        explanation: "Sodium halides (NaF, NaCl, NaBr, NaI) are ionic compounds. The melting point of ionic compounds is influenced by the strength of the electrostatic attraction between the ions in the crystal lattice. This attraction is stronger for smaller ions and ions with higher charges. The cation (Na⁺) is the same in all these compounds. The anions are halides (F⁻, Cl⁻, Br⁻, I⁻). The size of halide ions increases down the group (F⁻ < Cl⁻ < Br⁻ < I⁻). Smaller ions lead to a shorter distance between cation and anion centers and stronger electrostatic attraction. Therefore, NaF, with the smallest anion (F⁻), has the strongest ionic bonding and the highest melting point among the sodium halides."
+        explanation: "Sodium halides (NaX) are ionic compounds. The melting point of ionic compounds depends on the strength of the electrostatic attraction between the ions in the crystal lattice (lattice energy). Lattice energy is directly proportional to the product of ionic charges and inversely proportional to the distance between ion centers. In sodium halides, Na⁺ has a constant charge (+1). The halides are F⁻, Cl⁻, Br⁻, I⁻, all with a -1 charge. The distance between ions is the sum of the ionic radii of Na⁺ and the halide ion. Ionic radii increase down the group: F⁻ < Cl⁻ < Br⁻ < I⁻. Thus, the distance between Na⁺ and X⁻ increases from NaF to NaI. As the distance increases, the lattice energy decreases, and the melting point decreases. NaF has the smallest halide ion (F⁻), resulting in the shortest distance, highest lattice energy, and highest melting point.",
+        page: 109,
+        section: null // Properties of ionic compounds (melting point)
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 25,
-        question: "25) Which of the following pairs of elements react together more vigorously ?",
+        question: "Which of the following pairs of elements react together more vigorously ?",
         options: [
             "a) Cs and Cl",
             "b) Cs and F",
@@ -1249,12 +785,14 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) Cs and F",
-        explanation: "The reactivity of alkali metals increases down the group (Li < Na < K < Rb < Cs) (Page 92), meaning Cesium (Cs) is the most reactive alkali metal. The reactivity of halogens decreases down the group (F > Cl > Br > I), meaning Fluorine (F) is the most reactive halogen. The reaction between the most reactive metal (Cs) and the most reactive nonmetal (F) is expected to be the most vigorous. Comparing the options, option b combines Cesium (most reactive metal listed) and Fluorine (most reactive halogen listed), making their reaction the most vigorous."
+        explanation: "Reactions between metals and non-metals are redox reactions. Reactivity of alkali metals (reducing agents) increases down the group (Li < Na < K < Rb < Cs). Reactivity of halogens (oxidizing agents) decreases down the group (F > Cl > Br > I). The most vigorous reaction occurs between the most reactive metal and the most reactive non-metal. Among the options, Cesium (Cs) is the most reactive alkali metal, and Fluorine (F) is the most reactive halogen. Therefore, the reaction between Cs and F will be the most vigorous.",
+        page: 109,
+        section: null // Reactivity trends
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 26,
-        question: "26) All alkali carbonates melt by strong heating without decomposition, except .........",
+        question: "All alkali carbonates melt by strong heating without decomposition, except .........",
         options: [
             "a) lithium carbonate.",
             "b) sodium carbonate.",
@@ -1263,12 +801,14 @@ const allQuestions = [
         ],
         correctAnswer: 0,
         correctAnswerText: "a) lithium carbonate.",
-        explanation: "Page 98 states that All alkali metals carbonates dont decompose when heated (they melt without decomposition), except lithium carbonate which decomposes at 1000°C. Therefore, Lithium carbonate (Li₂CO₃) is the exception to the thermal stability of alkali metal carbonates."
+        explanation: "Alkali metal carbonates are generally stable to heat and melt without decomposing, except for lithium carbonate (Li₂CO₃). Due to the small size and high charge density of the Li⁺ ion, it strongly polarizes the carbonate ion, leading to its decomposition upon heating: Li₂CO₃(s) → Li₂O(s) + CO₂(g). Other alkali metal carbonates (Na₂CO₃, K₂CO₃, Rb₂CO₃, Cs₂CO₃) are stable to heat and melt without decomposition.",
+        page: 110,
+        section: null // Thermal stability of carbonates
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 27,
-        question: "27) All the following reactions occur vigorously, except .........",
+        question: "All the following reactions occur vigorously, except .........",
         options: [
             "a) the decomposition reaction of potassium nitrate.",
             "b) the reaction of sodium with chlorine.",
@@ -1277,12 +817,14 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) the reaction of lithium with nitrogen.",
-        explanation: "Page 94 describes the reaction of Lithium with nitrogen as occurring upon heating (6Li + N₂ → 2Li₃N). This reaction requires heating, indicating it is not as vigorous as the other reactions listed. Alkali metals react vigorously with halogens like chlorine, often explosively (Page 98). Alkali metals react vigorously with water, evolving hydrogen gas with heat, often leading to burning or explosion (Page 94-95). Potassium is more reactive than Sodium (Page 92), so its reaction with water is particularly vigorous. The decomposition of potassium nitrate (Page 99) by heat is used in gunpowder due to it being accompanied by an explosion, indicating vigor."
+        explanation: "Reactions of alkali metals with halogens (like Na with Cl₂) and water (like K with H₂O) are highly exothermic and vigorous. The decomposition of potassium nitrate upon heating can also be vigorous, releasing oxygen. However, the reaction of lithium with nitrogen (forming Li₃N) requires heating to occur and is not typically as vigorous as the reactions of alkali metals with water or halogens. It's a unique reaction for lithium among alkali metals.",
+        page: 110,
+        section: null // Vigor of reactions
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 28,
-        question: "28) Each of the following represents the alkali metal (X) whose electrons\nare distributed in two energy levels, except that .........",
+        question: "Each of the following represents the alkali metal (X) whose electrons are distributed in two energy levels, except that .........",
         options: [
             "a) its carbonate salt decomposes by heat.",
             "b) it has the least ionization potential in its period.",
@@ -1291,12 +833,14 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) it has the largest radius among its group elements.",
-        explanation: "An alkali metal with electrons in two energy levels (n=2) is Lithium (Li), configuration [He] 2s¹ (Page 90). Lithium is in Period 2, Group 1A. Let's evaluate the statements for Lithium:\na) its carbonate salt decomposes by heat. Correct, Lithium carbonate decomposes upon heating (Page 98).\nb) it has the least ionization potential in its period. Correct, alkali metals have the lowest ionization potential in their respective periods (Page 90).\nc) it reacts with water forming an alkaline solution. Correct, alkali metals react with water to form metal hydroxides (alkaline solutions) and hydrogen gas (Page 94).\nd) it has the largest radius among its group elements. Incorrect. Atomic radius increases down the group (Page 92). Lithium is at the top of the group, so it has the smallest radius among the alkali metals in its group, not the largest."
+        explanation: "An alkali metal with electrons distributed in two energy levels means its valence electrons are in the second energy shell (n=2). This describes Lithium (Li), with electron configuration 1s² 2s¹. Let's evaluate the statements for Lithium: a) Li₂CO₃ decomposes by heat (correct, see Q26, Q29). b) Li is in Period 2; it has the lowest ionization potential in Period 2 (correct). c) Li reacts with water to form LiOH solution (alkaline) and H₂ (correct). d) Atomic radius increases down Group 1; Li is at the top and has the *smallest* radius among alkali metals, not the largest (incorrect). Therefore, statement d is the exception.",
+        page: 110,
+        section: null // Properties of Lithium
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 29,
-        question: "29) All the following alkali metals carbonates are thermally stable, except .........",
+        question: "All the following alkali metals carbonates are thermally stable, except .........",
         options: [
             "a) Li₂CO₃",
             "b) Na₂CO₃",
@@ -1305,12 +849,14 @@ const allQuestions = [
         ],
         correctAnswer: 0,
         correctAnswerText: "a) Li₂CO₃",
-        explanation: "Page 98 states that All alkali metals carbonates dont decompose when heated (they melt without decomposition), except lithium carbonate which decomposes at 1000°C. Therefore, Lithium carbonate (Li₂CO₃) is the exception to the thermal stability of alkali metal carbonates."
+        explanation: "This is the same question as 26. Lithium carbonate (Li₂CO₃) decomposes upon heating, while the carbonates of other alkali metals (Na₂CO₃, K₂CO₃, Rb₂CO₃, Cs₂CO₃) are thermally stable and melt without decomposition.",
+        page: 110,
+        section: null // Thermal stability of carbonates
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 30,
-        question: "30) Heating sodium nitrate produces .........",
+        question: "Heating sodium nitrate produces .........",
         options: [
             "a) NO gas.",
             "b) NO₂ gas.",
@@ -1319,12 +865,14 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) O₂ gas.",
-        explanation: "Page 98 describes the decomposition of alkali metal nitrates upon heating. Sodium nitrate (NaNO₃) decomposes partially, giving metal nitrite and oxygen gas. The equation is 2NaNO₃(s) → 2NaNO₂(s) + O₂(g). Therefore, heating sodium nitrate produces oxygen gas (O₂) and sodium nitrite (NaNO₂)."
+        explanation: "Alkali metal nitrates decompose upon heating. Lithium nitrate (LiNO₃) decomposes like Group 2 nitrates (to oxide, NO₂, and O₂). However, nitrates of sodium and other heavier alkali metals decompose to the metal nitrite and oxygen gas: 2NaNO₃(s) → 2NaNO₂(s) + O₂(g). Therefore, heating sodium nitrate produces oxygen gas (along with sodium nitrite).",
+        page: 110,
+        section: null // Thermal decomposition of nitrates
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 31,
-        question: "31) Sodium carbonate is similar to lithium carbonate in .........",
+        question: "Sodium carbonate is similar to lithium carbonate in...",
         options: [
             "a) the effect of the strong heat on both of them.",
             "b) the gas produced from their reactions with the acids.",
@@ -1333,12 +881,14 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) the gas produced from their reactions with the acids.",
-        explanation: "Both sodium carbonate (Na₂CO₃) and lithium carbonate (Li₂CO₃) are carbonates. Carbonates react with acids to produce a salt, water, and carbon dioxide gas (CO₂). Page 104 shows the reaction of sodium carbonate with HCl producing CO₂ gas. Lithium carbonate also reacts with acids to produce CO₂ gas. Option a is incorrect; Sodium carbonate melts without decomposition upon heating, while Lithium carbonate decomposes (Page 98). Option c is incorrect; melting points of carbonates are different. Option d is incorrect; the dry test (flame test) is for the metal cation (Na⁺ or Li⁺), and Sodium gives a golden yellow flame, while Lithium gives a crimson flame (Page 93)."
+        explanation: "a) Incorrect; Li₂CO₃ decomposes upon heating, while Na₂CO₃ melts without decomposition (see Q26, Q29). b) Correct; Both lithium carbonate and sodium carbonate react with acids to produce carbon dioxide gas: M₂CO₃(s) + 2HA(aq) → 2MA(aq) + H₂O(l) + CO₂(g). c) Incorrect; Melting points of alkali carbonates are different (e.g., Li₂CO₃ melts at 723°C, Na₂CO₃ melts at 851°C). d) Incorrect; The dry test (flame test) identifies the cation: Li⁺ gives a red flame, Na⁺ gives a yellow flame.",
+        page: 110,
+        section: null // Comparison of Li and Na carbonates
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 32,
-        question: "32) Sodium metal is extracted in industry by the electrolysis of .........",
+        question: "Sodium metal is extracted in industry by the electrolysis of...",
         options: [
             "a) sodium chloride solution.",
             "b) molten sodium chloride.",
@@ -1347,12 +897,14 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) molten sodium chloride.",
-        explanation: "Page 100 describes the extraction of sodium metal from its ores. It states that preparing these metals involves the electrolysis of their molten (fused) halides, like molten sodium chloride (NaCl), in the presence of a flux substance. Electrolysis of aqueous solutions (option a and c) would produce hydrogen gas instead of the metal due to the reduction of water. Molten caustic potash (KOH, option d) would yield potassium, not sodium."
+        explanation: "Active metals like sodium are extracted industrially by the electrolysis of their molten salts. The primary industrial method for sodium extraction is the Downs process, which involves the electrolysis of molten sodium chloride (NaCl). Electrolysis of aqueous solutions is not used because water is more easily reduced than Na⁺ ions. Electrolysis of molten NaOH is also possible but less common industrially for pure sodium.",
+        page: 110,
+        section: "Extraction of alkali metals from their ores"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 33,
-        question: "33) What are the oxidizing agent and the reducing agent in the electrolysis of\nsodium chloride melt respectively ?",
+        question: "What are the oxidizing agent and the reducing agent in the electrolysis of sodium chloride melt respectively?",
         options: [
             "a) Cl / Na",
             "b) Cl⁻ / Na⁺",
@@ -1361,12 +913,14 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) Na⁺ / Cl⁻",
-        explanation: "Electrolysis involves redox reactions. At the cathode (negative electrode), reduction occurs (gain of electrons). Na⁺ ions are reduced to Na metal: Na⁺ + e⁻ → Na. The species being reduced (Na⁺) is the oxidizing agent. At the anode (positive electrode), oxidation occurs (loss of electrons). Cl⁻ ions are oxidized to Cl₂ gas: 2Cl⁻ → Cl₂ + 2e⁻. The species being oxidized (Cl⁻) is the reducing agent. Therefore, the oxidizing agent is Na⁺ and the reducing agent is Cl⁻. The question asks for oxidizing agent then reducing agent, so its Na⁺ / Cl⁻."
+        explanation: "In the electrolysis of molten sodium chloride, sodium ions (Na⁺) are reduced at the cathode (gain electrons: Na⁺ + e⁻ → Na). The species that gains electrons is the oxidizing agent. Chloride ions (Cl⁻) are oxidized at the anode (lose electrons: 2Cl⁻ → Cl₂ + 2e⁻). The species that loses electrons is the reducing agent. Therefore, the oxidizing agent is Na⁺ and the reducing agent is Cl⁻.",
+        page: 110,
+        section: "Extraction of alkali metals from their ores"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 34,
-        question: "34) What happens when a sample of solid sodium hydroxide flakes is left in air for hours ?",
+        question: "What happens when a sample of solid sodium hydroxide flakes is left in air for hours ?",
         options: [
             "a) It does not change.",
             "b) It becomes harder.",
@@ -1375,12 +929,14 @@ const allQuestions = [
         ],
         correctAnswer: 2,
         correctAnswerText: "c) Its mass increases.",
-        explanation: "Page 101 describes Sodium hydroxide (NaOH) as a white hygroscopic solid compound. A hygroscopic substance absorbs water vapor from the atmospheric air. When sodium hydroxide flakes are left in air, they absorb moisture, causing their mass to increase. They may also absorb carbon dioxide from the air, forming sodium carbonate, further increasing mass."
+        explanation: "Solid sodium hydroxide (NaOH) is hygroscopic and deliquescent, meaning it absorbs moisture from the air. It also reacts with carbon dioxide from the air: 2NaOH(s) + CO₂(g) → Na₂CO₃(s) + H₂O(l). Both the absorbed water and the incorporated carbon dioxide lead to an increase in the mass of the sample over time. The flakes would absorb water and potentially dissolve, so 'becomes harder' is not generally accurate.",
+        page: 111,
+        section: "Sodium hydroxide"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 35,
-        question: "35) Excess of sodium hydroxide solution is added to a beaker containing aluminum sulphate.\nWhich of the following exist in the beaker after the end of the reaction ?",
+        question: "Excess of sodium hydroxide solution is added to a beaker containing aluminum sulphate. Which of the following exist in the beaker after the end of the reaction ?",
         options: [
             "a) H₂O, AlO₂⁻, Na⁺",
             "b) Al(OH)₃, SO₄²⁻, Na⁺",
@@ -1389,12 +945,14 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) H₂O, AlO₂⁻, SO₄²⁻, OH⁻, Na⁺",
-        explanation: "Aluminum sulfate (Al₂(SO₄)₃) is a salt containing Al³⁺ and SO₄²⁻ ions. Sodium hydroxide (NaOH) solution contains Na⁺ and OH⁻ ions. When NaOH is added to a solution containing Al³⁺ ions, a white gelatinous precipitate of aluminum hydroxide (Al(OH)₃) is formed (Page 102). The reaction is: Al³⁺(aq) + 3OH⁻(aq) → Al(OH)₃(s). If excess NaOH is added, the precipitate of Al(OH)₃ dissolves in the excess NaOH solution to form soluble sodium metaluminate (NaAlO₂) (Page 102). The reaction is: Al(OH)₃(s) + OH⁻(aq) → [Al(OH)₄]⁻(aq) or commonly written as Al(OH)₃(s) + NaOH(aq) → NaAlO₂(aq) + 2H₂O(l). So, after adding excess NaOH, Al³⁺ is no longer present as a precipitate, but as the soluble metaluminate ion (AlO₂⁻ or [Al(OH)₄]⁻). The spectator ions from the original solutions are SO₄²⁻ (from Al₂(SO₄)₃) and Na⁺ (from NaOH). Since excess NaOH was added, there will still be OH⁻ ions present in the solution. The solvent is water (H₂O). Therefore, the species existing in the beaker are H₂O (solvent), AlO₂⁻ (or [Al(OH)₄]⁻) (soluble aluminum species), SO₄²⁻ (sulfate ions), Na⁺ (sodium ions), and excess OH⁻ ions. Option d lists H₂O, AlO₂⁻, SO₄²⁻, OH⁻, and Na⁺, which includes all the expected species in solution."
+        explanation: "When sodium hydroxide solution is added to aluminum sulfate solution, aluminum ions (Al³⁺) react with hydroxide ions (OH⁻) to form aluminum hydroxide precipitate (Al(OH)₃): Al³⁺(aq) + 3OH⁻(aq) → Al(OH)₃(s). If excess sodium hydroxide is added, the amphoteric aluminum hydroxide dissolves by reacting with the excess OH⁻ ions to form soluble aluminate ions (AlO₂⁻ or [Al(OH)₄]⁻): Al(OH)₃(s) + OH⁻(aq) → AlO₂⁻(aq) + 2H₂O(l). The spectator ions Na⁺ (from NaOH) and SO₄²⁻ (from Al₂(SO₄)₃) remain in solution. Since excess NaOH was added, OH⁻ ions are also present. Water is the solvent. Therefore, the species present in the beaker are H₂O (solvent), Na⁺, SO₄²⁻, AlO₂⁻, and excess OH⁻.",
+        page: 111,
+        section: "Sodium hydroxide"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 36,
-        question: "36) Hydrated sodium carbonate salt is known as .........",
+        question: "Hydrated sodium carbonate salt is known as .........",
         options: [
             "a) quicklime.",
             "b) washing soda.",
@@ -1403,26 +961,30 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) washing soda.",
-        explanation: "Page 103 states that the hydrated sodium carbonate salt Na₂CO₃.10H₂O is known as washing soda. Quicklime is CaO. Caustic soda is NaOH (Page 101). Limewater is a saturated solution of Ca(OH)₂."
+        explanation: "Hydrated sodium carbonate (Na₂CO₃·10H₂O) is commonly known as washing soda. Quicklime is calcium oxide (CaO). Caustic soda is sodium hydroxide (NaOH). Limewater is a saturated solution of calcium hydroxide (Ca(OH)₂).",
+        page: 111,
+        section: "Sodium carbonate"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 37,
-        question: "37) On dissolving an amount of the flakes of the substance (X) in water and heating\nthis solution, then passing the gas (Y) in it, and then allowing it to cool, the crystals\nof (Z) are separated.\nWhat do the letters (X), (Y) and (Z) represent respectively ?",
+        question: "On dissolving an amount of the flakes of the substance (X) in water and heating this solution, then passing the gas (Y) in it, and then allowing it to cool, the crystals of (Z) are separated. What do the letters (X), (Y) and (Z) represent respectively ?",
         options: [
-            "a) NaOH / CO₂/ Washing soda.",
-            "b) NaOH/NH₃ / Washing soda.",
+            "a) NaOH / CO₂ / Washing soda.",
+            "b) NaOH / NH₃ / Washing soda.",
             "c) Na₂CO₃ / CO₂ / Sodium carbonate.",
-            "d) Na₂CO₃/NH₃/ / Sodium carbonate."
+            "d) Na₂CO₃ / NH₃ / Sodium carbonate."
         ],
         correctAnswer: 0,
-        correctAnswerText: "a) NaOH / CO₂/ Washing soda.",
-        explanation: "Page 103 describes the preparation of sodium carbonate in the laboratory. It involves dissolving sodium hydroxide (NaOH) in water (X). Heating this solution is not explicitly mentioned for the lab preparation of sodium carbonate by bubbling CO₂, but dissolving solids often involves heating. Then, passing carbon dioxide gas (Y) through the solution produces sodium carbonate (Na₂CO₃). Allowing the solution to cool separates crystals of hydrated sodium carbonate (Na₂CO₃.10H₂O), known as washing soda (Z). The process described matches the lab preparation using NaOH (X), CO₂ (Y), producing washing soda (Z)."
+        correctAnswerText: "a) NaOH / CO₂ / Washing soda.",
+        explanation: "Dissolving sodium hydroxide flakes (X = NaOH) in water forms a solution. Passing carbon dioxide gas (Y = CO₂) through a hot sodium hydroxide solution produces sodium carbonate: 2NaOH(aq) + CO₂(g) → Na₂CO₃(aq) + H₂O(l). Cooling a concentrated solution of sodium carbonate leads to the crystallization of hydrated sodium carbonate, or washing soda (Z = Washing soda, Na₂CO₃·10H₂O). This sequence matches option a.",
+        page: 111,
+        section: "Sodium carbonate"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 38,
-        question: "38) Which of the following represents the mass of the crystallization water compared to\nthe mass of the anhydrous salt in 1 mol of washing soda ?\n[Na₂CO₃ = 106 g/mol, H₂O = 18 g/mol]",
+        question: "Which of the following represents the mass of the crystallization water compared to the mass of the anhydrous salt in 1 mol of washing soda ? [Na₂CO₃ = 106 g/mol, H₂O = 18 g/mol]",
         options: [
             "a) The mass of crystallization water is less than half that of the anhydrous salt.",
             "b) The mass of crystallization water is less than double that of the anhydrous salt.",
@@ -1431,40 +993,46 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) The mass of crystallization water is less than double that of the anhydrous salt.",
-        explanation: "Washing soda is hydrated sodium carbonate, Na₂CO₃.10H₂O (Page 103). In 1 mol of washing soda, the mass of the anhydrous salt (Na₂CO₃) is 106 g/mol. The mass of the crystallization water (10 H₂O) is 10 * 18 g/mol = 180 g/mol. Let's compare the mass of water (180 g) to the mass of the anhydrous salt (106 g). 180 g is not equal to, half of, or double 106 g. Half of 106 g is 53 g. Double 106 g is 212 g. The mass of water (180 g) is less than double the mass of the anhydrous salt (212 g). Option b states the mass of water is less than double that of the anhydrous salt (180 g < 2 * 106 g = 212 g), which is correct."
+        explanation: "Washing soda is Na₂CO₃·10H₂O. The molar mass of anhydrous Na₂CO₃ is 106 g/mol. The molar mass of H₂O is 18 g/mol. In 1 mole of washing soda, there is 1 mole of anhydrous Na₂CO₃ (106 g) and 10 moles of H₂O (10 * 18 g = 180 g). Comparing the mass of water (180 g) to the mass of anhydrous salt (106 g): a) 180 < 0.5 * 106 (53)? False. b) 180 < 2 * 106 (212)? True. c) 180 = 2 * 106 (212)? False. d) 180 = 0.5 * 106 (53)? False. Therefore, the mass of crystallization water (180 g) is less than double the mass of the anhydrous salt (212 g).",
+        page: 111,
+        section: "Sodium carbonate"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 39,
-        question: "39) Which of the following two substances dissolve in water (each separately) forming\naqueous solutions ?",
+        question: "Which of the following two substances dissolve in water (each separately) forming aqueous solutions ?",
         options: [
             "a) Al(OH)₃, NaOH",
             "b) NaAlO₂, AlCl₃",
             "c) Cu(OH)₂, NaCl",
             "d) CaCO₃, Na₂CO₃"
         ],
-        correctAnswer: 1,
-        correctAnswerText: "b) NaAlO₂, AlCl₃",
-        explanation: "We need to identify the pair where both substances are soluble in water. Al(OH)₃ (aluminum hydroxide) is a precipitate formed when NaOH is added to Al³⁺ solution, and it dissolves in excess NaOH (Page 102), but it is generally insoluble in pure water. NaOH (Sodium hydroxide) dissolves easily in water (Page 101). So a is incorrect. NaAlO₂ (sodium metaluminate) is soluble in water, formed when Al(OH)₃ dissolves in excess NaOH (Page 102). AlCl₃ (aluminum chloride) is a typical ionic salt that dissolves in water (used as a solution on page 102). So b is likely correct. Cu(OH)₂ (copper(II) hydroxide) is a blue precipitate (Page 102), insoluble in water. NaCl (Sodium chloride) dissolves in water (Page 98 Note). So c is incorrect. CaCO₃ (calcium carbonate) is insoluble in water (precipitate on page 103). Na₂CO₃ (Sodium carbonate) dissolves easily in water (Page 104). So d is incorrect. Therefore, only option b contains two substances that are generally soluble in water."
+        correctAnswer: 3,
+        correctAnswerText: "d) CaCO₃, Na₂CO₃",
+        explanation: "Based on general solubility rules: a) Al(OH)₃ is insoluble, NaOH is soluble. b) NaAlO₂ (sodium aluminate) is generally soluble, AlCl₃ (aluminum chloride) is soluble. Both dissolve. c) Cu(OH)₂ is insoluble, NaCl is soluble. d) CaCO₃ (calcium carbonate) is generally insoluble, Na₂CO₃ (sodium carbonate) is soluble. According to standard solubility rules, option b) contains two soluble compounds. However, the provided answer key indicates option d) is correct. Based on the standard rules, only Na₂CO₃ in option d) is soluble, while CaCO₃ is insoluble. There appears to be an error in the provided answer key.",
+        page: 111,
+        section: null // Solubility
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 40,
-        question: "40) In Solvay process, gas (W) is dissolved in a saturated solution of substance (X),\nand then the gas (Y) is passed in the former mixture with heating,\nsubstance (Z) can be obtained.\nWhich of the following identifies correctly any of (W), (X), (Y) and (Z) ?",
+        question: "In Solvay process, gas (W) is dissolved in a saturated solution of substance (X), and then the gas (Y) is passed in the former mixture with heating, substance (Z) can be obtained. Which of the following identifies correctly any of (W), (X), (Y) and (Z) ?",
         options: [
             "a) (W) : CO₂, (Z) : NaHCO₃",
-            "b) (X) : NH₄Cl, (Y) : NH₃",
+            "b) (X): NH₄Cl, (Y) : NH₃",
             "c) (X) : NaCl, (Y) : H₂",
             "d) (W) : NH₃, (Z) : Na₂CO₃"
         ],
-        correctAnswer: 3, // Answer based on the provided key on Page 48.
+        correctAnswer: 3,
         correctAnswerText: "d) (W) : NH₃, (Z) : Na₂CO₃",
-        explanation: "Page 104 describes the Solvay process for preparing sodium carbonate in industry. Ammonia gas (NH₃) is dissolved in a saturated aqueous solution of sodium chloride (NaCl). Carbon dioxide gas (CO₂) is then passed through this ammoniated brine. This forms sodium bicarbonate (NaHCO₃) and ammonium chloride (NH₄Cl). Heating the sodium bicarbonate then yields sodium carbonate (Na₂CO₃). Let's re-read the question carefully. Gas (W) is dissolved in saturated solution of (X). Gas (Y) is passed through the mixture with heating. Substance (Z) is obtained. The description in the question is slightly different from the process described on page 104, which says NH₃ and CO₂ are passed through NaCl solution. Let's match options to the Solvay process on page 104.\nStep 1: NH₃(g) + H₂O + NaCl(aq) + CO₂(g) → NaHCO₃(aq) + NH₄Cl(aq)\nStep 2: 2NaHCO₃(aq) → Na₂CO₃(aq) + H₂O(v) + CO₂(g) (upon heating)\nLet's assume the question describes a slightly different sequence or emphasizes certain steps. Option d: (W) = NH₃, (Z) = Na₂CO₃. In Solvay process, NH₃ is used (though often as a solution step), and Na₂CO₃ is the final product (Z) obtained by heating NaHCO₃. Let's see if other parts fit. If (W) is NH₃, its dissolved in saturated NaCl (X). Then CO₂ (Y) is passed. This forms NaHCO₃ (intermediate) and NH₄Cl. Heating NaHCO₃ gives Na₂CO₃ (Z). So (X)=NaCl, (Y)=CO₂, (W)=NH₃, intermediate=NaHCO₃, (Z)=Na₂CO₃. Let's check option d again: (W): NH₃, (Z): Na₂CO₃. This matches key parts of the Solvay process. Let's check other options based on this assignment. Option a: (W): CO₂, (Z): NaHCO₃. CO₂ is involved, NaHCO₃ is an intermediate. Doesn't fully match. Option b: (X): NH₄Cl, (Y): NH₃. NH₄Cl is a byproduct, NH₃ is a reactant. Doesn't match. Option c: (X): NaCl, (Y): H₂. NaCl is used, H₂ is not involved. Doesn't match. Option d has elements that fit the Solvay process roles (NH₃ as a gas reactant dissolved, Na₂CO₃ as a final product from heating an intermediate). Given the ambiguity in the question sequence compared to the text, matching key substances to roles (W, X, Y, Z) is the approach. Based on option d, W is NH₃, X is saturated NaCl solution, Y is CO₂, and heating is applied to the intermediate (NaHCO₃) to get Z (Na₂CO₃). The keys answer d aligns with NH₃ being a gas reactant (W) and Na₂CO₃ being the final product (Z). The question phrasing might be simplified or slightly rearranged from the detailed description on page 104. The answer is provided according to the key, linking NH₃ to W and Na₂CO₃ to Z in the Solvay process."
+        explanation: "The Solvay process produces sodium carbonate (Z = Na₂CO₃) using ammonia (W = NH₃), carbon dioxide (Y = CO₂), and a saturated solution of sodium chloride (X = NaCl solution, or brine). The process involves dissolving ammonia in brine, then passing carbon dioxide through the ammoniated brine to precipitate sodium bicarbonate (intermediate product), which is then heated to form sodium carbonate. Option d) correctly identifies the input gas (W) as NH₃ and the final product (Z) as Na₂CO₃, which are key components of the Solvay process.",
+        page: 112,
+        section: "Solvay process"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 41,
-        question: "41) What is the similarity between sodium hydroxide and sodium carbonate ?",
+        question: "What is the similarity between sodium hydroxide and sodium carbonate ?",
         options: [
             "a) They both have the same molar mass.",
             "b) They both can react with acids yielding CO₂ gas.",
@@ -1473,12 +1041,14 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) They both are used in paper industry.",
-        explanation: "Page 101 lists uses of Sodium hydroxide (NaOH), including in Paper industry. Page 104 lists uses of Sodium carbonate (Na₂CO₃), including in Paper industry. Therefore, they are both used in the paper industry. Option a is incorrect; their formulas (NaOH vs Na₂CO₃) mean they have different molar masses. Option b is incorrect; Sodium carbonate reacts with acids to produce CO₂ (Page 104), but Sodium hydroxide reacts with acids (neutralization) without producing CO₂ (Page 101). Option c is incorrect; they are both bases (alkaline solutions, Page 101, 104) and react with acids, not typically with other bases."
+        explanation: "a) Incorrect: Molar mass of NaOH is ~40 g/mol, Molar mass of Na₂CO₃ is ~106 g/mol. b) Incorrect: Na₂CO₃ reacts with acids yielding CO₂, but NaOH reacts with acids in a neutralization reaction without producing CO₂. c) Incorrect: Both NaOH and Na₂CO₃ solutions are basic and do not react with bases. d) Correct: Both sodium hydroxide (caustic soda) and sodium carbonate (soda ash) are widely used in the paper industry, for example, in pulping processes and paper manufacturing.",
+        page: 112,
+        section: null // Uses of NaOH and Na2CO3
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 42,
-        question: "42) In the following unbalanced equations :\n• Na₂CO₃(s) + X → Y + H₂O(l) + CO₂(g)\n• NaOH(aq) + X → Y + H₂O(l)\nWhat are the types of the substances (X) and (Y) ?",
+        question: "In the following unbalanced equations : Na₂CO₃(s) + X → Y + H₂O(l) + CO₂(g) ; NaOH(aq) + X → Y + H₂O(l). What are the types of the substances (X) and (Y) ?",
         options: [
             "a) (X) : Salt / (Y) : Acid.",
             "b) (X) : Acid / (Y) : Salt.",
@@ -1487,12 +1057,14 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) (X) : Acid / (Y) : Salt.",
-        explanation: "In the first equation, Na₂CO₃ (Sodium carbonate, a salt/base) reacts with X to produce Y, water, and carbon dioxide gas. Reactions of carbonates with acids produce CO₂, water, and a salt (Page 104). Therefore, X is likely an acid, and Y is a salt. Let's test this hypothesis with the second equation. NaOH (Sodium hydroxide, a strong base) reacts with X to produce Y and water. Reactions between a base and an acid produce a salt and water (neutralization reaction) (Page 101 shows NaOH + HCl → NaCl + H₂O). If X is an acid and Y is a salt, the second equation is consistent with a base-acid reaction. Thus, (X) is an Acid, and (Y) is a Salt. Option b matches this."
+        explanation: "In the first equation, Na₂CO₃ (a carbonate salt) reacts with X to produce CO₂ gas, water, and substance Y. The production of CO₂ from a carbonate is characteristic of a reaction with an acid. So, X is an acid. The products are salt (Y), water, and carbon dioxide (salt + acid → salt + water + CO₂). In the second equation, NaOH (a base) reacts with X (the same substance) to produce Y and water. This is a neutralization reaction between a base and an acid (base + acid → salt + water). Thus, X is an acid, and Y is a salt. For example, if X = HCl, then Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂, so Y = NaCl (a salt). And NaOH + HCl → NaCl + H₂O, so Y = NaCl (a salt).",
+        page: 112,
+        section: null // Reactions of carbonates and hydroxides
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 43,
-        question: "43) All the following statements are correct, except that .........",
+        question: "All the following statements are correct, except that .........",
         options: [
             "a) potassium reacts vigorously with water.",
             "b) cesium hydroxide is a strong base.",
@@ -1501,12 +1073,14 @@ const allQuestions = [
         ],
         correctAnswer: 3,
         correctAnswerText: "d) lithium chloride dissolves in alcohol but not in water.",
-        explanation: "Option a is correct; alkali metals react vigorously with water, and Potassium is more reactive than Sodium (Page 94-95). Option b is correct; Cesium hydroxide (CsOH) is an alkali metal hydroxide and is a very strong base (Page 96 implies alkali metal hydroxides are very strong bases, basicity increases down the group). Option c is correct; Sodium hydroxide dissolution in water is accompanied by the liberation of heat energy, meaning it is an exothermic solution (Page 101). Option d is incorrect; Lithium chloride (LiCl) is an ionic salt (Page 91 states alkali metal compounds are ionic) and ionic salts are generally soluble in water (Page 98 Note). While LiCl does have some covalent character and can dissolve in some organic solvents like alcohol, it is also soluble in water. The statement that it dissolves in alcohol but not in water is incorrect."
+        explanation: "a) Correct; Alkali metals react vigorously with water, and reactivity increases down the group, so Potassium reacts vigorously. b) Correct; Alkali metal hydroxides are strong bases, and basic strength increases down the group, so CsOH is a strong base. c) Correct; Dissolving solid NaOH in water releases heat (exothermic). d) Incorrect; Lithium chloride (LiCl) is an ionic salt and is soluble in water. While it also has some solubility in polar organic solvents like alcohol due to partial covalent character, stating it does not dissolve in water is false.",
+        page: 112,
+        section: null // Properties and reactions of alkali metals/compounds
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 44,
-        question: "44) The common ions present in the living cell are .........",
+        question: "The common ions present in the living cell are .........",
         options: [
             "a) Ca²⁺ ions.",
             "b) K⁺ ions.",
@@ -1515,21 +1089,25 @@ const allQuestions = [
         ],
         correctAnswer: 1,
         correctAnswerText: "b) K⁺ ions.",
-        explanation: "Page 106 discusses the biochemical role of sodium and potassium ions. It states that Potassium ions (K⁺) are common ions found inside the living cell."
+        explanation: "Potassium ions (K⁺) are the principal cations found inside animal cells, playing a vital role in maintaining cell volume, nerve impulse transmission, and enzyme activity. Sodium ions (Na⁺) are the principal cations outside animal cells, also critical for nerve function (Na⁺/K⁺ pump). Calcium ions (Ca²⁺) and magnesium ions (Mg²⁺) are also important ions in living cells, involved in signaling, muscle contraction, and as enzyme cofactors, but K⁺ is typically the most abundant cation within the intracellular fluid. Lithium ions (Li⁺) are not considered common or essential ions in normal biological function.",
+        page: 112,
+        section: "The biochemical role of some ions"
     },
     {
-        topic: Topics.CHEMISTRY_SB_LESSON1,
+        topic: Topics.ALKALI_METALS,
         originalNumber: 45,
-        question: "45) The living cell transfers (X) through (Y).\nWhich of the following represents (X) and (Y) respectively ?",
+        question: "The living cell transfers (X) through (Y). Which of the following represents (X) and (Y) respectively ?",
         options: [
             "a) K⁺ / Glucose.",
-            "b) Proteins / Na⁺",
+            "b) Proteins / Na⁺.",
             "c) K⁺ / Proteins.",
-            "d) Glucose / Na⁺"
+            "d) Glucose / Na⁺."
         ],
         correctAnswer: 3,
-        correctAnswerText: "d) Glucose / Na⁺",
-        explanation: "Page 106 discusses the biochemical role of sodium and potassium ions, stating they represent the required medium to transfer nutrients, such as glucose and amino acids. Sodium ions (Na⁺) are found in the blood plasma and intercellular fluids, acting as a medium for transferring nutrients like glucose and amino acids. Therefore, Glucose (a nutrient) is transferred through Sodium ions (Na⁺). Option d represents (X) as Glucose (the substance transferred) and (Y) as Na⁺ (the medium/ion involved in transfer)."
+        correctAnswerText: "d) Glucose / Na⁺.",
+        explanation: "Many transport processes across cell membranes involve the movement of a substance (X) coupled to the movement of an ion (Y), often utilizing the electrochemical gradient of the ion. A well-known example is the sodium-glucose co-transport system, where glucose (X) is transported across the cell membrane against its concentration gradient, powered by the movement of sodium ions (Y) down their electrochemical gradient. This system 'transfers' glucose 'through' or 'via' the coupling with sodium ion transport. Proteins are usually the transporter molecules themselves, not the substance being transported 'through' ions.",
+        page: 112,
+        section: "The biochemical role of some ions"
     }
 ];
 
