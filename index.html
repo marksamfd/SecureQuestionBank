@@ -1,0 +1,1760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Game Show</title>
+
+    <!-- Embedded CSS Styles -->
+    <style>
+        /* Use the imported Lato font */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #eef2f7;
+            /* Light, cool background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            /* White container background */
+            padding: 30px;
+            border-radius: 8px;
+            /* Subtle rounding */
+            text-align: center;
+            max-width: 650px;
+            /* Wider container */
+            width: 100%;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            /* Clean shadow */
+        }
+
+        #lesson-selection.container {
+            padding: 40px 30px;
+        }
+
+        #lesson-selection h2 {
+            color: #1a2a6c;
+            /* Deep blue */
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 900;
+            /* Lato Black */
+        }
+
+        .action-button {
+            background-color: #4a69bd;
+            /* Muted blue */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            font-weight: 700;
+            /* Lato Bold */
+            text-transform: uppercase;
+        }
+
+        .action-button:hover:not(:disabled) {
+            background-color: #3b5998;
+            /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+
+        .action-button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .action-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Specific style for the skip button */
+        #skip-button {
+            background-color: #6c757d;
+            /* Muted grey */
+            margin-top: 15px;
+            /* Space above skip button */
+            margin-bottom: 15px;
+            /* Space below skip button before separator/next */
+        }
+
+        #skip-button:hover:not(:disabled) {
+            background-color: #5a6268;
+            /* Darker grey on hover */
+        }
+
+        /* Style for the "Add to Remember" button */
+        #add-to-remember-button {
+            background-color: #ffc107;
+            /* Orange/Yellow */
+            color: #343a40;
+            /* Dark text */
+            font-size: 0.9em;
+            /* Slightly smaller */
+            padding: 8px 15px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        #add-to-remember-button:hover:not(:disabled) {
+            background-color: #e0a800;
+            /* Darker orange */
+        }
+
+        #add-to-remember-button:disabled {
+            /* Use a lighter version of its own color */
+            background-color: #cccccc; /* Grey color for disabled remember button */
+            color: #666; /* Dark grey text */
+            cursor: not-allowed;
+        }
+
+        #game-title {
+            color: #1a2a6c;
+            /* Deep blue */
+            margin-bottom: 15px;
+            /* Less margin above counter */
+            font-size: 2em;
+            font-weight: 900;
+        }
+
+        .question-counter {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 25px;
+            /* Space below counter */
+            font-weight: 400;
+            /* Lato Regular */
+        }
+
+        #question-area {
+            margin-bottom: 20px;
+        }
+
+        #question-text {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            /* Lato Bold */
+            line-height: 1.5;
+            color: #444;
+            text-align: left;
+            /* Align question text left */
+        }
+
+        #answer-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+            /* Add margin below answer buttons */
+        }
+
+        .answer-button {
+            background-color: #f0f0f0;
+            /* Light grey button */
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            text-align: left;
+            word-wrap: break-word;
+            font-weight: 400;
+        }
+
+        .answer-button:hover:not(:disabled) {
+            background-color: #e0e0e0;
+            /* Slightly darker grey on hover */
+            border-color: #ccc;
+        }
+
+        .answer-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        /* Visual feedback on answer buttons */
+        .answer-button.correct {
+            background-color: #4CAF50;
+            /* Green */
+            border-color: #4CAF50;
+            color: white;
+            font-weight: 700;
+        }
+
+        .answer-button.incorrect {
+            background-color: #f44336;
+            /* Red */
+            border-color: #f44336;
+            color: white;
+            font-weight: 700;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            font-size: 1.1em;
+            min-height: 1.4em;
+            font-weight: 700;
+            color: #333;
+            /* Neutral color, feedback color set by JS */
+        }
+
+        #explanation-area {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            /* Very light green for explanation */
+            border: 1px solid #c8e6c9;
+            /* Light green border */
+            border-radius: 5px;
+            text-align: left;
+            color: #2e7d32;
+            /* Dark green text */
+            font-size: 0.95em;
+            line-height: 1.5;
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(10px);
+            /* Start slightly lower */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            /* Animation */
+        }
+
+        #explanation-area.visible {
+            /* Class added by JS */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        #explanation-area h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1em;
+            font-weight: 700;
+            color: #1b5e20;
+            /* Even darker green */
+        }
+
+        #score-area {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #1a2a6c;
+            /* Deep blue */
+            font-weight: 700;
+        }
+
+        .separator {
+            border: none;
+            border-top: 1px solid #eee;
+            /* Very light solid line */
+            height: 1px;
+            margin: 20px 0;
+        }
+
+        #final-score {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        #final-score h2 {
+            color: #1a2a6c;
+            /* Deep blue */
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        #final-score p {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        #final-score .action-button {
+            margin-top: 15px;
+            /* Less space above final score buttons */
+        }
+
+
+        #quote-area {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            /* Very light solid line */
+            color: #6c757d;
+            /* Muted grey text */
+            font-size: 0.9em;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        #current-quote {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+
+    <!-- Link to Google Fonts (Lato) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- jsPDF library for PDF generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="lesson-selection" class="container">
+        <h2>Choose a Lesson</h2>
+        <!-- Update button texts to match the new lessons -->
+        <!-- <button id="chemistry-bonds-button" class="action-button">Bonds and Forms of Molecules (16 Questions)</button> -->
+        <!-- Keep other buttons hidden or remove them if only one lesson -->
+        <!-- <button id="other-lesson-button" class="action-button hidden">Another Lesson</button> -->
+    </div>
+
+    <div class="game-container container hidden">
+        <h1 id="game-title">Math (Application) Game Show!</h1>
+        <div class="question-counter">Question <span id="current-q-num">0</span> of <span id="total-q-num">0</span>
+        </div>
+
+        <div id="question-area">
+            <p id="question-text">Loading question...</p>
+            <div id="answer-buttons">
+                <!-- Answer buttons will be added here by JavaScript -->
+            </div>
+        </div>
+
+        <div id="feedback">
+            <!-- Feedback message (Correct/Incorrect) will appear here -->
+        </div>
+
+        <div id="explanation-area" class="hidden">
+            <h3>Explanation:</h3>
+            <p id="explanation-text"></p>
+        </div>
+
+        <!-- Add the "Add to Remember" button here -->
+        <button id="add-to-remember-button" class="action-button hidden">Add to Remember List</button>
+
+
+        <div id="score-area">
+            Score: <span id="score">0</span>
+        </div>
+
+        <hr class="separator">
+
+        <!-- Add the Skip button -->
+        <button id="skip-button" class="action-button">Skip Question</button>
+
+        <button id="next-button" class="action-button hidden">Next Question</button>
+
+        <div id="final-score" class="hidden">
+            <h2>Game Over!</h2>
+            <p>Your final score for this lesson is: <span id="final-score-text">0</span> / <span
+                    id="final-total-text">0</span></p>
+            <button id="download-mistakes-pdf" class="action-button">Download Review PDF</button>
+            <!-- Add the "Export All" button here -->
+            <button id="export-all-pdf-button" class="action-button">Export All Questions with Answers</button>
+            <button id="restart-button" class="action-button">Choose Another Lesson</button>
+        </div>
+
+        <div id="quote-area">
+            <p id="current-quote"></p>
+        </div>
+    </div>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // Define the lesson topic(s) based on the new PDF
+        const Topics = {
+    CHEMISTRY_PHYSICAL_BONDS: 'Physical Bonds (Hydrogen and Metallic)', // Chapter 3, Lesson Four
+    CHEMISTRY_ALKALI_METALS: 'Alkali Metals (Group 1A s-block)' // Chapter 4, Lesson One
+};
+
+const allQuestions = [
+    // Chapter 3, Lesson Four Questions (Pages 77-78) - Answers on Page 43
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 1,
+        question: "1 The bonds which are formed between water molecules are .........",
+        options: ["a) hydrogen bonds.", "b) ionic bonds.", "c) coordinate bonds.", "d) metallic bonds."],
+        correctAnswer: 0, // a) hydrogen bonds. (According to key on Page 43)
+        correctAnswerText: "a) hydrogen bonds.",
+        explanation: "Hydrogen bonds are weak intermolecular forces formed between a hydrogen atom bonded to a highly electronegative atom (like O, N, or F) and another electronegative atom with a lone pair of electrons. Water molecules (H<sub>2</sub>O) form hydrogen bonds between the oxygen of one molecule and the hydrogen of another (Page 71-72).<br><br><b>Why this answer is correct:</b> Water molecules interact via hydrogen bonding due to the polarity of the O–H bond and the presence of lone pairs on oxygen.<br><b>Why other options are incorrect:</b><br>• Ionic bonds occur between metals and non-metals.<br>• Coordinate bonds involve a lone pair donation from one atom to another (water forms coordinate bonds when reacting with H<sup>+</sup> to form H<sub>3</sub>O<sup>+</sup>, but the bonds *between* neutral water molecules are hydrogen bonds).<br>• Metallic bonds occur in metal lattices.<br><br><b>Reference:</b> See page 71-72, sections on 'The hydrogen bond' and 'Hydrogen bonds among water molecules'."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 2,
+        question: "2 Hydrogen bonds are found between the molecules of each of the following compounds, except .........",
+        options: ["a) HF", "b) HCl", "c) NH<sub>3</sub>", "d) H<sub>2</sub>O"],
+        correctAnswer: 1, // b) HCl (According to key on Page 43)
+        correctAnswerText: "b) HCl",
+        explanation: "Hydrogen bonds typically form when hydrogen is bonded to highly electronegative atoms like Fluorine (F), Oxygen (O), or Nitrogen (N). HF, NH<sub>3</sub>, and H<sub>2</sub>O molecules contain H bonded to F, N, and O respectively, and thus form hydrogen bonds between molecules (Page 72 lists these as examples). In HCl, Chlorine is less electronegative than F, O, or N, and while the bond is polar, the hydrogen bonding between HCl molecules is significantly weaker or negligible compared to the others listed.<br><br><b>Why this answer is correct:</b> HCl does not form strong hydrogen bonds like the other listed compounds.<br><b>Why other options are incorrect:</b> HF, NH<sub>3</sub>, and H<sub>2</sub>O all form significant hydrogen bonds.<br><br><b>Reference:</b> See page 72, 'Examples of hydrogen bonds'."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 3,
+        question: "3 What are the types of the bonds which are found in ethanol CH<sub>3</sub>CH<sub>2</sub>OH ?",
+        options: ["a) Single and double covalent bonds.", "b) Single covalent bonds and hydrogen bonds.", "c) Double covalent bonds and hydrogen bonds.", "d) Single and double covalent bonds, and hydrogen bonds."],
+        correctAnswer: 1, // b) Single covalent bonds and hydrogen bonds. (According to key on Page 43)
+        correctAnswerText: "b) Single covalent bonds and hydrogen bonds.",
+        explanation: "Ethanol (CH<sub>3</sub>CH<sub>2</sub>OH) contains carbon, hydrogen, and oxygen atoms linked by covalent bonds. Within the molecule, there are C-C, C-H, C-O, and O-H single covalent bonds. The presence of the O-H group means that ethanol molecules can form hydrogen bonds with each other (hydrogen bonded to oxygen) (similar to water, Page 72). There are no double bonds in ethanol.<br><br><b>Why this answer is correct:</b> Ethanol has only single covalent bonds within the molecule and forms hydrogen bonds between molecules.<br><b>Why other options are incorrect:</b> Ethanol does not contain double bonds.<br><br><b>Reference:</b> General knowledge of organic molecule structure and hydrogen bonding criteria (H bonded to O)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 4,
+        question: "4 Which two compounds can bind to each other through hydrogen bonds ?",
+        options: ["a) CH<sub>3</sub>COOH and C<sub>2</sub>H<sub>5</sub>OH", "b) C<sub>6</sub>H<sub>6</sub> and HCOOC<sub>4</sub>H<sub>9</sub>", "c) CH<sub>3</sub>COOH and CH<sub>3</sub>CH<sub>3</sub>", "d) PH<sub>3</sub> and HF"],
+        correctAnswer: 0, // a) CH3COOH and C2H5OH (According to key on Page 43)
+        correctAnswerText: "a) CH<sub>3</sub>COOH and C<sub>2</sub>H<sub>5</sub>OH",
+        explanation: "For hydrogen bonding to occur between two different molecules, at least one molecule must have a hydrogen atom bonded to a highly electronegative atom (like O, N, F), and the other molecule must have a highly electronegative atom with a lone pair.<br>a) CH<sub>3</sub>COOH (acetic acid) has an O-H group and C=O (oxygen with lone pairs). C<sub>2</sub>H<sub>5</sub>OH (ethanol) has an O-H group and oxygen with lone pairs. Both can donate and accept hydrogen bonds, so they can bind to each other via hydrogen bonds.<br>b) C<sub>6</sub>H<sub>6</sub> (benzene) is nonpolar. HCOOC<sub>4</sub>H<sub>9</sub> (an ester) has C=O and C-O bonds but no O-H, N-H, or F-H for donating H-bonds.<br>c) CH<sub>3</sub>CH<sub>3</sub> (ethane) is nonpolar.<br>d) PH<sub>3</sub> (phosphine) does not form strong hydrogen bonds (P is less electronegative than N, O, F). HF does form hydrogen bonds, but PH<sub>3</sub> does not participate significantly.<br><br><b>Why this answer is correct:</b> Both CH<sub>3</sub>COOH and C<sub>2</sub>H<sub>5</sub>OH have O-H groups and lone pairs on oxygen atoms, allowing them to form hydrogen bonds with each other.<br><b>Why other options are incorrect:</b> The other pairs either contain nonpolar molecules, or molecules lacking the necessary O-H, N-H, F-H groups for significant hydrogen bond donation, or electronegative atoms with lone pairs for acceptance.<br><br><b>Reference:</b> Hydrogen bonding criteria (H bonded to O, N, F and presence of lone pairs on O, N, F) discussed on Page 72."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 5,
+        question: "5 Pure water contains .........",
+        options: ["a) hydrogen bonds only.", "b) ionic bonds only.", "c) covalent bonds only.", "d) both covalent and hydrogen bonds."],
+        correctAnswer: 3, // d) both covalent and hydrogen bonds. (According to key on Page 43)
+        correctAnswerText: "d) both covalent and hydrogen bonds.",
+        explanation: "Within a water molecule (H<sub>2</sub>O), the oxygen and hydrogen atoms are joined by polar covalent bonds. Between different water molecules, hydrogen bonds are formed (Page 71-72). Pure liquid water contains both types of bonds.<br><br><b>Why this answer is correct:</b> Covalent bonds exist within each water molecule, and hydrogen bonds exist between water molecules.<br><b>Why other options are incorrect:</b> Water is a molecular compound, not ionic. It contains both covalent and hydrogen bonds, not just one type.<br><br><b>Reference:</b> See pages 71-72, discussion of hydrogen bonds in water."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 6,
+        question: "6 The ratio between the number of the covalent bonds to the number of hydrogen bonds in a sample of water is .........",
+        options: ["a) equal to 1", "b) less than 1", "c) higher than 1", "d) equal to 3"],
+        correctAnswer: 2, // c) higher than 1 (According to key on Page 43)
+        correctAnswerText: "c) higher than 1",
+        explanation: "Each water molecule (H<sub>2</sub>O) has 2 covalent O-H bonds. One water molecule can participate in up to 4 hydrogen bonds (2 through its hydrogens, 2 through its lone pairs) (Page 78, Q7 explanation implies 4 possible hydrogen bonds per molecule). In liquid water, each molecule is hydrogen-bonded to approximately 3.4 neighboring molecules on average. The total number of covalent bonds in a sample of N water molecules is 2N. The total number of hydrogen bonds (counting each bond once, connecting two molecules) is approximately (3.4 * N) / 2 = 1.7N. The ratio of covalent bonds to hydrogen bonds is (2N) / (1.7N) = 2 / 1.7 ≈ 1.17. This value is higher than 1.<br><br><b>Why this answer is correct:</b> Based on the average number of hydrogen bonds formed per molecule in liquid water (around 3.4, implying 1.7 total H-bonds per molecule in the sample count), the ratio of 2 covalent bonds per molecule to ~1.7 hydrogen bonds per molecule is greater than 1.<br><b>Why other options are incorrect:</b> Calculations show the ratio is greater than 1.<br><br><b>Reference:</b> Number of covalent bonds per molecule (structure of water). Average number of hydrogen bonds in liquid water (implied by potential of 4 bonds from Q7, average is less than 4 in liquid state)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 7,
+        question: "7 How many hydrogen bonds can be formed by one molecule of water ?",
+        options: ["a) 1", "b) 2", "c) 3", "d) 4"],
+        correctAnswer: 3, // d) 4 (According to key on Page 43)
+        correctAnswerText: "d) 4",
+        explanation: "A water molecule (H<sub>2</sub>O) has two hydrogen atoms available for hydrogen bonding (donating) and two lone pairs of electrons on the oxygen atom available for hydrogen bonding (accepting). Therefore, one water molecule can potentially form up to four hydrogen bonds with neighboring molecules.<br><br><b>Why this answer is correct:</b> One water molecule has two H atoms and two lone pairs on O, allowing for up to four hydrogen bonds.<br><b>Why other options are incorrect:</b> The molecule has sites for up to 4 hydrogen bonds.<br><br><b>Reference:</b> Discussion of water structure and hydrogen bonding on Page 72 (diagram shows multiple H-bonds), implicitly supported by the potential for multiple bonds."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 8,
+        question: "8 Which of the molecules below can form both hydrogen and coordinate bonds ?",
+        options: ["a) Cl<sub>2</sub>", "b) HCl", "c) CH<sub>4</sub>", "d) H<sub>2</sub>O"],
+        correctAnswer: 3, // d) H2O (According to key on Page 43)
+        correctAnswerText: "d) H<sub>2</sub>O",
+        explanation: "Hydrogen bonds are intermolecular forces involving H bonded to a highly electronegative atom (Page 71-72). Coordinate bonds (also called dative covalent bonds) form when one atom donates both electrons for a shared pair.<br>H<sub>2</sub>O (water) forms hydrogen bonds between molecules (Page 71-72). Water can also form coordinate bonds when it reacts with a proton (H<sup>+</sup>) to form the hydronium ion (H<sub>3</sub>O<sup>+</sup>), where the oxygen atom donates a lone pair to the H<sup>+</sup> (Page 78, Q18 and Page 44, Q18 answer).<br>Cl<sub>2</sub> and CH<sub>4</sub> are nonpolar or weakly polar and do not form hydrogen bonds. HCl forms weak hydrogen bonds but typically doesn't form coordinate bonds in this context.<br><br><b>Why this answer is correct:</b> Water forms hydrogen bonds between molecules and can form coordinate bonds (e.g., in H<sub>3</sub>O<sup>+</sup>).<br><b>Why other options are incorrect:</b> The other molecules do not exhibit both types of bonding.<br><br><b>Reference:</b> Hydrogen bonding in water (Page 71-72). Formation of coordinate bonds by water in acidic solutions (Page 78, Q18 explanation, Page 44, Q18 answer)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 9,
+        question: "9 The hydrogen bond is .........",
+        options: ["a) stronger and longer than the covalent bond.", "b) weaker and shorter than the covalent bond.", "c) weaker and longer than the covalent bond.", "d) stronger and shorter than the ionic bond."],
+        correctAnswer: 2, // c) weaker and longer than the covalent bond. (According to key on Page 43)
+        correctAnswerText: "c) weaker and longer than the covalent bond.",
+        explanation: "The text on Page 73 explicitly states that the hydrogen bond's strength is 'far weaker than the covalent bond' and its bond length is 'longer than the covalent bond' (approximately 3 Å compared to 1 Å for a covalent bond).<br><br><b>Why this answer is correct:</b> The PDF text directly supports that hydrogen bonds are weaker and longer than covalent bonds.<br><b>Why other options are incorrect:</b> These contradict the comparison provided in the text.<br><br><b>Reference:</b> See page 73, 'The strength of the hydrogen bond'."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 10,
+        question: "10 The boiling point of NH<sub>3</sub> is much higher than that of PH<sub>3</sub>, because NH<sub>3</sub> .........",
+        options: ["a) is alkaline.", "b) has three-base pyramid stereostructure.", "c) contains three covalent bonds.", "d) can form hydrogen bonds."],
+        correctAnswer: 3, // d) can form hydrogen bonds. (According to key on Page 43)
+        correctAnswerText: "d) can form hydrogen bonds.",
+        explanation: "Boiling point is affected by intermolecular forces. NH<sub>3</sub> has hydrogen atoms bonded to a highly electronegative Nitrogen atom and Nitrogen has a lone pair, allowing NH<sub>3</sub> molecules to form hydrogen bonds with each other (Page 72). PH<sub>3</sub> does not form significant hydrogen bonds because Phosphorus is less electronegative than N, O, or F. Hydrogen bonding in NH<sub>3</sub> leads to stronger intermolecular forces compared to the weaker Van der Waals forces between PH<sub>3</sub> molecules, resulting in a higher boiling point for NH<sub>3</sub>.<br><br><b>Why this answer is correct:</b> Hydrogen bonding increases intermolecular forces, leading to a higher boiling point.<br><b>Why other options are incorrect:</b> Being alkaline, having a specific structure, or having covalent bonds within the molecule do not primarily explain the *difference* in boiling points between NH<sub>3</sub> and PH<sub>3</sub>; intermolecular forces are the key factor.<br><br><b>Reference:</b> Hydrogen bond formation (Page 72), effect of hydrogen bonds on boiling point (implied by anomalous boiling point of water on Page 71)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 11,
+        question: "11 What is the correct order of the boiling points of these compounds ?",
+        options: ["a) HF > NH<sub>3</sub> > H<sub>2</sub>S", "b) H<sub>2</sub>S > NH<sub>3</sub> > HF", "c) HF > H<sub>2</sub>S > NH<sub>3</sub>", "d) H<sub>2</sub>S > HF > NH<sub>3</sub>"],
+        correctAnswer: 0, // a) HF > NH3 > H2S (According to key on Page 46) - Note: Key on page 43 also lists a for Q11
+        correctAnswerText: "a) HF > NH<sub>3</sub> > H<sub>2</sub>S",
+        explanation: "The boiling points are significantly affected by hydrogen bonding. HF, H<sub>2</sub>O, and NH<sub>3</sub> form hydrogen bonds, while H<sub>2</sub>S (in Group 6A like H<sub>2</sub>O) does not form significant hydrogen bonds, resulting in a much lower boiling point (Page 71). Among HF, H<sub>2</sub>O, and NH<sub>3</sub>, the strength of hydrogen bonding (and thus boiling point) generally follows H<sub>2</sub>O > HF > NH<sub>3</sub> based on electronegativity difference and bond angle (Page 73-74), although HF has stronger H-bonds than H2O due to higher electronegativity difference (Page 73), leading to a complex structure. The boiling points are approximately: H<sub>2</sub>O (100°C), HF (19.5°C), NH<sub>3</sub> (-33°C), H<sub>2</sub>S (-61°C) (Page 71 for H<sub>2</sub>O, H<sub>2</sub>S; Page 81 Q26 for HF; NH<sub>3</sub> from general knowledge/other questions). Arranging HF, NH<sub>3</sub>, H<sub>2</sub>S by boiling point (highest to lowest): 19.5°C (HF) > -33°C (NH<sub>3</sub>) > -61°C (H<sub>2</sub>S). So the order is HF > NH<sub>3</sub> > H<sub>2</sub>S.<br><br><b>Why this answer is correct:</b> The boiling points are HF (19.5°C), NH<sub>3</sub> (-33°C), and H<sub>2</sub>S (-61°C), fitting the order HF > NH<sub>3</sub> > H<sub>2</sub>S.<br><b>Why other options are incorrect:</b> These orders do not match the actual boiling points.<br><br><b>Reference:</b> Anomalous boiling points due to hydrogen bonding (Page 71). Comparison of hydrogen bond strength (Page 73-74). Boiling points of H<sub>2</sub>O, H<sub>2</sub>S (Page 71), HF (Page 81)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 12,
+        question: "12 Three students assumed three factors which affect the strength of hydrogen bond:\n• Factor (1): The angle between the hydrogen bond and the polar bond in the same molecule.\n• Factor (2): The number of bond pairs of electrons in the central atom.\n• Factor (3): The difference in electronegativity between hydrogen atom and the other atom which binds to it.\nWhich of these factors are correct ?",
+        options: ["a) (1) and (2).", "b) (1) and (3).", "c) (2) and (3).", "d) (1), (2) and (3)."],
+        correctAnswer: 1, // b) (1) and (3). (According to key on Page 46)
+        correctAnswerText: "b) (1) and (3).",
+        explanation: "The strength of a hydrogen bond is affected by the geometry (angle between the hydrogen bond and the covalent bond, with straight-line arrangement leading to stronger bonds) and the polarity of the covalent bond involved (higher electronegativity difference leads to stronger hydrogen bonds) (Page 73-74). Factor (1) is about the angle, and Page 73-74 illustrates the importance of the straight-line angle. Factor (3) is about the electronegativity difference, and Page 73 explicitly states strength increases with this difference.<br>Factor (2), the number of bond pairs in the central atom, is not directly listed as a factor affecting hydrogen bond strength itself, although the number of electron pairs (bond pairs and lone pairs) around the central atom influences the molecule's geometry and thus the angle mentioned in Factor (1). However, Factor (2) itself is not a direct factor for the *strength* of the hydrogen bond.<br><br><b>Why this answer is correct:</b> The angle and electronegativity difference are given as factors affecting hydrogen bond strength in the text.<br><b>Why other options are incorrect:</b> The number of bond pairs is not listed as a direct factor for hydrogen bond strength in the text.<br><br><b>Reference:</b> See pages 73-74, 'The strength of hydrogen bond increases, when...'"
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 13,
+        question: "13 The bond in an aluminum rod is .........",
+        options: ["a) ionic.", "b) covalent.", "c) coordinate.", "d) metallic."],
+        correctAnswer: 3, // d) metallic. (According to key on Page 46)
+        correctAnswerText: "d) metallic.",
+        explanation: "Aluminum (Al) is a metal. The bonding within a bulk sample of a metal like an aluminum rod is metallic bonding. Metallic bonding involves a lattice of positive metal ions surrounded by a 'sea' of delocalized valence electrons (Page 75).<br><br><b>Why this answer is correct:</b> Aluminum is a metal, and metals are held together by metallic bonds.<br><b>Why other options are incorrect:</b> Ionic bonds are between metals and nonmetals. Covalent bonds are typically between nonmetals. Coordinate bonds are a type of covalent bond where one atom donates both electrons.<br><br><b>Reference:</b> See page 75, 'Second The metallic bond'."
+    },
+
+    // Chapter 3 Exam Model Questions (Pages 82-84) - Answers on Page 46
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 1,
+        question: "1 Ionic bond originates between .........",
+        options: ["a) a cation of a nonmetal and an anion of a metal.", "b) a metal with large atomic size and a nonmetal with high electron affinity.", "c) two elements having the same electron configuration.", "d) any two elements in the groups 6A, 7A"],
+        correctAnswer: 1, // b) a metal with large atomic size and a nonmetal with high electron affinity. (According to key on Page 46)
+        correctAnswerText: "b) a metal with large atomic size and a nonmetal with high electron affinity.",
+        explanation: "Ionic bonds are formed by the electrostatic attraction between positive ions (cations) and negative ions (anions). Cations are typically formed by metals losing electrons (metals in Group 1A and 2A, or electropositive elements). Anions are typically formed by nonmetals gaining electrons (nonmetals in Group 6A and 7A, or electronegative elements). Metals with large atomic size have low ionization energy, making it easy to lose electrons. Nonmetals with high electron affinity readily gain electrons. Option 'a' is incorrect; cations come from metals, anions from nonmetals.<br><br><b>Why this answer is correct:</b> Ionic bonds form between elements that easily lose electrons (metals, large atomic size, low ionization energy) and elements that easily gain electrons (nonmetals, high electron affinity).<br><b>Why other options are incorrect:</b> 'a' swaps cation/anion origins. 'c' is irrelevant to ionic bonding. 'd' describes two groups of nonmetals which typically form covalent bonds with each other.<br><br><b>Reference:</b> General knowledge of ionic bond formation (transfer of electrons between metals and nonmetals)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 2,
+        question: "2 Here are two of the famous organic compounds. [Diagrams of Ethanol and Acetic Acid structure]\nWhich of them contains hydrogen bonds among its molecules ?",
+        options: ["a) The alcohol only.", "b) The organic acid only.", "c) Both of them.", "d) None of them."],
+        correctAnswer: 2, // c) Both of them. (According to key on Page 46)
+        correctAnswerText: "c) Both of them.",
+        explanation: "Hydrogen bonds form between molecules containing O-H, N-H, or F-H bonds. The diagram shows Ethanol (Alcohol) which has an O-H group, and Acetic Acid (Organic acid) which has an O-H group. Both types of molecules can form hydrogen bonds with other molecules of the same type or with each other.<br><br><b>Why this answer is correct:</b> Both alcohols (R-OH) and carboxylic acids (R-COOH) contain the necessary O-H group for hydrogen bonding.<br><b>Why other options are incorrect:</b> Since both contain the functional group allowing hydrogen bonding, neither only one nor none form hydrogen bonds.<br><br><b>Reference:</b> Hydrogen bonding criteria (H bonded to O, N, F) on Page 72."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 3,
+        question: "3 Which of the following molecules contains 3 bond pairs of electrons ?",
+        options: ["a) C<sub>2</sub>H<sub>4</sub>", "b) H<sub>2</sub>S", "c) N<sub>2</sub>", "d) SF<sub>6</sub>"],
+        correctAnswer: 2, // c) N2 (According to key on Page 46)
+        correctAnswerText: "c) N<sub>2</sub>",
+        explanation: "A bond pair is a pair of electrons shared between two atoms forming a covalent bond. We need to count the number of covalent bonds.<br>a) C<sub>2</sub>H<sub>4</sub> (ethene): Has one C=C double bond and four C-H single bonds. Total bond pairs = 1 (double bond) + 4 (single bonds) = 5 bond pairs. (Note: A double bond is counted as one bond pair when considering molecular geometry in some contexts, but here it asks for *bond pairs of electrons*. A double bond consists of 2 shared pairs, a triple bond 3 shared pairs). Let's interpret 'bond pairs of electrons' as the number of shared pairs. C=C double bond has 2 bond pairs, C-H single bond has 1 bond pair. Total for C<sub>2</sub>H<sub>4</sub> = 2 + 4*1 = 6 bond pairs. Let's re-read the question. It asks for 3 bond pairs. Maybe it means 3 *total* bonds (single, double, triple)? No, that's not standard. Let's assume it means 3 shared pairs in total.<br>b) H<sub>2</sub>S: Has two S-H single bonds. Total bond pairs = 2.<br>c) N<sub>2</sub>: Has one N≡N triple bond. A triple bond consists of 3 shared pairs. Total bond pairs = 3.<br>d) SF<sub>6</sub>: Has six S-F single bonds. Total bond pairs = 6.<br>Only N<sub>2</sub> has exactly 3 bond pairs.<br><br><b>Why this answer is correct:</b> The nitrogen molecule (N≡N) contains a triple covalent bond, which consists of 3 shared pairs of electrons (3 bond pairs).<br><b>Why other options are incorrect:</b> C<sub>2</sub>H<sub>4</sub> has 6 bond pairs, H<sub>2</sub>S has 2 bond pairs, and SF<sub>6</sub> has 6 bond pairs (counting each shared pair).<br><br><b>Reference:</b> Lewis structures and counting bond pairs."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 4,
+        question: "4 Which of the following orbitals in carbon atom its electron(s) do (does) not participate in forming (C – C) bond in ethane molecule C<sub>2</sub>H<sub>6</sub> ?",
+        options: ["a) 1s only.", "b) 2s only.", "c) 2p only.", "d) 2s and 2p"],
+        correctAnswer: 0, // a) 1s only. (According to key on Page 46)
+        correctAnswerText: "a) 1s only.",
+        explanation: "In ethane (C<sub>2</sub>H<sub>6</sub>), each carbon atom forms single bonds (one C-C and three C-H). Carbon in ethane is sp<sup>3</sup> hybridized. The sp<sup>3</sup> hybrid orbitals are formed from the mixing of one 2s orbital and three 2p orbitals of the carbon atom. These hybrid orbitals participate in forming the sigma (σ) bonds (both C-C and C-H). The 1s orbital is a core orbital (inner shell) and its electrons do not participate in valence bonding.<br><br><b>Why this answer is correct:</b> The core 1s electrons/orbital are not involved in the formation of covalent bonds between atoms.<br><b>Why other options are incorrect:</b> The 2s and 2p valence orbitals are involved in forming sp<sup>3</sup> hybrid orbitals which participate in the C-C and C-H sigma bonds.<br><br><b>Reference:</b> Concepts of core vs valence electrons and hybridization in covalent bonding."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 5,
+        question: "5 Which of the following compounds its correct structure can not be explained without the concept of the hybridized orbitals ?",
+        options: ["a) H<sub>2</sub>", "b) CH<sub>4</sub>", "c) PH<sub>3</sub>", "d) Li<sub>3</sub>N"],
+        correctAnswer: 1, // b) CH4 (According to key on Page 46)
+        correctAnswerText: "b) CH<sub>4</sub>",
+        explanation: "The concept of hybridization (like sp<sup>3</sup> in CH<sub>4</sub>) is used to explain the observed bond angles and geometries of many molecules, particularly those involving carbon. While simple overlap models can explain bonding in diatomic molecules like H<sub>2</sub>, and VSEPR theory predicts geometry based on electron domains (though hybridization provides the orbitals), the tetrahedral geometry of methane (CH<sub>4</sub>) with 109.5° bond angles is a classic example that is elegantly explained by sp<sup>3</sup> hybridization of the central carbon atom. Without hybridization, carbon's 2s and 2p orbitals would lead to different bond angles (e.g., 90° from p orbitals). PH<sub>3</sub> also involves a central atom with lone pairs, but its bond angles are closer to 90° (due to less hybridization or p-orbital involvement) than the ideal tetrahedral, making CH<sub>4</sub> a more typical example where hybridization is emphasized as essential for explaining the specific observed geometry. Li<sub>3</sub>N is likely ionic.<br><br><b>Why this answer is correct:</b> The tetrahedral structure of methane with 109.5° bond angles is a fundamental example requiring the concept of sp<sup>3</sup> hybridization for a complete explanation.<br><b>Why other options are incorrect:</b> H<sub>2</sub> structure is explained by simple orbital overlap. While VSEPR theory and potentially hybridization apply to PH<sub>3</sub>, methane is the textbook example for the necessity of hybridization to explain geometry and bond angles. Li<sub>3</sub>N is an ionic compound, not explained by covalent bonding concepts like hybridization.<br><br><b>Reference:</b> General chemistry concepts of hybridization, particularly in organic molecules like methane."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 6,
+        question: "6 The orbitals in each of the following molecules overlap, except in .........",
+        options: ["a) NaCl", "b) N<sub>2</sub>", "c) C<sub>2</sub>H<sub>4</sub>", "d) NH<sub>3</sub>"],
+        correctAnswer: 0, // a) NaCl (According to key on Page 46)
+        correctAnswerText: "a) NaCl",
+        explanation: "Orbital overlap is a fundamental concept in covalent bonding, where atomic orbitals combine to form molecular orbitals (sigma or pi bonds).<br>a) NaCl: Sodium chloride is an ionic compound formed by the transfer of electrons from Sodium (metal) to Chlorine (nonmetal), resulting in Na<sup>+</sup> and Cl<sup>-</sup> ions held together by electrostatic attraction. There is no significant sharing of electrons through orbital overlap in typical ionic bonds.<br>b) N<sub>2</sub>: Nitrogen molecule (N≡N) has a triple covalent bond formed by the overlap of atomic orbitals.<br>c) C<sub>2</sub>H<sub>4</sub>: Ethene molecule (C=C) has covalent bonds formed by the overlap of hybridized and unhybridized atomic orbitals.<br>d) NH<sub>3</sub>: Ammonia molecule has covalent N-H bonds formed by the overlap of atomic or hybrid orbitals.<br><br><b>Why this answer is correct:</b> Ionic bonds like those in NaCl are formed by electron transfer and electrostatic attraction, not by the overlap of atomic orbitals.<br><b>Why other options are incorrect:</b> N<sub>2</sub>, C<sub>2</sub>H<sub>4</sub>, and NH<sub>3</sub> are covalent molecules where bonding involves the overlap of atomic orbitals.<br><br><b>Reference:</b> Definition of ionic vs covalent bonding (transfer vs sharing of electrons), and concept of orbital overlap in covalent bonds."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 7,
+        question: "7 Which of these bonds is the most polar ?\n[The electronegativities of the elements are : N = 3, Bi = 1.8, Sb = 1.9, As = 2, P = 2.1]",
+        options: ["a) N - Bi", "b) N - Sb", "c) N - As", "d) N - P"],
+        correctAnswer: 3, // d) N - P (According to key on Page 46) - Note: Discrepancy with provided EN values.
+        correctAnswerText: "d) N - P",
+        explanation: "Bond polarity is determined by the difference in electronegativity (EN) between the two bonded atoms. A larger EN difference results in a more polar bond.<br>Calculating EN differences using the provided values:<br>a) N (3.0) - Bi (1.8) = 1.2<br>b) N (3.0) - Sb (1.9) = 1.1<br>c) N (3.0) - As (2.0) = 1.0<br>d) N (3.0) - P (2.1) = 0.9<br>Based on these calculations, the N-Bi bond has the largest electronegativity difference (1.2) and should be the most polar. However, the provided answer key states that option 'd' (N-P) is the correct answer, which corresponds to the smallest electronegativity difference (0.9) among the options. This contradicts the provided electronegativity values and the rule for bond polarity. Assuming there is an error in the key or the provided values, based on standard chemical principles and the given values, N-Bi should be the most polar bond. However, following the provided key, the answer is N-P.<br><br><b>Why this answer might be considered correct (following the key despite discrepancy):</b> Based *solely* on the provided key answer being 'd'. The provided electronegativity values contradict this.<br><b>Why other options are incorrect (based on provided EN values):</b> Options a, b, and c have larger electronegativity differences (1.2, 1.1, 1.0 respectively) compared to option d (0.9), meaning their bonds should be more polar.<br><br><b>Reference:</b> Bond polarity based on electronegativity difference (general chemistry concept)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 8,
+        question: "8 Which of the following represents H<sub>2</sub>S molecule ?",
+        options: ["a) Its stereostructure is angular.", "b) It contains one lone pair of electrons.", "c) The angle between its bonds is 180°", "d) It contains 6 bond electrons."],
+        correctAnswer: 0, // a) Its stereostructure is angular. (According to key on Page 46)
+        correctAnswerText: "a) Its stereostructure is angular.",
+        explanation: "Sulfur (S) is the central atom in H<sub>2</sub>S and is in Group 6A, similar to Oxygen in H<sub>2</sub>O. Sulfur has 6 valence electrons. It forms two single covalent bonds with two hydrogen atoms, using 2 electrons (one pair). The remaining 4 valence electrons exist as two lone pairs (Page 84, Q18 shows O with two lone pairs in water, S is similar). According to VSEPR theory, two bonding pairs and two lone pairs around a central atom result in a bent or angular molecular geometry (based on a tetrahedral electron geometry). The bond angle in H<sub>2</sub>S is approximately 92°. Option 'a' (angular stereostructure) is correct. Option 'b' is incorrect (S has two lone pairs). Option 'c' is incorrect (180° would be linear). Option 'd' refers to bond electrons; there are two S-H bonds, each with 2 electrons, totaling 4 bond electrons (or 2 bond pairs).<br><br><b>Why this answer is correct:</b> With two bonding pairs and two lone pairs on the central sulfur atom, H<sub>2</sub>S has a bent (angular) molecular geometry.<br><b>Why other options are incorrect:</b> H<sub>2</sub>S has two lone pairs, its bond angle is approximately 92° (not 180°), and it contains 4 bonding electrons (2 bond pairs).<br><br><b>Reference:</b> VSEPR theory (implied by discussion of angles and lone pairs in water/ammonia, Page 74, 84)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 9,
+        question: "9 What is the ion which is difficult to exist in nature ?",
+        options: ["a) Li<sup>+</sup>", "b) F<sup>−</sup>", "c) Fe<sup>2+</sup>", "d) Ne<sup>−</sup>"],
+        correctAnswer: 3, // d) Ne- (According to key on Page 46)
+        correctAnswerText: "d) Ne<sup>−</sup>",
+        explanation: "The stability of ions is often related to achieving a stable electron configuration, typically a noble gas configuration.<br>a) Li<sup>+</sup>: Lithium ([He] 2s<sup>1</sup>) loses its valence electron to become Li<sup>+</sup> ([He]), achieving a stable noble gas configuration. Li<sup>+</sup> is common.<br>b) F<sup>−</sup>: Fluorine ([He] 2s<sup>2</sup> 2p<sup>5</sup>) gains one electron to become F<sup>−</sup> ([He] 2s<sup>2</sup> 2p<sup>6</sup> or [Ne]), achieving a stable noble gas configuration. F<sup>−</sup> is common.<br>c) Fe<sup>2+</sup>: Iron is a transition metal and commonly forms stable Fe<sup>2+</sup> and Fe<sup>3+</sup> ions.<br>d) Ne<sup>−</sup>: Neon (Ne, [He] 2s<sup>2</sup> 2p<sup>6</sup> or [Ne]) is a noble gas with a complete outer electron shell, making it very stable. Gaining an electron to form Ne<sup>−</sup> ([Ne] 3s<sup>1</sup>) would disrupt this stability and place an electron in a higher energy level, requiring energy input and resulting in a very unstable species, highly unlikely to exist under normal conditions.<br><br><b>Why this answer is correct:</b> Noble gases have stable electron configurations; forming an anion like Ne<sup>−</sup> would be energetically unfavorable and create an unstable species.<br><b>Why other options are incorrect:</b> Li<sup>+</sup>, F<sup>−</sup>, and Fe<sup>2+</sup> are common and relatively stable ions.<br><br><b>Reference:</b> Concepts of electron configuration and ionic stability."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 10,
+        question: "10 What is the number of single electrons in Lewis electron-dot symbol of the atom of an element whose electron configuration ends with 3p<sup>4</sup>?",
+        options: ["a) Zero.", "b) 1", "c) 2", "d) 4"],
+        correctAnswer: 2, // c) 2 (According to key on Page 46)
+        correctAnswerText: "c) 2",
+        explanation: "An element with electron configuration ending in 3p<sup>4</sup> has its valence electrons in the n=3 shell, specifically 3s and 3p. The configuration would be ...3s<sup>x</sup> 3p<sup>4</sup>. For main group elements, the sublevel before the p sublevel in the same shell is typically filled. So the configuration is 3s<sup>2</sup> 3p<sup>4</sup>. The valence electrons are 2 (in 3s) + 4 (in 3p) = 6 valence electrons. In the Lewis dot symbol, these 6 electrons are arranged around the atom. The 3s<sup>2</sup> electrons are paired. The 3p<sup>4</sup> electrons are placed one in each of the three p orbitals first, and then the fourth electron pairs with one of the others (Hund's rule). This results in one paired set in p, and two unpaired electrons in the other two p orbitals (↑↓ ↑ ↑). So, there are 2 single (unpaired) electrons among the 6 valence electrons.<br><br><b>Why this answer is correct:</b> An atom with valence configuration ns<sup>2</sup>np<sup>4</sup> (like 3s<sup>2</sup>3p<sup>4</sup>) has 6 valence electrons, which distribute as two paired electrons (in s), one paired set in p, and two unpaired electrons in p, according to Hund's rule.<br><b>Why other options are incorrect:</b> Only 2 out of the 6 valence electrons are unpaired.<br><br><b>Reference:</b> Electron configuration, Hund's rule, and Lewis dot symbols."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 11,
+        question: "11 In CS<sub>2</sub> molecule, the central carbon atom binds to each of the two sulphur atoms with .........",
+        options: ["a) 1 σ bond only.", "b) 1 σ bond and 1 π bond.", "c) 2 π bonds.", "d) 2 σ bonds."],
+        correctAnswer: 1, // b) 1 σ bond and 1 π bond. (According to key on Page 46)
+        correctAnswerText: "b) 1 σ bond and 1 π bond.",
+        explanation: "Carbon disulfide (CS<sub>2</sub>) has a linear structure similar to CO<sub>2</sub>, with the carbon atom in the center double-bonded to each sulfur atom (S=C=S). A double covalent bond consists of one sigma (σ) bond and one pi (π) bond. The question asks how the central carbon binds to *each* of the two sulfur atoms. The bond to the first sulfur is a double bond (1 σ + 1 π). The bond to the second sulfur is also a double bond (1 σ + 1 π). Therefore, the central carbon atom binds to *each* sulfur atom with 1 σ bond and 1 π bond.<br><br><b>Why this answer is correct:</b> Each double bond between carbon and sulfur in CS<sub>2</sub> consists of one sigma and one pi bond.<br><b>Why other options are incorrect:</b> Options describe only sigma, only pi, or total sigma bonds, not the composition of *each* bond.<br><br><b>Reference:</b> Structure of molecules involving double/triple bonds (sigma and pi bonds)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 12,
+        question: "12 Which of the following represents the arrangement of the mentioned molecules according to the values of the angles between the bonds ?",
+        options: ["a) CH<sub>4</sub> < BF<sub>3</sub> < NH<sub>3</sub>", "b) H<sub>2</sub>O < CO<sub>2</sub> < BF<sub>3</sub>", "c) NH<sub>3</sub> < CH<sub>4</sub> < CO<sub>2</sub>", "d) NH<sub>3</sub> < CH<sub>4</sub> < H<sub>2</sub>O"],
+        correctAnswer: 2, // c) NH3 < CH4 < CO2 (According to key on Page 46)
+        correctAnswerText: "c) NH<sub>3</sub> < CH<sub>4</sub> < CO<sub>2</sub>",
+        explanation: "Determining bond angles based on VSEPR theory:<br>CH<sub>4</sub> (methane): tetrahedral, 109.5°.<br>BF<sub>3</sub> (boron trifluoride): trigonal planar, 120°.<br>NH<sub>3</sub> (ammonia): pyramidal, ~107° (due to lone pair repulsion).<br>CO<sub>2</sub> (carbon dioxide): linear, 180°.<br>H<sub>2</sub>O (water): bent, ~104.5° (due to two lone pairs repulsion).<br>Ordering the angles of the molecules in option 'c': NH<sub>3</sub> (107°) < CH<sub>4</sub> (109.5°) < CO<sub>2</sub> (180°). This order is correct.<br><br><b>Why this answer is correct:</b> The bond angles are approximately NH<sub>3</sub> (~107°), CH<sub>4</sub> (109.5°), CO<sub>2</sub> (180°), which follows the increasing order shown in option 'c'.<br><b>Why other options are incorrect:</b> The angles in options a, b, and d are not in a consistently increasing or decreasing order as listed (e.g., in 'd', 107 < 109.5 < 104.5 is false).<br><br><b>Reference:</b> Molecular geometries and bond angles from VSEPR theory (implied by discussion of angles and lone pairs in water/ammonia, Page 74, 84)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 13,
+        question: "13 Which of the following pairs contains both covalent bonds and coordinate bonds ?",
+        options: ["a) NH<sub>3</sub>, NH<sub>4</sub><sup>+</sup>", "b) PH<sub>3</sub>, H<sub>3</sub>O<sup>+</sup>", "c) H<sub>3</sub>O<sup>+</sup>, H<sub>2</sub>O", "d) H<sub>2</sub>O, HCl"],
+        correctAnswer: 1, // b) PH3, H3O+ (According to key on Page 46) - Note: Ambiguity in question phrasing.
+        correctAnswerText: "b) PH<sub>3</sub>, H<sub>3</sub>O<sup>+</sup>",
+        explanation: "We are looking for a pair of substances where at least one species contains both covalent and coordinate bonds within its structure, or the pair collectively exhibits examples of both bond types.<br>Covalent bonds involve sharing electrons. Coordinate bonds are covalent bonds where one atom contributes both shared electrons.<br>H<sub>3</sub>O<sup>+</sup> (hydronium ion) is formed when H<sub>2</sub>O accepts a proton (H<sup>+</sup>). Water (H<sub>2</sub>O) has covalent O-H bonds. In H<sub>3</sub>O<sup>+</sup>, one O-H bond is a coordinate covalent bond where oxygen donates a lone pair to H<sup>+</sup>. Thus, H<sub>3</sub>O<sup>+</sup> contains both covalent and coordinate bonds (Page 78 Q18, Page 44 Q18 answer).<br>NH<sub>4</sub><sup>+</sup> (ammonium ion) is formed when NH<sub>3</sub> accepts a proton (H<sup>+</sup>). NH<sub>3</sub> has covalent N-H bonds. In NH<sub>4</sub><sup>+</sup>, one N-H bond is a coordinate covalent bond where nitrogen donates a lone pair to H<sup>+</sup>. Thus, NH<sub>4</sub><sup>+</sup> contains both covalent and coordinate bonds.<br>PH<sub>3</sub> (phosphine) has only covalent P-H bonds within the molecule. However, PH<sub>3</sub> can accept a proton to form PH<sub>4</sub><sup>+</sup>, which contains a coordinate bond.<br>H<sub>2</sub>O has only covalent bonds within the molecule, though it can form coordinate bonds when forming H<sub>3</sub>O<sup>+</sup>.<br>HCl has only covalent bonds.<br>Option 'a': (NH<sub>3</sub>, NH<sub>4</sub><sup>+</sup>). NH<sub>4</sub><sup>+</sup> has both covalent and coordinate bonds. NH<sub>3</sub> has only covalent. The pair contains both types.<br>Option 'b': (PH<sub>3</sub>, H<sub>3</sub>O<sup>+</sup>). H<sub>3</sub>O<sup>+</sup> has both covalent and coordinate bonds. PH<sub>3</sub> has only covalent. The pair contains both types.<br>Option 'c': (H<sub>3</sub>O<sup>+</sup>, H<sub>2</sub>O). H<sub>3</sub>O<sup>+</sup> has both. H<sub>2</sub>O has only covalent. The pair contains both types.<br>Option 'd': (H<sub>2</sub>O, HCl). Both have only covalent bonds. The pair does not contain coordinate bonds.<br>Both 'a', 'b', and 'c' contain species that have both covalent and coordinate bonds (NH<sub>4</sub><sup>+</sup> or H<sub>3</sub>O<sup>+</sup>). Given the key is 'b', it implies either PH<sub>3</sub>/H<sub>3</sub>O<sup>+</sup> is considered the best example among the choices, or there's a specific reason 'a' and 'c' are excluded based on implicit criteria not evident from the text. However, based on the structures, H<sub>3</sub>O<sup>+</sup> and NH<sub>4</sub><sup>+</sup> explicitly contain both bond types. Following the key, 'b' is selected.<br><br><b>Why this answer is correct (according to key):</b> H<sub>3</sub>O<sup>+</sup> ion contains both covalent and coordinate bonds. PH<sub>3</sub> molecule contains covalent bonds and can form a coordinate bond when protonated to PH<sub>4</sub><sup>+</sup>.<br><b>Why other options are incorrect (based on key):</b> Options a and c also contain species with both bond types. Option d contains only species with covalent bonds.<br><br><b>Reference:</b> Formation of coordinate bonds (e.g., in H<sub>3</sub>O<sup>+</sup> from H<sub>2</sub>O and H<sup>+</sup>) discussed implicitly in relation to water and acids (Page 78 Q18, Page 44 Q18 answer)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 14,
+        question: "14 Element (X) reacts with dilute hydrochloric acid forming the salt (Y) with the evolution of hydrogen gas.\nWhat is the type of bonding in each of element (X) and salt (Y) respectively ?",
+        options: ["a) Covalent / Covalent.", "b) Metallic / Ionic.", "c) Metallic / Covalent.", "d) Covalent / Ionic."],
+        correctAnswer: 1, // b) Metallic / Ionic. (According to key on Page 46)
+        correctAnswerText: "b) Metallic / Ionic.",
+        explanation: "Metals react with dilute acids to produce a salt and hydrogen gas (Page 97 for alkali metals). Therefore, element (X) must be a metal. The bonding in a pure metal element is metallic bonding (Page 75). The salt (Y) formed from the reaction of a metal (X) with hydrochloric acid (HCl) is a metal chloride (e.g., MCl<sub>n</sub>). Salts formed between metals and nonmetals (like chlorine) are typically ionic compounds (Page 91 for alkali metal compounds being ionic). Therefore, the bonding in salt (Y) is ionic.<br><br><b>Why this answer is correct:</b> Element (X) is a metal (metallic bonding), and the salt (Y) formed from a metal and a nonmetal compound (HCl) is an ionic compound (ionic bonding).<br><b>Why other options are incorrect:</b> Covalent bonding is typically between nonmetals. Salt (Y) is ionic, not covalent.<br><br><b>Reference:</b> Reaction of alkali metals with acids (Page 97). Metallic bond (Page 75). Alkali metal compounds are ionic (Page 91)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 15,
+        question: "15 Both the molecules of water and methane are similar in .........",
+        options: ["a) the value of the angle between the bonds.", "b) the stereostructure.", "c) the arrangement of the electron pairs.", "d) the difference in electronegativity between their elements."],
+        correctAnswer: 2, // c) the arrangement of the electron pairs. (According to key on Page 46)
+        correctAnswerText: "c) the arrangement of the electron pairs.",
+        explanation: "Water (H<sub>2</sub>O) has a central oxygen atom bonded to two hydrogens with two lone pairs (total 4 electron domains). Methane (CH<sub>4</sub>) has a central carbon atom bonded to four hydrogens with no lone pairs (total 4 electron domains). According to VSEPR theory, when there are 4 electron domains around a central atom, the electron geometry (arrangement of electron pairs) is tetrahedral. In water, this tetrahedral arrangement of electron pairs results in a bent molecular geometry due to the lone pairs. In methane, all 4 electron domains are bonding pairs, resulting in a tetrahedral molecular geometry. Thus, they are similar in the *arrangement of their electron pairs* (tetrahedral electron geometry), although their molecular geometries (stereostructures) and bond angles differ (HOH angle ~104.5°, HCH angle ~109.5°).<br><br><b>Why this answer is correct:</b> Both molecules have 4 electron domains around the central atom, leading to a tetrahedral arrangement of electron pairs.<br><b>Why other options are incorrect:</b> Bond angles and molecular geometries (stereostructures) are different. The elements involved and their electronegativity differences are different.<br><br><b>Reference:</b> VSEPR theory (implied by discussion of angles and lone pairs in water/ammonia, Page 74, 84)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 16,
+        question: "16 All the following are correct about NH<sub>3</sub> molecule, except .........",
+        options: ["a) the hybridization in the central atom is sp³", "b) its stereostructure is tetrahedron.", "c) its abbreviation is AX₃E", "d) the angle between the bonds in it is 107°"],
+        correctAnswer: 0, // a) the hybridization in the central atom is sp³ (According to key on Page 46) - Note: Discrepancy with standard chemistry.
+        correctAnswerText: "a) the hybridization in the central atom is sp³",
+        explanation: "Let's analyze the statements about ammonia (NH<sub>3</sub>). The central atom is Nitrogen. Nitrogen has 5 valence electrons, forming 3 single bonds with Hydrogen atoms and having 1 lone pair. This gives 4 electron domains (3 bonding pairs, 1 lone pair).<br>According to standard chemical theory:<br>a) Hybridization: 4 electron domains lead to sp<sup>3</sup> hybridization. Statement 'a' is correct.<br>b) Stereostructure: Based on 3 bonding pairs and 1 lone pair, the molecular geometry (stereostructure) is pyramidal, derived from the tetrahedral electron geometry. Statement 'b' says tetrahedron, which is incorrect for the molecular geometry.<br>c) Abbreviation: AX<sub>3</sub>E, where A=central atom, X=bonded atoms (3 H), E=lone pairs (1 lone pair). Statement 'c' is correct.<br>d) Bond angle: The H-N-H bond angle is approximately 107°, slightly less than the ideal tetrahedral angle (109.5°) due to lone pair-bond pair repulsion. Statement 'd' is correct.<br>The question asks for the *incorrect* statement. Based on standard chemistry, statement 'b' is incorrect.<br>However, the provided answer key on Page 46 states that option 'a' is the correct answer to the question (meaning 'a' is the incorrect statement). This contradicts the standard understanding that Nitrogen in NH<sub>3</sub> is sp<sup>3</sup> hybridized. Assuming the key is correct despite the conflict with standard chemistry, the explanation would be that the hybridization is *not* sp<sup>3</sup> according to whatever model is implicitly used, which is inconsistent with common teaching.<br>Following the provided key, the answer is 'a'.<br><br><b>Why this answer is incorrect (based on standard chemistry):</b> Nitrogen in NH<sub>3</sub> with 3 bonding pairs and 1 lone pair has sp<sup>3</sup> hybridization.<br><b>Why this answer is correct (according to the provided key):</b> The key indicates statement 'a' is incorrect, meaning the hybridization is not sp<sup>3</sup> according to the key's source.<br><b>Note on Discrepancy:</b> Based on universally accepted chemical principles taught at this level, statement 'a' is correct and statement 'b' is incorrect. There appears to be an error in the provided answer key for this question.<br><br><b>Reference:</b> Molecular structure, VSEPR theory, and hybridization (general chemistry concepts, implicitly related to lone pair discussion on Page 74, 84)."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 17,
+        question: "17 How many sigma bonds are found in one molecule of CH<sub>3</sub>COONa ?",
+        options: ["a) 5", "b) 6", "c) 7", "d) 8"],
+        correctAnswer: 1, // b) 6 (According to key on Page 46)
+        correctAnswerText: "b) 6",
+        explanation: "Sodium acetate (CH<sub>3</sub>COONa) is an ionic compound consisting of a sodium cation (Na<sup>+</sup>) and an acetate anion (CH<sub>3</sub>COO<sup>−</sup>). The question asks about the number of sigma bonds *in the molecule*. This refers to the covalent bonds within the acetate anion.<br>The acetate anion has the structure:<br>```\n  H\n  |\nH - C - C\n  |     ||\n  H     O\n        |\n        O<sup>−</sup>\n```<br>(Note: The C-O bonds in the carboxylate group are resonance structures, behaving like partial double bonds, but for sigma/pi counting, we can consider one as single and one as double).<br>Sigma bonds count single bonds as one sigma, double bonds as one sigma and one pi, and triple bonds as one sigma and two pi.<br>- In the CH<sub>3</sub> group: There are three C-H single bonds, contributing 3 sigma bonds.<br>- Between the methyl group and the carboxylate group: There is one C-C single bond, contributing 1 sigma bond.<br>- In the carboxylate group (C=O and C-O<sup>−</sup> resonance forms): The carbon is bonded to two oxygens. It forms one sigma bond to each oxygen. The double bond resonance involves one pi bond delocalized over the C-O system. So, the carbon forms 2 sigma bonds in the carboxylate group.<br>Total sigma bonds = 3 (C-H) + 1 (C-C) + 2 (C-O) = 6 sigma bonds.<br><br><b>Why this answer is correct:</b> Counting the single bonds (3 C-H, 1 C-C, and 2 C-O sigma framework) within the acetate anion gives a total of 6 sigma bonds.<br><b>Why other options are incorrect:</b> The calculation yields 6 sigma bonds.<br><br><b>Reference:</b> Structure of organic functional groups (acetate ion) and counting sigma/pi bonds."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 18,
+        question: "18 In the shown water molecule, the repulsion forces are the strongest between the two pairs of electrons .........",
+        options: ["a) W and X", "b) X and Y", "c) Y and Z", "d) W and Z"],
+        correctAnswer: 1, // b) X and Y (According to key on Page 46)
+        correctAnswerText: "b) X and Y",
+        explanation: "The diagram shows a water molecule with electron pairs labeled. W and Z appear to represent the bonding pairs (O-H bonds), and X and Y appear to represent the lone pairs on the oxygen atom (similar diagram on Page 84). Electron pair repulsion follows the order: Lone Pair - Lone Pair (LP-LP) > Lone Pair - Bond Pair (LP-BP) > Bond Pair - Bond Pair (BP-BP). The strongest repulsion occurs between lone pairs.<br>a) W and X: Bond pair and lone pair (LP-BP).<br>b) X and Y: Lone pair and lone pair (LP-LP).<br>c) Y and Z: Lone pair and bond pair (LP-BP).<br>d) W and Z: Bond pair and bond pair (BP-BP).<br>The strongest repulsion is between the two lone pairs, labeled X and Y.<br><br><b>Why this answer is correct:</b> Lone pair-lone pair repulsion is the strongest type of electron pair repulsion in VSEPR theory.<br><b>Why other options are incorrect:</b> LP-BP and BP-BP repulsions are weaker than LP-LP repulsion.<br><br><b>Reference:</b> VSEPR theory (implied by electron pair arrangements and angles, Page 74, 84), specifically the order of electron pair repulsions."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 19,
+        question: "19 In the molecule illustrated in the opposite figure: [Structure of H-O-C-C-N-H]\nHow many lone pairs of electrons are found ?",
+        options: ["a) 1 pair.", "b) 2 pairs.", "c) 3 pairs.", "d) 4 pairs."],
+        correctAnswer: 2, // c) 3 pairs. (According to key on Page 46)
+        correctAnswerText: "c) 3 pairs.",
+        explanation: "We need to count the non-bonding valence electrons (lone pairs) on each atom in the given structure (H-O-C-C-N-H with hydrogens filling valencies where missing in simplified drawing, assuming neutral atoms). Let's draw the full Lewis structure, assuming typical valencies (H=1, O=2, C=4, N=3) and octets where possible.<br>The structure is shown as H-O-C-C-N. Based on the options and context (likely organic molecule), the carbons and nitrogen are bonded to hydrogens to satisfy their valencies, similar to the previous structure in Q17.<br>Assuming the structure is CH<sub>3</sub>-O-CH<sub>2</sub>-CH<sub>2</sub>-NH<sub>2</sub> (filling valencies):<br>H<sub>3</sub>C-O-CH<sub>2</sub>-CH<sub>2</sub>-NH<sub>2</sub><br>Oxygen (O) forms 2 bonds (1 to C, 1 to H is not shown, but implied if it were H-O, or 1 to C in CH<sub>3</sub>-O- group). Let's assume the figure H-O-C-C-N-H refers to the skeleton, and H atoms are attached to satisfy valency.<br>H-O-C-C-N-H.<br>The structure given in the figure seems to be H-O-C-C-N with hydrogens attached as H-O-, -C(H2)-, -C(H2)-, -NH2.<br>H-O-CH<sub>2</sub>-CH<sub>2</sub>-NH<sub>2</sub><br>- Oxygen (O): forms 2 bonds (1 to H, 1 to C). Has 6 valence electrons. 2 bonding pairs (4 electrons). 2 lone pairs (4 electrons).<br>- First Carbon (-CH<sub>2</sub>-): forms 4 bonds (2 to H, 1 to O, 1 to C). Has 4 valence electrons. 4 bonding pairs (8 electrons). 0 lone pairs.<br>- Second Carbon (-CH<sub>2</sub>-): forms 4 bonds (2 to H, 1 to C, 1 to N). Has 4 valence electrons. 4 bonding pairs (8 electrons). 0 lone pairs.<br>- Nitrogen (-NH<sub>2</sub>): forms 3 bonds (2 to H, 1 to C). Has 5 valence electrons. 3 bonding pairs (6 electrons). 1 lone pair (2 electrons).<br>Total lone pairs: 2 (on O) + 0 (on first C) + 0 (on second C) + 1 (on N) = 3 lone pairs.<br><br><b>Why this answer is correct:</b> Summing the lone pairs on Oxygen and Nitrogen gives a total of 3 lone pairs in the molecule.<br><b>Why other options are incorrect:</b> The calculation yields 3 lone pairs.<br><br><b>Reference:</b> Lewis structures and counting lone pairs based on valence electrons and bonding."
+    },
+    {
+        topic: Topics.CHEMISTRY_PHYSICAL_BONDS, originalNumber: 20,
+        question: "20 What is the type of bonding between the two atoms of the elements (<sub>11</sub>X) and (<sub>8</sub>Y), when they form a compound ?\nWhat is the formula of this compound ?",
+        options: ["a) Ionic bonding / X<sub>2</sub>Y", "b) Covalent bonding / X<sub>2</sub>Y", "c) Ionic bonding / Y<sub>2</sub>X", "d) Covalent bonding / Y<sub>2</sub>X"],
+        correctAnswer: 0, // a) Ionic bonding / X2Y (According to key on Page 46)
+        correctAnswerText: "a) Ionic bonding / X<sub>2</sub>Y",
+        explanation: "Element <sub>11</sub>X has atomic number 11, which is Sodium (Na). Sodium is an alkali metal (Group 1A). Its electron configuration is [Ne] 3s<sup>1</sup>. It tends to lose 1 electron to form a +1 ion (Na<sup>+</sup>).<br>Element <sub>8</sub>Y has atomic number 8, which is Oxygen (O). Oxygen is in Group 6A. Its electron configuration is [He] 2s<sup>2</sup> 2p<sup>4</sup>. It tends to gain 2 electrons to form a -2 ion (O<sup>2−</sup>).<br>Bonding between a metal (Na) and a nonmetal (O) is typically ionic (Page 91).<br>To form a neutral compound from Na<sup>+</sup> and O<sup>2−</sup>, we need to balance the charges. Two Na<sup>+</sup> ions (+1 each, total +2) are needed for one O<sup>2−</sup> ion (-2). The formula is Na<sub>2</sub>O. Since X=Na and Y=O, the formula is X<sub>2</sub>Y.<br><br><b>Why this answer is correct:</b> The compound is formed between a metal (Na) and a nonmetal (O), resulting in ionic bonding, and the formula is X<sub>2</sub>Y (Na<sub>2</sub>O) to balance charges.<br><b>Why other options are incorrect:</b> The bonding is ionic, not covalent. The correct formula to balance charges is X<sub>2</sub>Y.<br><br><b>Reference:</b> Identification of elements from atomic number. General properties of alkali metals (metals, form ionic compounds, Page 91). Formation of ionic compounds and determining chemical formula based on ion charges."
+    },
+
+    // Chapter 4, Lesson One Questions (Pages 107-112) - Answers on Page 47 & 48
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 1,
+        question: "1 Each of the following represents the electron configuration of an alkali metal, except .........",
+        options: ["a) 2, 1", "b) [Ne], 4s<sup>1</sup>", "c) [Ar], 4s<sup>2</sup>, 3d<sup>10</sup>, 4p<sup>6</sup>, 5s<sup>1</sup>", "d) [Xe], 6s<sup>1</sup>"],
+        correctAnswer: 2, // c) [Ar], 4s², 3d¹⁰, 4p⁶, 5s¹ (According to key on Page 47) - Note: Discrepancy with standard chemistry.
+        correctAnswerText: "c) [Ar], 4s<sup>2</sup>, 3d<sup>10</sup>, 4p<sup>6</sup>, 5s<sup>1</sup>",
+        explanation: "Alkali metals are in Group 1A and have a valence electron configuration of ns<sup>1</sup> (Page 90). Let's analyze the options:<br>a) 2, 1 (shell configuration): This represents an element with electrons in 2 shells, with 1 electron in the outermost shell. This is Lithium (Li), 1s<sup>2</sup> 2s<sup>1</sup>. Li is an alkali metal.<br>b) [Ne], 4s<sup>1</sup>: [Ne] represents the core electrons (Z=10). 4s<sup>1</sup> indicates the valence electron is in the 4s orbital. This would be element Z=10+1=11, but the valence electron is in 4s. The element with Z=11 is Sodium (Na), which has configuration [Ne] 3s<sup>1</sup>. This is not a standard ground state configuration for an alkali metal.<br>c) [Ar], 4s<sup>2</sup>, 3d<sup>10</sup>, 4p<sup>6</sup>, 5s<sup>1</sup>: [Ar] represents the core (Z=18). Adding 4s<sup>2</sup>, 3d<sup>10</sup>, 4p<sup>6</sup> fills the n=4 shell and 3d sublevel, resulting in Z=18+2+10+6=36, which is Krypton ([Kr]). Adding 5s<sup>1</sup> gives Z=36+1=37, which is Rubidium (Rb). The standard configuration for Rb is [Kr] 5s<sup>1</sup> or [Ar] 3d<sup>10</sup> 4s<sup>2</sup> 4p<sup>6</sup> 5s<sup>1</sup>. Rb is an alkali metal.<br>d) [Xe], 6s<sup>1</sup>: [Xe] represents the core (Z=54). 6s<sup>1</sup> indicates the valence electron is in the 6s orbital. This is element Z=54+1=55, which is Cesium (Cs). Cs is an alkali metal.<br>Options 'a', 'c', and 'd' represent alkali metals. Option 'b' uses incorrect notation for an alkali metal configuration (an element with Ne core having its valence electron in 4s). Therefore, option 'b' is the one that *does not* represent a correct electron configuration of an alkali metal.<br>However, the provided answer key on Page 47 states that option 'c' is the answer. This means the key considers the configuration in 'c' *not* to be that of an alkali metal, which contradicts the fact that it is the configuration of Rubidium. There appears to be an error in the provided answer key or the question's intended options/notation.<br>Following the provided key, the answer is 'c'.<br><br><b>Why this answer is incorrect (based on standard chemistry):</b> Option 'c' represents the electron configuration of Rubidium, which is an alkali metal.<br><b>Why this answer is correct (according to the provided key):</b> The key indicates that option 'c' is the one that does not represent an alkali metal configuration.<br><b>Note on Discrepancy:</b> Based on standard chemical principles, option 'b' contains an incorrect notation for an alkali metal configuration, while option 'c' is a correct configuration for Rubidium (an alkali metal). There appears to be an error in the provided answer key for this question."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 2,
+        question: "2 Which of the following represents a crystal of rock salt ?",
+        options: ["[Diagram a]", "[Diagram b]", "[Diagram c]", "[Diagram d]"],
+        correctAnswer: 3, // d) [Diagram d] (According to key on Page 47)
+        correctAnswerText: "[Diagram d]",
+        explanation: "Rock salt is sodium chloride (NaCl), which is an ionic compound. Ionic compounds form crystal lattices composed of alternating positive and negative ions held together by electrostatic attraction. Diagram 'd' shows a regular arrangement of different sized spheres representing positive and negative ions in a cubic lattice, characteristic of the NaCl structure.<br>Diagram 'a' and 'b' show different arrangements that don't clearly represent simple ionic lattices. Diagram 'c' shows identical spheres in layers, possibly representing a layered structure or a different crystal system.<br><br><b>Why this answer is correct:</b> Diagram 'd' shows the characteristic alternating arrangement of cations and anions in an ionic crystal lattice like NaCl.<br><b>Why other options are incorrect:</b> The other diagrams do not depict the typical ionic crystal structure of rock salt.<br><br><b>Reference:</b> Structure of ionic compounds (implied by 'The metallic bond' showing a metal lattice, Page 75, 76)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 3,
+        question: "3 The molecular formula of carnallite is .........",
+        options: ["a) ClH<sub>12</sub>KMgO", "b) Cl<sub>3</sub>H<sub>12</sub>KMgO<sub>6</sub>", "c) Cl<sub>3</sub>H<sub>2</sub>KMgO", "d) KCl.MgCl<sub>2</sub>.6H<sub>2</sub>O"],
+        correctAnswer: 3, // d) KCl.MgCl2.6H2O (According to key on Page 47)
+        correctAnswerText: "d) KCl.MgCl<sub>2</sub>.6H<sub>2</sub>O",
+        explanation: "Page 88 explicitly lists carnallite as one of the most important ores of Potassium, with the formula KCl.MgCl<sub>2</sub>.6H<sub>2</sub>O.<br><br><b>Why this answer is correct:</b> This is the correct chemical formula for carnallite as given in the text.<br><b>Why other options are incorrect:</b> These are incorrect formulas for carnallite.<br><br><b>Reference:</b> See page 88, 'Abundance of alkali metals in nature', section on Potassium ores."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 4,
+        question: "4 A sample of francium has a mass equals 20 mg, its mass after a period of time becomes .........",
+        options: ["a) 20 mg", "b) more than 20 mg", "c) less than 20 mg", "d) double its value."],
+        correctAnswer: 2, // c) less than 20 mg (According to key on Page 47)
+        correctAnswerText: "c) less than 20 mg",
+        explanation: "Page 89 states that Francium is a radioactive element and decays. Radioactive decay is a process where an unstable nucleus transforms into a more stable nucleus, emitting particles and/or energy. This process reduces the amount of the original radioactive isotope over time. Therefore, after any period of time (unless the time is zero), the mass of the original francium sample will be less than its initial mass.<br><br><b>Why this answer is correct:</b> Radioactive elements decay over time, causing their mass to decrease.<br><b>Why other options are incorrect:</b> The mass of a radioactive sample decreases over time due to decay, it does not stay the same, increase, or double.<br><br><b>Reference:</b> See page 89, section on Francium describing it as a radioactive element with a short half-life."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 5,
+        question: "5 The chemically active metal .........",
+        options: ["a) loses its valence electrons easily.", "b) forms unstable compounds.", "c) burns in air easily forming an acidic oxide.", "d) forms an oxide which is easily reduced by carbon."],
+        correctAnswer: 0, // a) loses its valence electrons easily. (According to key on Page 47)
+        correctAnswerText: "a) loses its valence electrons easily.",
+        explanation: "Chemical activity for metals is related to their tendency to lose electrons (oxidation). Alkali metals are known for their high chemical activity (reactivity) (Page 90, 92). This is due to their large atomic size and low first ionization potential, which makes it easy for them to lose their single valence electron (Page 90).<br>b) Alkali metals form very stable ionic compounds (Page 98).<br>c) They burn in air easily, but form *basic* oxides, not acidic ones (Page 96).<br>d) Alkali metal oxides (like M<sub>2</sub>O) are very stable and not easily reduced by carbon; the metals themselves are produced by electrolysis because they are so difficult to reduce from their compounds (Page 100).<br><br><b>Why this answer is correct:</b> The high reactivity of alkali metals is directly attributed to the ease with which they lose their valence electron.<br><b>Why other options are incorrect:</b> Alkali metals form stable ionic compounds, their oxides are basic, and their oxides are difficult to reduce.<br><br><b>Reference:</b> See pages 90, 91, 92, 96, 98, 100 regarding alkali metal reactivity, ionization potential, and compounds."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 6,
+        question: "6 It is not normal for sodium to exist in the oxidation state +2, because of its .........",
+        options: ["a) high first ionization potential.", "b) high second ionization potential.", "c) large ionic radius.", "d) high electronegativity."],
+        correctAnswer: 1, // b) high second ionization potential. (According to key on Page 47)
+        correctAnswerText: "b) high second ionization potential.",
+        explanation: "Sodium (Na) has one valence electron ([Ne] 3s<sup>1</sup>). It readily loses this electron to form Na<sup>+</sup> ([Ne]), achieving a stable noble gas configuration. The energy required to remove this first electron (first ionization potential) is relatively low. However, to form Na<sup>2+</sup>, a second electron would need to be removed from the very stable, filled core electron shell ([Ne]). This requires a very large amount of energy, corresponding to a very high second ionization potential (Page 90). Therefore, the +2 oxidation state is not normally observed for sodium.<br><br><b>Why this answer is correct:</b> The high energy required to remove a second electron from sodium's stable noble gas core electron configuration prevents it from typically forming a +2 ion.<br><b>Why other options are incorrect:</b> Sodium has a relatively low first ionization potential (it loses the first electron easily). Ionic radius is related to the size of the ion. Electronegativity is low for alkali metals, not high.<br><br><b>Reference:</b> See page 90, 'Their second ionization potential is very high .. G.R. ?'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 7,
+        question: "7 Alkali metals are characterized by their large .........",
+        options: ["a) densities.", "b) ionization potentials.", "c) atomic radii.", "d) electronegativities."],
+        correctAnswer: 2, // c) atomic radii. (According to key on Page 47)
+        correctAnswerText: "c) atomic radii.",
+        explanation: "Alkali metals are known for having the largest atomic radii (sizes) within their respective periods in the periodic table (Page 92).<br><br><b>Why this answer is correct:</b> Alkali metals are defined as having the largest atomic sizes in their periods.<br><b>Why other options are incorrect:</b> Alkali metals have low densities (Page 92), low ionization potentials (Page 90), and low electronegativities (Page 92).<br><br><b>Reference:</b> See page 92, '2 Their atoms have the largest atomic sizes'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 8,
+        question: "8 The similarity of the chemical properties of the alkali metals is attributed to that .........",
+        options: ["a) they all have the same electron configuration of the nearest noble gas.", "b) the valence electron of each of them has the same four quantum numbers.", "c) the valence electron of each of them has the same energy.", "d) the valence shell of each of them contains one electron."],
+        correctAnswer: 3, // d) the valence shell of each of them contains one electron. (According to key on Page 47)
+        correctAnswerText: "d) the valence shell of each of them contains one electron.",
+        explanation: "The elements of Group 1A (alkali metals) have similar chemical properties because they all have the same number of valence electrons, specifically one electron in the outermost energy level (ns<sup>1</sup>) (Page 90). This similarity in valence electron configuration dictates their similar chemical behavior, such as readily losing this single electron to form +1 ions.<br><br><b>Why this answer is correct:</b> Having one valence electron in the outermost shell is the defining characteristic that leads to similar chemical properties for elements in the same group.<br><b>Why other options are incorrect:</b> a) They achieve the *same noble gas configuration* after losing an electron, but their initial core configurations differ. b) Quantum numbers differ as the principal quantum number (n) increases down the group. c) The energy of the valence electron increases as n increases down the group. d) This is the correct reason for similar group properties.<br><br><b>Reference:</b> See page 90, 'The presence of a single electron in the outermost energy level'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 9,
+        question: "9 By comparing cesium and potassium, it is concluded that cesium .........",
+        options: ["a) has less atomic mass.", "b) has larger atomic size.", "c) has lower ability to be ionized.", "d) is less active."],
+        correctAnswer: 2, // c) has lower ability to be ionized. (According to key on Page 47) - Note: Discrepancy with standard chemistry.
+        correctAnswerText: "c) has lower ability to be ionized.",
+        explanation: "Cesium (Cs) is below Potassium (K) in Group 1A. Down the group, atomic mass increases (a is incorrect), atomic size increases (b is correct, Page 92), ionization potential decreases (meaning it is easier to lose an electron, hence higher ability to be ionized, so c is incorrect as stated, lower ionization potential = higher ability to be ionized, Page 90), and chemical activity increases (d is incorrect, Page 94). Thus, Cs has a lower ionization potential than K and is more easily ionized and more active.<br>The provided answer key on Page 47 states 'c' is correct, which reads 'has lower ability to be ionized'. This statement contradicts the trend of decreasing ionization potential and increasing ease of ionization down the group. Based on standard chemistry, Cs has a *higher* ability to be ionized (lower ionization potential) than K. Option 'b' (larger atomic size) is also correct based on the text.<br>Following the provided key, the answer is 'c', despite the chemical inaccuracy of the statement.<br><br><b>Why this answer is incorrect (based on standard chemistry):</b> Cesium has a lower ionization potential (higher ability to be ionized) than Potassium.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates statement 'c' is correct.<br><b>Note on Discrepancy:</b> Statement 'c' is chemically incorrect. Option 'b' is a correct statement about Cesium compared to Potassium and is supported by the text.<br><br><b>Reference:</b> Trends in atomic size and ionization potential down Group 1A (Page 90, 92)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 10,
+        question: "10 Which of the following elements loses its valence electron most easily ?",
+        options: ["a) Li", "b) Na", "c) K", "d) Cs"],
+        correctAnswer: 3, // d) Cs (According to key on Page 47)
+        correctAnswerText: "d) Cs",
+        explanation: "The ease of losing a valence electron is measured by the ionization potential. A lower ionization potential means the electron is lost more easily. Ionization potential decreases down Group 1A as atomic size increases and the attraction between the nucleus and the valence electron weakens (Page 90, 92). Among the listed alkali metals, Cs is the furthest down the group, so it has the lowest ionization potential and loses its valence electron most easily.<br><br><b>Why this answer is correct:</b> Cesium has the lowest ionization potential among the options, making it easiest to remove the valence electron.<br><b>Why other options are incorrect:</b> Ionization potential increases up the group, so Li, Na, and K hold their valence electrons more tightly than Cs.<br><br><b>Reference:</b> Trends in ionization potential and ease of losing valence electron down Group 1A (Page 90, 92)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 11,
+        question: "11 Each of the following statements is correct, except .........",
+        options: ["a) alkali metals are similar in their electronegativities.", "b) lithium properties differ from some of magnesium properties.", "c) photoelectric phenomenon of alkali metals increases by increasing the atomic number.", "d) alkali metals are very strong reducing agents."],
+        correctAnswer: 0, // a) alkali metals are similar in their electronegativities. (According to key on Page 47)
+        correctAnswerText: "a) alkali metals are similar in their electronegativities.",
+        explanation: "Let's evaluate each statement:<br>a) Alkali metals are similar in their electronegativities. Incorrect. Electronegativity decreases significantly down Group 1A (e.g., Li is ~1.0, Cs is ~0.79). While all have low electronegativities compared to nonmetals, they are not similar among themselves.<br>b) Lithium properties differ from some of magnesium properties. Correct. Lithium shows diagonal relationship with Magnesium, exhibiting some similar properties not typical of other alkali metals.<br>c) Photoelectric phenomenon of alkali metals increases by increasing the atomic number. Correct. The photoelectric effect is easier for elements with lower ionization energy (easier to liberate electrons by light). Ionization energy decreases as atomic number increases down the group (Page 90, 92). Cs and K (higher atomic numbers) are used in photoelectric cells (Page 92).<br>d) Alkali metals are very strong reducing agents. Correct. Their ease of losing an electron makes them strong reducing agents (Page 91).<br>The incorrect statement is 'a'.<br><br><b>Why this answer is correct:</b> Electronegativity varies significantly down the alkali metal group.<br><b>Why other options are incorrect:</b> Statements b, c, and d are correct descriptions of alkali metals or lithium's unique properties.<br><br><b>Reference:</b> Trends in electronegativity (general chemistry knowledge, implied by trends in ionization potential and reactivity Page 90, 92). Diagonal relationships (general periodic trends). Photoelectric effect (Page 92). Reducing agents (Page 91)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 12,
+        question: "12 Which of the following salts its cation yields a yellowish green colour in the dry test ?",
+        options: ["a) NaCl", "b) LiCl", "c) BaCO<sub>3</sub>", "d) K<sub>2</sub>CO<sub>3</sub>"],
+        correctAnswer: 2, // c) BaCO3 (According to key on Page 47)
+        correctAnswerText: "c) BaCO<sub>3</sub>",
+        explanation: "The dry test (flame test) is used to identify metal cations based on the characteristic color they impart to a flame (Page 93).<br>a) NaCl: Contains Na<sup>+</sup> cation. Sodium gives a golden yellow flame.<br>b) LiCl: Contains Li<sup>+</sup> cation. Lithium gives a crimson flame.<br>c) BaCO<sub>3</sub>: Contains Ba<sup>2+</sup> cation. Barium gives a yellowish-green flame.<br>d) K<sub>2</sub>CO<sub>3</sub>: Contains K<sup>+</sup> cation. Potassium gives a pale violet flame.<br>The salt containing the cation that gives a yellowish green color is BaCO<sub>3</sub>.<br><br><b>Why this answer is correct:</b> Barium cations produce a yellowish-green flame in the dry test.<br><b>Why other options are incorrect:</b> Sodium, Lithium, and Potassium cations produce different characteristic colors (yellow, crimson, pale violet respectively).<br><br><b>Reference:</b> See page 93, '3 Atomic spectra (the dry detection of alkali metals)' (While the table is for alkali metals, the question includes Barium, requiring broader knowledge of flame tests)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 13,
+        question: "13 When lithium reacts with nitrogen of the atmospheric air by heating, then water is added to the product, a gas evolves which is .........",
+        options: ["a) oxygen.", "b) hydrogen.", "c) nitric oxide.", "d) ammonia."],
+        correctAnswer: 3, // d) ammonia. (According to key on Page 47)
+        correctAnswerText: "d) ammonia.",
+        explanation: "Page 94 describes the reaction of Lithium with atmospheric nitrogen upon heating: 6Li(s) + N<sub>2</sub>(g) → 2Li<sub>3</sub>N(s) (lithium nitride). Then, the text states that lithium nitride reacts with water to produce ammonia gas: Li<sub>3</sub>N(s) + 3H<sub>2</sub>O(l) → 3LiOH(aq) + NH<sub>3</sub>(g)↑. The evolved gas is ammonia (NH<sub>3</sub>).<br><br><b>Why this answer is correct:</b> Lithium nitride, formed from Lithium's reaction with nitrogen, reacts with water to liberate ammonia gas.<br><b>Why other options are incorrect:</b> The reactions described produce ammonia, not oxygen, hydrogen (hydrogen is produced when alkali metals react directly with water or acids, not from the nitride), or nitric oxide.<br><br><b>Reference:</b> See page 94, '4 Effect of atmospheric air', reactions of Lithium with nitrogen and then water."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 14,
+        question: "14 Which of these hydroxides is the most basic ?",
+        options: ["a) NaOH", "b) LiOH", "c) RbOH", "d) KOH"],
+        correctAnswer: 3, // d) KOH (According to key on Page 47) - Note: Discrepancy with standard chemistry.
+        correctAnswerText: "d) KOH",
+        explanation: "Alkali metal hydroxides (MOH) are strong bases. Basicity increases down Group 1A as the metal-OH bond weakens, making it easier to release OH<sup>−</sup> ions. The order of increasing basicity is LiOH < NaOH < KOH < RbOH < CsOH.<br>The options provided are LiOH, NaOH, KOH, and RbOH. Ordering these by increasing basicity: LiOH (b) < NaOH (a) < KOH (d) < RbOH (c). The most basic hydroxide among the options is RbOH (c).<br>However, the provided answer key on Page 47 states that option 'd' (KOH) is the correct answer. This contradicts the established trend in basicity down the group, where RbOH is more basic than KOH. There appears to be an error in the provided answer key.<br>Following the provided key, the answer is 'd'.<br><br><b>Why this answer is incorrect (based on standard chemistry):</b> RbOH is a stronger base than KOH.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates KOH is the most basic among the options.<br><b>Note on Discrepancy:</b> Based on the chemical trend of increasing basicity down Group 1A hydroxides, RbOH should be the most basic among the listed options. There appears to be an error in the provided answer key.<br><br><b>Reference:</b> Basicity of alkali metal hydroxides (trend increases down the group, related to bond strength). Page 96 mentions strong basic oxides leading to strong alkaline solutions, but doesn't explicitly rank all hydroxides)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 15,
+        question: "15 The combination of sodium with oxygen produces an oxide containing the ion .........",
+        options: ["a) O<sup>+</sup>", "b) O<sub>2</sub><sup>2−</sup>", "c) O<sub>2</sub><sup>−</sup>", "d) O<sup>2−</sup>"],
+        correctAnswer: 2, // c) O2- (According to key on Page 47) - Note: Discrepancy with provided text.
+        correctAnswerText: "c) O<sub>2</sub><sup>−</sup>",
+        explanation: "Alkali metals react with oxygen to form different types of oxides depending on the metal and reaction conditions (Page 95). Lithium forms a normal oxide (M<sub>2</sub>O) containing the O<sup>2−</sup> ion. Sodium forms a peroxide (M<sub>2</sub>O<sub>2</sub>) containing the O<sub>2</sub><sup>2−</sup> ion. Potassium, Rubidium, and Cesium form superoxides (MO<sub>2</sub>) containing the O<sub>2</sub><sup>−</sup> ion.<br>The question asks about the combination of *sodium* with oxygen. According to Page 95, sodium forms sodium peroxide (Na<sub>2</sub>O<sub>2</sub>), which contains the peroxide ion (O<sub>2</sub><sup>2−</sup>).<br>Options:<br>a) O<sup>+</sup>: Not formed.<br>b) O<sub>2</sub><sup>2−</sup>: Peroxide ion. Formed by Sodium.<br>c) O<sub>2</sub><sup>−</sup>: Superoxide ion. Formed by K, Rb, Cs.<br>d) O<sup>2−</sup>: Oxide ion. Formed by Lithium (and other metals).<br>Based on the text on Page 95, sodium forms an oxide containing the O<sub>2</sub><sup>2−</sup> ion (option 'b'). However, the provided answer key on Page 47 states that option 'c' (O<sub>2</sub><sup>−</sup>) is the correct answer. This contradicts the information in the text which states sodium forms peroxide.<br>Following the provided key, the answer is 'c'.<br><br><b>Why this answer is incorrect (based on provided text):</b> Sodium reacts with oxygen to form the peroxide ion (O<sub>2</sub><sup>2−</sup>), not the superoxide ion (O<sub>2</sub><sup>−</sup>).<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'c' is correct.<br><b>Note on Discrepancy:</b> The provided text on Page 95 clearly states that sodium forms peroxide (O<sub>2</sub><sup>2−</sup>), while potassium, rubidium, and cesium form superoxides (O<sub>2</sub><sup>−</sup>). The answer key contradicts this.<br><br><b>Reference:</b> See page 95, '6 Reaction of alkali metals with oxygen'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 16,
+        question: "16 The compound of an alkali metal whose formula is XO<sub>2</sub> is .........",
+        options: ["a) a normal oxide and the metal oxidation number is -½", "b) a peroxide and the metal oxidation number is +1", "c) a superoxide and the metal oxidation number is +1", "d) a superoxide and the oxygen oxidation number is +½"],
+        correctAnswer: 0, // a) a normal oxide and the metal oxidation number is -½ (According to key on Page 47) - Note: Discrepancy with standard chemistry.
+        correctAnswerText: "a) a normal oxide and the metal oxidation number is -½",
+        explanation: "The formula is XO<sub>2</sub>, where X is an alkali metal. Alkali metals are always in the +1 oxidation state in their compounds. To maintain neutrality in XO<sub>2</sub>, the total charge on O<sub>2</sub> must be -1. This means the O<sub>2</sub> unit is the superoxide ion (O<sub>2</sub><sup>−</sup>). In the superoxide ion, the oxidation state of each oxygen atom is -½ (Page 95).<br>Based on this, the compound XO<sub>2</sub> is a superoxide, the metal oxidation number is +1, and the oxygen oxidation number is -½.<br>Let's evaluate the options:<br>a) a normal oxide (formula M<sub>2</sub>O, oxygen -2) and the metal oxidation number is -½. Incorrect. Metal oxidation is +1, and XO<sub>2</sub> is not a normal oxide.<br>b) a peroxide (formula M<sub>2</sub>O<sub>2</sub>, oxygen -1) and the metal oxidation number is +1. Incorrect. XO<sub>2</sub> is not a peroxide.<br>c) a superoxide (formula MO<sub>2</sub>, oxygen -½) and the metal oxidation number is +1. Correct.<br>d) a superoxide and the oxygen oxidation number is +½. Incorrect. Oxygen oxidation number is -½.<br>Based on standard chemistry and the text on Page 95, option 'c' is the correct description.<br>However, the provided answer key on Page 47 states that option 'a' is the correct answer. This is completely incorrect as 'a' describes a normal oxide formula and assigns an impossible oxidation state to the metal. There is a clear error in the provided answer key.<br>Following the provided key, the answer is 'a'.<br><br><b>Why this answer is incorrect (based on standard chemistry and provided text):</b> XO<sub>2</sub> is a superoxide (not a normal oxide), the metal oxidation number is +1 (not -½), and oxygen oxidation number is -½ (not -½ for the metal). Option 'a' is entirely incorrect.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'a' is correct.<br><b>Note on Discrepancy:</b> Option 'a' is chemically incorrect on multiple points regarding the formula type and oxidation states. Option 'c' is the correct description. There is a significant error in the provided answer key.<br><br><b>Reference:</b> See page 95, types of oxides and oxidation states of oxygen."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 17,
+        question: "17 All the following chemical formulas represent peroxides, except .........",
+        options: ["a) Na<sub>2</sub>O<sub>2</sub>", "b) H<sub>2</sub>O<sub>2</sub>", "c) KO<sub>2</sub>", "d) BaO<sub>2</sub>"],
+        correctAnswer: 2, // c) KO2 (According to key on Page 47)
+        correctAnswerText: "c) KO<sub>2</sub>",
+        explanation: "Peroxides are compounds containing the O<sub>2</sub><sup>2−</sup> ion, where the oxidation state of each oxygen atom is -1.<br>a) Na<sub>2</sub>O<sub>2</sub>: Sodium peroxide. Na is +1. 2(+1) + 2(Ox. State of O) = 0. Ox. State of O = -1. O<sub>2</sub><sup>2−</sup> ion. Peroxide (Page 95).<br>b) H<sub>2</sub>O<sub>2</sub>: Hydrogen peroxide. H is +1. 2(+1) + 2(Ox. State of O) = 0. Ox. State of O = -1. O<sub>2</sub><sup>2−</sup> ion. Peroxide.<br>c) KO<sub>2</sub>: Potassium superoxide. K is +1. +1 + 2(Ox. State of O) = 0. Ox. State of O = -½. O<sub>2</sub><sup>−</sup> ion. Superoxide (Page 95).<br>d) BaO<sub>2</sub>: Barium peroxide. Ba is Group 2A, typically +2. +2 + 2(Ox. State of O) = 0. Ox. State of O = -1. O<sub>2</sub><sup>2−</sup> ion. Peroxide.<br>KO<sub>2</sub> is a superoxide, not a peroxide. It is the exception.<br><br><b>Why this answer is correct:</b> KO<sub>2</sub> contains the superoxide ion (O<sub>2</sub><sup>−</sup>), not the peroxide ion (O<sub>2</sub><sup>2−</sup>), making it a superoxide.<br><b>Why other options are incorrect:</b> Na<sub>2</sub>O<sub>2</sub>, H<sub>2</sub>O<sub>2</sub>, and BaO<sub>2</sub> are peroxides, containing the O<sub>2</sub><sup>2−</sup> ion.<br><br><b>Reference:</b> See page 95, types of oxides and oxidation states of oxygen."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 18,
+        question: "18 RbO<sub>2</sub> is .........",
+        options: ["a) a normal oxide.", "b) a peroxide.", "c) a superoxide.", "d) an acidic oxide."],
+        correctAnswer: 2, // c) a superoxide. (According to key on Page 47) - Note: Key says 'a'.
+        correctAnswerText: "c) a superoxide.",
+        explanation: "Rb is Rubidium, an alkali metal (oxidation state +1). In RbO<sub>2</sub>, for the compound to be neutral, the total charge on the O<sub>2</sub> unit must be -1. This means O<sub>2</sub><sup>−</sup>. The O<sub>2</sub><sup>−</sup> ion is the superoxide ion, where the oxidation state of each oxygen atom is -½ (Page 95). Therefore, RbO<sub>2</sub> is a superoxide.<br>a) A normal oxide (M<sub>2</sub>O, O<sup>2−</sup>). Incorrect.<br>b) A peroxide (M<sub>2</sub>O<sub>2</sub>, O<sub>2</sub><sup>2−</sup>). Incorrect.<br>c) A superoxide (MO<sub>2</sub>, O<sub>2</sub><sup>−</sup>). Correct.<br>d) An acidic oxide. Incorrect (alkali metal oxides are basic).<br>Based on the text, the correct answer is 'c'. However, the provided answer key on Page 47 states that option 'a' is the correct answer. This contradicts the information on Page 95, which lists Rb as forming a superoxide. There is an error in the provided answer key.<br>Following the provided key, the answer is 'a'.<br><br><b>Why this answer is incorrect (based on provided text):</b> RbO<sub>2</sub> is a superoxide, not a normal oxide.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'a' is correct.<br><b>Note on Discrepancy:</b> The provided text on Page 95 clearly states that Rubidium forms superoxides like RbO<sub>2</sub>. The answer key contradicts this by labeling it as a normal oxide. There is an error in the key.<br><br><b>Reference:</b> See page 95, types of oxides formed by alkali metals."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 19,
+        question: "19 Metal (M) has the largest atomic size in its period, its electrons are distributed in 6 energy sublevels.\nWhat is the chemical formula of (M) oxide which is formed when (M) is burnt in pure oxygen ?",
+        options: ["a) MO<sub>2</sub>", "b) M<sub>2</sub>O<sub>2</sub>", "c) M<sub>2</sub>O", "d) MO"],
+        correctAnswer: 2, // c) M2O (According to key on Page 47) - Note: Discrepancy with standard chemistry and provided text.
+        correctAnswerText: "c) M<sub>2</sub>O",
+        explanation: "A metal with the largest atomic size in its period is an alkali metal (Group 1A) (Page 92). If its electrons are distributed in 6 energy sublevels, and assuming this refers to the principal energy levels, this would mean electrons occupy shells up to n=6. The alkali metal in the 6th period is Cesium (Cs). Its configuration is [Xe] 6s<sup>1</sup>. Let's assume '6 energy sublevels' is a confusing way to indicate it's in the 6th period. When alkali metals are burnt in pure oxygen, Lithium forms normal oxide (M<sub>2</sub>O), Sodium forms peroxide (M<sub>2</sub>O<sub>2</sub>), and Potassium, Rubidium, and Cesium form superoxides (MO<sub>2</sub>) (Page 95). Since M is Cesium (in the 6th period), its oxide formed in pure oxygen is a superoxide, MO<sub>2</sub>.<br>The chemical formula should be MO<sub>2</sub> (option 'a'). However, the provided answer key on Page 47 states that option 'c' (M<sub>2</sub>O) is the correct answer. M<sub>2</sub>O is a normal oxide, formed by Lithium (in period 2). This contradicts the identification of M as a period 6 alkali metal.<br>Following the provided key, the answer is 'c'.<br><br><b>Why this answer is incorrect (based on standard chemistry and provided text):</b> A period 6 alkali metal (Cs) forms a superoxide (MO<sub>2</sub>) when burnt in pure oxygen.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'c' is correct.<br><b>Note on Discrepancy:</b> The description of the element points to Cesium, which forms a superoxide (MO<sub>2</sub>). The key indicates the formula is M<sub>2</sub>O (normal oxide), which is formed by Lithium or Sodium. There is a significant error in the provided answer key or the question's description of the element.<br><br><b>Reference:</b> Identification of alkali metal position in the periodic table from properties (Page 90, 92). Reaction of alkali metals with oxygen to form different oxides (Page 95)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 20,
+        question: "20 Three alkali metals (X), (Y) and (Z) react with oxygen as follows :\nX <span style='font-size:smaller;'>O<sub>2</sub>/Δ</span>&rarr; X<sub>2</sub>O\nY <span style='font-size:smaller;'>O<sub>2</sub>/Δ</span>&rarr; Y<sub>2</sub>O<sub>2</sub>\nZ <span style='font-size:smaller;'>O<sub>2</sub>/Δ</span>&rarr; ZO<sub>2</sub>\nWhich of the following is correct ?",
+        options: ["a) According to the chemical activity : Z < Y < X", "b) Z can be rubidium.", "c) Y<sub>2</sub>O<sub>2</sub> is a strong reducing agent.", "d) According to the oxidation number : Z < Y < X"],
+        correctAnswer: 1, // b) Z can be rubidium. (According to key on Page 47) - Note: Key says 'a'.
+        correctAnswerText: "b) Z can be rubidium.",
+        explanation: "Based on the type of oxide formed when burnt in pure oxygen (Page 95):<br>X forms X<sub>2</sub>O (normal oxide), so X is Lithium (Li) or Sodium (Na).<br>Y forms Y<sub>2</sub>O<sub>2</sub> (peroxide), so Y is Sodium (Na).<br>Z forms ZO<sub>2</sub> (superoxide), so Z is Potassium (K), Rubidium (Rb), or Cesium (Cs).<br>Since Y must be Na, X must be Li (as Na forms peroxide, not normal oxide under these conditions, although Na<sub>2</sub>O can be formed differently). So X=Li, Y=Na, Z=K, Rb, or Cs.<br>Chemical activity increases down Group 1A: Li < Na < K < Rb < Cs. So activity order is X < Y < Z.<br>Let's evaluate the options:<br>a) According to the chemical activity : Z < Y < X. Incorrect. The activity is X < Y < Z.<br>b) Z can be rubidium. Correct. Rb forms superoxide.<br>c) Y<sub>2</sub>O<sub>2</sub> (peroxide, e.g., Na<sub>2</sub>O<sub>2</sub>) is a strong reducing agent. Incorrect. Peroxides and superoxides are strong *oxidizing* agents (Page 96).<br>d) According to the oxidation number [of oxygen]: Z < Y < X. Oxidation numbers of Oxygen are: in X<sub>2</sub>O (-2), in Y<sub>2</sub>O<sub>2</sub> (-1), in ZO<sub>2</sub> (-½). Order of oxidation numbers (-2 < -1 < -½) means X < Y < Z. The statement says Z < Y < X (-½ < -1 < -2), which is incorrect.<br>Based on the analysis, option 'b' is the correct statement.<br>However, the provided answer key on Page 47 states that option 'a' is the correct answer. Option 'a' (Z < Y < X in activity) is the opposite of the correct activity trend. There is a significant error in the provided answer key.<br>Following the provided key, the answer is 'a'.<br><br><b>Why this answer is incorrect (based on standard chemistry and provided text):</b> The activity order of alkali metals is Li < Na < K < Rb < Cs. If X=Li, Y=Na, Z=K/Rb/Cs, then activity order is X < Y < Z, not Z < Y < X.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'a' is correct.<br><b>Note on Discrepancy:</b> The statement in option 'a' directly contradicts the reactivity trend of alkali metals established in the text and standard chemistry. Option 'b' is a correct statement based on the oxides formed. There is a significant error in the provided answer key.<br><br><b>Reference:</b> See page 95, types of oxides formed by alkali metals. Reactivity trend of alkali metals (Page 94)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 21,
+        question: "21 What is the chemical formula of the ideal oxide of alkali element (M) ?",
+        options: ["a) M<sub>2</sub>O<sub>2</sub>", "b) MO", "c) M<sub>2</sub>O", "d) M<sub>2</sub>O<sub>3</sub>"],
+        correctAnswer: 2, // c) M2O (According to key on Page 47)
+        correctAnswerText: "c) M<sub>2</sub>O",
+        explanation: "The text on Page 96 explicitly states, 'The ideal oxide of alkali metal has the formula (M<sub>2</sub>O), where: M refers to the symbol of the metal.' This refers to the normal oxide form, where the alkali metal is +1 and oxygen is -2.<br><br><b>Why this answer is correct:</b> The formula M<sub>2</sub>O is given as the 'ideal oxide' formula in the text.<br><b>Why other options are incorrect:</b> The other formulas represent peroxides (M<sub>2</sub>O<sub>2</sub>), superoxides (MO<sub>2</sub>, although written as MO here which is incorrect for MO<sub>2</sub>), or are not typical for alkali metal oxides (M<sub>2</sub>O<sub>3</sub> is a general formula for group 13 oxides).<br><br><b>Reference:</b> See page 96, 'Preparation of the oxides of alkali metals', 'The ideal oxide of alkali metal'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 22,
+        question: "22 What is the correct classification of cesium oxide ?",
+        options: ["a) Very strong base.", "b) Weak base.", "c) Acidic oxide.", "d) Amphoteric oxide."],
+        correctAnswer: 0, // a) Very strong base. (According to key on Page 47)
+        correctAnswerText: "a) Very strong base.",
+        explanation: "Alkali metal oxides are basic oxides (Page 96). The basicity of alkali metal hydroxides (formed when oxides react with water) increases down the group. Cesium (Cs) is the furthest down the group (excluding radioactive Fr), forming CsOH, which is one of the strongest known bases. Therefore, cesium oxide is a very strong basic oxide.<br><br><b>Why this answer is correct:</b> Alkali metal oxides are basic, and basicity increases down the group, making Cesium oxide a very strong base.<br><b>Why other options are incorrect:</b> It is a strong base, not weak. Oxides of metals are basic, not acidic or amphoteric.<br><br><b>Reference:</b> See page 96, 'Preparation of the oxides of alkali metals', stating they are strong basic oxides."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 23,
+        question: "23 Upon using 60 mol of KO<sub>2</sub> to purify the air in a submarine, X mol of CO<sub>2</sub> gas are consumed, and Y mol of O<sub>2</sub> gas are produced.\nWhat are the numbers of the moles (X) and (Y) ?",
+        options: ["a) 20 mol CO<sub>2</sub> / 30 mol O<sub>2</sub>", "b) 30 mol CO<sub>2</sub> / 40 mol O<sub>2</sub>", "c) 30 mol CO<sub>2</sub> / 45 mol O<sub>2</sub>", "d) 40 mol CO<sub>2</sub> / 50 mol O<sub>2</sub>"],
+        correctAnswer: 2, // c) 30 mol CO2 / 45 mol O2 (Based on stoichiometry, Key says 'a')
+        correctAnswerText: "c) 30 mol CO<sub>2</sub> / 45 mol O<sub>2</sub>",
+        explanation: "The reaction for using potassium superoxide (KO<sub>2</sub>) to purify air by absorbing CO<sub>2</sub> and producing O<sub>2</sub> is given on Page 96: 4KO<sub>2</sub>(s) + 2CO<sub>2</sub>(g) → 2K<sub>2</sub>CO<sub>3</sub>(s) + 3O<sub>2</sub>(g).<br>The stoichiometry shows that 4 moles of KO<sub>2</sub> react with 2 moles of CO<sub>2</sub> to produce 3 moles of O<sub>2</sub>. The molar ratio KO<sub>2</sub> : CO<sub>2</sub> : O<sub>2</sub> is 4 : 2 : 3.<br>If 60 mol of KO<sub>2</sub> are used:<br>Moles of CO<sub>2</sub> consumed (X) = (2 moles CO<sub>2</sub> / 4 moles KO<sub>2</sub>) * 60 mol KO<sub>2</sub> = (1/2) * 60 mol = 30 mol CO<sub>2</sub>.<br>Moles of O<sub>2</sub> produced (Y) = (3 moles O<sub>2</sub> / 4 moles KO<sub>2</sub>) * 60 mol KO<sub>2</sub> = (3/4) * 60 mol = 45 mol O<sub>2</sub>.<br>So, X = 30 mol CO<sub>2</sub> and Y = 45 mol O<sub>2</sub>. This corresponds to option 'c'.<br>However, the provided answer key on Page 47 states that option 'a' is the correct answer (20 mol CO<sub>2</sub> / 30 mol O<sub>2</sub>). This contradicts the stoichiometry of the reaction given in the text. There appears to be an error in the provided answer key.<br>Following the provided key, the answer is 'a'.<br><br><b>Why this answer is incorrect (based on provided text stoichiometry):</b> Based on the balanced equation, 60 mol of KO<sub>2</sub> consumes 30 mol of CO<sub>2</sub> and produces 45 mol of O<sub>2</sub>.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'a' is correct.<br><b>Note on Discrepancy:</b> The correct calculation based on the balanced equation provided in the text leads to option 'c'. The answer key is incorrect.<br><br><b>Reference:</b> See page 96, reaction equation for Potassium superoxide with carbon dioxide."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 24,
+        question: "24 Which of the following sodium halides has the highest melting point ?",
+        options: ["a) NaF", "b) NaCl", "c) NaBr", "d) NaI"],
+        correctAnswer: 0, // a) NaF (Based on chemical principles, Key says 'd')
+        correctAnswerText: "a) NaF",
+        explanation: "Sodium halides (NaF, NaCl, NaBr, NaI) are ionic compounds. The melting point of ionic compounds is related to the strength of the ionic bond, which is quantified by lattice energy. Lattice energy is directly proportional to the product of the charges of the ions and inversely proportional to the distance between the centers of the ions (sum of ionic radii). In these compounds, the charges are constant (+1 for Na<sup>+</sup>, -1 for halide ion). Therefore, the lattice energy depends on the size of the halide ion. Ionic radius increases down the halogen group: F<sup>−</sup> < Cl<sup>−</sup> < Br<sup>−</sup> < I<sup>−</sup>. A smaller anion leads to a smaller internuclear distance and thus a higher lattice energy and a higher melting point.<br>The order of increasing ionic radius for the halides is F<sup>−</sup> < Cl<sup>−</sup> < Br<sup>−</sup> < I<sup>−</sup>.<br>The order of decreasing melting point for the sodium halides is NaF > NaCl > NaBr > NaI.<br>Therefore, NaF has the highest melting point.<br>However, the provided answer key on Page 47 states that option 'd' (NaI) is the correct answer. This is the opposite of the correct trend, as NaI has the lowest melting point among these.<br>Based on chemical principles, the correct answer is 'a'. Following the provided key, the answer is 'd'.<br><br><b>Why this answer is correct (based on chemical principles):</b> NaF has the smallest anion (F<sup>−</sup>), leading to the highest lattice energy and melting point among the sodium halides.<br><b>Why this answer is incorrect (according to the provided key):</b> The key states NaI has the highest melting point, which contradicts the established relationship between ionic size, lattice energy, and melting point.<br><b>Note on Discrepancy:</b> The provided answer key is incorrect. The correct answer based on chemical principles is NaF.<br><br><b>Reference:</b> Factors affecting lattice energy and melting points of ionic compounds (general chemistry concept)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 25,
+        question: "25 Which of the following pairs of elements react together more vigorously ?",
+        options: ["a) Cs and Cl", "b) Cs and F", "c) Na and Cl", "d) Na and F"],
+        correctAnswer: 1, // b) Cs and F (Based on chemical principles, Key says 'a')
+        correctAnswerText: "b) Cs and F",
+        explanation: "The vigor of the reaction between an alkali metal and a halogen depends on the reactivity of both elements. Alkali metal reactivity increases down the group (Li < Na < K < Rb < Cs, Page 94). Halogen reactivity decreases down the group (F > Cl > Br > I). The most vigorous reaction occurs between the most reactive alkali metal and the most reactive halogen.<br>Comparing the options:<br>a) Cs and Cl: Highly reactive metal (Cs) + reactive halogen (Cl).<br>b) Cs and F: Highly reactive metal (Cs) + very reactive halogen (F). This should be the most vigorous.<br>c) Na and Cl: Reactive metal (Na) + reactive halogen (Cl). Less vigorous than involving Cs.<br>d) Na and F: Reactive metal (Na) + very reactive halogen (F). More vigorous than Na+Cl, but less vigorous than involving Cs.<br>The most vigorous reaction is expected between Cesium (most reactive metal listed) and Fluorine (most reactive halogen listed). This is option 'b'.<br>However, the provided answer key on Page 47 states that option 'a' (Cs and Cl) is the correct answer. While vigorous, the reaction with Fluorine is expected to be even more vigorous than with Chlorine due to Fluorine's higher reactivity.<br>Based on chemical principles, the correct answer is 'b'. Following the provided key, the answer is 'a'.<br><br><b>Why this answer is correct (based on chemical principles):</b> The reaction between the most reactive alkali metal (Cs) and the most reactive halogen (F) is the most vigorous.<br><b>Why this answer is incorrect (according to the provided key):</b> The key states Cs and Cl is the most vigorous, which is likely incorrect compared to Cs and F.<br><b>Note on Discrepancy:</b> The provided answer key is incorrect. The reaction between Cesium and Fluorine is expected to be the most vigorous.<br><br><b>Reference:</b> Reactivity trends of alkali metals (Page 94) and halogens (general knowledge of periodic trends)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 26,
+        question: "26 All alkali carbonates melt by strong heating without decomposition, except .........",
+        options: ["a) lithium carbonate.", "b) sodium carbonate.", "c) potassium carbonate.", "d) cesium carbonate."],
+        correctAnswer: 0, // a) lithium carbonate. (According to key on Page 48)
+        correctAnswerText: "a) lithium carbonate.",
+        explanation: "The text on Page 98 explicitly states: 'All alkali metals carbonates don't decompose when heated (they melt without decomposition), except lithium carbonate which decomposes at 1000°C'.<br><br><b>Why this answer is correct:</b> Lithium carbonate is specifically mentioned as the exception that decomposes upon heating.<br><b>Why other options are incorrect:</b> Carbonates of Sodium, Potassium, and Cesium melt without decomposition under strong heating.<br><br><b>Reference:</b> See page 98, '10 The action of heat on alkali metal oxygenated salts', section on carbonates."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 27,
+        question: "27 All the following reactions occur vigorously, except .........",
+        options: ["a) the decomposition reaction of potassium nitrate.", "b) the reaction of sodium with chlorine.", "c) the reaction of potassium with water.", "d) the reaction of lithium with nitrogen."],
+        correctAnswer: 3, // d) the reaction of lithium with nitrogen. (According to key on Page 48)
+        correctAnswerText: "d) the reaction of lithium with nitrogen.",
+        explanation: "Let's evaluate the vigor of each reaction based on the text:<br>a) Decomposition of KNO<sub>3</sub>: Page 99 states it decomposes partially by heat and the reaction is accompanied by an explosion, which is vigorous.<br>b) Reaction of sodium with chlorine: Page 98 states alkali metals react *vigorously* with halogens and the reaction is accompanied by an explosion.<br>c) Reaction of potassium with water: Page 94 states alkali metals react *vigorously* with water, and the reaction becomes more vigorous down the group (K is below Na and Li, so vigorous).<br>d) Reaction of lithium with nitrogen: Page 94 states Lithium reacts with nitrogen *by heating*. This reaction requires energy input (heating) and is not described as explosive or as highly vigorous as the reactions with water or halogens at room temperature.<br>The reaction of Lithium with nitrogen is the least vigorous compared to the others listed.<br><br><b>Why this answer is correct:</b> The reaction of lithium with nitrogen requires heating and is less vigorous than the other reactions which are described as vigorous or explosive.<br><b>Why other options are incorrect:</b> The other reactions are described as vigorous or explosive in the text.<br><br><b>Reference:</b> Decomposition of KNO<sub>3</sub> (Page 99). Reaction with halogens (Page 98). Reaction with water (Page 94). Reaction with nitrogen (Page 94)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 28,
+        question: "28 Each of the following represents the alkali metal (X) whose electrons are distributed in two energy levels, except that .........",
+        options: ["a) its carbonate salt decomposes by heat.", "b) it has the least ionization potential in its period.", "c) it reacts with water forming an alkaline solution.", "d) it has the largest radius among its group elements."],
+        correctAnswer: 0, // a) its carbonate salt decomposes by heat. (According to key on Page 48) - Note: Discrepancy with standard chemistry.
+        correctAnswerText: "a) its carbonate salt decomposes by heat.",
+        explanation: "An alkali metal with electrons distributed in two energy levels is Lithium (Li, Z=3). Its electron configuration is 1s<sup>2</sup> 2s<sup>1</sup>, occupying the first (n=1) and second (n=2) energy levels. We need to find the statement that is *incorrect* about Lithium.<br>a) its carbonate salt decomposes by heat. Correct. Lithium carbonate (Li<sub>2</sub>CO<sub>3</sub>) decomposes upon heating (Page 98).<br>b) it has the least ionization potential in its period. Correct. Lithium is the first element in Period 2, and alkali metals have the lowest ionization potentials in their respective periods (Page 90).<br>c) it reacts with water forming an alkaline solution. Correct. Lithium is an alkali metal and reacts with water to form LiOH, an alkaline solution (Page 94).<br>d) it has the largest radius among its group elements. Incorrect. Atomic radius increases down the group. Lithium is at the top of Group 1A, so it has the *smallest* atomic radius among alkali metals (Page 92).<br>The incorrect statement about Lithium is 'd'. However, the provided answer key on Page 48 states that option 'a' is the correct answer to the question (meaning 'a' is the incorrect statement). This contradicts the information on Page 98 which states Li<sub>2</sub>CO<sub>3</sub> decomposes by heat.<br>Following the provided key, the answer is 'a'.<br><br><b>Why this answer is incorrect (based on provided text and standard chemistry):</b> Lithium carbonate decomposes by heat.<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates statement 'a' is incorrect.<br><b>Note on Discrepancy:</b> Statement 'a' is a correct property of Lithium. Statement 'd' is an incorrect property of Lithium. The question asks for the exception (incorrect statement). Therefore, 'd' should be the correct answer to the question. The answer key is incorrect.<br><br><b>Reference:</b> Electron configuration. Properties of alkali metals (Page 90, 92, 94). Thermal decomposition of alkali carbonates (Page 98)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 29,
+        question: "29 All the following alkali metals carbonates are thermally stable, except .........",
+        options: ["a) Li<sub>2</sub>CO<sub>3</sub>", "b) Na<sub>2</sub>CO<sub>3</sub>", "c) K<sub>2</sub>CO<sub>3</sub>", "d) Cs<sub>2</sub>CO<sub>3</sub>"],
+        correctAnswer: 0, // a) Li2CO3 (According to key on Page 48)
+        correctAnswerText: "a) Li<sub>2</sub>CO<sub>3</sub>",
+        explanation: "This is the same information as presented in question 26. The text on Page 98 states that all alkali metal carbonates melt without decomposition when heated, except for lithium carbonate (Li<sub>2</sub>CO<sub>3</sub>), which decomposes.<br><br><b>Why this answer is correct:</b> Lithium carbonate is the only alkali metal carbonate listed that decomposes upon heating.<br><b>Why other options are incorrect:</b> Carbonates of Na, K, and Cs are thermally stable (melt without decomposition).<br><br><b>Reference:</b> See page 98, '10 The action of heat on alkali metal oxygenated salts', section on carbonates."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 30,
+        question: "30 Heating sodium nitrate produces .........",
+        options: ["a) NO gas.", "b) NO<sub>2</sub> gas.", "c) N<sub>2</sub>O gas.", "d) O<sub>2</sub> gas."],
+        correctAnswer: 3, // d) O2 gas. (According to key on Page 48)
+        correctAnswerText: "d) O<sub>2</sub> gas.",
+        explanation: "Page 98 states that alkali metal nitrates decompose partially upon heating, giving metal nitrite and oxygen gas. The reaction for sodium nitrate is given as: 2NaNO<sub>3</sub>(s) → 2NaNO<sub>2</sub>(s) + O<sub>2</sub>(g). The gas produced is oxygen (O<sub>2</sub>).<br><br><b>Why this answer is correct:</b> The decomposition of sodium nitrate yields oxygen gas.<br><b>Why other options are incorrect:</b> NO, NO<sub>2</sub>, or N<sub>2</sub>O are not the primary gaseous products of sodium nitrate decomposition as described.<br><br><b>Reference:</b> See page 98, '10 The action of heat on alkali metal oxygenated salts', section on nitrates."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 31,
+        question: "31 Sodium carbonate is similar to lithium carbonate in .........",
+        options: ["a) the effect of the strong heat on both of them.", "b) the gas produced from their reactions with the acids.", "c) their melting points.", "d) the colour formed during the dry test."],
+        correctAnswer: 1, // b) the gas produced from their reactions with the acids. (According to key on Page 48)
+        correctAnswerText: "b) the gas produced from their reactions with the acids.",
+        explanation: "Let's compare properties of sodium carbonate (Na<sub>2</sub>CO<sub>3</sub>) and lithium carbonate (Li<sub>2</sub>CO<sub>3</sub>).<br>a) Effect of strong heat: Different. Li<sub>2</sub>CO<sub>3</sub> decomposes, Na<sub>2</sub>CO<sub>3</sub> melts without decomposition (Page 98).<br>b) Gas from reaction with acids: Similar. Both react with acids to produce a salt, water, and carbon dioxide gas (CO<sub>2</sub>). The reaction Na<sub>2</sub>CO<sub>3</sub> + 2HCl → 2NaCl + H<sub>2</sub>O + CO<sub>2</sub> is shown on Page 34, and this is a general reaction for carbonates.<br>c) Melting points: Different compounds have different melting points.<br>d) Colour during dry test: Different. Dry test color depends on the cation. Na<sup>+</sup> gives golden yellow, Li<sup>+</sup> gives crimson (Page 93).<br>They are similar in the gas produced when reacting with acids.<br><br><b>Why this answer is correct:</b> Both sodium carbonate and lithium carbonate react with acids to produce carbon dioxide gas.<br><b>Why other options are incorrect:</b> They differ in their thermal decomposition, melting points, and flame test colors.<br><br><b>Reference:</b> Thermal decomposition of carbonates (Page 98). Reaction of carbonates with acids (Page 34). Flame test colors (Page 93)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 32,
+        question: "32 Sodium metal is extracted in industry by the electrolysis of .........",
+        options: ["a) sodium chloride solution.", "b) molten sodium chloride.", "c) caustic soda solution.", "d) molten caustic potash."],
+        correctAnswer: 1, // b) molten sodium chloride. (According to key on Page 48)
+        correctAnswerText: "b) molten sodium chloride.",
+        explanation: "Alkali metals are strong reducing agents and are difficult to reduce from their compounds chemically. They are extracted by electrolysis of their molten (fused) salts (Page 100). Electrolysis of aqueous solutions of alkali metal salts (like sodium chloride solution or caustic soda solution, NaOH solution) produces hydrogen gas at the cathode instead of the metal because H<sup>+</sup> from water is more easily reduced than the alkali metal ion. Sodium metal is extracted by the electrolysis of molten sodium chloride, often with additives to lower the melting point.<br><br><b>Why this answer is correct:</b> Electrolysis of molten sodium chloride is the industrial method for extracting sodium metal.<br><b>Why other options are incorrect:</b> Electrolysis of aqueous solutions yields hydrogen gas. Molten caustic potash (KOH) electrolysis would yield potassium metal.<br><br><b>Reference:</b> See page 100, 'Extraction of alkali metals from their ores' and 'Application Extraction of sodium metal from its ores'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 33,
+        question: "33 What are the oxidizing agent and the reducing agent in the electrolysis of molten sodium chloride melt respectively ?",
+        options: ["a) Cl / Na", "b) Cl<sup>−</sup> / Na<sup>+</sup>", "c) Na<sup>+</sup> / Cl<sup>−</sup>", "d) Na / Cl"],
+        correctAnswer: 2, // c) Na+ / Cl- (According to key on Page 48)
+        correctAnswerText: "c) Na<sup>+</sup> / Cl<sup>−</sup>",
+        explanation: "In the electrolysis of molten NaCl (Page 100), sodium ions (Na<sup>+</sup>) are reduced at the cathode to form sodium metal (Na): Na<sup>+</sup> + e<sup>−</sup> → Na. Chlorine ions (Cl<sup>−</sup>) are oxidized at the anode to form chlorine gas (Cl<sub>2</sub>): 2Cl<sup>−</sup> → Cl<sub>2</sub> + 2e<sup>−</sup>.<br>Reduction is the gain of electrons; the species that is reduced acts as the oxidizing agent. Here, Na<sup>+</sup> is reduced, so Na<sup>+</sup> is the oxidizing agent.<br>Oxidation is the loss of electrons; the species that is oxidized acts as the reducing agent. Here, Cl<sup>−</sup> is oxidized, so Cl<sup>−</sup> is the reducing agent.<br>The oxidizing agent is Na<sup>+</sup>, and the reducing agent is Cl<sup>−</sup>.<br><br><b>Why this answer is correct:</b> Na<sup>+</sup> gains electrons (reduced, is oxidizing agent), and Cl<sup>−</sup> loses electrons (oxidized, is reducing agent).<br><b>Why other options are incorrect:</b> The roles are reversed or the species are listed incorrectly (Na and Cl are the products, not agents in this context).<br><br><b>Reference:</b> See page 100, 'Oxidation and reduction reactions occur at anode and cathode'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 34,
+        question: "34 What happens when a sample of solid sodium hydroxide flakes is left in air for hours ?",
+        options: ["a) It does not change.", "b) It becomes harder.", "c) Its mass increases.", "d) Its mass decreases."],
+        correctAnswer: 2, // c) Its mass increases. (According to key on Page 48)
+        correctAnswerText: "c) Its mass increases.",
+        explanation: "Page 101 states that sodium hydroxide (NaOH) is a white hygroscopic solid. A hygroscopic substance absorbs moisture (water vapor) from the atmosphere. Absorbing water adds mass to the sample. Sodium hydroxide can also react with carbon dioxide from the air, forming sodium carbonate, which also affects mass.<br><br><b>Why this answer is correct:</b> As a hygroscopic substance, NaOH absorbs water from the air, increasing its mass.<br><b>Why other options are incorrect:</b> It undergoes change due to water absorption and CO2 reaction. It does not necessarily become harder (it might dissolve in absorbed water). Its mass increases, it does not decrease.<br><br><b>Reference:</b> See page 101, '1 Sodium hydroxide NaOH', stating it is a hygroscopic solid."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 35,
+        question: "35 Excess of sodium hydroxide solution is added to a beaker containing aluminum sulphate.\nWhich of the following exist in the beaker after the end of the reaction ?",
+        options: ["a) H<sub>2</sub>O, AlO<sub>2</sub><sup>−</sup>, Na<sup>+</sup>", "b) Al(OH)<sub>3</sub>, SO<sub>4</sub><sup>2−</sup>, Na<sup>+</sup>", "c) H<sub>2</sub>O, Al<sup>3+</sup>, SO<sub>4</sub><sup>2−</sup>, OH<sup>−</sup>, Na<sup>+</sup>", "d) H<sub>2</sub>O, AlO<sub>2</sub><sup>−</sup>, SO<sub>4</sub><sup>2−</sup>, OH<sup>−</sup>, Na<sup>+</sup>"],
+        correctAnswer: 3, // d) H2O, AlO2-, SO42-, OH-, Na+ (According to key on Page 48)
+        correctAnswerText: "d) H<sub>2</sub>O, AlO<sub>2</sub><sup>−</sup>, SO<sub>4</sub><sup>2−</sup>, OH<sup>−</sup>, Na<sup>+</sup>",
+        explanation: "Aluminum sulfate (Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>) in solution exists as Al<sup>3+</sup> and SO<sub>4</sub><sup>2−</sup> ions. Sodium hydroxide (NaOH) solution contains Na<sup>+</sup> and OH<sup>−</sup> ions.<br>When NaOH is added to Al<sup>3+</sup> solution, aluminum hydroxide precipitate forms: Al<sup>3+</sup>(aq) + 3OH<sup>−</sup>(aq) → Al(OH)<sub>3</sub>(s) (Page 102). This removes Al<sup>3+</sup> ions from the solution.<br>When *excess* NaOH is added, the aluminum hydroxide precipitate dissolves, forming soluble sodium metaluminate (NaAlO<sub>2</sub>) or the aluminate ion [Al(OH)<sub>4</sub>]<sup>−</sup>: Al(OH)<sub>3</sub>(s) + OH<sup>−</sup>(aq) → [Al(OH)<sub>4</sub>]<sup>−</sup>(aq) (Page 102 shows Al(OH)<sub>3</sub> + NaOH → NaAlO<sub>2</sub> + H<sub>2</sub>O, where NaAlO<sub>2</sub> dissolves). This introduces AlO<sub>2</sub><sup>−</sup> or [Al(OH)<sub>4</sub>]<sup>−</sup> ions into the solution.<br>Sulfate ions (SO<sub>4</sub><sup>2−</sup>) do not react with Na<sup>+</sup> or OH<sup>−</sup> and remain in solution. Sodium ions (Na<sup>+</sup>) are present from both the original salt (minor amount if any was added initially) and the added NaOH (major amount, including the excess) and remain in solution. Since excess NaOH is added, OH<sup>−</sup> ions are present in excess in the solution.<br>Water (H<sub>2</sub>O) is the solvent and is also a product in the dissolution reaction.<br>Species in the final solution: H<sub>2</sub>O (solvent and product), AlO<sub>2</sub><sup>−</sup> (or [Al(OH)<sub>4</sub>]<sup>−</sup>, from dissolved precipitate), SO<sub>4</sub><sup>2−</sup> (spectator ion), OH<sup>−</sup> (excess reactant), Na<sup>+</sup> (spectator ion).<br>Option 'd' lists H<sub>2</sub>O, AlO<sub>2</sub><sup>−</sup>, SO<sub>4</sub><sup>2−</sup>, OH<sup>−</sup>, Na<sup>+</sup>. This matches the expected species.<br><br><b>Why this answer is correct:</b> In excess strong base, aluminum hydroxide precipitate dissolves, resulting in aluminate ions, along with the spectator ions (Na<sup>+</sup>, SO<sub>4</sub><sup>2−</sup>) and the excess hydroxide ions, and water.<br><b>Why other options are incorrect:</b> 'a' is missing SO<sub>4</sub><sup>2−</sup> and excess OH<sup>−</sup>. 'b' incorrectly states Al(OH)<sub>3</sub> is present (it dissolved). 'c' incorrectly states Al<sup>3+</sup> ions are present (they reacted).<br><br><b>Reference:</b> See page 102, 'Detection of Cu<sup>2+</sup> and Al<sup>3+</sup> cations by using sodium hydroxide solution', specifically the reaction of Al(OH)<sub>3</sub> with excess NaOH."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 36,
+        question: "36 Hydrated sodium carbonate salt is known as .........",
+        options: ["a) quicklime.", "b) washing soda.", "c) caustic soda.", "d) limewater."],
+        correctAnswer: 1, // b) washing soda. (According to key on Page 48)
+        correctAnswerText: "b) washing soda.",
+        explanation: "Page 103 explicitly states: 'The hydrated sodium carbonate Na<sub>2</sub>CO<sub>3</sub>.10H<sub>2</sub>O salt is known as washing soda'.<br><br><b>Why this answer is correct:</b> This is the common name for hydrated sodium carbonate.<br><b>Why other options are incorrect:</b> Quicklime is calcium oxide (CaO). Caustic soda is sodium hydroxide (NaOH). Limewater is calcium hydroxide solution (Ca(OH)<sub>2</sub>).<br><br><b>Reference:</b> See page 103, '2 Sodium carbonate Na<sub>2</sub>CO<sub>3</sub>', section on preparation in laboratory."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 37,
+        question: "37 On dissolving an amount of the flakes of the substance (X) in water and heating this solution, then passing the gas (Y) in it, and then allowing it to cool, the crystals of (Z) are separated.\nWhat do the letters (X), (Y) and (Z) represent respectively ?",
+        options: ["a) NaOH / CO<sub>2</sub> / Washing soda.", "b) NaOH / NH<sub>3</sub> / Washing soda.", "c) Na<sub>2</sub>CO<sub>3</sub> / CO<sub>2</sub> / Sodium carbonate.", "d) Na<sub>2</sub>CO<sub>3</sub> / NH<sub>3</sub> / Sodium carbonate."],
+        correctAnswer: 0, // a) NaOH / CO2 / Washing soda. (According to key on Page 48)
+        correctAnswerText: "a) NaOH / CO<sub>2</sub> / Washing soda.",
+        explanation: "Page 103 describes the laboratory preparation of sodium carbonate (washing soda): 'By passing carbon dioxide gas through a hot solution of sodium hydroxide, then the solution is left to cool, white crystals of hydrated sodium carbonate are separated gradually.'<br>This process involves dissolving a substance (X) in water and heating (X = NaOH flakes, dissolves to form solution). Passing a gas (Y) through the hot solution (Y = CO<sub>2</sub> gas). Cooling the solution results in crystals (Z) separating (Z = hydrated sodium carbonate, washing soda).<br>This matches option 'a': X=NaOH, Y=CO<sub>2</sub>, Z=Washing soda.<br><br><b>Why this answer is correct:</b> This sequence correctly describes the laboratory preparation of washing soda using NaOH and CO<sub>2</sub> as starting materials.<br><b>Why other options are incorrect:</b> Options use incorrect starting substances or gases.<br><br><b>Reference:</b> See page 103, 'Preparation of sodium carbonate in laboratory'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 38,
+        question: "38 Which of the following represents the mass of the crystallization water compared to the mass of the anhydrous salt in 1 mol of washing soda ?\n[Na<sub>2</sub>CO<sub>3</sub> = 106 g/mol, H<sub>2</sub>O = 18 g/mol]",
+        options: ["a) The mass of crystallization water is less than half that of the anhydrous salt.", "b) The mass of crystallization water is less than double that of the anhydrous salt.", "c) The mass of crystallization water is double that of the anhydrous salt.", "d) The mass of crystallization water is half that of the anhydrous salt."],
+        correctAnswer: 1, // b) The mass of crystallization water is less than double that of the anhydrous salt. (Based on calculation, Key says 'c')
+        correctAnswerText: "b) The mass of crystallization water is less than double that of the anhydrous salt.",
+        explanation: "Washing soda is hydrated sodium carbonate, Na<sub>2</sub>CO<sub>3</sub>.10H<sub>2</sub>O (Page 103).<br>Molar mass of anhydrous salt (Na<sub>2</sub>CO<sub>3</sub>) = 106 g/mol (given).<br>Mass of crystallization water in 1 mol of washing soda = 10 moles H<sub>2</sub>O. Molar mass of H<sub>2</sub>O = 18 g/mol (given). Mass of 10 moles H<sub>2</sub>O = 10 * 18 g/mol = 180 g/mol.<br>Comparing the mass of water (180 g) to the mass of anhydrous salt (106 g):<br>- Is 180 less than half of 106 (106/2 = 53)? No (180 > 53). (a is incorrect)<br>- Is 180 less than double of 106 (2 * 106 = 212)? Yes (180 < 212). (b is correct)<br>- Is 180 double of 106? No (180 ≠ 212). (c is incorrect)<br>- Is 180 half of 106? No (180 ≠ 53). (d is incorrect)<br>The mass of crystallization water (180 g) is less than double the mass of the anhydrous salt (212 g).<br>Based on the calculation, option 'b' is correct. However, the provided answer key on Page 48 states that option 'c' is the correct answer ('The mass of crystallization water is double that of the anhydrous salt'). This contradicts the calculation (180 g is not double 106 g). There is an error in the provided answer key.<br>Following the provided key, the answer is 'c'.<br><br><b>Why this answer is incorrect (based on calculation):</b> 180 g (water) is not double 106 g (anhydrous salt).<br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'c' is correct.<br><b>Note on Discrepancy:</b> The correct calculation based on the provided molar masses shows that the mass of water (180g) is less than double the mass of the anhydrous salt (106g). The answer key is incorrect.<br><br><b>Reference:</b> Formula of washing soda (Na<sub>2</sub>CO<sub>3</sub>.10H<sub>2</sub>O) (Page 103). Molar mass calculations (given values)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 39,
+        question: "39 Which of the following two substances dissolve in water (each separately) forming aqueous solutions ?",
+        options: ["a) Al(OH)<sub>3</sub>, NaOH", "b) NaAlO<sub>2</sub>, AlCl<sub>3</sub>", "c) Cu(OH)<sub>2</sub>, NaCl", "d) CaCO<sub>3</sub>, Na<sub>2</sub>CO<sub>3</sub>"],
+        correctAnswer: 1, // b) NaAlO2, AlCl3 (Based on solubility rules and text, Key says 'd')
+        correctAnswerText: "b) NaAlO<sub>2</sub>, AlCl<sub>3</sub>",
+        explanation: "We need to identify the pair of substances where *both* substances are soluble in water.<br>a) Al(OH)<sub>3</sub>: Aluminum hydroxide is insoluble in water (forms a precipitate) (Page 102). NaOH: Sodium hydroxide is soluble in water (forms alkaline solution) (Page 101). Pair does not both dissolve.<br>b) NaAlO<sub>2</sub>: Sodium metaluminate is formed in solution and dissolves in water (Page 102). AlCl<sub>3</sub>: Aluminum chloride is typically soluble in water (used as a solution for Al<sup>3+</sup> detection) (Page 102). Both dissolve.<br>c) Cu(OH)<sub>2</sub>: Copper (II) hydroxide is insoluble in water (forms a precipitate) (Page 102). NaCl: Sodium chloride (rock salt) is soluble in water (Page 98, note). Pair does not both dissolve.<br>d) CaCO<sub>3</sub>: Calcium carbonate is insoluble in water (forms a precipitate) (Page 103). Na<sub>2</sub>CO<sub>3</sub>: Sodium carbonate (washing soda) is soluble in water (Page 104). Pair does not both dissolve.<br>Based on solubility rules and the text, option 'b' is the correct answer.<br>However, the provided answer key on Page 48 states that option 'd' is the correct answer. This means the key believes both CaCO<sub>3</sub> and Na<sub>2</sub>CO<sub>3</sub> dissolve. While Na<sub>2</sub>CO<sub>3</sub> is soluble, CaCO<sub>3</sub> is explicitly stated as insoluble in the text (Page 103, 'forming calcium carbonate...which are insoluble in water'). There is a clear error in the provided answer key.<br>Following the provided key, the answer is 'd'.<br><br><b>Why this answer is correct (according to the provided key):</b> The provided key indicates option 'd' is correct.<br><b>Why this answer is incorrect (based on provided text and solubility rules):</b> CaCO<sub>3</sub> is insoluble in water, although Na<sub>2</sub>CO<sub>3</sub> is soluble.<br><b>Note on Discrepancy:</b> The provided text explicitly states CaCO<sub>3</sub> is insoluble. Therefore, option 'd' cannot be correct. Option 'b' lists two soluble compounds. There is an error in the answer key.<br><br><b>Reference:</b> Solubility of NaOH (Page 101), Al(OH)<sub>3</sub> and NaAlO<sub>2</sub> (Page 102), Cu(OH)<sub>2</sub> (Page 102), NaCl (Page 98), CaCO<sub>3</sub> and Na<sub>2</sub>CO<sub>3</sub> (Page 103-104)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 40,
+        question: "40 In Solvay process, gas (W) is dissolved in a saturated solution of substance (X), and then the gas (Y) is passed in the former mixture with heating, substance (Z) can be obtained.\nWhich of the following identifies correctly any of (W), (X), (Y) and (Z) ?",
+        options: ["a) (W) : CO<sub>2</sub>, (Z) : NaHCO<sub>3</sub>", "b) (X): NH<sub>4</sub>Cl, (Y) : NH<sub>3</sub>", "c) (X) : NaCl, (Y) : H<sub>2</sub>", "d) (W) : NH<sub>3</sub>, (Z) : Na<sub>2</sub>CO<sub>3</sub>"],
+        correctAnswer: 3, // d) (W) : NH3, (Z) : Na2CO3 (According to key on Page 48)
+        correctAnswerText: "d) (W) : NH<sub>3</sub>, (Z) : Na<sub>2</sub>CO<sub>3</sub>",
+        explanation: "The Solvay process involves reacting ammonia (NH<sub>3</sub>) and carbon dioxide (CO<sub>2</sub>) with a saturated aqueous solution of sodium chloride (NaCl) to produce sodium bicarbonate (NaHCO<sub>3</sub>), which is then heated to yield sodium carbonate (Na<sub>2</sub>CO<sub>3</sub>) (Page 104).<br>Step 1: NH<sub>3</sub>(g) + H<sub>2</sub>O(l) + NaCl(aq) + CO<sub>2</sub>(g) → NaHCO<sub>3</sub>(s) + NH<sub>4</sub>Cl(aq).<br>Step 2: 2NaHCO<sub>3</sub>(s) <span style='font-size:smaller;'>Δ</span>&rarr; Na<sub>2</sub>CO<sub>3</sub>(s) + H<sub>2</sub>O(v) + CO<sub>2</sub>(g).<br>The question describes dissolving gas (W) in solution (X), then passing gas (Y) with heating to get (Z). The description is a bit confusing and doesn't perfectly match the steps or substances sequentially. However, let's check the proposed identifications in the options against the Solvay process components.<br>d) (W) : NH<sub>3</sub>, (Z) : Na<sub>2</sub>CO<sub>3</sub>. W=NH<sub>3</sub> (a reactant gas). Z=Na<sub>2</sub>CO<sub>3</sub> (the final product substance). This aligns with roles in the process.<br>a) (W) : CO<sub>2</sub>, (Z) : NaHCO<sub>3</sub>. W=CO<sub>2</sub> (a reactant gas). Z=NaHCO<sub>3</sub> (an intermediate substance). This is also plausible depending on how Z is defined.<br>b) (X): NH<sub>4</sub>Cl, (Y) : NH<sub>3</sub>. X=NH<sub>4</sub>Cl (a byproduct solution). Y=NH<sub>3</sub> (a reactant gas). Y dissolving in X doesn't match the process.<br>c) (X) : NaCl, (Y) : H<sub>2</sub>. X=NaCl (a reactant solution). Y=H<sub>2</sub> (not involved in the main steps).<br>Comparing 'a' and 'd', 'd' refers to the final product (Na<sub>2</sub>CO<sub>3</sub>) which is the target of the process. 'a' refers to an intermediate (NaHCO<sub>3</sub>). Given the options, 'd' identifies components correctly involved as a reactant gas (NH<sub>3</sub>) and the final product (Na<sub>2</sub>CO<sub>3</sub>). The 'heating' mentioned in the question is applied to decompose NaHCO<sub>3</sub> to get Na<sub>2</sub>CO<sub>3</sub>.<br><br><b>Why this answer is correct:</b> NH<sub>3</sub> is a reactant gas (W) and Na<sub>2</sub>CO<sub>3</sub> is the final product (Z) in the Solvay process.<br><b>Why other options are incorrect:</b> The other options misidentify the substances or include species not involved as described.<br><br><b>Reference:</b> See page 104, 'Preparation of sodium carbonate in industry (Solvay's process)'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 41,
+        question: "41 What is the similarity between sodium hydroxide and sodium carbonate ?",
+        options: ["a) They both have the same molar mass.", "b) They both can react with acids yielding CO<sub>2</sub> gas.", "c) They both can react with bases.", "d) They both are used in paper industry."],
+        correctAnswer: 3, // d) They both are used in paper industry. (According to key on Page 48)
+        correctAnswerText: "d) They both are used in paper industry.",
+        explanation: "Let's compare properties of NaOH (sodium hydroxide) and Na<sub>2</sub>CO<sub>3</sub> (sodium carbonate).<br>a) Molar mass: NaOH = 40 g/mol. Na<sub>2</sub>CO<sub>3</sub> = 106 g/mol. Different.<br>b) Reaction with acids yielding CO<sub>2</sub>: NaOH + acid → salt + water (no CO<sub>2</sub>). Na<sub>2</sub>CO<sub>3</sub> + acid → salt + water + CO<sub>2</sub> (Page 34). Only Na<sub>2</sub>CO<sub>3</sub> yields CO<sub>2</sub>.<br>c) Reaction with bases: NaOH is a strong base, does not react with bases. Na<sub>2</sub>CO<sub>3</sub> forms an alkaline solution, does not react with bases.<br>d) Used in paper industry: Page 101 lists NaOH as used in paper industry. Page 104 lists Na<sub>2</sub>CO<sub>3</sub> as used in paper industry. Both are used.<br>The similarity is their use in the paper industry.<br><br><b>Why this answer is correct:</b> Both sodium hydroxide and sodium carbonate are utilized in the paper industry.<br><b>Why other options are incorrect:</b> They differ in molar mass and reactions with acids. Neither typically reacts with bases.<br><br><b>Reference:</b> Uses of sodium hydroxide (Page 101). Uses of sodium carbonate (Page 104)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 42,
+        question: "42 In the following unbalanced equations :\n• Na<sub>2</sub>CO<sub>3</sub>(s) + X &rarr; Y + H<sub>2</sub>O(l) + CO<sub>2</sub>(g)\n• NaOH(aq) + X &rarr; Y + H<sub>2</sub>O(l)\nWhat are the types of the substances (X) and (Y) ?",
+        correctAnswer: 1, // b) (X) : Acid / (Y) : Salt. (According to key on Page 48)
+        correctAnswerText: "b) (X) : Acid / (Y) : Salt.",
+        options: ["a) (X) : Salt / (Y) : Acid.", "b) (X) : Acid / (Y) : Salt.", "c) (X) : Base / (Y) : Salt.", "d) (X) : Acid / (Y) : Base."],
+        explanation: "First equation: Na<sub>2</sub>CO<sub>3</sub> + X → Y + H<sub>2</sub>O + CO<sub>2</sub>. Sodium carbonate is a salt (or basic salt). The reaction producing CO<sub>2</sub>, water, and a salt is characteristic of the reaction between a carbonate and an acid. Thus, X must be an acid, and Y is likely the resulting salt (a sodium salt). (Page 34 shows Na<sub>2</sub>CO<sub>3</sub> + acid reaction).<br>Second equation: NaOH + X → Y + H<sub>2</sub>O. Sodium hydroxide (NaOH) is a base. The reaction of a base with substance X producing a salt (Y) and water is a neutralization reaction. This indicates X is an acid, and Y is a salt. (Page 101 shows NaOH + acid reaction).<br>Both equations are consistent with X being an acid and Y being a salt.<br><br><b>Why this answer is correct:</b> X reacts as an acid with both a carbonate and a base, producing a salt (Y) and water (and CO<sub>2</sub> with the carbonate).<br><b>Why other options are incorrect:</b> X is not a salt or base in these reactions. Y is a salt, not an acid or base.<br><br><b>Reference:</b> Reaction of carbonates with acids (Page 34). Reaction of bases with acids (neutralization reaction) (Page 101)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 43,
+        question: "43 All the following statements are correct, except that .........",
+        options: ["a) potassium reacts vigorously with water.", "b) cesium hydroxide is a strong base.", "c) sodium hydroxide dissolution in water is exothermic.", "d) lithium chloride dissolves in alcohol but not in water."],
+        correctAnswer: 3, // d) lithium chloride dissolves in alcohol but not in water. (According to key on Page 48)
+        correctAnswerText: "d) lithium chloride dissolves in alcohol but not in water.",
+        explanation: "Let's evaluate each statement:<br>a) Potassium reacts vigorously with water. Correct. Alkali metals react vigorously with water, and the vigor increases down the group (Page 94). Potassium is below Sodium and Lithium.<br>b) Cesium hydroxide is a strong base. Correct. Basicity increases down the group, and CsOH is one of the strongest bases (Page 96 implies strong basic oxides, leading to strong hydroxides).<br>c) Sodium hydroxide dissolution in water is exothermic. Correct. Page 101 states that the dissolution of NaOH in water is accompanied by the liberation of heat energy, making it an exothermic solution.<br>d) Lithium chloride dissolves in alcohol but not in water. Incorrect. Lithium chloride (LiCl) is an ionic compound with some covalent character, but it is soluble in polar solvents like water. Alkali metal halides are generally soluble in water (Page 98 note). While LiCl might also be soluble in some alcohols, the statement that it does *not* dissolve in water is false.<br>The incorrect statement is 'd'.<br><br><b>Why this answer is correct:</b> LiCl is soluble in water.<br><b>Why other options are incorrect:</b> Statements a, b, and c are correct properties of alkali metals or their compounds.<br><br><b>Reference:</b> Reaction with water (Page 94). Basicity of hydroxides (Page 96). Dissolution of NaOH (Page 101). Solubility of alkali metal halides (Page 98)."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 44,
+        question: "44 The common ions present in the living cell are .........",
+        options: ["a) Ca<sup>2+</sup> ions.", "b) K<sup>+</sup> ions.", "c) Li<sup>+</sup> ions.", "d) Mg<sup>2+</sup> ions."],
+        correctAnswer: 1, // b) K+ ions. (According to key on Page 48)
+        correctAnswerText: "b) K<sup>+</sup> ions.",
+        explanation: "Page 106 discusses the biochemical role of Sodium and Potassium ions. It explicitly states that Potassium ions (K<sup>+</sup>) are common ions found *inside* the living cell. Sodium ions (Na<sup>+</sup>) are common in blood plasma and intercellular fluids.<br><br><b>Why this answer is correct:</b> Potassium ions are explicitly mentioned as common ions inside living cells.<br><b>Why other options are incorrect:</b> While Ca<sup>2+</sup> and Mg<sup>2+</sup> ions are also biologically important, K<sup>+</sup> is specifically highlighted as common *inside* the living cell in the text. Li<sup>+</sup> is not a common essential ion.<br><br><b>Reference:</b> See page 106, 'The biochemical role of sodium and potassium ions'."
+    },
+    {
+        topic: Topics.CHEMISTRY_ALKALI_METALS, originalNumber: 45,
+        question: "45 The living cell transfers (X) through (Y).\nWhich of the following represents (X) and (Y) respectively ?",
+        options: ["a) K<sup>+</sup> / Glucose.", "b) Proteins / Na<sup>+</sup>", "c) K<sup>+</sup> / Proteins.", "d) Glucose / Na<sup>+</sup>"],
+        correctAnswer: 3, // d) Glucose / Na+ (According to key on Page 48)
+        correctAnswerText: "d) Glucose / Na<sup>+</sup>",
+        explanation: "Page 106 states that Sodium and Potassium ions represent the required medium to transfer *nutrients*, such as glucose and amino acids. It also mentions K<sup>+</sup> ions play a role in the oxidation of glucose in the living cell. While both ions are involved in transport, the text mentions the transfer of *glucose* (a nutrient) and highlights the role of Na<sup>+</sup> and K<sup>+</sup> in this process.<br>Common biological transport mechanisms involve moving nutrients like glucose across cell membranes, often coupled with the movement of ions like Na<sup>+</sup> (co-transport). The question asks for the substance being transferred (X) and the substance involved in the transfer mechanism (Y). Glucose (X) is a nutrient being transferred, and Na<sup>+</sup> (Y) is an ion involved in the transport process (e.g., driving glucose transport across the membrane).<br><br><b>Why this answer is correct:</b> Glucose is a nutrient transferred by the cell, and Na<sup>+</sup> ions are involved in the transport mechanisms for nutrients like glucose.<br><b>Why other options are incorrect:</b> Options involve ions as the transferred substance or incorrectly pair substances/ions.<br><br><b>Reference:</b> See page 106, 'The biochemical role of sodium and potassium ions', mentioning the transfer of nutrients such as glucose and amino acids."
+    }
+];
+
+
+
+        const quotes = [
+            "The only way to do great work is to love what you do. – Steve Jobs",
+            "Education is the most powerful weapon which you can use to change the world. – Nelson Mandela",
+            "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+            "Strive for progress, not perfection.",
+            "The expert in anything was once a beginner.",
+            "Don't watch the clock; do what it does. Keep going.",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+            "The mind is not a vessel to be filled, but a fire to be kindled. – Plutarch",
+            "Study hard what interests you the most in the most undisciplined, irreverent and original manner possible. – Richard Feynman",
+            "Learning never exhausts the mind. – Leonardo da Vinci"
+        ];
+
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let buttonsDisabled = false; // Controls user input on answer/skip buttons
+        let gameInProgress = false; // Controls overall game state
+        let currentTopicQuestions = [];
+        let lessonAttempts = []; // To store results for PDF (mistakes and skips)
+        let questionsToRemember = []; // To store questions added to remember list
+
+        // Get DOM elements
+        const lessonSelectionElement = document.getElementById('lesson-selection');
+        const gameContainerElement = document.querySelector('.game-container');
+        const gameTitleElement = document.getElementById('game-title');
+        const questionCounterElement = document.querySelector('.question-counter');
+        const currentQNumElement = document.getElementById('current-q-num');
+        const totalQNumElement = document.getElementById('total-q-num');
+        const questionAreaElement = document.getElementById('question-area');
+        const questionTextElement = document.getElementById('question-text');
+        const answerButtonsElement = document.getElementById('answer-buttons');
+        const feedbackElement = document.getElementById('feedback');
+        const explanationAreaElement = document.getElementById('explanation-area');
+        const explanationTextElement = document.getElementById('explanation-text');
+        const scoreAreaElement = document.getElementById('score-area');
+        const scoreElement = document.getElementById('score');
+        const skipButton = document.getElementById('skip-button');
+        const nextButton = document.getElementById('next-button');
+        const addToRememberButton = document.getElementById('add-to-remember-button'); // Get remember button
+        const finalScoreElement = document.getElementById('final-score');
+        const finalScoreTextElement = document.getElementById('final-score-text');
+        const finalTotalTextElement = document.getElementById('final-total-text');
+        const restartButton = document.getElementById('restart-button');
+        const downloadPdfButton = document.getElementById('download-mistakes-pdf');
+        const exportAllPdfButton = document.getElementById('export-all-pdf-button'); // Get export all button
+        const quoteAreaElement = document.getElementById('quote-area');
+        const currentQuoteElement = document.getElementById('current-quote');
+
+
+        // --- Functions ---
+
+        function showLessonSelection() {
+            gameInProgress = false;
+            // Hide game elements
+            gameContainerElement.classList.add('hidden');
+            finalScoreElement.classList.add('hidden');
+            explanationAreaElement.classList.add('hidden');
+            explanationAreaElement.classList.remove('visible'); // Remove animation class
+            addToRememberButton.classList.add('hidden'); // Hide remember button
+            quoteAreaElement.classList.add('hidden'); // Hide quote area
+
+            // Show lesson selection
+            lessonSelectionElement.classList.remove('hidden');
+
+            // Clear existing buttons before adding new ones
+            // Clone the element before removing children to avoid issues if the element itself is removed/re-added elsewhere
+             const lessonSelectionClone = lessonSelectionElement.cloneNode(true);
+             while (lessonSelectionElement.firstChild) {
+                 lessonSelectionElement.removeChild(lessonSelectionElement.firstChild);
+             }
+             // Add back the h2 title
+             const title = document.createElement('h2');
+             title.textContent = 'Choose a Lesson';
+             lessonSelectionElement.appendChild(title);
+
+
+            for (const topicKey in Topics) {
+                const topicName = Topics[topicKey];
+                // Check if there are questions for this topic before adding the button
+                const questionsForTopic = allQuestions.filter(q => q.topic === topicName);
+                if (questionsForTopic.length > 0) {
+                    const btn = document.createElement("button");
+                    btn.classList.add("action-button");
+                    btn.innerText = `${topicName} (${questionsForTopic.length} Questions)`;
+                    btn.addEventListener('click', () => startGame(topicName));
+                    lessonSelectionElement.appendChild(btn);
+                }
+            }
+        }
+
+        function startGame(topic) {
+            gameInProgress = true;
+            console.log(`Starting lesson: ${topic}`);
+            // Filter questions based on the chosen topic and sort by original number
+            currentTopicQuestions = allQuestions
+                .filter(q => q.topic === topic)
+                .sort((a, b) => a.originalNumber - b.originalNumber); // Sort by original number
+
+            if (currentTopicQuestions.length === 0) {
+                alert(`No questions found for the topic: ${topic}`);
+                showLessonSelection(); // Go back to selection if no questions
+                return;
+            }
+
+
+            // Reset game state
+            currentQuestionIndex = 0;
+            score = 0;
+            lessonAttempts = []; // Clear attempts for the new lesson
+            questionsToRemember = []; // Clear remember list for the new lesson
+            scoreElement.textContent = score;
+            totalQNumElement.textContent = currentTopicQuestions.length; // Update total count
+
+            // Update game title
+            gameTitleElement.textContent = `Game Show! - ${topic}`; // Updated title
+
+            // Hide lesson selection
+            lessonSelectionElement.classList.add('hidden');
+
+            // Show game elements
+            gameContainerElement.classList.remove('hidden');
+            questionAreaElement.classList.remove('hidden');
+            feedbackElement.classList.remove('hidden');
+            scoreAreaElement.classList.remove('hidden');
+            quoteAreaElement.classList.remove('hidden');
+            questionCounterElement.classList.remove('hidden'); // Show question counter
+
+            // Hide end game elements
+            finalScoreElement.classList.add('hidden');
+            nextButton.classList.add('hidden');
+            restartButton.classList.add('hidden');
+            downloadPdfButton.classList.add('hidden');
+            exportAllPdfButton.classList.add('hidden'); // Hide export all button
+
+            displayQuestion();
+            displayRandomQuote();
+        }
+
+        function displayQuestion() {
+            resetState(); // Clears feedback, explanation, buttons, etc.
+            buttonsDisabled = false; // Re-enable input
+
+            skipButton.classList.remove('hidden'); // Show the skip button
+            skipButton.disabled = false; // Enable the skip button
+            addToRememberButton.classList.add('hidden'); // Hide remember button for new question
+            // checkRememberButtonState will make it visible if the question is correct
+
+            const question = currentTopicQuestions[currentQuestionIndex];
+
+            if (!question) {
+                console.error("Question index out of bounds or no questions found.");
+                questionTextElement.innerHTML = "Error: Could not load next question."; // Use innerHTML for potential HTML
+                buttonsDisabled = true;
+                nextButton.classList.add('hidden');
+                skipButton.classList.add('hidden'); // Hide skip button on error
+                addToRememberButton.classList.add('hidden'); // Hide remember button on error
+                 quoteAreaElement.classList.add('hidden'); // Hide quote area on error
+                setTimeout(() => restartButton.classList.remove('hidden'), 2000);
+                return;
+            }
+
+            // Update question counter
+            currentQNumElement.textContent = currentQuestionIndex + 1;
+
+            questionTextElement.innerHTML = question.question; // Use innerHTML
+
+            if (!question.options || question.options.length === 0) {
+                console.error("Question has no options:", question);
+                 questionTextElement.innerHTML = `Error loading question ${question.originalNumber}. Please check the question data.`; // Use innerHTML
+                buttonsDisabled = true;
+                skipButton.classList.add('hidden'); // Hide skip button on error
+                addToRememberButton.classList.add('hidden'); // Hide remember button on error
+                 quoteAreaElement.classList.add('hidden'); // Hide quote area on error
+                if (currentQuestionIndex < currentTopicQuestions.length - 1) {
+                    setTimeout(() => { nextButton.classList.remove('hidden'); }, 800);
+                } else {
+                    setTimeout(endGame, 1000);
+                }
+                return;
+            }
+
+            answerButtonsElement.innerHTML = ''; // Clear previous buttons effectively
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.innerHTML = option; // Use innerHTML
+                button.classList.add('answer-button');
+                button.dataset.index = index;
+
+                // Use an anonymous function to call selectAnswer with the correct index
+                button.addEventListener('click', () => selectAnswer(index));
+                answerButtonsElement.appendChild(button);
+            });
+        }
+
+        function resetState() {
+            // Clear previous answer buttons! - Replaced while loop with innerHTML = ''
+             answerButtonsElement.innerHTML = '';
+
+
+            feedbackElement.textContent = '';
+            feedbackElement.style.color = '';
+            explanationAreaElement.classList.add('hidden');
+            explanationAreaElement.classList.remove('visible');
+            explanationTextElement.innerHTML = ''; // Use innerHTML
+            nextButton.classList.add('hidden');
+            // skipButton and addToRememberButton visibility/state are managed in displayQuestion and selectAnswer/skipQuestion
+        }
+
+        function selectAnswer(selectedIndex) {
+            if (buttonsDisabled) return; // Prevent double-clicking
+            buttonsDisabled = true; // Disable input once an answer is chosen
+
+            // Disable and hide the skip button immediately
+            skipButton.disabled = true;
+            skipButton.classList.add('hidden');
+
+            // Disable all answer buttons
+            const answerButtons = answerButtonsElement.querySelectorAll('.answer-button');
+            answerButtons.forEach(button => button.disabled = true);
+
+            const question = currentTopicQuestions[currentQuestionIndex];
+            const isCorrect = (selectedIndex === question.correctAnswer);
+
+            // Record the attempt
+            lessonAttempts.push({
+                originalNumber: question.originalNumber, // Include original number
+                questionText: question.question, // Keep original HTML
+                selectedAnswer: question.options[selectedIndex], // Keep original HTML
+                correctAnswerText: question.correctAnswerText, // Keep original HTML
+                options: question.options, // Keep original HTML options list
+                explanation: question.explanation, // Keep original HTML
+                isCorrect: isCorrect,
+                topic: question.topic,
+                // Do NOT add isRememberedItem: true here
+            });
+
+            // Highlight buttons
+            answerButtons.forEach((button, index) => {
+                if (index === question.correctAnswer) {
+                    button.classList.add('correct');
+                } else if (index === selectedIndex) {
+                    button.classList.add('incorrect');
+                }
+            });
+
+            if (isCorrect) {
+                score++;
+                scoreElement.textContent = score;
+                feedbackElement.textContent = 'Correct!';
+                feedbackElement.style.color = '#28a745'; // Green
+
+                // *** Show and check state of Add to Remember button ONLY if correct ***
+                addToRememberButton.classList.remove('hidden');
+                checkRememberButtonState(question); // Check if already added and set state/text
+
+            } else {
+                feedbackElement.textContent = `Incorrect.`;
+                feedbackElement.style.color = '#dc3545'; // Red
+                addToRememberButton.classList.add('hidden'); // Ensure hidden if incorrect
+            }
+
+            // Display explanation with animation (includes correct answer)
+            // Construct explanation HTML to include Correct Answer text for display
+            const explanationHtml = `<strong>Correct Answer:</strong> ${question.correctAnswerText}<br><br><strong>Explanation:</strong> ${question.explanation}`;
+            explanationTextElement.innerHTML = explanationHtml; // Use innerHTML
+            explanationAreaElement.classList.remove('hidden');
+            setTimeout(() => {
+                explanationAreaElement.classList.add('visible');
+            }, 10);
+
+
+            // Determine next action after a delay
+            if (currentQuestionIndex < currentTopicQuestions.length - 1) {
+                setTimeout(() => {
+                    nextButton.classList.remove('hidden');
+                }, 800); // Faster timeout
+            } else {
+                // This is the last question
+                setTimeout(endGame, 1200); // Faster endgame
+            }
+        }
+
+        function skipQuestion() {
+            if (buttonsDisabled) return; // Prevent double-clicking
+            buttonsDisabled = true; // Disable input once skip is clicked
+
+            // Disable and hide the skip button immediately
+            skipButton.disabled = true;
+            skipButton.classList.add('hidden');
+
+            // Disable all answer buttons
+            const answerButtons = answerButtonsElement.querySelectorAll('.answer-button');
+            answerButtons.forEach(button => button.disabled = true);
+
+            const question = currentTopicQuestions[currentQuestionIndex];
+
+            // Record the attempt as skipped/incorrect - PUSH A STRUCTURED OBJECT
+             lessonAttempts.push({
+                originalNumber: question.originalNumber,
+                questionText: question.question, // Include question text
+                selectedAnswer: "[Skipped]", // Indicate it was skipped
+                correctAnswerText: question.correctAnswerText, // Include correct answer text
+                options: question.options, // Include options
+                explanation: question.explanation, // Include explanation
+                isCorrect: false, // Mark as incorrect/missed for filtering
+                topic: question.topic,
+                // Do NOT add isRememberedItem: true here
+            });
+
+
+            // Provide feedback for skipping
+            feedbackElement.textContent = 'Question Skipped.';
+            feedbackElement.style.color = '#ffc107'; // Yellow/Orange color for skipped feedback
+
+            // Highlight the correct answer button visually (if it exists)
+             const answerButtonsList = answerButtonsElement.querySelectorAll('.answer-button');
+            if (question.correctAnswer >= 0 && question.correctAnswer < answerButtonsList.length) {
+                 answerButtonsList[question.correctAnswer].classList.add('correct');
+            }
+
+
+            // Display explanation and correct answer with animation
+             const explanationHtml = `<strong>Correct Answer:</strong> ${question.correctAnswerText}<br><br><strong>Explanation:</strong> ${question.explanation}`;
+             explanationTextElement.innerHTML = explanationHtml; // Use innerHTML
+            explanationAreaElement.classList.remove('hidden');
+            setTimeout(() => {
+                explanationAreaElement.classList.add('visible');
+            }, 10);
+
+            // *** Do NOT show "Add to Remember" button if skipped ***
+            addToRememberButton.classList.add('hidden');
+
+
+            // Determine next action after a delay
+            if (currentQuestionIndex < currentTopicQuestions.length - 1) {
+                setTimeout(() => {
+                    nextButton.classList.remove('hidden');
+                }, 800); // Faster timeout
+            } else {
+                setTimeout(endGame, 1200);
+            }
+        }
+
+        // Function to check and set the state of the "Add to Remember" button
+        function checkRememberButtonState(question) {
+            // Check if the current question is already in the remember list
+            const isAlreadyAdded = questionsToRemember.some(q => q.originalNumber === question.originalNumber && q.topic === question.topic);
+
+            if (isAlreadyAdded) {
+                addToRememberButton.textContent = "Added!";
+                addToRememberButton.disabled = true;
+                 // Styling is handled by the CSS :disabled rule now
+            } else {
+                addToRememberButton.textContent = "Add to Remember List";
+                addToRememberButton.disabled = false;
+                 // Styling is handled by the CSS rule for #add-to-remember-button
+            }
+        }
+
+
+        // Function to add the current question to the remember list when button is clicked
+        function addToRememberList() {
+            const question = currentTopicQuestions[currentQuestionIndex];
+            // Check if the current question is already in the remember list before adding
+            const isAlreadyAdded = questionsToRemember.some(q => q.originalNumber === question.originalNumber && q.topic === question.topic);
+
+            if (!isAlreadyAdded) {
+                // Add a copy of the question object, ensuring all needed properties are included
+                 // We should store the necessary properties explicitly to avoid issues if the original question object structure changes later
+                questionsToRemember.push({
+                    originalNumber: question.originalNumber,
+                    question: question.question, // Use 'question' as it is in the original object
+                    options: question.options,
+                    correctAnswer: question.correctAnswer, // Store index for consistency
+                    correctAnswerText: question.correctAnswerText, // Store text
+                    explanation: question.explanation,
+                    topic: question.topic,
+                    isRememberedItem: true // Add flag to distinguish from attempts
+                });
+                // Update button state immediately
+                checkRememberButtonState(question); // This will set the text to "Added!" and disable the button
+                console.log(`Question ${question.originalNumber} added to remember list.`);
+            }
+            // If it was already added, the button should have been disabled already by checkRememberButtonState
+        }
+
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentTopicQuestions.length) {
+                displayQuestion(); // displayQuestion will handle showing/enabling the skip and hiding remember button
+                displayRandomQuote();
+            } else {
+                // Should be handled by selectAnswer/skipQuestion, but included for safety
+                endGame();
+            }
+        }
+
+        function endGame() {
+            gameInProgress = false;
+            // Hide game elements
+            questionAreaElement.classList.add('hidden');
+            feedbackElement.classList.add('hidden');
+            explanationAreaElement.classList.add('hidden');
+            explanationAreaElement.classList.remove('visible');
+            scoreAreaElement.classList.add('hidden');
+            nextButton.classList.add('hidden');
+            skipButton.classList.add('hidden'); // Ensure skip button is hidden at the end
+            addToRememberButton.classList.add('hidden'); // Ensure remember button is hidden at the end
+            quoteAreaElement.classList.add('hidden');
+            questionCounterElement.classList.add('hidden');
+
+            // Show final score and restart button
+            finalScoreElement.classList.remove('hidden');
+            finalScoreTextElement.textContent = score;
+            finalTotalTextElement.textContent = currentTopicQuestions.length;
+            restartButton.classList.remove('hidden');
+
+            // Show Review PDF button only if there were mistakes OR skips OR items to remember
+             // Filter includes items where isCorrect is false (incorrect/skipped)
+            const mistakesOrSkips = lessonAttempts
+                .filter(attempt => !attempt.isCorrect)
+                .sort((a, b) => a.originalNumber - b.originalNumber); // Sort by original question number
+
+            const rememberItems = questionsToRemember.sort((a, b) => a.originalNumber - b.originalNumber);
+
+            if (mistakesOrSkips.length > 0 || rememberItems.length > 0) {
+                downloadPdfButton.classList.remove('hidden');
+            } else {
+                downloadPdfButton.classList.add('hidden');
+            }
+
+            // Always show the Export All button on the final screen
+            exportAllPdfButton.classList.remove('hidden');
+        }
+
+        function displayRandomQuote() {
+            // Only display quote if game is in progress
+            if (gameInProgress) {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                currentQuoteElement.textContent = quotes[randomIndex];
+                quoteAreaElement.classList.remove('hidden');
+            } else {
+                quoteAreaElement.classList.add('hidden'); // Hide if not in game
+            }
+        }
+
+        // --- PDF Generation Functions using html2pdf.js ---
+
+        // Helper function to generate the HTML content for a single item in the PDF
+        function buildItemHtml(item, index, isReview = true) {
+            // Common CSS styles for PDF content
+            const pdfStyles = `
+                <style>
+                    body { font-family: 'Arial', sans-serif; line-height: 1.5; color: #333; margin: 0; padding: 0; }
+                    p { margin: 0 0 8px 0; }
+                    strong { font-weight: bold; }
+                    ul { margin: 8px 0 8px 20px; padding: 0; list-style: none; }
+                    li { margin-bottom: 4px; font-size: 15pt; } /* Set font size for options list items */
+                    .item-container { border: 1px solid #eee; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+                    .item-header { font-size: 11pt; font-weight: bold; margin-bottom: 10px; color: #444; }
+                    .question-text { font-size: 16pt; margin-bottom: 8px; } /* Set font size for question text */
+                    .answer-text { font-size: 15pt; } /* Set font size for answer text */
+                    .correct-answer { color: #28a745; }
+                    .incorrect-answer { color: #dc3545; }
+                    .skipped-answer { color: #6c757d; font-style: italic; }
+                    .explanation-text { font-size: 14pt; color: #1b5e20; margin-top: 8px; } /* Set font size for explanation */
+                    /* Basic sub/sup styling */
+                    sub, sup { font-size: 0.7em; line-height: 0; position: relative; vertical-align: baseline; }
+                    sup { top: -0.5em; }
+                    sub { bottom: -0.2em; }
+                </style>
+            `;
+
+            let itemHtml = `<div class="item-container">`;
+
+            if (isReview) {
+                 // Review PDF includes item number and original question number
+                 // Check if it's a remembered item or an attempt (incorrect/skipped)
+                if (item.isRememberedItem) {
+                    // --- Display for Remembered Item ---
+                    itemHtml += `<p class="item-header">Item ${index + 1}: (Original Question ${item.originalNumber})</p>`;
+                    // Use 'question' property from the original question object
+                    itemHtml += `<p class="question-text"><strong>Question:</strong> ${item.question}</p>`;
+
+                     // For remembered items, show the options list
+                    if (item.options && Array.isArray(item.options) && item.options.length > 0) {
+                         itemHtml += `<p style="margin-bottom: 5px;"><strong>Options:</strong></p><ul>`;
+                         item.options.forEach((opt, idx) => {
+                             itemHtml += `<li>${String.fromCharCode(97 + idx)}) ${opt}</li>`;
+                         });
+                         itemHtml += `</ul>`;
+                    }
+
+                    // Use 'correctAnswerText' from the original question object
+                    itemHtml += `<p class="answer-text correct-answer"><strong>Correct Answer:</strong> ${item.correctAnswerText}</p>`;
+
+                    // Use 'explanation' from the original question object
+                    itemHtml += `<p class="explanation-text"><strong>Explanation:</strong> ${item.explanation}</p>`;
+
+                } else {
+                     // --- Display for Incorrect/Skipped Attempt ---
+                    itemHtml += `<p class="item-header">Item ${index + 1}: (Original Question ${item.originalNumber})</p>`;
+                    // Use 'questionText' property from the attempt object
+                    itemHtml += `<p class="question-text"><strong>Question:</strong> ${item.questionText}</p>`;
+
+                    // Add selected/skipped answer or action
+                    if (item.selectedAnswer === "[Skipped]") {
+                        itemHtml += `<p class="answer-text skipped-answer"><strong>Your Action:</strong> [Skipped / Don't Know]</p>`;
+                    } else { // Must be an incorrect answer
+                        // Use 'selectedAnswer' property from the attempt object
+                        itemHtml += `<p class="answer-text incorrect-answer"><strong>Your Answer:</strong> ${item.selectedAnswer}</p>`;
+                    }
+
+                    // Use 'correctAnswerText' property from the attempt object
+                    itemHtml += `<p class="answer-text correct-answer"><strong>Correct Answer:</strong> ${item.correctAnswerText}</p>`;
+
+                    // Use 'explanation' property from the attempt object
+                    itemHtml += `<p class="explanation-text"><strong>Explanation:</strong> ${item.explanation}</p>`;
+                }
+
+
+            } else {
+                 // --- Display for All Questions (Not Review) ---
+                 // item here is the original question object from allQuestions
+                 itemHtml += `<p class="item-header">Question ${item.originalNumber}:</p>`;
+                 itemHtml += `<p class="question-text"><strong>Question:</strong> ${item.question}</p>`; // Use item.question
+
+                 // Add options list
+                 if (item.options && Array.isArray(item.options) && item.options.length > 0) {
+                      itemHtml += `<p style="margin-bottom: 5px;"><strong>Options:</strong></p><ul>`;
+                      item.options.forEach((opt, idx) => {
+                          // Use item.options
+                          itemHtml += `<li>${String.fromCharCode(97 + idx)}) ${opt}</li>`;
+                      });
+                      itemHtml += `</ul>`;
+                 }
+
+                 // Add correct answer
+                 // Use item.correctAnswerText
+                 itemHtml += `<p class="answer-text correct-answer"><strong>Correct Answer:</strong> ${item.correctAnswerText}</p>`;
+
+                 // Add explanation
+                 // Use item.explanation
+                 itemHtml += `<p class="explanation-text"><strong>Explanation:</strong> ${item.explanation}</p>`;
+            }
+
+            itemHtml += `</div>`; // Close item-container
+
+            // Note: pdfStyles is included multiple times, once for each item.
+            // html2pdf handles this, but for cleaner HTML source in the generated PDF,
+            // one might build the full HTML string and prepend styles once.
+            // However, including it per item is safer if html2pdf processes items
+            // somewhat independently or across page breaks. Sticking to including it here.
+             return pdfStyles + itemHtml; // Include styles with each item for safety in html2pdf rendering
+        }
+
+
+        // PDF Generation Function for Mistakes, Skips, and Remembered Items using html2pdf.js
+        function generateReviewPDF() {
+             // Filter includes items where isCorrect is false (incorrect/skipped)
+            const mistakesOrSkips = lessonAttempts
+                .filter(attempt => !attempt.isCorrect)
+                .sort((a, b) => a.originalNumber - b.originalNumber); // Sort by original question number
+
+            const rememberItems = questionsToRemember.sort((a, b) => a.originalNumber - b.originalNumber);
+
+            if (mistakesOrSkips.length === 0 && rememberItems.length === 0) {
+                alert("No mistakes, skips, or items added to the 'Remember' list to review.");
+                return;
+            }
+
+            const topicName = currentTopicQuestions.length > 0 ? currentTopicQuestions[0].topic : 'Lesson';
+
+            let pdfHtml = `
+                <html>
+                <head>
+                    <title>${topicName} Review</title>
+                    <style>
+                         body { font-family: 'Arial', sans-serif; line-height: 1.4; color: #333; margin: 0; padding: 20mm; }
+                         h1, h2 { color: #1a2a6c; }
+                         h1 { font-size: 18pt; margin-bottom: 5mm; }
+                         h2 { font-size: 14pt; margin-bottom: 8mm; } /* Adjusted margin */
+                         p { margin: 0 0 8px 0; }
+                         strong { font-weight: bold; }
+                         ul { margin: 8px 0 8px 20px; padding: 0; list-style: none; }
+                         li { margin-bottom: 4px; } /* Font size handled in buildItemHtml */
+                         .item-container { border: 1px solid #eee; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+                         .item-header { font-size: 11pt; font-weight: bold; margin-bottom: 10px; color: #444; }
+                         /* Font sizes for question/answer/explanation handled in buildItemHtml */
+
+                         /* Basic sub/sup styling */
+                         sub, sup { font-size: 0.7em; line-height: 0; position: relative; vertical-align: baseline; }
+                         sup { top: -0.5em; }
+                         sub { bottom: -0.2em; }
+
+                         /* Section Titles */
+                         .section-title { font-size: 16pt; font-weight: bold; margin-top: 15mm; margin-bottom: 8mm; } /* Adjusted margin */
+                         .section-title.mistakes { color: #dc3545; }
+                         .section-title.remember { color: #4a69bd; }
+
+                    </style>
+                </head>
+                <body>
+                    <h1>Review - Mistakes, Skips, and Remembered Items</h1>
+                    <h2>Lesson: ${topicName}</h2>
+                    <p><strong>Final Score:</strong> ${score} / ${currentTopicQuestions.length}</p>
+            `;
+
+            // --- Incorrect Answers & Skips Section ---
+            if (mistakesOrSkips.length > 0) {
+                pdfHtml += `<h2 class="section-title mistakes">Incorrect Answers & Skips (${mistakesOrSkips.length})</h2>`;
+                mistakesOrSkips.forEach((item, index) => {
+                    pdfHtml += buildItemHtml(item, index, true); // true for isReview
+                });
+            }
+
+            // --- Questions to Remember Section ---
+            if (rememberItems.length > 0) {
+                 // Add a little space before this section if the previous one exists
+                 if (mistakesOrSkips.length > 0) {
+                     pdfHtml += `<div style="height: 10mm;"></div>`; // Add vertical space
+                 }
+                pdfHtml += `<h2 class="section-title remember">Questions to Remember (${rememberItems.length})</h2>`;
+                rememberItems.forEach((item, index) => {
+                     // For remembered items, use buildItemHtml in review mode
+                    pdfHtml += buildItemHtml(item, index, true); // true for isReview
+                });
+            }
+
+            pdfHtml += `</body></html>`;
+
+            // Use html2pdf.js to generate and save the PDF
+            const worker = html2pdf().from(pdfHtml).set({
+                margin: 15, // Page margins in mm
+                filename: `${topicName.replace(/[^a-z0-9]/gi, '_')}_Review.pdf`,
+				pagebreak:{mode:"avoid-all"}, // Use avoid-all to prevent breaking items/sections
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 8, // Increased scale for better resolution (kept from previous fix)
+                    logging: true,
+                    dpi: 300,
+                    letterRendering: true
+                },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            });
+
+             worker.save();
+        }
+
+
+        // PDF Generation Function for ALL Questions using html2pdf.js
+        function generateAllQuestionsPDF() {
+             if (currentTopicQuestions.length === 0) {
+                alert("No questions available for the current lesson.");
+                return;
+            }
+
+            const topicName = currentTopicQuestions.length > 0 ? currentTopicQuestions[0].topic : 'Lesson';
+
+            let pdfHtml = `
+                <html>
+                <head>
+                    <title>${topicName} All Questions</title>
+                     <style>
+                         body { font-family: 'Arial', sans-serif; line-height: 1.4; color: #333; margin: 0; padding: 20mm; }
+                         h1, h2 { color: #1a2a6c; }
+                         h1 { font-size: 18pt; margin-bottom: 5mm; }
+                         h2 { font-size: 14pt; margin-bottom: 10mm; }
+                         p { margin: 0 0 8px 0; }
+                         strong { font-weight: bold; }
+                         ul { margin: 8px 0 8px 20px; padding: 0; list-style: none; }
+                         li { margin-bottom: 4px; } /* Font size handled in buildItemHtml */
+                         .item-container { border: 1px solid #eee; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+                         .item-header { font-size: 11pt; font-weight: bold; margin-bottom: 10px; color: #444; }
+                         /* Font sizes for question/answer/explanation handled in buildItemHtml */
+
+                         /* Basic sub/sup styling */
+                         sub, sup { font-size: 0.7em; line-height: 0; position: relative; vertical-align: baseline; }
+                         sup { top: -0.5em; }
+                         sub { bottom: -0.2em; }
+                    </style>
+                </head>
+                <body>
+                    <h1>All Questions and Answers</h1>
+                    <h2>Lesson: ${topicName}</h2>
+            `;
+
+             // Sort questions just in case they weren't filtered/sorted earlier (though startGame does this)
+             const sortedQuestions = currentTopicQuestions.slice().sort((a, b) => a.originalNumber - b.originalNumber);
+
+            // Add each question to the HTML
+             sortedQuestions.forEach((item, index) => {
+                pdfHtml += buildItemHtml(item, index, false); // false for not isReview (i.e., show options)
+            });
+
+            pdfHtml += `</body></html>`;
+
+
+            // Use html2pdf.js to generate and save the PDF
+             const worker = html2pdf().from(pdfHtml).set({
+                margin: 15, // Page margins in mm
+                filename: `${topicName.replace(/[^a-z0-9]/gi, '_')}_All_Questions_and_Answers.pdf`,
+                 image: { type: 'jpeg', quality: 0.98 },
+				 pagebreak:{mode:"avoid-all"}, // Use avoid-all to prevent breaking items
+                 html2canvas: {
+                     scale: 8, // Increased scale for better resolution (kept from previous fix)
+                     logging: true,
+                     dpi: 300,
+                     letterRendering: true
+                    },
+                 jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            });
+
+             worker.save();
+        }
+
+
+        // --- Event Listeners ---
+        addToRememberButton.addEventListener('click', addToRememberList);
+        skipButton.addEventListener('click', skipQuestion);
+        nextButton.addEventListener('click', nextQuestion);
+        restartButton.addEventListener('click', showLessonSelection);
+        downloadPdfButton.addEventListener('click', generateReviewPDF); // Hook up to the new Review PDF function
+        exportAllPdfButton.addEventListener('click', generateAllQuestionsPDF);
+
+
+        // --- Initial Call to Show Lesson Selection ---
+        // Using DOMContentLoaded ensures the script runs after the HTML is fully parsed
+        document.addEventListener('DOMContentLoaded', showLessonSelection);
+    </script>
+
+</body>
+
+</html>
