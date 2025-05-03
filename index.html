@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chemistry Game Show</title>
+    <title>Biology Exams</title>
 
     <!-- Embedded CSS Styles -->
     <style>
@@ -441,325 +441,328 @@
     <!-- Embedded JavaScript -->
     <script>
         // Define the lesson topic(s) based on the new PDF
-const Topics = {
+	    const Topics = {
     PLANT_TROPISM_SENSATION: 'Plant Tropism and Sensation',
     NERVOUS_SYSTEM_STRUCTURE: 'Nervous System Structure (Neurons and Neuroglia)',
     NERVOUS_SYSTEM_PHYSIOLOGY: 'Nerve Impulse Transmission (Polarization, Action Potential)',
 };
 
+// Helper function to add location tag
+const addLocation = (text, location) => `${text}<sub>(${location})</sub>`;
+
 const allQuestions = [
-    // Page 1: Fourth Week Class Performance
+    // Fourth Week Class Performance (Page 1)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- The swollen (Pulvinous) in mimosa plant represent the role of ............ in human.",
+        question: addLocation("1- The swollen (Pulvinous) in mimosa plant represent the role of ............ in human.", "Fourth Week Class Performance"),
         options: ["a- muscles", "b- joints", "c- ligaments", "d- bones"],
         correctAnswer: 1,
         correctAnswerText: "b- joints",
-        explanation: "The pulvinus is a motor organ at the base of plant leaves or leaflets, allowing for movement through changes in turgor pressure. This functional role of enabling movement at a specific point is analogous to how joints allow movement and bending in the human skeletal system.<br><br><b>Why this answer is correct:</b> Joints facilitate movement and bending in humans at specific points, a function mirrored by the pulvinus in enabling plant leaf/leaflet movement.<br><br><b>Why other options are incorrect:</b><br>a- Muscles generate force for movement, but the pulvinus acts as the point of articulation and mechanism for bending, not the generator of force in the same way as muscle.<br>c- Ligaments are connective tissues that stabilize joints, they do not cause movement.<br>d- Bones are structural supports; movement happens at joints where bones articulate."
+        explanation: "The pulvinus, a motor organ in Mimosa, allows for bending and movement through turgor changes at specific points, analogous to how joints in the human skeleton enable movement at articulation points.<br><br><b>Why this answer is correct:</b> Pulvini functionally resemble joints in allowing movement at specific points.<br><br><b>Why other options are incorrect:</b><br>a- Muscles generate force; the pulvinus acts more like the point of movement.<br>c- Ligaments stabilize joints, they don't cause movement.<br>d- Bones provide structure, movement happens at joints."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- In which of the following living organisms does the process of sensation appear more clearly?",
+        question: addLocation("2- In which of the following living organisms does the process of sensation appear more clearly?", "Fourth Week Class Performance"),
         options: ["a- apples", "b- mimosa", "c- rabbit", "d- oats"],
         correctAnswer: 1,
         correctAnswerText: "b- mimosa",
-        explanation: "Sensation is the ability to perceive and respond to stimuli. The Mimosa pudica plant is famous for its rapid and dramatic folding of leaves in response to touch (thigmonasty), making its sensory response exceptionally visible and clear compared to the other options.<br><br><b>Why this answer is correct:</b> The rapid, visible movement of Mimosa leaves upon touch is a clear demonstration of sensation.<br><br><b>Why other options are incorrect:</b><br>a- Apples are fruits; the plant they come from exhibits sensation (like tropisms) but not in such a dramatic, clearly visible manner.<br>c- Rabbits are animals with complex sensation via a nervous system, but the context seems to relate to common biological examples where sensation is studied, and Mimosa is a classic plant example.<br>d- Oats are plants exhibiting slower growth-based responses (tropisms)."
+        explanation: "The rapid, dramatic folding of Mimosa leaves in response to touch (thigmonasty) is a highly visible demonstration of sensation compared to the subtler responses in the other options.<br><br><b>Why this answer is correct:</b> Mimosa exhibits rapid and clearly visible touch responses.<br><br><b>Why other options are incorrect:</b><br>a- Apples are fruits; the plant's sensation is less dramatic.<br>c- Rabbits have complex sensation, but Mimosa is a classic plant example of clear, observable response.<br>d- Oats show slower growth-based responses (tropisms)."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "3- Which of the following happen when the growing plant is exposed to light from the right side?",
+        question: addLocation("3- Which of the following happen when the growing plant is exposed to light from the right side?", "Fourth Week Class Performance"),
         options: ["a- the stem moves to the left and the root to the right", "b- the stem moves to the right and the root to the left", "c- the stem and root move to the right direction", "d- the stem and root move to the left direction"],
         correctAnswer: 1,
         correctAnswerText: "b- the stem moves to the right and the root to the left",
-        explanation: "Stems are positively phototropic, growing towards light. Roots are negatively phototropic (or insensitive), growing away from light. If light comes from the right, the stem bends right, and the root grows left (away from the light).<br><br><b>Why this answer is correct:</b> Stem moves towards light (right), root moves away from light (left).<br><br><b>Why other options are incorrect:</b><br>a- Stem moves towards light (right), not left.<br>c- Root moves away from light (left), not right.<br>d- Stem moves towards light (right), not left. Root moves away from light (left)."
+        explanation: "Stems are positively phototropic (grow towards light), while roots are negatively phototropic (grow away from light). Light from the right causes the stem to bend right and the root to grow left.<br><br><b>Why this answer is correct:</b> Stem bends towards light (right), root grows away from light (left).<br><br><b>Why other options are incorrect:</b><br>a- Stem bends right, not left.<br>c- Root grows left, not right.<br>d- Stem bends right, not left; root grows left."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- The direction of the stem of growing plant towards the light.",
+        question: addLocation("Write what the following expressions mean:\n1- The direction of the stem of growing plant towards the light.", "Fourth Week Class Performance"),
         correctAnswerText: "Positive phototropism of the stem.",
-        explanation: "Phototropism is directional growth in response to light. Growing towards the light source is positive phototropism."
+        explanation: "Growth towards a light source is defined as positive phototropism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- The response of the living organism to internal and external stimuli.",
+        question: addLocation("Write what the following expressions mean:\n2- The response of the living organism to internal and external stimuli.", "Fourth Week Class Performance"),
         correctAnswerText: "Sensation.",
-        explanation: "Sensation is the fundamental property of irritability, enabling organisms to detect and react to changes (stimuli)."
+        explanation: "Sensation is the ability to perceive and react to stimuli."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "Write what the following expressions mean:\n3- Chemical substances that affect on plant growth and found in the growing tips.",
+        question: addLocation("Write what the following expressions mean:\n3- Chemical substances that affect on plant growth and found in the growing tips.", "Fourth Week Class Performance"),
         correctAnswerText: "Auxins (or Plant hormones).",
-        explanation: "Auxins are key plant hormones produced in apical meristems that regulate growth and development, including tropisms."
+        explanation: "Auxins are plant hormones produced in meristems that regulate growth and tropisms."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Give reasons for the following:\n1- The root is a negative phototropism.",
-        correctAnswerText: "Roots exhibit negative phototropism, growing away from light. This is because higher auxin concentrations, which accumulate on the shaded side due to unilateral light, inhibit cell elongation in roots. Cells on the illuminated side elongate more, causing the root to bend away from the light.",
-        explanation: "Explains the directional growth away from light and the underlying mechanism involving auxin's inhibitory effect on root elongation at high concentrations."
+        question: addLocation("Give reasons for the following:\n1- The root is a negative phototropism.", "Fourth Week Class Performance"),
+        correctAnswerText: "Roots are negatively phototropic because they grow away from light. Unilateral light causes auxin accumulation on the shaded side, which, at the concentrations present in roots, inhibits cell elongation. The illuminated side elongates more, causing the root to bend away from the light.",
+        explanation: "Explains the growth direction and the inhibitory effect of auxin on root elongation."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Give reasons for the following:\n2- The lower half of cell walls of the swollen (Pulvinous) has importance in movement.",
-        correctAnswerText: "The motor cells in the pulvinus have differential wall thickness or properties, with the lower cells often having walls structured to facilitate swelling and shrinking due to turgor changes. These changes in turgor pressure, particularly the rapid loss of turgor on the lower side (or gain on the upper side), cause the bending or folding movement.",
-        explanation: "Highlights the structural difference in pulvinus cell walls that enables differential turgor changes to result in movement."
+        question: addLocation("Give reasons for the following:\n2- The lower half of cell walls of the swollen (Pulvinous) has importance in movement.", "Fourth Week Class Performance"),
+        correctAnswerText: "The motor cells in the pulvinus have cell walls with differential properties (e.g., thickness or composition) on the upper and lower sides. These differences allow for differential volume changes in response to turgor pressure changes, causing the pulvinus to bend and facilitate leaf movement.",
+        explanation: "Highlights the structural basis (differential wall properties) in pulvinus cells for movement."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Mention two conditions for occurrence of phototropism.",
-        correctAnswerText: "1.  A unilateral light stimulus (light coming primarily from one direction).\n2.  A growing plant organ (like a stem or coleoptile) with a light-sensitive tip capable of producing and distributing auxin.",
-        explanation: "Lists the essential external trigger and the biological requirement for the phototropic response."
+        question: addLocation("Mention two conditions for occurrence of phototropism.", "Fourth Week Class Performance"),
+        correctAnswerText: "1. Unilateral light stimulus.\n2. A growing plant tip (like a coleoptile or stem apex) that is sensitive to light and can produce and redistribute auxin.",
+        explanation: "Lists the necessary stimulus and the biological requirement for the response."
     },
 
-    // Page 2: Fourth Week Home performances
+    // Fourth Week Home performances (Page 2)
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- Define the following:\na- Sensation.\nb- Tropism",
-        correctAnswerText: "a- Sensation: The ability of a living organism to detect changes in its environment (stimuli) and respond to them.\nb- Tropism: A directional growth response of a plant organ towards or away from an external stimulus.",
-        explanation: "Provides standard definitions for sensation and tropism."
+        question: addLocation("1- Define the following:\na- Sensation.\nb- Tropism", "Fourth Week Home performances"),
+        correctAnswerText: "a- Sensation: The capacity of a living organism to detect and respond to stimuli from its environment or within itself.\nb- Tropism: A growth movement of a plant organ in a specific direction in response to an external stimulus.",
+        explanation: "Provides definitions for sensation and tropism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- Correct what is underlined:\na- One of the plants that show the movement of sleep and wakefulness is the <U>date palm</U>.\nb- <U>Roots</U> play the role of joints when plants respond to touch or darkness.\nc- One of the scientists who contributed to explaining the phenomenon of phototropism is the scientist <U>Malpighi</U>",
+        question: addLocation("2- Correct what is underlined:\na- One of the plants that show the movement of sleep and wakefulness is the <U>date palm</U>.\nb- <U>Roots</U> play the role of joints when plants respond to touch or darkness.\nc- One of the scientists who contributed to explaining the phenomenon of phototropism is the scientist <U>Malpighi</U>", "Fourth Week Home performances"),
         correctAnswerText: "a- One of the plants that show the movement of sleep and wakefulness is the <U>Mimosa (or sensitive plant)</U>.\nb- <U>Pulvini (or swollen leaf bases)</U> play the role of joints when plants respond to touch or darkness.\nc- One of the scientists who contributed to explaining the phenomenon of phototropism is the scientist <U>Darwin (or Went)</U>",
-        explanation: "Corrects the underlined incorrect terms with the proper biological terms (Mimosa for sleep/wakefulness movements, Pulvini for joint-like function in movement, and Darwin/Went for pioneering work on phototropism explanation)."
+        explanation: "Corrects factual errors regarding plant movements and key scientists in phototropism research."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "3- Give reasons for the following:\na- The phenomenon of wilting occurs when touching a mimosa plant\nb- The importance of the sensation's property for a living organism",
-        correctAnswerText: "a- Wilting (rapid folding) in Mimosa occurs because the touch stimulus triggers rapid changes in the permeability of pulvinus cell membranes, leading to a quick efflux of water from these motor cells. The loss of turgor pressure causes the cells to shrink, resulting in the collapse and folding of the leaf/leaflets.\nb- Sensation is vital for living organisms as it allows them to perceive stimuli from their environment and internal state, enabling adaptive responses such as seeking resources (light, water), avoiding dangers (predators, toxins), maintaining homeostasis, and coordinating physiological processes.",
-        explanation: "Explains the mechanism of thigmonasty in Mimosa (turgor changes) and the adaptive value of sensation for survival and function."
+        question: addLocation("3- Give reasons for the following:\na- The phenomenon of wilting occurs when touching a mimosa plant\nb- The importance of the sensation's property for a living organism", "Fourth Week Home performances"),
+        correctAnswerText: "a- Touching a mimosa plant triggers rapid ion movement in pulvinus cells, causing water to leave the cells quickly (loss of turgor pressure). This sudden decrease in turgidity leads to the rapid wilting or folding of the leaves.\nb- Sensation is crucial for survival as it allows organisms to perceive environmental changes (stimuli) and internal states, enabling adaptive responses such as finding food/water, escaping danger, coordinating internal functions, and interacting with the environment.",
+        explanation: "Explains the turgor change mechanism in Mimosa and the overall adaptive value of sensation."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 4,
-        question: "4- What happens when?:\na- The growing plant is exposed to light from the east direction (for each of the following):\n1) Root\n2) Stem",
-        correctAnswerText: "1) Root: The root will grow away from the light source, bending towards the west (negative phototropism).\n2) Stem: The stem will grow towards the light source, bending towards the east (positive phototropism).",
-        explanation: "Describes the directional growth responses of roots and stems to unilateral light."
+        question: addLocation("4- What happens when?:\na- The growing plant is exposed to light from the east direction (for each of the following):\n1) Root\n2) Stem", "Fourth Week Home performances"),
+        correctAnswerText: "1) Root: The root grows away from the east light, bending towards the west (negative phototropism).\n2) Stem: The stem grows towards the east light, bending towards the east (positive phototropism).",
+        explanation: "Describes the directional phototropic responses of roots and stems to unilateral light."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 4,
-        question: "b- The swollen (Pulvinous) which in the leaves of the mimosa plant are disappeared.",
-        correctAnswerText: "If the pulvini are absent or non-functional, the mimosa plant would lose its ability to perform rapid touch-induced movements (thigmonasty) and rhythmic sleep/wake movements (nyctinasty) of its leaves.",
-        explanation: "States the consequence of lacking the motor organs responsible for rapid, turgor-driven movements in Mimosa."
+        question: addLocation("b- The swollen (Pulvinous) which in the leaves of the mimosa plant are disappeared.", "Fourth Week Home performances"),
+        correctAnswerText: "The mimosa plant would lose its ability to perform rapid touch-induced movements and rhythmic sleep/wake movements of its leaves, as these movements are driven by the turgor changes in the pulvini.",
+        explanation: "States the loss of specific leaf movements without the functional pulvini."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 4,
-        question: "c- Remove the top of the oat seedling and separate it with a mica sheet",
-        correctAnswerText: "Removing the coleoptile tip removes the source of auxin production. Separating the tip (or a piece placed on the cut surface) with an impermeable mica sheet prevents any auxin produced from reaching the bending region below. Consequently, the seedling will not show phototropic bending towards unilateral light.",
-        explanation: "Describes the result of interrupting auxin transport from the light-sensing tip, a classic experiment in phototropism research."
+        question: addLocation("c- Remove the top of the oat seedling and separate it with a mica sheet", "Fourth Week Home performances"),
+        correctAnswerText: "Removing the tip removes the source of auxin. The mica sheet, being impermeable, prevents any potential signal (like auxin from a replaced tip) from moving down to the bending region. As a result, the seedling will not exhibit phototropic bending.",
+        explanation: "Explains the consequence of removing or blocking the signal from the tip in phototropism experiments."
     },
 
-    // Page 3: Weekly evaluation (4) A
+    // Weekly evaluation (4) A (Page 3)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- The parts of the mimosa plant that do not affected by touch are ...........",
+        question: addLocation("1- The parts of the mimosa plant that do not affected by touch are ...........", "Weekly evaluation 4 A"),
         options: ["a- Leaflets.", "b- Swollen leaf bases.", "c- The stem.", "d- Secondary axes"],
         correctAnswer: 2,
         correctAnswerText: "c- The stem.",
-        explanation: "The rapid touch-sensitive movement in Mimosa is primarily mediated by the pulvini located at the base of leaflets, secondary axes (pinnae), and the main petiole. While the entire plant is living and responsive, the main stem is not the primary structure involved in the rapid folding response triggered by touch on the leaves.<br><br><b>Why this answer is correct:</b> The dramatic, rapid touch response in Mimosa occurs in the leaves and their associated pulvini, not the main stem.<br><br><b>Why other options are incorrect:</b><br>a- Leaflets are the parts that fold rapidly.<br>b- Swollen leaf bases (pulvini) are the motor organs responsible for the movement.<br>d- Secondary axes (pinnae) also droop due to pulvini at their base."
+        explanation: "The rapid touch response is localized to the leaf structures (leaflets, pulvini, rachises), not the main stem.<br><br><b>Why this answer is correct:</b> The stem does not show the dramatic, rapid touch response like the leaves.<br><br><b>Why other options are incorrect:</b><br>a- Leaflets fold upon touch.<br>b- Pulvini are the motor organs that drive the movement upon touch.<br>d- Secondary axes droop due to pulvini at their base."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- Increasing the concentration of auxins leads to....",
+        question: addLocation("2- Increasing the concentration of auxins leads to....", "Weekly evaluation 4 A"),
         options: ["a- Increased elongation of root cells.", "b- Increased elongation of the stem cells.", "c- Decrease in stem cell elongation.", "d- Inhibition of root cell elongation."],
         correctAnswer: 3,
         correctAnswerText: "d- Inhibition of root cell elongation.",
-        explanation: "Auxins have different optimal concentrations for promoting elongation in stems and roots. Concentrations that are optimal for stimulating stem elongation are inhibitory to root elongation because root cells are much more sensitive to auxin.<br><br><b>Why this answer is correct:</b> Higher auxin concentrations inhibit root cell elongation.<br><br><b>Why other options are incorrect:</b><br>a- Increased auxin *inhibits* root cell elongation at these concentrations.<br>b- Increased auxin *increases* stem cell elongation (up to an optimum).<br>c- Increased auxin *increases* stem cell elongation (up to an optimum)."
+        explanation: "Higher auxin concentrations inhibit elongation in roots due to their greater sensitivity compared to stems.<br><br><b>Why this answer is correct:</b> Auxin inhibits root elongation at high concentrations.<br><br><b>Why other options are incorrect:</b><br>a- Auxin inhibits root elongation at these levels.<br>b- Auxin increases stem elongation (up to optimum).<br>c- Auxin increases stem elongation."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\na- The growing plant responds to an external stimulus, which is Earth's gravity, so plant organs move toward or away from it. (.................)",
+        question: addLocation("Write what the following expressions mean:\na- The growing plant responds to an external stimulus, which is Earth's gravity, so plant organs move toward or away from it. (.................)", "Weekly evaluation 4 A"),
         correctAnswerText: "Geotropism (or Gravitropism).",
-        explanation: "Geotropism is directional growth in response to gravity."
+        explanation: "Definition of geotropism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\nb- The scientist who built his explanation of phototropism through his observations and conclusions from his experiments that he conducted on the coleoptile of the oat seedling. (................)",
+        question: addLocation("Write what the following expressions mean:\nb- The scientist who built his explanation of phototropism through his observations and conclusions from his experiments that he conducted on the coleoptile of the oat seedling. (................)", "Weekly evaluation 4 A"),
         correctAnswerText: "Charles Darwin and Francis Darwin.",
-        explanation: "The Darwins' experiments on oat coleoptiles were foundational in proposing that the tip perceives light and transmits a signal to the bending region, leading to their explanation of phototropism."
+        explanation: "The Darwins conducted pioneering experiments on oat coleoptiles regarding phototropism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "Give reasons for the following:\nThe movement of the mimosa plant depends on internal and external factors.",
-        correctAnswerText: "External factors like touch, temperature changes, or light/dark cycles act as stimuli. These stimuli trigger internal physiological changes within the pulvinus cells, such as rapid changes in turgor pressure caused by the movement of ions and water across membranes. These internal cellular changes directly result in the physical movement of the leaves/leaflets.",
-        explanation: "Explains how external stimuli initiate responses involving internal physiological mechanisms (turgor changes) in Mimosa movements."
+        question: addLocation("Give reasons for the following:\nThe movement of the mimosa plant depends on internal and external factors.", "Weekly evaluation 4 A"),
+        correctAnswerText: "External stimuli (touch, light) trigger internal physiological changes (ion fluxes, turgor changes in pulvinus cells) that result in the visible movement.",
+        explanation: "Explains the interaction of external triggers and internal mechanisms in Mimosa movement."
     },
 
-    // Page 4: Weekly evaluation (4) B
+    // Weekly evaluation (4) B (Page 4)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- The mimosa plant has ............ looks like the function of human joints.",
+        question: addLocation("1- The mimosa plant has ............ looks like the function of human joints.", "Weekly evaluation 4 B"),
         options: ["a- Leaflets.", "b- Primary rachis.", "c- Secondary rachis.", "d- Swollen (Pulvinous)."],
         correctAnswer: 3,
         correctAnswerText: "d- Swollen (Pulvinous).",
-        explanation: "As explained previously, the pulvinus acts as a motor organ enabling joint-like movement in Mimosa leaves.<br><br><b>Why this answer is correct:</b> The pulvinus's function is analogous to a joint in allowing bending and movement.<br><br><b>Why other options are incorrect:</b><br>a- Leaflets are the structures that move.<br>b- The primary rachis is a part of the leaf structure that bends *at* a pulvinus.<br>c- The secondary rachis is a part of the leaf structure that bends *at* a pulvinus."
+        explanation: "The pulvinus acts functionally like a joint in Mimosa.<br><br><b>Why this answer is correct:</b> Pulvinus is the joint-like structure.<br><br><b>Why other options are incorrect:</b><br>a- Leaflets move.<br>b, c - Rachises are parts of the leaf that bend at pulvini."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- How many rows of leaflets hang down when there is a contraction of the first swollen (pulvinus) of a leaf in the mimosa plant?",
+        question: addLocation("2- How many rows of leaflets hang down when there is a contraction of the first swollen (pulvinus) of a leaf in the mimosa plant?", "Weekly evaluation 4 B"),
         options: ["a-4.", "b-8.", "c- 16.", "d-32."],
         correctAnswer: 2,
         correctAnswerText: "c- 16.",
-        explanation: "A typical Mimosa pudica leaf is bipinnately compound, meaning the main leaf stalk (petiole) branches into secondary stalks (pinnae), and each pinna bears rows of leaflets. A common structure involves 4 pairs (8) of pinnae, and each pinna has 2 rows of leaflets. Contraction of the pulvini at the base of the pinnae causes them to droop. If all 8 pinnae droop, and each carries 2 rows of leaflets, that's 8 pinnae * 2 rows/pinna = 16 rows hanging down.<br><br><b>Why this answer is correct:</b> Based on the likely intended structure of a Mimosa leaf with multiple pinnae (e.g., 8), each with 2 rows of leaflets, the collective drooping results in 16 rows hanging down.<br><br><b>Why other options are incorrect:</b> These numbers do not fit the typical structure and movement pattern."
+        explanation: "Assuming a leaf with 8 pinnae, each having 2 rows of leaflets, contraction of pinna pulvini causes 8 pinnae * 2 rows = 16 rows to hang down.<br><br><b>Why this answer is correct:</b> Calculation based on typical Mimosa leaf structure.<br><br><b>Why other options are incorrect:</b> Numbers do not fit the structure."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\na- A biological process that expresses the flowers of some plants opening during the day and closing them at night. (..............)",
+        question: addLocation("Write what the following expressions mean:\na- A biological process that expresses the flowers of some plants opening during the day and closing them at night. (..............)", "Weekly evaluation 4 B"),
         correctAnswerText: "Nyctinasty (or Sleep movements).",
-        explanation: "Nyctinasty is a nastic movement (non-directional response to stimulus intensity) linked to daily light/dark cycles."
+        explanation: "Nastic movements in response to daily light cycles."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\nb- The plant's response to an external stimulus, which is humidity, so plant organs move toward or away from it. (..................)",
+        question: addLocation("Write what the following expressions mean:\nb- The plant's response to an external stimulus, which is humidity, so plant organs move toward or away from it. (..................)", "Weekly evaluation 4 B"),
         correctAnswerText: "Hydrotropism.",
-        explanation: "Hydrotropism is directional growth in response to water or humidity."
+        explanation: "Definition of hydrotropism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "Give reasons for the following:\nThe effect of auxins varies depending on their location in the plant.",
-        correctAnswerText: "The effect of auxins varies because different plant tissues (e.g., stem vs. root) have different sensitivities to auxin concentration. Also, environmental stimuli like light and gravity cause uneven distribution of auxin within an organ, leading to differential growth rates in different regions (e.g., shaded vs. illuminated side, upper vs. lower side).",
-        explanation: "Explains that differential tissue sensitivity and uneven distribution cause varied auxin effects."
+        question: addLocation("Give reasons for the following:\nThe effect of auxins varies depending on their location in the plant.", "Weekly evaluation 4 B"),
+        correctAnswerText: "Different plant tissues (stem vs root) have different sensitivities to auxin concentration, and auxin distribution is uneven within organs due to environmental stimuli (light, gravity), leading to differential growth.",
+        explanation: "Explains differential sensitivity and uneven distribution."
     },
 
-    // Page 5: Weekly evaluation (4) C
+    // Weekly evaluation (4) C (Page 5)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- The cells of ............ increase their division speed due to the accumulation of auxins in them.",
+        question: addLocation("1- The cells of ............ increase their division speed due to the accumulation of auxins in them.", "Weekly evaluation 4 C"),
         options: ["a- the stem facing the light.", "b- the root facing the light.", "c- the upper side of a root placed horizontally.", "d- the underside of a stem placed horizontally."],
         correctAnswer: 3,
         correctAnswerText: "d- the underside of a stem placed horizontally.",
-        explanation: "Auxin accumulates on the lower side of a horizontal stem due to gravity. This increased auxin concentration stimulates cell elongation and division (as elongation requires new material production, supported by division) on the lower side, causing faster growth there and upward bending (negative geotropism).<br><br><b>Why this answer is correct:</b> Auxin accumulates on the lower side of a horizontal stem and stimulates growth (including division and elongation) there.<br><br><b>Why other options are incorrect:</b><br>a- The side facing the light has less auxin and grows slower.<br>b- The root facing the light has less auxin; the shaded side (with more auxin) is inhibited.<br>c- The upper side of a horizontal root has less auxin and grows faster, but auxin accumulates on the inhibited lower side."
+        explanation: "Auxin accumulates on the lower side of a horizontal stem due to gravity, stimulating growth (elongation and related division) in that region.<br><br><b>Why this answer is correct:</b> Auxin accumulates on the lower side of a horizontal stem and stimulates growth.<br><br><b>Why other options are incorrect:</b><br>a- Less auxin, slower growth.<br>b- Less auxin on illuminated side of root.<br>c- Less auxin on upper side of horizontal root, relative inhibition on lower side where auxin accumulates."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- The process of feeling in plants, ...........",
+        question: addLocation("2- The process of feeling in plants, ...........", "Weekly evaluation 4 C"),
         options: ["a- is limited to some types, such as the mimosa.", "b- decreases as the plant structure becomes more complex.", "c- is connected to the internal and external factors.", "d- the life of the plant does not depend on it."],
         correctAnswer: 2,
         correctAnswerText: "c- is connected to the internal and external factors.",
-        explanation: "Plant sensation involves detecting external stimuli (like light, gravity) and responding through internal physiological processes (like hormone signaling, changes in turgor). Therefore, it is inherently linked to both internal and external factors.<br><br><b>Why this answer is correct:</b> Sensation requires perception of external stimuli and triggers internal responses.<br><br><b>Why other options are incorrect:</b><br>a- Sensation (responsiveness to stimuli) occurs in all plants, not just Mimosa.<br>b- Complexity does not necessarily reduce sensation; more complex plants may have more varied responses.<br>d- Sensation is crucial for survival (e.g., finding light, water), so life *does* depend on it."
+        explanation: "Sensation involves receiving external stimuli and triggering internal physiological responses.<br><br><b>Why this answer is correct:</b> Sensation requires both external perception and internal processing/response.<br><br><b>Why other options are incorrect:</b><br>a- Sensation is widespread in plants.<br>b- Complexity doesn't necessarily decrease sensation.<br>d- Sensation is vital for survival."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\na- A structure found in the mimosa plant and similar to the functioning of the joints in humans (.........)",
+        question: addLocation("Write what the following expressions mean:\na- A structure found in the mimosa plant and similar to the functioning of the joints in humans (.........)", "Weekly evaluation 4 C"),
         correctAnswerText: "Pulvinous (or Pulvinus).",
-        explanation: "Repeats the definition of pulvinus as a joint-like structure in Mimosa."
+        explanation: "Definition of pulvinus."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\nb- The plant's response to an external stimulus, which is light, so plant organs move towards it or away from it. (....................)",
+        question: addLocation("Write what the following expressions mean:\nb- The plant's response to an external stimulus, which is light, so plant organs move towards it or away from it. (....................)", "Weekly evaluation 4 C"),
         correctAnswerText: "Phototropism.",
-        explanation: "Repeats the definition of phototropism."
+        explanation: "Definition of phototropism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "3- What happens when the Pulvinous is absent from the leaves of the mimosa plant?",
-        correctAnswerText: "Without the pulvini, the mimosa plant would lose its ability to perform rapid touch-sensitive movements and rhythmic sleep movements, as these structures are the motor organs responsible for such movements.",
-        explanation: "Restates the functional importance of pulvini for Mimosa movements."
+        question: addLocation("3- What happens when the Pulvinous is absent from the leaves of the mimosa plant?", "Weekly evaluation 4 C"),
+        correctAnswerText: "The plant would lose its ability to perform rapid touch-induced and sleep movements of the leaves.",
+        explanation: "States the consequence of lacking pulvini."
     },
 
-    // Page 6: Fifth Week Class Performance
+    // Fifth Week Class Performance (Page 6)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- The figure in front of you shows the growing tip of a plant stem and the distribution of auxins in it. Determine the direction in which the sunlight fall on this growing tip?",
+        question: addLocation("1- The figure in front of you shows the growing tip of a plant stem and the distribution of auxins in it. Determine the direction in which the sunlight fall on this growing tip?", "Fifth Week Class Performance"),
         options: ["a- From the right", "c- Vertically", "b- From the left", "d- Horizontally"],
         correctAnswer: 0,
         correctAnswerText: "a- From the right",
-        explanation: "The diagram shows auxin accumulating on the left side of the stem tip. In phototropism, auxin moves away from the light source. Therefore, if auxin is concentrated on the left (shaded) side, the light must have been coming from the right (illuminated) side.<br><br><b>Why this answer is correct:</b> Auxin moves to the shaded side. Accumulation on the left indicates light from the right.<br><br><b>Why other options are incorrect:</b><br>b- Light from the left would cause accumulation on the right.<br>c- Vertical light would result in even auxin distribution.<br>d- 'Horizontally' is not specific enough (left or right)."
+        explanation: "Auxin moves away from light. Accumulation on the left means light came from the right.<br><br><b>Why this answer is correct:</b> Auxin is on the shaded side (left), meaning light is from the right.<br><br><b>Why other options are incorrect:</b><br>b- Light from left would accumulate auxin on the right.<br>c- Vertical light gives even distribution.<br>d- 'Horizontally' needs a direction."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- Which of the following occurs when the amount of indole acetic acid increased in the growing tips of the roots of a plant...",
+        question: addLocation("2- Which of the following occurs when the amount of indole acetic acid increased in the growing tips of the roots of a plant...", "Fifth Week Class Performance"),
         options: ["a- The elongation of root cells increased.", "c- Elongation of stem cells increased.", "b- Elongation of root cells inhibited.", "d- Elongation of stem cells inhibited."],
         correctAnswer: 2,
         correctAnswerText: "b- Elongation of root cells inhibited.",
-        explanation: "Roots are much more sensitive to auxin than stems. Increased concentrations of auxin, which would promote stem elongation, inhibit root cell elongation.<br><br><b>Why this answer is correct:</b> High auxin levels inhibit root elongation.<br><br><b>Why other options are incorrect:</b><br>a- Increased auxin inhibits, not increases, root elongation.<br>c- Increased auxin stimulates stem elongation (up to the optimum).<br>d- Increased auxin stimulates, not inhibits, stem elongation."
+        explanation: "Increased auxin levels inhibit root elongation.<br><br><b>Why this answer is correct:</b> Roots are inhibited by high auxin.<br><br><b>Why other options are incorrect:</b><br>a- Inhibition occurs.<br>c- Stem elongation increases with auxin.<br>d- Stem elongation increases."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "3- Which of the following occurs when the root of a growing plant is exposed to irrigation from one direction?",
+        question: addLocation("3- Which of the following occurs when the root of a growing plant is exposed to irrigation from one direction?", "Fifth Week Class Performance"),
         options: ["a- the stem bends towards the water.", "b- the stem bends against the direction of the water", "c- the root bends towards the water.", "d- the root bends against the direction of the water."],
         correctAnswer: 2,
         correctAnswerText: "c- the root bends towards the water.",
-        explanation: "Roots exhibit positive hydrotropism, growing towards a water source. Stems are not hydrotropic.<br><br><b>Why this answer is correct:</b> Roots grow towards water.<br><br><b>Why other options are incorrect:</b><br>a, b - Stems are not hydrotropic.<br>d- Roots bend towards, not against, water."
+        explanation: "Roots show positive hydrotropism.<br><br><b>Why this answer is correct:</b> Roots grow towards water.<br><br><b>Why other options are incorrect:</b><br>a, b - Stems are not hydrotropic.<br>d- Roots grow towards water."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following statments mean:\n1- The scientist who conducted experiments to verify Boysen-Jensen's experiments.",
+        question: addLocation("Write what the following statments mean:\n1- The scientist who conducted experiments to verify Boysen-Jensen's experiments.", "Fifth Week Class Performance"),
         correctAnswerText: "Frits Went.",
-        explanation: "Frits Went extended Boysen-Jensen's work by using agar blocks to demonstrate that the signal transmitted from the coleoptile tip was a chemical substance (later identified as auxin)."
+        explanation: "Went's experiments confirmed Boysen-Jensen's findings and isolated auxin."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following statments mean:\n2- The plant's response to an external stimulus, which is humidity, so plant organs move toward or away from it.",
+        question: addLocation("Write what the following statments mean:\n2- The plant's response to an external stimulus, which is humidity, so plant organs move toward or away from it.", "Fifth Week Class Performance"),
         correctAnswerText: "Hydrotropism.",
         explanation: "Definition of hydrotropism."
     },
@@ -767,103 +770,103 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Give reasons for the following:\n1- The root is a positive geotropic.",
-        correctAnswerText: "Roots are positively geotropic, growing downwards towards gravity. When a root is horizontal, gravity causes auxin to accumulate on the lower side. This high auxin concentration inhibits elongation of the lower root cells, while the upper cells elongate more, causing the root to bend down.",
-        explanation: "Explains the directional growth towards gravity and the auxin-mediated mechanism."
+        question: addLocation("Give reasons for the following:\n1- The root is a positive geotropic.", "Fifth Week Class Performance"),
+        correctAnswerText: "Roots grow downwards towards gravity. Gravity causes auxin to accumulate on the lower side of a horizontal root, inhibiting elongation. The upper side elongates more, causing the root to bend down.",
+        explanation: "Explains downward growth and the auxin inhibition mechanism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Give reasons for the following:\n2- The effect of auxins varies depending on their location in the plant.",
-        correctAnswerText: "Auxins have different effects (stimulatory or inhibitory) and optimal concentrations depending on the specific plant organ (e.g., root vs. stem) and the region within the organ. Environmental stimuli also cause uneven distribution of auxin, leading to differential growth rates in different locations.",
-        explanation: "Highlights differential tissue sensitivity and uneven distribution as reasons for varied auxin effects."
+        question: addLocation("Give reasons for the following:\n2- The effect of auxins varies depending on their location in the plant.", "Fifth Week Class Performance"),
+        correctAnswerText: "Different tissues (root vs stem) have different sensitivities to auxin concentration. Uneven distribution due to stimuli also causes differential growth in different areas.",
+        explanation: "Explains differential sensitivity and uneven distribution."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "Give reasons for the following:\n3- The growing stem is not affected when the plant is placed in an upright position.",
-        correctAnswerText: "In a vertical position, gravity and light are typically symmetrical relative to the stem axis. This leads to a uniform distribution of auxin in the stem tip. Uniform auxin concentration causes uniform cell elongation on all sides of the stem, resulting in straight upward growth without bending.",
-        explanation: "Explains that symmetrical stimuli lead to symmetrical auxin distribution and thus straight growth."
+        question: addLocation("Give reasons for the following:\n3- The growing stem is not affected when the plant is placed in an upright position.", "Fifth Week Class Performance"),
+        correctAnswerText: "In a vertical position, auxin distribution is symmetrical. This causes uniform elongation on all sides, resulting in straight growth without bending.",
+        explanation: "Explains that symmetrical auxin distribution leads to straight growth."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "The figure in front of you contains a mistake. Identify the mistake with an explanation:\n1- The mistake:\n2- The explanation:",
-        correctAnswerText: "1- The mistake: The stem is shown bending horizontally to the right despite the sun being depicted directly overhead (indicating vertical light).\n2- The explanation: Vertical light (from directly above) should cause the stem, which is positively phototropic, to grow straight upwards, not bend horizontally. The bending shown is indicative of unilateral light from the right.",
-        explanation: "Identifies and explains the inconsistency between the depicted light source and the resulting stem growth direction."
+        question: addLocation("The figure in front of you contains a mistake. Identify the mistake with an explanation:\n1- The mistake:\n2- The explanation:", "Fifth Week Class Performance"),
+        correctAnswerText: "1- The mistake: The stem bends horizontally towards the right when the light source is shown vertically overhead.\n2- The explanation: Vertical light should cause a stem to grow straight upwards (positive phototropism), not bend horizontally.",
+        explanation: "Identifies inconsistency between light source and stem bending."
     },
 
-    // Page 7: Fifth Week Home performances
+    // Fifth Week Home performances (Page 7)
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- Define the following:\na- Auxins.\nb- Geotropism.",
-        correctAnswerText: "a- Auxins: A group of plant hormones primarily involved in cell elongation and differentiation, produced mainly in growing tips, and crucial for regulating growth responses like tropisms.\nb- Geotropism (or Gravitropism): The growth of a plant organ in response to the force of gravity.",
-        explanation: "Provides standard definitions for auxins and geotropism."
+        question: addLocation("1- Define the following:\na- Auxins.\nb- Geotropism.", "Fifth Week Home performances"),
+        correctAnswerText: "a- Auxins: Plant hormones primarily stimulating cell elongation and differentiation. b- Geotropism (or Gravitropism): Growth response to gravity.",
+        explanation: "Provides definitions."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- Give reasons for the following:\na- The root is a positive hydrotropism.\nb- Root cells far from light do not elongate despite the increase in the percentage of auxins in them.",
-        correctAnswerText: "a- Roots are positively hydrotropic, growing towards water, because water is essential for plant survival and physiological processes. This response ensures the root system can locate and absorb necessary moisture from the soil.\nb- Root cells are highly sensitive to auxin. While auxin increases cell elongation in stems, concentrations that are relatively high (as implied by 'increase in the percentage') are inhibitory to root cell elongation. Therefore, even if auxin increases, if it is above the optimal level for roots, elongation will be inhibited.",
-        explanation: "Explains the adaptive value of hydrotropism and reiterates the concentration-dependent and inhibitory effect of high auxin on root elongation."
+        question: addLocation("2- Give reasons for the following:\na- The root is a positive hydrotropism.\nb- Root cells far from light do not elongate despite the increase in the percentage of auxins in them.", "Fifth Week Home performances"),
+        correctAnswerText: "a- Roots grow towards water to absorb it, which is essential for plant survival.<br>b- Root cells are highly sensitive; increased auxin above the optimum level inhibits elongation, even without light influence.",
+        explanation: "Explains the adaptive value of hydrotropism and auxin's inhibitory effect on root elongation."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "3- Explain the relationship between each two:\na- The geotropism of the root and the percentage of auxins in its growing apex\nb- The direction of sunlight to which the plant is exposed and the direction of stem growth",
-        correctAnswerText: "a- The positive geotropism of the root is caused by the effect of gravity on auxin distribution in the root apex. Gravity causes auxin to accumulate on the lower side of a horizontal root apex. The root cells are very sensitive to auxin, so this increased concentration on the lower side inhibits cell elongation, while the cells on the upper side (with less auxin) elongate more, causing the root to bend downwards towards gravity.\nb- The direction of sunlight determines the direction of stem growth through positive phototropism. Unilateral light causes auxin to move to the shaded side of the stem. This higher auxin concentration on the shaded side stimulates stem cell elongation more than on the illuminated side, causing the stem to bend towards the light source.",
-        explanation: "Details how uneven auxin distribution, influenced by gravity (roots) or light (stems), leads to directional growth responses due to differential cell elongation."
+        question: addLocation("3- Explain the relationship between each two:\na- The geotropism of the root and the percentage of auxins in its growing apex\nb- The direction of sunlight to which the plant is exposed and the direction of stem growth", "Fifth Week Home performances"),
+        correctAnswerText: "a- Gravity causes auxin accumulation on the lower side of a root apex. High auxin inhibits root elongation on the lower side, causing the root to bend down (positive geotropism).<br>b- Unilateral sunlight causes auxin to move to the shaded side of the stem. High auxin stimulates stem elongation on the shaded side, causing the stem to bend towards the light (positive phototropism).",
+        explanation: "Explains how auxin distribution mediates root geotropism and stem phototropism."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 4,
-        question: "4- What happens when?:\nThe growing tip in front of you was exposed to moisture from one side. Determine the effect of this on the growth of the developing growing tip if it is located in:\n1- The root.\n2- The stem.",
-        correctAnswerText: "1- The root: The root tip will grow towards the source of moisture, exhibiting positive hydrotropism.\n2- The stem: The stem tip will not respond directionally to the unilateral moisture stimulus; its growth direction will be determined by phototropism and geotropism.",
-        explanation: "Describes the hydrotropic response of roots but not stems."
+        question: addLocation("4- What happens when?:\nThe growing tip in front of you was exposed to moisture from one side. Determine the effect of this on the growth of the developing growing tip if it is located in:\n1- The root.\n2- The stem.", "Fifth Week Home performances"),
+        correctAnswerText: "1- The root: It will exhibit positive hydrotropism and grow towards the source of moisture.\n2- The stem: It will not show hydrotropism; its growth direction is governed by light and gravity.",
+        explanation: "Describes the presence of hydrotropism in roots and its absence in stems."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 5,
-        question: "5- The figure in front of you contains a mistake. Identify the mistake with an explanation:\n1- The mistake.\n2- The explanation:",
-        correctAnswerText: "1- The mistake: The roots are shown growing upwards, out of the pot.\n2- The explanation: Roots exhibit positive geotropism, meaning they grow downwards in response to gravity. They should be depicted growing into the soil/pot, not upwards.",
-        explanation: "Identifies and explains the incorrect depiction of root growth direction based on geotropism."
+        question: addLocation("5- The figure in front of you contains a mistake. Identify the mistake with an explanation:\n1- The mistake.\n2- The explanation:", "Fifth Week Home performances"),
+        correctAnswerText: "1- The mistake: The roots are shown growing upwards, out of the pot.\n2- The explanation: Roots are positively geotropic and should grow downwards into the soil in response to gravity.",
+        explanation: "Identifies and explains the incorrect depiction of root geotropism."
     },
 
-    // Page 8: Weekly evaluation (5) A
+    // Weekly evaluation (5) A (Page 8)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- It happens in phototropism and geotropism to roots in the horizontal position.",
+        question: addLocation("1- It happens in phototropism and geotropism to roots in the horizontal position.", "Weekly evaluation 5 A"),
         options: ["a- auxins act in the same direction as the effect.", "b- auxins move away from the effector.", "c- auxins stop cells from growing.", "d- auxins stimulate cells to grow."],
         correctAnswer: 2,
         correctAnswerText: "c- auxins stop cells from growing.",
-        explanation: "In roots, auxin concentrations that accumulate on the shaded or lower side inhibit (effectively 'stop' relative to the other side's growth) cell elongation. This differential inhibition is key to root bending in tropisms.<br><br><b>Why this answer is correct:</b> Auxin accumulation inhibits root cell elongation, causing bending.<br><br><b>Why other options are incorrect:</b><br>a- The effect (bending towards the accumulation side) is opposite to the effect on cell elongation (inhibition on the accumulation side).<br>b- Auxins redistribute but don't move away from the stimulus source in this way.<br>d- Auxins stimulate stem cells but inhibit root cells at these concentrations."
+        explanation: "Auxin accumulation in roots inhibits cell elongation on that side, effectively slowing or 'stopping' growth relative to the other side.<br><br><b>Why this answer is correct:</b> Auxin inhibits root elongation at high concentrations.<br><br><b>Why other options are incorrect:</b><br>a- Effect (bending) is towards accumulation side, but growth effect (inhibition) is localized.<br>b- Auxins redistribute towards the shaded/lower side.<br>d- Auxins inhibit root growth at these concentrations."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- Which of the following statements agree with the nature of the action of auxins?",
+        question: addLocation("2- Which of the following statements agree with the nature of the action of auxins?", "Weekly evaluation 5 A"),
         options: ["a- Whenever its concentration in the root cells increases, it stimulates their elongation.", "b- Whenever its concentration in the stem cells decreases, it inhibits their elongation..", "c- It is not affected by external influences in all circumstances.", "d- It flows from top to bottom in the horizontal position of the gesture."],
         correctAnswer: 1,
         correctAnswerText: "b- Whenever its concentration in the stem cells decreases, it inhibits their elongation..",
-        explanation: "Auxin promotes stem elongation. Therefore, a lower concentration of auxin results in less promotion, or relative inhibition, of elongation compared to a higher concentration.<br><br><b>Why this answer is correct:</b> Stem elongation rate is directly correlated with auxin concentration (up to an optimum). Less auxin means less elongation.<br><br><b>Why other options are incorrect:</b><br>a- Increased auxin inhibits root elongation (at concentrations for tropism).<br>c- Auxin distribution *is* affected by external factors (light, gravity).<br>d- While auxin flows basipetally (top to bottom), in a horizontal stem, lateral transport due to gravity causes accumulation on the lower side, which is not simply flowing top to bottom."
+        explanation: "Auxin stimulates stem elongation. Less auxin means less stimulation, thus inhibited elongation compared to higher levels.<br><br><b>Why this answer is correct:</b> Lower auxin levels result in less stem elongation.<br><br><b>Why other options are incorrect:</b><br>a- Increased auxin inhibits root elongation.<br>c- Auxin distribution is affected by external factors.<br>d- Lateral transport occurs in horizontal stems, not just top-to-bottom flow."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- Chemicals substances secreted by the growing tip of the plant and greatly affected by external conditions.",
+        question: addLocation("Write what the following expressions mean:\n1- Chemicals substances secreted by the growing tip of the plant and greatly affected by external conditions.", "Weekly evaluation 5 A"),
         correctAnswerText: "Auxins (or Plant hormones).",
         explanation: "Auxins are produced in growing tips and their distribution is influenced by environmental stimuli."
     },
@@ -871,7 +874,7 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- The response of the growing plant to an external stimulus, which is Earth's gravity, so plant organs move toward or away from it.",
+        question: addLocation("Write what the following expressions mean:\n2- The response of the growing plant to an external stimulus, which is Earth's gravity, so plant organs move toward or away from it.", "Weekly evaluation 5 A"),
         correctAnswerText: "Geotropism (or Gravitropism).",
         explanation: "Definition of geotropism."
     },
@@ -879,37 +882,37 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Give reasons for the following:\n1- When the plant is in the vertical (natural) position, the stem grows straight up and the root grows down.",
-        correctAnswerText: "In a vertical plant, gravity acts uniformly on all sides of the stem and root tips. Assuming uniform light from above, auxin distribution is symmetrical in both tips. This symmetrical distribution results in uniform cell elongation in the stem (growing straight up) and uniform, but appropriate (non-inhibitory level for the root's inherent downward growth), elongation in the root (growing straight down).",
-        explanation: "Explains that symmetrical stimuli lead to symmetrical auxin distribution and resulting straight, vertical growth according to each organ's natural response."
+        question: addLocation("Give reasons for the following:\n1- When the plant is in the vertical (natural) position, the stem grows straight up and the root grows down.", "Weekly evaluation 5 A"),
+        correctAnswerText: "In a vertical position, gravity and light are symmetrical, leading to uniform auxin distribution. Uniform auxin in the stem causes uniform elongation (straight up). Uniform auxin in the root allows for normal downward growth (positive geotropism).",
+        explanation: "Explains straight growth due to symmetrical stimuli and auxin distribution."
     },
 
-    // Page 9: Weekly evaluation (5) B
+    // Weekly evaluation (5) B (Page 9)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- Cells whose division rate increases due to the accumulation of auxin in them are...",
+        question: addLocation("1- Cells whose division rate increases due to the accumulation of auxin in them are...", "Weekly evaluation 5 B"),
         options: ["a- the side of the stem facing the light.", "b- the side of the root facing the light.", "c- the upper side of a horizontally placed root.", "d- the underside of a stem placed horizontally."],
         correctAnswer: 3,
         correctAnswerText: "d- the underside of a stem placed horizontally.",
-        explanation: "Auxin accumulation on the lower side of a horizontal stem stimulates growth (cell elongation primarily, but often associated with increased metabolic activity that supports division) on that side, causing it to bend upwards.<br><br><b>Why this answer is correct:</b> Auxin accumulates on the lower side of a horizontal stem and stimulates growth.<br><br><b>Why other options are incorrect:</b><br>a- Side facing light has less auxin, slower growth.<br>b- Side of root facing light has less auxin.<br>c- Upper side of horizontal root has less auxin (than lower side) and grows more, but the accumulation is on the inhibited lower side."
+        explanation: "Auxin accumulates on the lower side of a horizontal stem, stimulating growth and cell division/elongation there.<br><br><b>Why this answer is correct:</b> Auxin accumulation on the lower side of a horizontal stem promotes growth.<br><br><b>Why other options are incorrect:</b><br>a- Less auxin, slower growth.<br>b- Less auxin on illuminated side of root.<br>c- Less auxin on upper side of horizontal root."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- Which of the following statements is incorrect?",
+        question: addLocation("2- Which of the following statements is incorrect?", "Weekly evaluation 5 B"),
         options: ["a- The stem is positive for phototropism.", "b- The stem is negative in geotropism.", "c- The root is negative for phototropism.", "d- The root has positive geotropism"],
         correctAnswer: null,
         correctAnswerText: "Question is flawed, all statements are correct.",
-        explanation: "All listed statements are biologically accurate:\na) Stems grow towards light (positive phototropism).\nb) Stems grow away from gravity (negative geotropism).\nc) Roots grow away from light (negative phototropism).\nd) Roots grow towards gravity (positive geotropism).\nSince all options are correct, there is no incorrect statement among the choices."
+        explanation: "All options correctly describe plant tropisms."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- The plant's response to an external stimulus, which is humidity, so plant organs move toward or away from it.",
+        question: addLocation("Write what the following expressions mean:\n1- The plant's response to an external stimulus, which is humidity, so plant organs move toward or away from it.", "Weekly evaluation 5 B"),
         correctAnswerText: "Hydrotropism.",
         explanation: "Definition of hydrotropism."
     },
@@ -917,45 +920,45 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- The tip of the stem bends upward against the Earth's gravity when the plant is in a horizontal position.",
+        question: addLocation("Write what the following expressions mean:\n2- The tip of the stem bends upward against the Earth's gravity when the plant is in a horizontal position.", "Weekly evaluation 5 B"),
         correctAnswerText: "Negative geotropism of the stem.",
-        explanation: "Describes the manifestation of negative geotropism in a horizontal stem."
+        explanation: "Describes negative geotropism in a horizontal stem."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "Give reasons for the following:\nThe root is a positive hydrotropic.",
-        correctAnswerText: "Roots are positively hydrotropic because growing towards water allows the plant to absorb essential resources for survival and growth. This response is crucial for plant survival, especially in dry conditions.",
-        explanation: "Explains the adaptive benefit of positive hydrotropism in roots."
+        question: addLocation("Give reasons for the following:\nThe root is a positive hydrotropic.", "Weekly evaluation 5 B"),
+        correctAnswerText: "Roots grow towards water to ensure the plant can absorb the necessary water and nutrients for survival and physiological processes.",
+        explanation: "Explains the adaptive value of positive hydrotropism in roots."
     },
 
-    // Page 10: Weekly evaluation (5) C
+    // Weekly evaluation (5) C (Page 10)
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "1- Which of the following statements does not apply to auxins?",
+        question: addLocation("1- Which of the following statements does not apply to auxins?", "Weekly evaluation 5 C"),
         options: ["a- It is greatly affected by environmental factors.", "b- It cannot enter during the blocks of agar.", "c- It is used by humans to increase the rate of plant growth.", "d- Chemicals substances secreted by plant buds."],
         correctAnswer: 1,
         correctAnswerText: "b- It cannot enter during the blocks of agar.",
-        explanation: "Experiments, like Went's, proved that auxin can readily diffuse through agar blocks. Therefore, the statement that it 'cannot enter' agar blocks is false.<br><br><b>Why this answer is correct:</b> Auxin can diffuse through agar blocks.<br><br><b>Why other options are incorrect:</b><br>a- Auxin distribution is affected by light and gravity.<br>c- Synthetic auxins are used in agriculture to promote growth (e.g., rooting, fruit development).<br>d- Auxins are produced in actively growing regions like buds and tips."
+        explanation: "Auxin readily diffuses through agar.<br><br><b>Why this answer is correct:</b> Auxin passes through agar.<br><br><b>Why other options are incorrect:</b><br>a- Auxin distribution is affected by light/gravity.<br>c- Synthetic auxins are used in horticulture.<br>d- Auxins are produced in buds."
     },
     {
         type: 'mcq',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "2- Which of the following cases has a tropism opposite to the direction of auxin accumulation?",
+        question: addLocation("2- Which of the following cases has a tropism opposite to the direction of auxin accumulation?", "Weekly evaluation 5 C"),
         options: ["a- A stem placed horizontally and another vertically exposed to light from one side.", "b- A root placed horizontally and another vertically exposed to water from one side.", "c- A stem and root in an upright position exposed to light from one side.", "d- A stem and root in a horizontal position."],
         correctAnswer: 0,
         correctAnswerText: "a- A stem placed horizontally and another vertically exposed to light from one side.",
-        explanation: "Tropisms where bending is *opposite* to auxin accumulation occur in stems. Auxin accumulates on the lower side of a horizontal stem and the shaded side of a vertical stem exposed to unilateral light. In both cases, the stem bends *away* from the accumulation side (upwards or towards the light). Root tropisms (geotropism, phototropism, hydrotropism) result in bending *towards* the side of auxin accumulation (where elongation is inhibited). Option (a) lists two stem tropism scenarios, both of which result in bending opposite to auxin accumulation.<br><br><b>Why this answer is correct:</b> Stem geotropism (horizontal) and stem phototropism (vertical + light) both involve bending away from the side of auxin accumulation.<br><br><b>Why other options are incorrect:</b><br>b- Root tropisms involve bending towards the side of accumulation.<br>c- Includes root phototropism (bending towards accumulation).<br>d- Includes root geotropism (bending towards accumulation)."
+        explanation: "Stem tropisms result in bending away from auxin accumulation (lower side in horizontal, shaded side in unilateral light). Root tropisms bend towards auxin accumulation (lower side in horizontal, shaded side in unilateral light). Option (a) lists only stem scenarios.<br><br><b>Why this answer is correct:</b> Both stem geotropism and phototropism bend away from auxin accumulation.<br><br><b>Why other options are incorrect:</b><br>b, c, d - These include root tropisms which bend towards accumulation."
     },
     {
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- The root tip bends downward with gravity when the plant is in a horizontal position.",
+        question: addLocation("Write what the following expressions mean:\n1- The root tip bends downward with gravity when the plant is in a horizontal position.", "Weekly evaluation 5 C"),
         correctAnswerText: "Positive geotropism of the root.",
         explanation: "Describes positive geotropism in a horizontal root."
     },
@@ -963,7 +966,7 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- The response of the growing plant to an external stimulus, which is Earth's gravity, so plant organs move toward or away from it.",
+        question: addLocation("Write what the following expressions mean:\n2- The response of the growing plant to an external stimulus, which is Earth's gravity, so plant organs move toward or away from it.", "Weekly evaluation 5 C"),
         correctAnswerText: "Geotropism (or Gravitropism).",
         explanation: "Definition of geotropism."
     },
@@ -971,205 +974,205 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.PLANT_TROPISM_SENSATION,
         originalNumber: 3,
-        question: "Give reasons for the following:\nStems are negative in geotropism.",
-        correctAnswerText: "Stems are negatively geotropic, growing upwards away from gravity. When a stem is horizontal, gravity causes auxin to accumulate on the lower side. This higher auxin concentration stimulates the lower cells to elongate more rapidly than the upper cells, causing the stem to bend upwards against the gravitational pull.",
-        explanation: "Explains the directional growth away from gravity and the auxin-mediated mechanism of differential stimulation."
+        question: addLocation("Give reasons for the following:\nStems are negative in geotropism.", "Weekly evaluation 5 C"),
+        correctAnswerText: "Stems grow upwards, away from gravity. Gravity causes auxin to accumulate on the lower side of a horizontal stem, which stimulates elongation more than the upper side, causing upward bending.",
+        explanation: "Explains upward growth and differential stimulation by auxin."
     },
 
-    // Page 11: Sixth Week Class Performance
+    // Sixth Week Class Performance (Page 11)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- The cells that transmit nerve impulses from the peripheral nervous system to the central nervous system are ...........",
+        question: addLocation("1- The cells that transmit nerve impulses from the peripheral nervous system to the central nervous system are ...........", "Sixth Week Class Performance"),
         options: ["a- Sensory neurons", "c- Connector neurons", "b- Motor neurons", "d- Neuroglia"],
         correctAnswer: 0,
         correctAnswerText: "a- Sensory neurons",
-        explanation: "Sensory neurons (afferent) carry signals from receptors in the PNS towards the CNS.<br><br><b>Why this answer is correct:</b> Sensory neurons transmit impulses from PNS to CNS.<br><br><b>Why other options are incorrect:</b><br>b- Motor neurons transmit impulses from CNS to PNS effectors.<br>c- Connector neurons (interneurons) are entirely within the CNS.<br>d- Neuroglia support neurons but do not transmit impulses."
+        explanation: "Sensory neurons carry afferent signals from the PNS to the CNS.<br><br><b>Why this answer is correct:</b> Sensory neurons transmit PNS to CNS.<br><br><b>Why other options are incorrect:</b><br>b- Motor transmit CNS to PNS.<br>c- Connector are within CNS.<br>d- Neuroglia are support."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "2- The part of the cell that transmits the nerve impulse away from the cell body is is.....",
+        question: addLocation("2- The part of the cell that transmits the nerve impulse away from the cell body is is.....", "Sixth Week Class Performance"),
         options: ["a- Schwann cells", "c- Nerve ending", "b- dendrites", "d- Ranvier nodes"],
         correctAnswer: 2,
         correctAnswerText: "c- Nerve ending",
-        explanation: "The axon transmits the impulse away from the cell body. The nerve ending is the terminal part of the axon responsible for transmitting the signal to the next cell across the synapse.<br><br><b>Why this answer is correct:</b> Nerve endings are the terminal points of the axon that transmit the impulse away from the cell body to other cells.<br><br><b>Why other options are incorrect:</b><br>a- Schwann cells form myelin.<br>b- Dendrites transmit impulses towards the cell body.<br>d- Nodes of Ranvier are gaps in myelin important for speed, not the part transmitting away."
+        explanation: "The axon transmits away; the nerve ending is the terminal part of the axon where transmission to the next cell occurs.<br><br><b>Why this answer is correct:</b> Nerve ending transmits the impulse to the next cell, away from the cell body.<br><br><b>Why other options are incorrect:</b><br>a- Schwann cells form myelin.<br>b- Dendrites transmit towards cell body.<br>d- Nodes are gaps in myelin."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "3- The absence of Schwann cells from the nerve axons leads to ...................",
+        question: addLocation("3- The absence of Schwann cells from the nerve axons leads to ...................", "Sixth Week Class Performance"),
         options: ["a- increased speed of the nerve impulse", "b- stopped speed of the nerve impulse", "c- non-division of nerve cells", "d- decreased speed of the nerve impulse"],
         correctAnswer: 3,
         correctAnswerText: "d- decreased speed of the nerve impulse",
-        explanation: "Schwann cells form the myelin sheath, which enables fast saltatory conduction. Without myelin, conduction is slower (continuous conduction).<br><br><b>Why this answer is correct:</b> Myelin increases speed, so its absence decreases speed.<br><br><b>Why other options are incorrect:</b><br>a- Absence of myelin decreases speed.<br>b- Conduction still occurs, just slower.<br>c- Non-division of neurons is due to lack of centrosome."
+        explanation: "Myelin sheath (formed by Schwann cells) speeds up conduction via saltatory conduction. Without it, conduction is slower.<br><br><b>Why this answer is correct:</b> Myelination increases speed; absence decreases it.<br><br><b>Why other options are incorrect:</b><br>a- Speed decreases.<br>b- Conduction still occurs, just slower.<br>c- Non-division of neurons is due to lack of centrosome."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Write what the following statments mean:\n1- Many short processes, exit from the body of the nerve cell to increase the surface of the nerve area.",
+        question: addLocation("Write what the following statments mean:\n1- Many short processes, exit from the body of the nerve cell to increase the surface of the nerve area.", "Sixth Week Class Performance"),
         correctAnswerText: "Dendrites.",
-        explanation: "Dendrites are branched processes that receive signals and increase the receptive surface area."
+        explanation: "Dendrites are branched processes for receiving signals."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "Write what the following statments mean:\n2- Cells that transmit nerve impulses from the central nervous system to the response organs.",
+        question: addLocation("Write what the following statments mean:\n2- Cells that transmit nerve impulses from the central nervous system to the response organs.", "Sixth Week Class Performance"),
         correctAnswerText: "Motor neurons.",
-        explanation: "Motor neurons (efferent) carry signals from the CNS to effectors."
+        explanation: "Motor neurons carry efferent signals from CNS to effectors."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 3,
-        question: "Write what the following statments mean:\n3- A long cytoplasmic extension that may reach more than a meter and end with nerve endings.",
+        question: addLocation("Write what the following statments mean:\n3- A long cytoplasmic extension that may reach more than a meter and end with nerve endings.", "Sixth Week Class Performance"),
         correctAnswerText: "Axon.",
-        explanation: "The axon is the long process that transmits impulses away from the cell body."
+        explanation: "The axon is the long projection carrying impulses away."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "What happens when:\n1- The absence of the connector neurons from the nervous tissue.",
-        correctAnswerText: "The ability to integrate information between sensory and motor neurons would be lost or severely impaired, affecting complex reflexes and information processing within the CNS.",
-        explanation: "Explains the role of interneurons in integration and complex pathways."
+        question: addLocation("What happens when:\n1- The absence of the connector neurons from the nervous tissue.", "Sixth Week Class Performance"),
+        correctAnswerText: "Integration between sensory and motor pathways would be impaired, disrupting complex reflexes and processing within the CNS.",
+        explanation: "Explains the role of interneurons in linking pathways."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "What happens when:\n2- A cutting occurs in the cell axon at the nodes of Ranvier.",
-        correctAnswerText: "The conduction of the nerve impulse would be blocked. Nodes of Ranvier are essential for renewing the action potential during saltatory conduction in myelinated axons. A cut here breaks the axonal continuity and prevents impulse propagation.",
-        explanation: "Explains the importance of nodes for saltatory conduction and the consequence of disruption."
+        question: addLocation("What happens when:\n2- A cutting occurs in the cell axon at the nodes of Ranvier.", "Sixth Week Class Performance"),
+        correctAnswerText: "Nerve impulse transmission would be blocked at the site of the cut, preventing the signal from propagating further along the axon.",
+        explanation: "Explains that axonal damage disrupts conduction."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Mention the function of each of the following:\n1- The axon of the nerve cell.\n2- Nissil granules in the body of the nerve cell.",
-        correctAnswerText: "1- Transmits nerve impulses away from the cell body.\n2- Sites of protein synthesis, crucial for neuronal metabolism and function.",
-        explanation: "States the primary functions of the axon and Nissl granules (RER and ribosomes)."
+        question: addLocation("Mention the function of each of the following:\n1- The axon of the nerve cell.\n2- Nissil granules in the body of the nerve cell.", "Sixth Week Class Performance"),
+        correctAnswerText: "1- Transmits nerve impulses away from the cell body. 2- Sites of protein synthesis.",
+        explanation: "States key functions."
     },
 
-    // Page 12: Sixth Week Home performances
+    // Sixth Week Home performances (Page 12)
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- Define the following:\na- Myelin sheath\nb- Neurolemma.",
-        correctAnswerText: "a- Myelin sheath: An insulating fatty layer around axons formed by glial cells (Schwann cells in PNS, oligodendrocytes in CNS), increasing impulse speed.\nb- Neurolemma: The outer membrane of a Schwann cell surrounding a myelinated axon in the PNS. It is important for regeneration after injury.",
-        explanation: "Provides standard definitions for myelin sheath and neurolemma."
+        question: addLocation("1- Define the following:\na- Myelin sheath\nb- Neurolemma.", "Sixth Week Home performances"),
+        correctAnswerText: "a- Myelin sheath: Insulating layer around axons increasing impulse speed. b- Neurolemma: Outer membrane of Schwann cell surrounding axon/myelin in PNS, involved in regeneration.",
+        explanation: "Provides definitions."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "2- Give reasons for the following:\na- Many short process emerge from the cell body (dendrites).\nb- Axons covered with myelin sheath transmit nerve impulses faster than nonmyelinated axons.\nc- Connector neurons (intermediate) are called by this name.",
-        correctAnswerText: "a- Dendrites increase the surface area of the neuron, allowing it to receive signals from a large number of other neurons.\nb- Myelin sheath allows for saltatory conduction (jumping between Nodes of Ranvier), which is much faster than continuous conduction in unmyelinated axons.\nc- Connector neurons are located between sensory and motor neurons within the CNS and act as intermediates, integrating information and relaying signals.",
-        explanation: "Explains the functional reasons for dendrites' structure, myelination's effect on speed, and the role reflected in 'connector neuron'."
+        question: addLocation("2- Give reasons for the following:\na- Many short process emerge from the cell body (dendrites).\nb- Axons covered with myelin sheath transmit nerve impulses faster than nonmyelinated axons.\nc- Connector neurons (intermediate) are called by this name.", "Sixth Week Home performances"),
+        correctAnswerText: "a- To increase the receptive surface area for receiving signals from other neurons.<br>b- Myelin allows for saltatory conduction, where the impulse jumps between Nodes of Ranvier, increasing speed.<br>c- They connect sensory and motor neurons within the CNS, acting as intermediates.",
+        explanation: "Explains functional advantages of dendrites, myelin, and the role of interneurons."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 3,
-        question: "3- Explain the following:\na- Nerve impulses always pass in one direction.\nb- The structure of the nerve cell body.",
-        correctAnswerText: "a- Due to the unidirectional nature of synaptic transmission, where neurotransmitters are released from the axon terminal of the presynaptic neuron and received by dendrites/cell body of the postsynaptic neuron, signals flow in one direction along a neural pathway.\nb- The cell body (soma) contains the nucleus and most organelles (RER/Nissl granules, Golgi, mitochondria). It is the metabolic center and integrates incoming signals before generating an action potential.",
-        explanation: "Explains the basis of unidirectional impulse flow (synapses) and describes the key components of the neuron cell body."
+        question: addLocation("3- Explain the following:\na- Nerve impulses always pass in one direction.\nb- The structure of the nerve cell body.", "Sixth Week Home performances"),
+        correctAnswerText: "a- Unidirectional transmission at synapses, where neurotransmitters are released from the axon terminal and received by the postsynaptic membrane, ensures one-way flow.<br>b- Contains nucleus, RER (Nissl granules), Golgi, mitochondria; site of metabolism and signal integration.",
+        explanation: "Explains unidirectional flow and cell body structure/function."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 4,
-        question: "4- What are the consequences of :\na- The absence of a central body (centrosome) in the nerve cell.\nb- The destruction of Schwann cells.",
-        correctAnswerText: "a- Loss of ability for cell division (mitosis). Mature neurons cannot replicate.\nb- Loss of myelination in the PNS, leading to significantly slowed or blocked nerve impulse transmission and neurological dysfunction.",
-        explanation: "States the consequences of lacking centrosomes (no division) and losing Schwann cells (demyelination)."
+        question: addLocation("4- What are the consequences of :\na- The absence of a central body (centrosome) in the nerve cell.\nb- The destruction of Schwann cells.", "Sixth Week Home performances"),
+        correctAnswerText: "a- Inability to undergo cell division (mitosis).<br>b- Demyelination of axons in PNS, severely slowing or blocking impulse conduction.",
+        explanation: "States consequences of lacking centrosomes and losing Schwann cells."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 5,
-        question: "5- Compare between sensory neurons and motor neurons.\n\nsensory neurons\nmotor neurons",
-        correctAnswerText: "Sensory Neurons: Carry impulses from receptors to CNS. Typically have cell bodies in ganglia outside CNS. Afferent.\nMotor Neurons: Carry impulses from CNS to effectors (muscles/glands). Typically have cell bodies in CNS or autonomic ganglia. Efferent.",
-        explanation: "Compares based on direction of signal, cell body location, and function."
+        question: addLocation("5- Compare between sensory neurons and motor neurons.\n\nsensory neurons\nmotor neurons", "Sixth Week Home performances"),
+        correctAnswerText: "Sensory: Receptor to CNS (afferent), cell bodies often in ganglia. Motor: CNS to effector (efferent), cell bodies in CNS or autonomic ganglia.",
+        explanation: "Compares based on signal direction and cell body location."
     },
 
-    // Page 13: Weekly evaluation (6) A
+    // Weekly evaluation (6) A (Page 13)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- Both ..... and ..... receive nerve impulses in nerve cells.",
+        question: addLocation("1- Both ..... and ..... receive nerve impulses in nerve cells.", "Weekly evaluation 6 A"),
         options: ["a- the cell axon and nerve endings.", "b- the cell body and dendrites.", "c- dendrites and nerve endings.", "d- the cell body and nerve endings."],
         correctAnswer: 1,
         correctAnswerText: "b- the cell body and dendrites.",
-        explanation: "Dendrites and the cell body are the primary sites for receiving synaptic input from other neurons.<br><br><b>Why this answer is correct:</b> Dendrites and the cell body receive signals.<br><br><b>Why other options are incorrect:</b><br>a- Axon transmits away; nerve endings transmit to other cells.<br>c- Nerve endings transmit, don't receive signals in this context.<br>d- Nerve endings transmit, don't receive signals in this context."
+        explanation: "Dendrites and the cell body are the receptive areas of the neuron, receiving synaptic input.<br><br><b>Why this answer is correct:</b> Dendrites and cell body receive signals.<br><br><b>Why other options are incorrect:</b><br>a- Axon transmits away, nerve endings transmit to other cells.<br>c, d - Nerve endings transmit signals."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "2- The ........ transmits nerve impulses away from the cell body through synapses.",
+        question: addLocation("2- The ........ transmits nerve impulses away from the cell body through synapses.", "Weekly evaluation 6 A"),
         options: ["a- axons.", "b- dendrites.", "c- the cell body.", "d- Nissil granules."],
         correctAnswer: 0,
         correctAnswerText: "a- axons.",
-        explanation: "The axon carries the action potential away from the cell body to the synapse.<br><br><b>Why this answer is correct:</b> The axon is the output pathway for the impulse.<br><br><b>Why other options are incorrect:</b><br>b- Dendrites receive signals towards the cell body.<br>c- Cell body integrates signals.<br>d- Nissl granules are for protein synthesis."
+        explanation: "The axon conducts impulses away from the cell body to the synapse.<br><br><b>Why this answer is correct:</b> Axon transmits away.<br><br><b>Why other options are incorrect:</b><br>b- Dendrites receive.<br>c- Cell body integrates.<br>d- Nissl granules are for synthesis."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- Cells that transmit nerve impulses from the receptor organs to the central nervous system.",
+        question: addLocation("Write what the following expressions mean:\n1- Cells that transmit nerve impulses from the receptor organs to the central nervous system.", "Weekly evaluation 6 A"),
         correctAnswerText: "Sensory neurons.",
-        explanation: "Sensory neurons carry information from sensory receptors to the CNS."
+        explanation: "Sensory neurons carry signals from receptors to CNS."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- Fine granules found only in the nerve cell, and are believed to be stored food that the cell consumes during its activity.",
+        question: addLocation("Write what the following expressions mean:\n2- Fine granules found only in the nerve cell, and are believed to be stored food that the cell consumes during its activity.", "Weekly evaluation 6 A"),
         correctAnswerText: "Nissl granules.",
-        explanation: "Describes Nissl granules, which are involved in protein synthesis to support cell activity."
+        explanation: "Describes Nissl granules (RER and ribosomes)."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 3,
-        question: "Give reasons for the following:\nNerve cells do not have the ability to divide.",
-        correctAnswerText: "Mature nerve cells lack a centrosome (central body), which is required for initiating and organizing the process of cell division (mitosis).",
-        explanation: "Explains the absence of centrosome as the reason for inability to divide."
+        question: addLocation("Give reasons for the following:\nNerve cells do not have the ability to divide.", "Weekly evaluation 6 A"),
+        correctAnswerText: "Most mature nerve cells lack a centrosome, which is required for cell division.",
+        explanation: "Explains lack of centrosome prevents division."
     },
 
-    // Page 14: Weekly evaluation (6) B
+    // Weekly evaluation (6) B (Page 14)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- The ............ is fine granules found only in the nerve cell, and are believed to be stored food consumed by the cell during its activity.",
+        question: addLocation("1- The ............ is fine granules found only in the nerve cell, and are believed to be stored food consumed by the cell during its activity.", "Weekly evaluation 6 B"),
         options: ["a- Nissil granules.", "b- Schwann cells.", "c- Neurolemma.", "d- Cell body."],
         correctAnswer: 0,
         correctAnswerText: "a- Nissil granules.",
-        explanation: "Matches the description provided for Nissl granules, despite the 'stored food' phrasing.<br><br><b>Why this answer is correct:</b> The description corresponds to Nissl granules.<br><br><b>Why other options are incorrect:</b><br>b- Schwann cells are glial cells.<br>c- Neurolemma is a membrane.<br>d- Cell body is the main part of the neuron."
+        explanation: "Matches the description for Nissl granules.<br><br><b>Why this answer is correct:</b> Description fits Nissl granules.<br><br><b>Why other options are incorrect:</b><br>b- Glial cells. c- Membrane. d- Part of cell."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "2- The myelin sheath is interrupted at certain points of constrictions called ...",
+        question: addLocation("2- The myelin sheath is interrupted at certain points of constrictions called ...", "Weekly evaluation 6 B"),
         options: ["a- Nodes of Ranvier.", "b- Neurolemma.", "c- Dendrites.", "D- Nissil granules."],
         correctAnswer: 0,
         correctAnswerText: "a- Nodes of Ranvier.",
-        explanation: "Nodes of Ranvier are the gaps in the myelin sheath along the axon.<br><br><b>Why this answer is correct:</b> Nodes of Ranvier are interruptions in myelin.<br><br><b>Why other options are incorrect:</b><br>b- Neurolemma is an outer membrane.<br>c- Dendrites receive signals.<br>d- Nissl granules are in the cell body."
+        explanation: "Nodes of Ranvier are gaps in myelin.<br><br><b>Why this answer is correct:</b> Nodes of Ranvier are interruptions in myelin.<br><br><b>Why other options are incorrect:</b><br>b- Outer membrane. c- Receiving processes. d- Protein synthesis sites."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- Cells that transmit nerve impulses from the central nervous system to the response organs.",
+        question: addLocation("Write what the following expressions mean:\n1- Cells that transmit nerve impulses from the central nervous system to the response organs.", "Weekly evaluation 6 B"),
         correctAnswerText: "Motor neurons.",
         explanation: "Motor neurons carry signals from CNS to effectors."
     },
@@ -1177,111 +1180,111 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- A thin layer that covers the myelin sheath from the outside.",
+        question: addLocation("Write what the following expressions mean:\n2- A thin layer that covers the myelin sheath from the outside.", "Weekly evaluation 6 B"),
         correctAnswerText: "Neurolemma.",
-        explanation: "Neurolemma is the outer covering of Schwann cells surrounding myelinated axons in the PNS."
+        explanation: "Neurolemma is the outer membrane of Schwann cells."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 3,
-        question: "Give reasons for the following:\nThe body of the nerve cell has many dendrites.",
-        correctAnswerText: "To increase the surface area available for receiving synaptic input from other neurons, allowing the neuron to integrate signals from multiple sources.",
-        explanation: "Explains that dendrites' structure maximizes signal reception."
+        question: addLocation("Give reasons for the following:\nThe body of the nerve cell has many dendrites.", "Weekly evaluation 6 B"),
+        correctAnswerText: "To increase the receptive surface area for receiving synaptic input from multiple other neurons.",
+        explanation: "Explains structural adaptation for signal reception."
     },
 
-    // Page 15: Weekly evaluation (6) C
+    // Weekly evaluation (6) C (Page 15)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- A long cytoplasmic extension that may reach more than a meter is .....",
+        question: addLocation("1- A long cytoplasmic extension that may reach more than a meter is .....", "Weekly evaluation 6 C"),
         options: ["a- Dendrites.", "b- Axon.", "c- Nerve fibers.", "d- Nissil granules."],
         correctAnswer: 1,
         correctAnswerText: "b- Axon.",
-        explanation: "The axon is the typically long projection of a neuron.<br><br><b>Why this answer is correct:</b> Axons can be very long.<br><br><b>Why other options are incorrect:</b><br>a- Dendrites are short.<br>c- A nerve fiber is an axon, but axon is the specific cell part.<br>d- Nissl granules are within the cell body."
+        explanation: "Axons can be very long.<br><br><b>Why this answer is correct:</b> Axons are the long neuronal processes.<br><br><b>Why other options are incorrect:</b><br>a- Dendrites are short. c- Nerve fiber is an axon with sheaths. d- Nissl granules are in cell body."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "2- Terminal arbonizations transmit nerve impulses away from the cell body through...... .",
+        question: addLocation("2- Terminal arbonizations transmit nerve impulses away from the cell body through...... .", "Weekly evaluation 6 C"),
         options: ["a- Synapse.", "b- Dendrites.", "c- Cell body.", "d- Nissil granules."],
         correctAnswer: 0,
         correctAnswerText: "a- Synapse.",
-        explanation: "Terminal arborizations (nerve endings) transmit signals across the synapse to the next cell.<br><br><b>Why this answer is correct:</b> Transmission to the next cell occurs at the synapse.<br><br><b>Why other options are incorrect:</b><br>b- Dendrites receive signals.<br>c- Cell body processes signals.<br>d- Nissl granules are in the cell body."
+        explanation: "Transmission to the next cell occurs at the synapse.<br><br><b>Why this answer is correct:</b> Synapse is the junction for transmission.<br><br><b>Why other options are incorrect:</b><br>b- Dendrites receive. c- Cell body processes. d- Nissl granules are for synthesis."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- Cells that are the link between sensory cells and motor cells.",
+        question: addLocation("Write what the following expressions mean:\n1- Cells that are the link between sensory cells and motor cells.", "Weekly evaluation 6 C"),
         correctAnswerText: "Connector neurons (or Interneurons).",
-        explanation: "Interneurons connect sensory and motor pathways."
+        explanation: "Interneurons bridge sensory and motor pathways."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- Tiny granules found only in the nerve cell, and it is believed that they are stored food that the cell consumes during its activity.",
+        question: addLocation("Write what the following expressions mean:\n2- Tiny granules found only in the nerve cell, and it is believed that they are stored food that the cell consumes during its activity.", "Weekly evaluation 6 C"),
         correctAnswerText: "Nissl granules.",
-        explanation: "Repeats the description of Nissl granules."
+        explanation: "Repeats description of Nissl granules."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "Give reasons for the following:\nThe nerve impulses always pass in one direction.",
-        correctAnswerText: "Due to the specialization of the synapse, where neurotransmitters are released from the presynaptic axon terminal and bind to receptors on the postsynaptic membrane, ensuring unidirectional signal flow across the junction.",
-        explanation: "Explains that synaptic specialization dictates unidirectional impulse flow."
+        question: addLocation("Give reasons for the following:\nThe nerve impulses always pass in one direction.", "Weekly evaluation 6 C"),
+        correctAnswerText: "The unidirectional nature of synaptic transmission, where neurotransmitters are released from the presynaptic axon terminal and received by the postsynaptic membrane, ensures the signal travels in one direction.",
+        explanation: "Explains that synaptic structure dictates unidirectional flow."
     },
 
-    // Page 16: Seventh Week Class Performance
+    // Seventh Week Class Performance (Page 16)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- Cells that comprise nervous tissue and are characterized by their ability to divide are........",
+        question: addLocation("1- Cells that comprise nervous tissue and are characterized by their ability to divide are........", "Seventh Week Class Performance"),
         options: ["a- sensory neurons", "c- conducting neurons", "b- motor neurons", "d- neuroglia cells"],
         correctAnswer: 3,
         correctAnswerText: "d- neuroglia cells",
-        explanation: "Neuroglia retain the ability to divide, unlike mature neurons.<br><br><b>Why this answer is correct:</b> Neuroglia are capable of division.<br><br><b>Why other options are incorrect:</b><br>a, b, c - Neurons typically do not divide."
+        explanation: "Neuroglia are the non-neuronal, dividing cells in nervous tissue.<br><br><b>Why this answer is correct:</b> Neuroglia retain mitotic activity.<br><br><b>Why other options are incorrect:</b><br>a, b, c - Mature neurons do not divide."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "2. The ................... is composed of a group of nerve bundles, each of which consists of a group of nerve fibers.",
+        question: addLocation("2. The ................... is composed of a group of nerve bundles, each of which consists of a group of nerve fibers.", "Seventh Week Class Performance"),
         options: ["a- Schwann cells", "c- nerve ending", "b- dendritic appendage", "d- nerve"],
         correctAnswer: 3,
         correctAnswerText: "d- nerve",
-        explanation: "A nerve is a structure containing multiple bundles (fascicles) of nerve fibers (axons).<br><br><b>Why this answer is correct:</b> Definition of a nerve.<br><br><b>Why other options are incorrect:</b><br>a- Schwann cells form myelin.<br>b- Dendritic appendage is part of a neuron.<br>c- Nerve ending is part of the axon."
+        explanation: "A nerve is a structure containing bundles (fascicles) of axons (nerve fibers).<br><br><b>Why this answer is correct:</b> Definition of a nerve.<br><br><b>Why other options are incorrect:</b><br>a- Glial cells. b- Part of neuron. c- Part of axon."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "3- The message transmitted by nerves from the sensory organs to the central nervous system and from there to the response organs is the .................",
+        question: addLocation("3- The message transmitted by nerves from the sensory organs to the central nervous system and from there to the response organs is the .................", "Seventh Week Class Performance"),
         options: ["a- nerve", "c- nerve impulse", "b- nerve ending", "d- neuroglia"],
         correctAnswer: 2,
         correctAnswerText: "c- nerve impulse",
-        explanation: "The electrical signal carrying information is the nerve impulse.<br><br><b>Why this answer is correct:</b> Nerve impulse is the signal.<br><br><b>Why other options are incorrect:</b><br>a- Nerve is the structure.<br>b- Nerve ending is location of transmission to next cell.<br>d- Neuroglia are support cells."
+        explanation: "The electrical signal itself is the nerve impulse.<br><br><b>Why this answer is correct:</b> Nerve impulse is the signal.<br><br><b>Why other options are incorrect:</b><br>a- Structure. b- Location of transmission. d- Support cells."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 4,
-        question: "4. The concentration of sodium ions (Na+) outside the cell is ............ times higher than its concentration inside the cell.",
+        question: addLocation("4. The concentration of sodium ions (Na+) outside the cell is ............ times higher than its concentration inside the cell.", "Seventh Week Class Performance"),
         options: ["a-10:15", "b-5:9", "c- 15:20", "d-20:30"],
         correctAnswer: null,
-        correctAnswerText: "Question is flawed, options are incorrect representation of the multiplier.",
-        explanation: "The concentration of Na+ is typically 10-15 times higher outside than inside. The options are presented as ranges of ratios, which is confusing. The intended answer likely falls within the 10-15 range, but the formatting of options is incorrect.",
+        correctAnswerText: "Question flawed, options formatted incorrectly.",
+        explanation: "The ratio of Na+ outside to inside is typically 10-15:1. The options present ranges that are not ratios."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- The resting state of a nerve cell, when its outer surface is positive and its inner surface is negative.",
+        question: addLocation("Write what the following expressions mean:\n1- The resting state of a nerve cell, when its outer surface is positive and its inner surface is negative.", "Seventh Week Class Performance"),
         correctAnswerText: "Polarization.",
         explanation: "Definition of polarization (resting state)."
     },
@@ -1289,111 +1292,111 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- A sheath of connective tissue supplied with blood vessels that encloses the bundles of nerve fibers.",
+        question: addLocation("Write what the following expressions mean:\n2- A sheath of connective tissue supplied with blood vessels that encloses the bundles of nerve fibers.", "Seventh Week Class Performance"),
         correctAnswerText: "Perineurium (or Epineurium).",
-        explanation: "Connective tissue sheath surrounding nerve fascicles (perineurium) or the entire nerve (epineurium)."
+        explanation: "Connective tissue sheath around fascicles or nerve."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "Write what the following expressions mean:\n3- Ions its concentration inside the nerve cell is 30 times greater than its concentration in the extracellular fluid surrounding the cell.",
+        question: addLocation("Write what the following expressions mean:\n3- Ions its concentration inside the nerve cell is 30 times greater than its concentration in the extracellular fluid surrounding the cell.", "Seventh Week Class Performance"),
         correctAnswerText: "Potassium ions (K+).",
-        explanation: "K+ is highly concentrated inside the cell."
+        explanation: "K+ is highly concentrated inside the neuron."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Give reason for each of the following:\n1- The concentration of negative ions inside the nerve cell is much higher than its concentration outside.",
-        correctAnswerText: "Due to the presence of large, non-diffusible, negatively charged proteins and organic anions synthesized and trapped inside the cell.",
-        explanation: "Explains the source of the internal negative charge."
+        question: addLocation("Give reason for each of the following:\n1- The concentration of negative ions inside the nerve cell is much higher than its concentration outside.", "Seventh Week Class Performance"),
+        correctAnswerText: "Due to large, trapped intracellular negative proteins and organic anions.",
+        explanation: "Explains source of internal negativity."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "Give reason for each of the following:\n2- The role of the connector neuron differs from that of the neuroglia in its connecting function.",
-        correctAnswerText: "Connector neurons connect by transmitting and integrating nerve impulses; neuroglia connect by providing structural support and binding tissues.",
-        explanation: "Distinguishes functional (neuronal) vs structural (neuroglial) connection."
+        question: addLocation("Give reason for each of the following:\n2- The role of the connector neuron differs from that of the neuroglia in its connecting function.", "Seventh Week Class Performance"),
+        correctAnswerText: "Connector neurons connect by transmitting impulses and integrating information. Neuroglia connect structurally, providing support and binding tissue.",
+        explanation: "Distinguishes functional vs structural connection."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Compare between neurons and neuroglia cells in terms of function.",
-        correctAnswerText: "Neurons: Transmit electrical and chemical impulses for communication. Neuroglia: Support, protect, insulate, nourish, and maintain the environment for neurons.",
-        explanation: "Provides a functional comparison."
+        question: addLocation("Compare between neurons and neuroglia cells in terms of function.", "Seventh Week Class Performance"),
+        correctAnswerText: "Neurons: Transmit nerve impulses. Neuroglia: Support, nourish, insulate, and protect neurons; do not transmit impulses.",
+        explanation: "Compares primary functions."
     },
 
-    // Page 17: Seventh Week Home performances
+    // Seventh Week Home performances (Page 17)
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- Define the following:\na- Neuroglia.\nb- The nerve.\nc- Nerve impulse.\nd- Polarization.",
-        correctAnswerText: "a- Neuroglia: Non-neuronal cells supporting and protecting neurons. b- The nerve: A bundle of axons in the PNS. c- Nerve impulse: An electrical signal (action potential) transmitted by a neuron. d- Polarization: Resting state with negative inside, positive outside charge.",
-        explanation: "Provides standard definitions."
+        question: addLocation("1- Define the following:\na- Neuroglia.\nb- The nerve.\nc- Nerve impulse.\nd- Polarization.", "Seventh Week Home performances"),
+        correctAnswerText: "a- Neuroglia: Supporting cells in nervous tissue. b- The nerve: Bundle of axons in PNS. c- Nerve impulse: Propagating electrical signal. d- Polarization: Resting state membrane potential (-70mV).",
+        explanation: "Provides definitions."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "2- Give reasons for the following:\na- Neuroglia cells contribute to the replacement of cutted parts in some neurons.\nb- Neuroglia cells have a binding function.\nc- The inner surface of neurons is negative during rest.",
-        correctAnswerText: "a- Neuroglia proliferate and fill damaged areas (gliosis), 'replacing' volume but not function.\nb- Neuroglia provide structural support, holding nervous tissue together.<br>c- Due to selective permeability allowing K+ efflux and trapped intracellular negative anions.",
-        explanation: "Explains neuroglia's roles in injury and support, and the basis of the negative resting potential."
+        question: addLocation("2- Give reasons for the following:\na- Neuroglia cells contribute to the replacement of cutted parts in some neurons.\nb- Neuroglia cells have a binding function.\nc- The inner surface of neurons is negative during rest.", "Seventh Week Home performances"),
+        correctAnswerText: "a- Neuroglia proliferate and fill damaged space (gliosis), replacing tissue volume.<br>b- They provide a structural framework, holding neurons and tissues together.<br>c- Due to outward K+ leak and trapped negative intracellular anions.",
+        explanation: "Explains neuroglia roles and basis of negative resting potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "3- Explain the following:\na- How the potential difference of a neuron is formed during rest.\nb- The structure of the nerve.",
-        correctAnswerText: "a- Established by ion gradients (Na+/K+ pump) and selective membrane permeability (mainly K+ leak channels), leading to K+ efflux and internal negativity.<br>b- Bundle of axons (nerve fibers) organized into fascicles, surrounded by connective tissue sheaths (perineurium, epineurium) containing blood vessels.",
+        question: addLocation("3- Explain the following:\na- How the potential difference of a neuron is formed during rest.\nb- The structure of the nerve.", "Seventh Week Home performances"),
+        correctAnswerText: "a- Maintained by Na+/K+ pump creating gradients and selective permeability (high to K+), causing K+ efflux and internal negativity.<br>b- Bundle of axons (fibers) grouped into fascicles, enclosed by connective tissue sheaths (perineurium, epineurium) with blood vessels.",
         explanation: "Explains resting potential mechanism and nerve structure."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 4,
-        question: "4- Compare between the concentration of sodium and potassium ions in a neuron during rest.",
-        correctAnswerText: "At rest, Na+ concentration is high outside and low inside. K+ concentration is high inside and low outside.",
+        question: addLocation("4- Compare between the concentration of sodium and potassium ions in a neuron during rest.", "Seventh Week Home performances"),
+        correctAnswerText: "Na+ is high outside, low inside. K+ is high inside, low outside.",
         explanation: "Compares ion distribution at rest."
     },
 
-    // Page 18: Weekly evaluation (7) A
+    // Weekly evaluation (7) A (Page 18)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- One of the functions of neuroglia is similar to the function of ............ in the skin.",
+        question: addLocation("1- One of the functions of neuroglia is similar to the function of ............ in the skin.", "Weekly evaluation 7 A"),
         options: ["a- the superficial layer of the epidermis", "b- the inner layer of the epidermis", "c- sweat gland", "d- fatty layer"],
         correctAnswer: 3,
         correctAnswerText: "d- fatty layer",
-        explanation: "Both provide support and insulation.<br><br><b>Why this answer is correct:</b> Fatty layer provides support/insulation, similar to some neuroglial functions.<br><br><b>Why other options are incorrect:</b><br>a- Epidermis is barrier.<br>b- Inner epidermis is regenerative.<br>c- Sweat gland is secretory."
+        explanation: "Both provide support and insulation.<br><br><b>Why this answer is correct:</b> Fatty layer and neuroglia share supportive and insulating roles.<br><br><b>Why other options are incorrect:</b><br>a, b - Layers of skin barrier/regeneration. c- Secretory gland."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "2- When the potential difference of the neuronal membrane reaches -70 millivolts, the ...................",
+        question: addLocation("2- When the potential difference of the neuronal membrane reaches -70 millivolts, the ...................", "Weekly evaluation 7 A"),
         options: ["a- concentration of potassium ions outside the neuron is higher than inside.", "b- concentration of potassium ions inside the neuron is higher than outside.", "c- concentration of sodium ions inside the neuron is higher than outside.", "d- concentration of chloride ions outside the neuron is higher than inside."],
         correctAnswer: 1,
         correctAnswerText: "b- concentration of potassium ions inside the neuron is higher than outside.",
-        explanation: "-70mV is the resting potential, where K+ is high inside and Na+ is high outside.<br><br><b>Why this answer is correct:</b> High internal K+ is characteristic of the resting potential.<br><br><b>Why other options are incorrect:</b><br>a- K+ is high inside.<br>c- Na+ is high outside.<br>d- Cl- is high outside, but K+ gradient is primary determinant of resting potential."
+        explanation: "-70mV is resting potential, characterized by high internal K+.<br><br><b>Why this answer is correct:</b> High internal K+ is a defining feature of the resting potential.<br><br><b>Why other options are incorrect:</b><br>a- K+ is low outside. c- Na+ is low inside. d- Cl- is high outside, but K+ is primary for resting potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\na- Cells within the components of the nervous system that have the ability to divide.",
+        question: addLocation("Write what the following expressions mean:\na- Cells within the components of the nervous system that have the ability to divide.", "Weekly evaluation 7 A"),
         correctAnswerText: "Neuroglia (or Glial cells).",
-        explanation: "Neuroglia retain mitotic capability."
+        explanation: "Neuroglia are mitotic."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\nb- A group of nerve bundles",
+        question: addLocation("Write what the following expressions mean:\nb- A group of nerve bundles", "Weekly evaluation 7 A"),
         correctAnswerText: "A nerve.",
         explanation: "Definition of a nerve."
     },
@@ -1401,355 +1404,355 @@ const allQuestions = [
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 3,
-        question: "Give reasons for the following:\nNeuroglia cells works like connective tissue.",
-        correctAnswerText: "They provide structural support and framework for neurons, bind nervous tissue together, and fill spaces, performing roles analogous to connective tissue.",
-        explanation: "Explains the supportive function similar to connective tissue."
+        question: addLocation("Give reasons for the following:\nNeuroglia cells works like connective tissue.", "Weekly evaluation 7 A"),
+        correctAnswerText: "Neuroglia provide structural support and binding to neurons and nervous tissue, analogous to the role of connective tissue.",
+        explanation: "Explains structural support function."
     },
 
-    // Page 19: Weekly evaluation (7) B
+    // Weekly evaluation (7) B (Page 19)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- Which of the following structures is similar in function to that of a neuroglia cell?",
+        question: addLocation("1- Which of the following structures is similar in function to that of a neuroglia cell?", "Weekly evaluation 7 B"),
         options: ["a- Nissil granules.", "b- Schwann cells.", "c- Nodes of Ranvier.", "d- Myelin sheath."],
         correctAnswer: 1,
         correctAnswerText: "b- Schwann cells.",
-        explanation: "Schwann cells are a type of neuroglia in the PNS.<br><br><b>Why this answer is correct:</b> Schwann cells are neuroglia.<br><br><b>Why other options are incorrect:</b><br>a- Nissl granules are in neurons.<br>c- Nodes of Ranvier are gaps in myelin.<br>d- Myelin sheath is produced by neuroglia, but is not the cell itself."
+        explanation: "Schwann cells are a type of neuroglia.<br><br><b>Why this answer is correct:</b> Schwann cells are neuroglia.<br><br><b>Why other options are incorrect:</b><br>a- In neuron. c- Part of axon. d- Produced by neuroglia."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "2- One of the causes of polarization is ...........",
+        question: addLocation("2- One of the causes of polarization is ...........", "Weekly evaluation 7 B"),
         options: ["a- increased concentration of potassium ions outside the neuron.", "b- increased concentration of potassium ions inside the neuron.", "c- increased concentration of sodium ions inside the neuron.", "d- Increased concentration of chloride ions outside the neuron."],
         correctAnswer: 1,
         correctAnswerText: "b- increased concentration of potassium ions inside the neuron.",
-        explanation: "High internal K+ concentration contributes significantly to the resting membrane potential via outward K+ leak.<br><br><b>Why this answer is correct:</b> High internal K+ is crucial for resting potential formation.<br><br><b>Why other options are incorrect:</b><br>a- K+ is low outside.<br>c- Na+ is low inside.<br>d- Cl- is high outside, but K+ gradient is more dominant for resting potential."
+        explanation: "High internal K+ concentration and membrane permeability to K+ are primary causes of negative resting potential.<br><br><b>Why this answer is correct:</b> High internal K+ contributes to resting potential.<br><br><b>Why other options are incorrect:</b><br>a- K+ is low outside. c- Na+ is low inside. d- Cl- high outside, but K+ is more significant for resting potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\na- A sheath of connective tissue supplied with blood vessels that surrounds a group of nerve bundles.\nb- The state of a nerve cell during rest when its outer surface is positive and its inner surface is negative.",
-        correctAnswerText: "a- Perineurium (or Epineurium).\nb- Polarization.",
-        explanation: "a- Connective tissue sheath around fascicles (perineurium) or nerve (epineurium). b- Definition of polarization."
+        question: addLocation("Write what the following expressions mean:\na- A sheath of connective tissue supplied with blood vessels that surrounds a group of nerve bundles.\nb- The state of a nerve cell during rest when its outer surface is positive and its inner surface is negative.", "Weekly evaluation 7 B"),
+        correctAnswerText: "a- Perineurium (or Epineurium).<br>b- Polarization.",
+        explanation: "a- Connective tissue sheath. b- Definition of polarization."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 3,
-        question: "Give reasons for the following:\nNeuroglia cells have the ability to compensate..",
-        correctAnswerText: "They can proliferate and migrate to the site of injury, clearing debris and filling spaces, partially compensating for lost neuronal volume, although not neuronal function.",
-        explanation: "Explains neuroglia's role in injury response and repair."
+        question: addLocation("Give reasons for the following:\nNeuroglia cells have the ability to compensate..", "Weekly evaluation 7 B"),
+        correctAnswerText: "They can divide and fill spaces left by damaged neurons, cleaning debris and forming scar tissue, which provides some structural compensation for neuronal loss.",
+        explanation: "Explains compensation through division and filling space."
     },
 
-    // Page 20: Weekly evaluation (7) C
+    // Weekly evaluation (7) C (Page 20)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 1,
-        question: "1- Neuroglia cells are distinguished from other neurons by ...................",
+        question: addLocation("1- Neuroglia cells are distinguished from other neurons by ...................", "Weekly evaluation 7 C"),
         options: ["a- being from components of the nervous system.", "b) having a body cell.", "c) being nourish the neuron.", "d) being nourished by the neuron"],
         correctAnswer: 2,
         correctAnswerText: "c) being nourish the neuron.",
-        explanation: "Many neuroglia types (like astrocytes, Schwann cells) provide metabolic support and nourishment to neurons.<br><br><b>Why this answer is correct:</b> Neuroglia provide nourishment to neurons.<br><br><b>Why other options are incorrect:</b><br>a- Both are components.<br>b- Both have cell bodies.<br>d- Neurons are nourished *by* neuroglia."
+        explanation: "Neuroglia provide essential metabolic support to neurons.<br><br><b>Why this answer is correct:</b> Neuroglia nourish neurons.<br><br><b>Why other options are incorrect:</b><br>a, b - Both share these features. d- Neurons are nourished *by* neuroglia."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "2- The concentration of sodium ions outside the cell is ................... times higher than its concentration inside the cell.",
+        question: addLocation("2- The concentration of sodium ions outside the cell is ................... times higher than its concentration inside the cell.", "Weekly evaluation 7 C"),
         options: ["a-5-10", "b-10-15", "c-15-30", "d-30-40"],
         correctAnswer: 1,
         correctAnswerText: "b-10-15",
-        explanation: "The typical ratio of Na+ outside:inside at rest is approximately 10-15:1.<br><br><b>Why this answer is correct:</b> The range 10-15 accurately reflects the multiplier for Na+ concentration difference.<br><br><b>Why other options are incorrect:</b> These ranges are outside the typical physiological ratio for Na+."
+        explanation: "Typical ratio is 10-15:1.<br><br><b>Why this answer is correct:</b> 10-15 is the accurate range.<br><br><b>Why other options are incorrect:</b> Other ranges are incorrect."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\na- The message transmitted by nerves from the sensory organs to the central nervous system",
+        question: addLocation("Write what the following expressions mean:\na- The message transmitted by nerves from the sensory organs to the central nervous system", "Weekly evaluation 7 C"),
         correctAnswerText: "Nerve impulse (or Sensory information).",
-        explanation: "The signal transmitted by sensory neurons is the nerve impulse."
+        explanation: "The signal is the nerve impulse."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\nb- Molecules inside the neuron are ionized and have high molecular weights that do not cross the plasma membrane.",
+        question: addLocation("Write what the following expressions mean:\nb- Molecules inside the neuron are ionized and have high molecular weights that do not cross the plasma membrane.", "Weekly evaluation 7 C"),
         correctAnswerText: "Negatively charged proteins and organic anions.",
-        explanation: "Large, trapped intracellular anions contribute to the negative resting potential."
+        explanation: "Describes trapped intracellular anions."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "What does it mean that:\nThe effective potential difference is approximately -70 millivolts?",
-        correctAnswerText: "It means the neuron is in its resting state (polarized), with the inside of the membrane having a negative charge relative to the outside, specifically a difference of about 70mV.",
-        explanation: "Explains the significance of the -70mV resting potential."
+        question: addLocation("What does it mean that:\nThe effective potential difference is approximately -70 millivolts?", "Weekly evaluation 7 C"),
+        correctAnswerText: "The neuron is at its resting membrane potential, with the inside 70mV more negative than the outside.",
+        explanation: "Explains the meaning of resting potential value."
     },
 
-    // Page 21: Week 9 Class Performance
+    // Week 9 Class Performance (Page 21)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "1- Which of the following ions, if its permeability increased, causes the potential difference in the neuron to return to -70 mV after excitation?",
+        question: addLocation("1- Which of the following ions, if its permeability increased, causes the potential difference in the neuron to return to -70 mV after excitation?", "Week 9 Class Performance"),
         options: ["a- Na+", "b- K+", "c- Ca++", "d- Cl-"],
         correctAnswer: 1,
         correctAnswerText: "b- K+",
-        explanation: "Increased K+ permeability and efflux cause repolarization back towards the resting potential.<br><br><b>Why this answer is correct:</b> K+ efflux drives repolarization.<br><br><b>Why other options are incorrect:</b><br>a- Na+ influx causes depolarization.<br>c- Ca++ is for neurotransmitter release.<br>d- Cl- contributes to resting potential/inhibition, not primary repolarization."
+        explanation: "Increased K+ permeability leads to K+ efflux, causing repolarization.<br><br><b>Why this answer is correct:</b> K+ efflux repolarizes.<br><br><b>Why other options are incorrect:</b><br>a- Na+ influx depolarizes. c- Ca++ for release. d- Cl- for inhibition/resting."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "2- Which of the following is related to the resting potential?",
+        question: addLocation("2- Which of the following is related to the resting potential?", "Week 9 Class Performance"),
         options: ["a- Equal distribution of ions.", "b- Insulation by Schwann cells.", "c- Action potential.", "d- Permeability of potassium ions outside the cell"],
         correctAnswer: 3,
         correctAnswerText: "d- Permeability of potassium ions outside the cell",
-        explanation: "The selective permeability of the membrane to K+ (often via leak channels) is a primary determinant of the resting potential, allowing K+ to leak out. While phrased awkwardly, it refers to membrane permeability to K+.<br><br><b>Why this answer is correct:</b> K+ permeability is a key factor in the resting potential.<br><br><b>Why other options are incorrect:</b><br>a- Resting potential involves unequal ion distribution.<br>b- Insulation affects speed of impulse, not resting potential.<br>c- Action potential is a change from resting potential."
+        explanation: "Selective permeability of the membrane to K+ is key to resting potential.<br><br><b>Why this answer is correct:</b> Membrane permeability to K+ determines resting potential.<br><br><b>Why other options are incorrect:</b><br>a- Unequal distribution. b- Insulation for speed. c- Action potential is excitation."
     },
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "3- Which of the following does the speed of nerve impulse transmission not depend on?",
+        question: addLocation("3- Which of the following does the speed of nerve impulse transmission not depend on?", "Week 9 Class Performance"),
         options: ["a- The diameter of the nerve fiber.", "b- The presence of acetylcholine.", "c- The presence of myelin sheaths.", "d- An increase in the strength of the stimulus"],
         correctAnswer: 1,
         correctAnswerText: "b- The presence of acetylcholine.",
-        explanation: "Acetylcholine is a neurotransmitter for synaptic transmission. Speed along the axon depends on diameter, myelination, and temperature, but not neurotransmitters or stimulus strength above threshold.<br><br><b>Why this answer is correct:</b> Acetylcholine acts at synapses, not on axonal conduction speed.<br><br><b>Why other options are incorrect:</b><br>a, c - Diameter and myelin affect speed.<br>d- Stimulus strength (above threshold) is all-or-none; it doesn't change the speed of the resulting impulse."
+        explanation: "Acetylcholine is a neurotransmitter for synaptic transmission, not axonal conduction speed.<br><br><b>Why this answer is correct:</b> Acetylcholine does not affect axonal speed.<br><br><b>Why other options are incorrect:</b><br>a, c - Diameter and myelin affect speed. d- Stimulus strength (above threshold) doesn't change impulse speed."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\n1- The state of a nerve cell at the time of excitation, when its outer surface is negative and its inner surface is positive.",
+        question: addLocation("Write what the following expressions mean:\n1- The state of a nerve cell at the time of excitation, when its outer surface is negative and its inner surface is positive.", "Week 9 Class Performance"),
         correctAnswerText: "Depolarization (or Action potential peak).",
-        explanation: "This describes the charge reversal during the action potential."
+        explanation: "Charge reversal during action potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "Write what the following expressions mean:\n2- A short period of time follow nerve excitation, during which the nerve cell membrane regains its physiological properties so that a new nerve impulse can be transmitted. During this period, the nerve does not respond to any stimulus, regardless of its strength.",
+        question: addLocation("Write what the following expressions mean:\n2- A short period of time follow nerve excitation, during which the nerve cell membrane regains its physiological properties so that a new nerve impulse can be transmitted. During this period, the nerve does not respond to any stimulus, regardless of its strength.", "Week 9 Class Performance"),
         correctAnswerText: "Absolute refractory period.",
-        explanation: "The period of complete unresponsiveness after an action potential."
+        explanation: "Period of unresponsiveness after action potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "Write what the following expressions mean:\n3- The phenomenon of depolarization from -70 mV to +40 mV and then back to -70 mV, which equals 110 mV.",
+        question: addLocation("Write what the following expressions mean:\n3- The phenomenon of depolarization from -70 mV to +40 mV and then back to -70 mV, which equals 110 mV.", "Week 9 Class Performance"),
         correctAnswerText: "Action Potential.",
-        explanation: "This is the characteristic voltage change during a nerve impulse."
+        explanation: "Total voltage change during an action potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "What happens when:\n1- A neuron is stimulated or excited by another nearby neuron.",
-        correctAnswerText: "Neurotransmitters are released, binding to the postsynaptic neuron and causing a change in its membrane potential (EPSP or IPSP). If sufficient excitatory input reaches the threshold, it triggers an action potential.",
-        explanation: "Describes synaptic transmission leading to potential firing."
+        question: addLocation("What happens when:\n1- A neuron is stimulated or excited by another nearby neuron.", "Week 9 Class Performance"),
+        correctAnswerText: "Neurotransmitters are released, potentially causing a depolarization in the receiving neuron. If threshold is reached, an action potential is generated.",
+        explanation: "Describes synaptic transmission and threshold triggering."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "What happens when:\n2- The stimulus acting on the neuron is removed.",
-        correctAnswerText: "If the threshold was reached, the action potential completes, and the membrane returns to the resting state via the Na+/K+ pump. If the stimulus was sub-threshold, the local potential change dissipates, and the membrane returns to resting potential.",
-        explanation: "Describes the return to resting state after stimulus removal."
+        question: addLocation("What happens when:\n2- The stimulus acting on the neuron is removed.", "Week 9 Class Performance"),
+        correctAnswerText: "If threshold was reached, the action potential completes and the neuron repolarizes. If sub-threshold, the membrane potential returns to resting.",
+        explanation: "Describes return to resting state."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Explain:\n1- The composition of the nerve cell's plasma membrane contributes to the generation of nerve impulses.",
-        correctAnswerText: "The membrane contains ion channels and pumps that maintain ion gradients and allow selective ion flow. Opening/closing of voltage-gated channels causes rapid ion movements that create the action potential.",
-        explanation: "Explains the role of membrane components in electrical signaling."
+        question: addLocation("Explain:\n1- The composition of the nerve cell's plasma membrane contributes to the generation of nerve impulses.", "Week 9 Class Performance"),
+        correctAnswerText: "The membrane contains ion channels and pumps that maintain electrochemical gradients and allow controlled ion flow, which underlies the resting potential and action potential generation.",
+        explanation: "Explains role of membrane components."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "Explain:\n2- The nerve impulse is transmitted in the form of successive waves of depolarization, repolarization, and depolarization.",
-        correctAnswerText: "Depolarization in one area triggers depolarization in the adjacent area, propagating the action potential as a wave. Repolarization follows, preparing the membrane for the next impulse.",
-        explanation: "Describes action potential propagation as a wave of potential changes."
+        question: addLocation("Explain:\n2- The nerve impulse is transmitted in the form of successive waves of depolarization, repolarization, and depolarization.", "Week 9 Class Performance"),
+        correctAnswerText: "Depolarization in one area triggers depolarization in the next, propagating the action potential as a wave along the axon, followed by repolarization.",
+        explanation: "Describes action potential propagation."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_STRUCTURE,
         originalNumber: 3,
-        question: "Explain:\n3- Role of Nissil granules in the nerve cell body.",
-        correctAnswerText: "Nissl granules are sites of protein synthesis (RER and ribosomes). They produce proteins necessary for the neuron's structure, function (e.g., neurotransmitter synthesis enzymes), maintenance, and growth.",
-        explanation: "Explains the protein synthesis function of Nissl granules."
+        question: addLocation("Explain:\n3- Role of Nissil granules in the nerve cell body.", "Week 9 Class Performance"),
+        correctAnswerText: "Nissl granules are sites of protein synthesis, providing proteins needed for neuronal structure, function, and repair.",
+        explanation: "Explains protein synthesis role."
     },
 
-    // Page 22: Week 9 Home performances
+    // Week 9 Home performances (Page 22)
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "1- Define the following:\na- Depolarization.\nb- Action Potential.",
-        correctAnswerText: "a- Depolarization: Reduction in membrane potential, making the inside less negative or positive. b- Action Potential: A brief, rapid, all-or-none reversal of membrane potential that propagates along an axon.",
-        explanation: "Provides standard definitions."
+        question: addLocation("1- Define the following:\na- Depolarization.\nb- Action Potential.", "Week 9 Home performances"),
+        correctAnswerText: "a- Depolarization: Decrease in membrane potential (inside becomes less negative or positive). b- Action Potential: Brief, rapid change in membrane potential propagating along axon.",
+        explanation: "Provides definitions."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 2,
-        question: "2- Give reasons for the following:\na- The importance of sodium and potassium pumps.\nb- The difference in nerve impulse velocity is affected by the diameter of the nerve fiber.",
-        correctAnswerText: "a- They maintain ion gradients (high Na+ out, high K+ in) crucial for resting potential and rapid ion flow during action potentials.<br>b- Larger diameter axons have lower resistance, allowing local currents to spread faster, increasing conduction velocity.",
-        explanation: "Explains pumps' role in gradients and diameter's effect on speed."
+        question: addLocation("2- Give reasons for the following:\na- The importance of sodium and potassium pumps.\nb- The difference in nerve impulse velocity is affected by the diameter of the nerve fiber.", "Week 9 Home performances"),
+        correctAnswerText: "a- Maintain ion gradients necessary for resting and action potentials.<br>b- Larger diameter reduces resistance to current flow, allowing faster signal spread.",
+        explanation: "Explains pump importance and diameter effect."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 3,
-        question: "3- Complete the following table:\n\n| Comparison            | Polarization State | Depolarization State |\n|-----------------------|--------------------|----------------------|\n| Potential Difference  |                    |                      |\n| Inner Membrane Charge |                    |                      |",
+        question: addLocation("3- Complete the following table:\n\n| Comparison            | Polarization State | Depolarization State |\n|-----------------------|--------------------|----------------------|\n| Potential Difference  |                    |                      |\n| Inner Membrane Charge |                    |                      |", "Week 9 Home performances"),
         correctAnswerText: "| Comparison            | Polarization State | Depolarization State |\n|-----------------------|--------------------|----------------------|\n| Potential Difference  | Approx. -70 mV     | Approx. +30 to +40 mV |\n| Inner Membrane Charge | Negative           | Positive             |",
-        explanation: "Fills table with potential and charge characteristics of polarized and depolarized states."
+        explanation: "Fills table with state characteristics."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 4,
-        question: "4- What happens when:\nA region of the nerve membrane is excited:\n1- during the refractory period.\n2- during the depolarization period.",
-        correctAnswerText: "1- During the absolute refractory period, it will not respond to any stimulus. During the relative refractory period, it will respond only to a stronger-than-threshold stimulus.\n2- The stimulus will have no additional effect during depolarization (absolute refractory period).",
-        explanation: "Describes the responsiveness (or lack thereof) during refractory and depolarization periods."
+        question: addLocation("4- What happens when:\nA region of the nerve membrane is excited:\n1- during the refractory period.\n2- during the depolarization period.", "Week 9 Home performances"),
+        correctAnswerText: "1- Will not fire (absolute) or needs stronger stimulus (relative).<br>2- No additional effect (absolute refractory period).",
+        explanation: "Describes responsiveness during refractory and depolarization periods."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 5,
-        question: "5- Determine the effect of the nerve membrane's transition from a polarized state to a depolarized state on:\n1- negative protein ions.\n2- potassium ion concentration.",
-        correctAnswerText: "1- Negative protein ions: Remain largely trapped inside, contributing to the resting potential but not moving during depolarization.<br>2- Potassium ion concentration: Bulk concentration inside remains high; some K+ movement occurs, but significant efflux happens during subsequent repolarization.",
-        explanation: "Explains that trapped anions stay put and K+ movement is primarily during repolarization."
+        question: addLocation("5- Determine the effect of the nerve membrane's transition from a polarized state to a depolarized state on:\n1- negative protein ions.\n2- potassium ion concentration.", "Week 9 Home performances"),
+        correctAnswerText: "1- Remain trapped inside.<br>2- Bulk concentration inside remains high; efflux primarily during repolarization.",
+        explanation: "Describes ion movement/location during depolarization."
     },
 
-    // Page 23: Week 9 Weekly evaluation A
+    // Week 9 Weekly evaluation A (Page 23)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "The speed of nerve impulse is affected by all of the following except ..........",
+        question: addLocation("The speed of nerve impulse is affected by all of the following except ..........", "Weekly evaluation 9 A"),
         options: ["a- The presence of a Ranvier node", "b- Increased stimulus strength", "c- The presence of a myelin sheath", "d- Nerve fiber diameter"],
         correctAnswer: 1,
         correctAnswerText: "b- Increased stimulus strength",
-        explanation: "Speed is fixed once threshold is reached; stimulus strength above threshold does not increase speed.<br><br><b>Why this answer is correct:</b> Stimulus strength above threshold doesn't alter impulse speed.<br><br><b>Why other options are incorrect:</b><br>a, c, d - Nodes, myelin, and diameter all affect conduction speed."
+        explanation: "Stimulus strength above threshold does not affect impulse speed.<br><br><b>Why this answer is correct:</b> Speed is all-or-none after threshold.<br><br><b>Why other options are incorrect:</b><br>a, c, d - Nodes, myelin, diameter affect speed."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "What happens when?\nA cell is exposed to a stimulus of a higher intensity than the threshold required for excitation during resting state?",
-        correctAnswerText: "A full action potential will be generated and propagated according to the all-or-none law.",
-        explanation: "Describes the result of a suprathreshold stimulus on a resting neuron."
+        question: addLocation("What happens when?\nA cell is exposed to a stimulus of a higher intensity than the threshold required for excitation during resting state?", "Weekly evaluation 9 A"),
+        correctAnswerText: "A full action potential will be generated.",
+        explanation: "Suprathreshold stimulus triggers standard action potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\nIt plays a role in maintaining the relative stability of ion distribution.",
+        question: addLocation("Write what the following expressions mean:\nIt plays a role in maintaining the relative stability of ion distribution.", "Weekly evaluation 9 A"),
         correctAnswerText: "Sodium-potassium pump (Na<sup>+</sup>/K<sup>+</sup> pump).",
-        explanation: "The pump actively maintains ion gradients."
+        explanation: "Pump maintains ion gradients."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Give reasons for the following:\nOccurrence of depolarization state",
-        correctAnswerText: "A stimulus causes membrane potential to reach threshold, opening voltage-gated Na+ channels. Rapid influx of Na+ ions into the cell reverses the membrane potential, causing depolarization.",
-        explanation: "Explains the trigger and ionic basis of depolarization."
+        question: addLocation("Give reasons for the following:\nOccurrence of depolarization state", "Weekly evaluation 9 A"),
+        correctAnswerText: "Stimulus reaches threshold, opening voltage-gated Na+ channels. Na+ influx causes inside to become positive.",
+        explanation: "Explains trigger and ionic cause of depolarization."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write the number that indicates: the action potential of a neuron.",
-        correctAnswerText: "Approx. +30 to +40 mV (peak potential) or approx. 100 to 110 mV (total change from resting).",
-        explanation: "Provides typical values for the peak or total change during an action potential."
+        question: addLocation("Write the number that represents: the action potential of a neuron.", "Weekly evaluation 9 A"),
+        correctAnswerText: "Approx. +30 to +40 mV (peak).",
+        explanation: "Typical peak value of action potential."
     },
 
-    // Page 24: Week 9 Weekly evaluation B
+    // Week 9 Weekly evaluation B (Page 24)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "The cell's entry into a depolarized state is caused by a rush of ............",
+        question: addLocation("The cell's entry into a depolarized state is caused by a rush of ............", "Weekly evaluation 9 B"),
         options: ["a- Sodium ions in large quantities to inside", "b- Potassium ions in large quantities to outside", "c- Sodium ions in large quantities to outside", "d- Chloride ions in large quantities inside"],
         correctAnswer: 0,
         correctAnswerText: "a- Sodium ions in large quantities to inside",
-        explanation: "Rapid Na+ influx causes depolarization.<br><br><b>Why this answer is correct:</b> Influx of Na+ drives depolarization.<br><br><b>Why other options are incorrect:</b><br>b- K+ efflux causes repolarization.<br>c- Na+ rushes *in*.<br>d- Cl- influx causes hyperpolarization/inhibition."
+        explanation: "Depolarization is caused by Na+ influx.<br><br><b>Why this answer is correct:</b> Influx of Na+ causes depolarization.<br><br><b>Why other options are incorrect:</b><br>b- K+ efflux for repolarization. c- Na+ rushes in. d- Cl- influx for inhibition/hyperpolarization."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "What happens when:\nThe cell is exposed to a stimulus of greater intensity than the threshold required for excitation during the refractory period?",
-        correctAnswerText: "During the absolute refractory period, no action potential occurs. During the relative refractory period, a suprathreshold stimulus can trigger an action potential.",
-        explanation: "Explains variable responsiveness during refractory period."
+        question: addLocation("What happens when:\nThe cell is exposed to a stimulus of greater intensity than the threshold required for excitation during the refractory period?", "Weekly evaluation 9 B"),
+        correctAnswerText: "During absolute refractory, no response. During relative refractory, a stronger stimulus can trigger a response.",
+        explanation: "Describes responsiveness during refractory period."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\nPositive charged ions pass from the cell's interior to the outside environment during nervous excitation.",
+        question: addLocation("Write what the following expressions mean:\nPositive charged ions pass from the cell's interior to the outside environment during nervous excitation.", "Weekly evaluation 9 B"),
         correctAnswerText: "Potassium efflux during repolarization.",
-        explanation: "Outward movement of K+ during repolarization."
+        explanation: "Outward movement of K+ restores negative potential."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Give reasons for the following:\nThe importance of sodium and potassium pumps.",
-        correctAnswerText: "They maintain the ion gradients necessary for the resting potential and for resetting the gradients after action potentials, ensuring continuous neuronal excitability.",
-        explanation: "Explains the role of pumps in maintaining gradients."
+        question: addLocation("Give reasons for the following:\nThe importance of sodium and potassium pumps.", "Weekly evaluation 9 B"),
+        correctAnswerText: "They maintain the ion gradients required for the resting potential and the ability to generate action potentials.",
+        explanation: "Explains pumps' role in maintaining gradients."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write the number that represents: the speed of nerve impulses at the myelin sheath.",
-        correctAnswerText: "Approx. 100-120 m/s (speed *along* myelinated axon).",
-        explanation: "Provides typical high speed of saltatory conduction."
+        question: addLocation("Write the number that represents: the speed of nerve impulses at the myelin sheath.", "Weekly evaluation 9 B"),
+        correctAnswerText: "Approx. 100-120 m/s (speed along myelinated axon).",
+        explanation: "Typical speed of saltatory conduction."
     },
 
-    // Page 25: Week 9 Weekly evaluation C
+    // Week 9 Weekly evaluation C (Page 25)
     {
         type: 'mcq',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "A nerve cell is exposed to a stimulus. Which of the following indicates that the cell membrane will not be affected by this stimulus?",
+        question: addLocation("A nerve cell is exposed to a stimulus. Which of the following indicates that the cell membrane will not be affected by this stimulus?", "Weekly evaluation 9 C"),
         options: ["a) The Electrical potential difference is -70 mV", "b) The Electrical potential difference is +40 mV", "c) The outer surface of the nerve membrane is positive", "d) The inner surface of the nerve cell is negative"],
         correctAnswer: 0,
         correctAnswerText: "a) The Electrical potential difference is -70 mV",
-        explanation: "Remaining at the resting potential (-70mV) means the stimulus was sub-threshold and did not trigger an action potential or significant change.<br><br><b>Why this answer is correct:</b> Staying at resting potential indicates no excitation.<br><br><b>Why other options are incorrect:</b><br>b) +40mV is peak action potential (affected).<br>c, d) These describe the resting state (-70mV), so while true, the direct measurement of -70mV (a) is the most precise indicator that the specific stimulus did not cause a significant change in membrane potential leading to excitation.",
+        explanation: "Remaining at the resting potential (-70mV) means the stimulus was insufficient to cause excitation.<br><br><b>Why this answer is correct:</b> -70mV indicates the resting state, no excitation by the stimulus.<br><br><b>Why other options are incorrect:</b><br>b) +40mV is peak action potential (affected). c, d) Describe the resting state, but the potential value (a) is the most direct indicator of being unaffected.",
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write what the following expressions mean:\nThe period during which the cell membrane of a neuron regains its physiological properties.",
+        question: addLocation("Write what the following expressions mean:\nThe period during which the cell membrane of a neuron regains its physiological properties.", "Weekly evaluation 9 C"),
         correctAnswerText: "Refractory period.",
-        explanation: "The refractory period allows recovery and prevents immediate re-firing."
+        explanation: "Period of recovery and preparation for next impulse."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Explain the following:\nThe \"all or none\" law is from the properties of nerve impulse.",
-        correctAnswerText: "If a stimulus reaches threshold, a full action potential is generated. If below threshold, no action potential occurs. The magnitude of the action potential is independent of stimulus strength above threshold.",
-        explanation: "Explains the fixed magnitude and threshold requirement for action potentials."
+        question: addLocation("Explain the following:\nThe \"all or none\" law is from the properties of nerve impulse.", "Weekly evaluation 9 C"),
+        correctAnswerText: "If a stimulus reaches threshold, the action potential fires fully and consistently. If below threshold, it doesn't fire at all. The magnitude is independent of stimulus strength above threshold.",
+        explanation: "Explains the characteristic all-or-none response."
     },
     {
         type: 'essay',
         topic: Topics.NERVOUS_SYSTEM_PHYSIOLOGY,
         originalNumber: 1,
-        question: "Write the number that represents: the velocity of nerve impulse at the node of Ranvier.",
-        correctAnswerText: "The velocity *at* the node is very high due to rapid depolarization. The overall velocity *between* nodes (saltatory conduction) in myelinated fibers is approx. 100-120 m/s.",
-        explanation: "Clarifies the concept of fast depolarization at the node as part of rapid saltatory conduction."
+        question: addLocation("Write the number that represents: the velocity of nerve impulse at the node of Ranvier.", "Weekly evaluation 9 C"),
+        correctAnswerText: "Very high (rapid depolarization) but the overall speed of saltatory conduction is approx. 100-120 m/s.",
+        explanation: "Clarifies the speed concept related to nodes in saltatory conduction."
     },
 ];
 
