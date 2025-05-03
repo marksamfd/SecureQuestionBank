@@ -114,7 +114,6 @@
             // Filter questions based on the chosen topic and sort by original number
             currentTopicQuestions = allQuestions
                 .filter(q => q.topic === topic)
-                .sort((a, b) => a.originalNumber - b.originalNumber); // Sort by original number
 
             if (currentTopicQuestions.length === 0) {
                 alert(`No questions found for the topic: ${topic}`);
