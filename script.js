@@ -1,5 +1,4 @@
-
-        const quotes = [
+ const quotes = [
             "The only way to do great work is to love what you do. – Steve Jobs",
             "Education is the most powerful weapon which you can use to change the world. – Nelson Mandela",
             "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
