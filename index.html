@@ -739,7 +739,662 @@ const allQuestions = [
         question: addLocation("5- Compare between sensory neurons and motor neurons.\n\nsensory neurons\nmotor neurons", "Sixth Week Home performances"),
         correctAnswerText: "Sensory: Receptor to CNS (afferent), cell bodies often in ganglia. Motor: CNS to effector (efferent), cell bodies in CNS or autonomic ganglia.",
         explanation: "Compares based on signal direction and cell body location."
+    },
 
+    // Page 13: Weekly evaluation (6) A
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_6,
+        originalNumber: 1,
+        question: addLocation("1- Both ..... and ..... receive nerve impulses in nerve cells.", "Weekly evaluation 6 A"),
+        options: ["a- the cell axon and nerve endings.", "b- the cell body and dendrites.", "c- dendrites and nerve endings.", "d- the cell body and nerve endings."],
+        correctAnswer: 1,
+        correctAnswerText: "b- the cell body and dendrites.",
+        explanation: "Dendrites and the cell body are the primary sites for receiving synaptic input from other neurons.<br><br><b>Why this answer is correct:</b> Dendrites and cell body receive signals.<br><br><b>Why other options are incorrect:</b><br>a- Axon transmits away, nerve endings transmit to other cells.<br>c, d - Nerve endings transmit signals."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_6,
+        originalNumber: 2,
+        question: addLocation("2- The ........ transmits nerve impulses away from the cell body through synapses.", "Weekly evaluation 6 A"),
+        options: ["a- axons.", "b- dendrites.", "c- the cell body.", "d- Nissil granules."],
+        correctAnswer: 0,
+        correctAnswerText: "a- axons.",
+        explanation: "The axon conducts impulses away from the cell body to the synapse.<br><br><b>Why this answer is correct:</b> Axon transmits away.<br><br><b>Why other options are incorrect:</b><br>b- Dendrites receive.<br>c- Cell body integrates.<br>d- Nissl granules are for synthesis."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\n1- Cells that transmit nerve impulses from the receptor organs to the central nervous system.", "Weekly evaluation 6 A"),
+        correctAnswerText: "Sensory neurons.",
+        explanation: "Sensory neurons carry information from receptors to CNS."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 2,
+        question: addLocation("Write what the following expressions mean:\n2- Fine granules found only in the nerve cell, and are believed to be stored food that the cell consumes during its activity.", "Weekly evaluation 6 A"),
+        correctAnswerText: "Nissl granules.",
+        explanation: "Describes Nissl granules (RER and ribosomes)."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 3,
+        question: addLocation("Give reasons for the following:\nNerve cells do not have the ability to divide.", "Weekly evaluation 6 A"),
+        correctAnswerText: "Most mature nerve cells lack a centrosome (central body), which is required for initiating and organizing the process of cell division (mitosis).",
+        explanation: "Explains lack of centrosome prevents division."
+    },
+
+    // Page 14: Weekly evaluation (6) B
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_6,
+        originalNumber: 1,
+        question: addLocation("1- The ............ is fine granules found only in the nerve cell, and are believed to be stored food consumed by the cell during its activity.", "Weekly evaluation 6 B"),
+        options: ["a- Nissil granules.", "b- Schwann cells.", "c- Neurolemma.", "d- Cell body."],
+        correctAnswer: 0,
+        correctAnswerText: "a- Nissil granules.",
+        explanation: "Matches the description provided for Nissl granules, despite the 'stored food' phrasing.<br><br><b>Why this answer is correct:</b> Description fits Nissl granules.<br><br><b>Why other options are incorrect:</b><br>b- Glial cells. c- Membrane. d- Part of cell."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_6,
+        originalNumber: 2,
+        question: addLocation("2- The myelin sheath is interrupted at certain points of constrictions called ...", "Weekly evaluation 6 B"),
+        options: ["a- Nodes of Ranvier.", "b- Neurolemma.", "c- Dendrites.", "D- Nissil granules."],
+        correctAnswer: 0,
+        correctAnswerText: "a- Nodes of Ranvier.",
+        explanation: "Nodes of Ranvier are gaps in myelin.<br><br><b>Why this answer is correct:</b> Nodes of Ranvier are interruptions in myelin.<br><br><b>Why other options are incorrect:</b><br>b- Outer membrane. c- Receiving processes. d- Protein synthesis sites."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\n1- Cells that transmit nerve impulses from the central nervous system to the response organs.", "Weekly evaluation 6 B"),
+        correctAnswerText: "Motor neurons.",
+        explanation: "Motor neurons carry signals from CNS to effectors."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 2,
+        question: addLocation("Write what the following expressions mean:\n2- A thin layer that covers the myelin sheath from the outside.", "Weekly evaluation 6 B"),
+        correctAnswerText: "Neurolemma.",
+        explanation: "Neurolemma is the outer covering of Schwann cells surrounding myelinated axons in the PNS."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 3,
+        question: addLocation("Give reasons for the following:\nThe body of the nerve cell has many dendrites.", "Weekly evaluation 6 B"),
+        correctAnswerText: "To increase the surface area available for receiving synaptic input from multiple other neurons.",
+        explanation: "Explains structural adaptation for signal reception."
+    },
+
+    // Page 15: Weekly evaluation (6) C
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_6,
+        originalNumber: 1,
+        question: addLocation("1- A long cytoplasmic extension that may reach more than a meter is .....", "Weekly evaluation 6 C"),
+        options: ["a- Dendrites.", "b- Axon.", "c- Nerve fibers.", "d- Nissil granules."],
+        correctAnswer: 1,
+        correctAnswerText: "b- Axon.",
+        explanation: "Axons can be very long.<br><br><b>Why this answer is correct:</b> Axons are the long neuronal processes.<br><br><b>Why other options are incorrect:</b><br>a- Dendrites are short. c- Nerve fiber is an axon with sheaths. d- Nissl granules are in cell body."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_6,
+        originalNumber: 2,
+        question: addLocation("2- Terminal arbonizations transmit nerve impulses away from the cell body through...... .", "Weekly evaluation 6 C"),
+        options: ["a- Synapse.", "b- Dendrites.", "c- Cell body.", "d- Nissil granules."],
+        correctAnswer: 0,
+        correctAnswerText: "a- Synapse.",
+        explanation: "Transmission to the next cell occurs at the synapse.<br><br><b>Why this answer is correct:</b> Synapse is the junction for transmission.<br><br><b>Why other options are incorrect:</b><br>b- Dendrites receive. c- Cell body processes. d- Nissl granules are for synthesis."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\n1- Cells that are the link between sensory cells and motor cells.", "Weekly evaluation 6 C"),
+        correctAnswerText: "Connector neurons (or Interneurons).",
+        explanation: "Interneurons bridge sensory and motor pathways."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 2,
+        question: addLocation("Write what the following expressions mean:\n2- Tiny granules found only in the nerve cell, and it is believed that they are stored food that the cell consumes during its activity.", "Weekly evaluation 6 C"),
+        correctAnswerText: "Nissl granules.",
+        explanation: "Repeats description of Nissl granules."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_6,
+        originalNumber: 3,
+        question: addLocation("Give reasons for the following:\nThe nerve impulses always pass in one direction.", "Weekly evaluation 6 C"),
+        correctAnswerText: "The unidirectional nature of synaptic transmission, where neurotransmitters are released from the presynaptic axon terminal and bind to receptors on the postsynaptic membrane, ensures the signal travels in one direction.",
+        explanation: "Explains that synaptic structure dictates unidirectional flow."
+    },
+
+    // Page 16: Seventh Week Class Performance
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("1- Cells that comprise nervous tissue and are characterized by their ability to divide are........", "Seventh Week Class Performance"),
+        options: ["a- sensory neurons", "c- conducting neurons", "b- motor neurons", "d- neuroglia cells"],
+        correctAnswer: 3,
+        correctAnswerText: "d- neuroglia cells",
+        explanation: "Neuroglia are the non-neuronal, dividing cells in nervous tissue.<br><br><b>Why this answer is correct:</b> Neuroglia retain mitotic activity.<br><br><b>Why other options are incorrect:</b><br>a, b, c - Mature neurons do not divide."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("2. The ................... is composed of a group of nerve bundles, each of which consists of a group of nerve fibers.", "Seventh Week Class Performance"),
+        options: ["a- Schwann cells", "c- nerve ending", "b- dendritic appendage", "d- nerve"],
+        correctAnswer: 3,
+        correctAnswerText: "d- nerve",
+        explanation: "A nerve is a structure containing multiple bundles (fascicles) of nerve fibers (axons).<br><br><b>Why this answer is correct:</b> Definition of a nerve.<br><br><b>Why other options are incorrect:</b><br>a- Glial cells. b- Part of neuron. c- Part of axon."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 3,
+        question: addLocation("3- The message transmitted by nerves from the sensory organs to the central nervous system and from there to the response organs is the .................", "Seventh Week Class Performance"),
+        options: ["a- nerve", "c- nerve impulse", "b- nerve ending", "d- neuroglia"],
+        correctAnswer: 2,
+        correctAnswerText: "c- nerve impulse",
+        explanation: "The electrical signal itself is the nerve impulse.<br><br><b>Why this answer is correct:</b> Nerve impulse is the signal.<br><br><b>Why other options are incorrect:</b><br>a- Structure. b- Location of transmission. d- Support cells."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 4,
+        question: addLocation("4. The concentration of sodium ions (Na+) outside the cell is ............ times higher than its concentration inside the cell.", "Seventh Week Class Performance"),
+        options: ["a-10:15", "b-5:9", "c- 15:20", "d-20:30"],
+        correctAnswer: null, // As confirmed previously, options are formatted incorrectly.
+        correctAnswerText: "Question flawed, options formatted incorrectly.",
+        explanation: "The ratio of Na+ outside to inside is typically 10-15:1. The options are presented as ranges of ratios, which is confusing. The intended answer likely falls within the 10-15 range, but the formatting of options is incorrect."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\n1- The resting state of a nerve cell, when its outer surface is positive and its inner surface is negative.", "Seventh Week Class Performance"),
+        correctAnswerText: "Polarization.",
+        explanation: "Definition of polarization (resting state)."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("Write what the following expressions mean:\n2- A sheath of connective tissue supplied with blood vessels that encloses the bundles of nerve fibers.", "Seventh Week Class Performance"),
+        correctAnswerText: "Perineurium (or Epineurium).",
+        explanation: "Connective tissue sheath around fascicles or nerve."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 3,
+        question: addLocation("Write what the following expressions mean:\n3- Ions its concentration inside the nerve cell is 30 times greater than its concentration in the extracellular fluid surrounding the cell.", "Seventh Week Class Performance"),
+        correctAnswerText: "Potassium ions (K+).",
+        explanation: "K+ is highly concentrated inside the cell."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("Give reason for each of the following:\n1- The concentration of negative ions inside the nerve cell is much higher than its concentration outside.", "Seventh Week Class Performance"),
+        correctAnswerText: "Due to large, trapped intracellular negative proteins and organic anions.",
+        explanation: "Explains source of internal negativity."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("Give reason for each of the following:\n2- The role of the connector neuron differs from that of the neuroglia in its connecting function.", "Seventh Week Class Performance"),
+        correctAnswerText: "Connector neurons connect by transmitting and integrating nerve impulses. Neuroglia connect structurally, providing support and binding tissues.",
+        explanation: "Distinguishes functional vs structural connection."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("Compare between neurons and neuroglia cells in terms of function.", "Seventh Week Class Performance"),
+        correctAnswerText: "Neurons: Transmit electrical and chemical impulses for communication. Neuroglia: Support, nourish, insulate, and protect neurons; do not transmit impulses.",
+        explanation: "Compares primary functions."
+    },
+
+    // Page 17: Seventh Week Home performances
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("1- Define the following:\na- Neuroglia.\nb- The nerve.\nc- Nerve impulse.\nd- Polarization.", "Seventh Week Home performances"),
+        correctAnswerText: "a- Neuroglia: Non-neuronal cells supporting and protecting neurons. b- The nerve: A bundle of axons in the PNS. c- Nerve impulse: An electrical signal (action potential) transmitted by a neuron. d- Polarization: Resting state with negative inside, positive outside charge.",
+        explanation: "Provides standard definitions."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("2- Give reasons for the following:\na- Neuroglia cells contribute to the replacement of cutted parts in some neurons.\nb- Neuroglia cells have a binding function.\nc- The inner surface of neurons is negative during rest.", "Seventh Week Home performances"),
+        correctAnswerText: "a- Neuroglia proliferate and fill damaged areas (gliosis), 'replacing' volume but not function.<br>b- They provide a structural framework, holding nervous tissue together.<br>c- Due to outward K+ leak and trapped intracellular negative anions.",
+        explanation: "Explains neuroglia's roles in injury and support, and the basis of the negative resting potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 3,
+        question: addLocation("3- Explain the following:\na- How the potential difference of a neuron is formed during rest.\nb- The structure of the nerve.", "Seventh Week Home performances"),
+        correctAnswerText: "a- Maintained by ion gradients (Na+/K+ pump) and selective membrane permeability (mainly K+ leak channels), leading to K+ efflux and internal negativity.<br>b- Bundle of axons (fibers) grouped into fascicles, enclosed by connective tissue sheaths (perineurium, epineurium) with blood vessels.",
+        explanation: "Explains resting potential mechanism and nerve structure."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 4,
+        question: addLocation("4- Compare between the concentration of sodium and potassium ions in a neuron during rest.", "Seventh Week Home performances"),
+        correctAnswerText: "At rest, Na+ concentration is high outside and low inside. K+ concentration is high inside and low outside.",
+        explanation: "Compares ion distribution at rest."
+    },
+
+    // Page 18: Weekly evaluation (7) A
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("1- One of the functions of neuroglia is similar to the function of ............ in the skin.", "Weekly evaluation 7 A"),
+        options: ["a- the superficial layer of the epidermis", "b- the inner layer of the epidermis", "c- sweat gland", "d- fatty layer"],
+        correctAnswer: 3,
+        correctAnswerText: "d- fatty layer",
+        explanation: "Both provide support and insulation.<br><br><b>Why this answer is correct:</b> Fatty layer provides support/insulation, similar to some neuroglial functions.<br><br><b>Why other options are incorrect:</b><br>a- Epidermis is barrier.<br>b- Inner epidermis is regenerative.<br>c- Sweat gland is secretory."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("2- When the potential difference of the neuronal membrane reaches -70 millivolts, the ...................", "Weekly evaluation 7 A"),
+        options: ["a- concentration of potassium ions outside the neuron is higher than inside.", "b- concentration of potassium ions inside the neuron is higher than outside.", "c- concentration of sodium ions inside the neuron is higher than outside.", "d- concentration of chloride ions outside the neuron is higher than inside."],
+        correctAnswer: 1,
+        correctAnswerText: "b- concentration of potassium ions inside the neuron is higher than outside.",
+        explanation: "-70mV is the resting potential, where K+ is high inside and Na+ is high outside.<br><br><b>Why this answer is correct:</b> High internal K+ is a defining feature of the resting potential.<br><br><b>Why other options are incorrect:</b><br>a- K+ is low outside. c- Na+ is low inside. d- Cl- is high outside, but K+ gradient is primary determinant of resting potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\na- Cells within the components of the nervous system that have the ability to divide.", "Weekly evaluation 7 A"),
+        correctAnswerText: "Neuroglia (or Glial cells).",
+        explanation: "Neuroglia retain mitotic capability."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("Write what the following expressions mean:\nb- A group of nerve bundles", "Weekly evaluation 7 A"),
+        correctAnswerText: "A nerve.",
+        explanation: "Definition of a nerve."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 3,
+        question: addLocation("Give reasons for the following:\nNeuroglia cells works like connective tissue.", "Weekly evaluation 7 A"),
+        correctAnswerText: "Neuroglia provide structural support and binding to neurons and nervous tissue, analogous to the role of connective tissue.",
+        explanation: "Explains structural support function."
+    },
+
+    // Page 19: Weekly evaluation (7) B
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("1- Which of the following structures is similar in function to that of a neuroglia cell?", "Weekly evaluation 7 B"),
+        options: ["a- Nissil granules.", "b- Schwann cells.", "c- Nodes of Ranvier.", "d- Myelin sheath."],
+        correctAnswer: 1,
+        correctAnswerText: "b- Schwann cells.",
+        explanation: "Schwann cells are a type of neuroglia.<br><br><b>Why this answer is correct:</b> Schwann cells are neuroglia.<br><br><b>Why other options are incorrect:</b><br>a- In neuron. c- Part of axon. d- Produced by neuroglia."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("2- One of the causes of polarization is ...........", "Weekly evaluation 7 B"),
+        options: ["a- increased concentration of potassium ions outside the neuron.", "b- increased concentration of potassium ions inside the neuron.", "c- increased concentration of sodium ions inside the neuron.", "d- Increased concentration of chloride ions outside the neuron."],
+        correctAnswer: 1,
+        correctAnswerText: "b- increased concentration of potassium ions inside the neuron.",
+        explanation: "High internal K+ concentration and membrane permeability to K+ are primary causes of negative resting potential.<br><br><b>Why this answer is correct:</b> High internal K+ contributes to resting potential.<br><br><b>Why other options are incorrect:</b><br>a- K+ is low outside. c- Na+ is low inside. d- Cl- high outside, but K+ is more significant for resting potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\na- A sheath of connective tissue supplied with blood vessels that surrounds a group of nerve bundles.\nb- The state of a nerve cell during rest when its outer surface is positive and its inner surface is negative.", "Weekly evaluation 7 B"),
+        correctAnswerText: "a- Perineurium (or Epineurium).<br>b- Polarization.",
+        explanation: "a- Connective tissue sheath. b- Definition of polarization."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 3,
+        question: addLocation("Give reasons for the following:\nNeuroglia cells have the ability to compensate..", "Weekly evaluation 7 B"),
+        correctAnswerText: "They can divide and fill spaces left by damaged neurons, cleaning debris and forming scar tissue, which provides some structural compensation for neuronal loss.",
+        explanation: "Explains compensation through division and filling space."
+    },
+
+    // Page 20: Weekly evaluation (7) C
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("1- Neuroglia cells are distinguished from other neurons by ...................", "Weekly evaluation 7 C"),
+        options: ["a- being from components of the nervous system.", "b) having a body cell.", "c) being nourish the neuron.", "d) being nourished by the neuron"],
+        correctAnswer: 2,
+        correctAnswerText: "c) being nourish the neuron.",
+        explanation: "Neuroglia provide essential metabolic support to neurons.<br><br><b>Why this answer is correct:</b> Neuroglia nourish neurons.<br><br><b>Why other options are incorrect:</b><br>a, b - Both share these features. d- Neurons are nourished *by* neuroglia."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("2- The concentration of sodium ions outside the cell is ................... times higher than its concentration inside the cell.", "Weekly evaluation 7 C"),
+        options: ["a-5-10", "b-10-15", "c-15-30", "d-30-40"],
+        correctAnswer: 1,
+        correctAnswerText: "b-10-15",
+        explanation: "Typical ratio is 10-15:1.<br><br><b>Why this answer is correct:</b> 10-15 is the accurate range.<br><br><b>Why other options are incorrect:</b> Other ranges are incorrect."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\na- The message transmitted by nerves from the sensory organs to the central nervous system", "Weekly evaluation 7 C"),
+        correctAnswerText: "Nerve impulse (or Sensory information).",
+        explanation: "The signal is the nerve impulse."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 2,
+        question: addLocation("Write what the following expressions mean:\nb- Molecules inside the neuron are ionized and have high molecular weights that do not cross the plasma membrane.", "Weekly evaluation 7 C"),
+        correctAnswerText: "Negatively charged proteins and organic anions.",
+        explanation: "Describes trapped intracellular anions."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_7,
+        originalNumber: 1,
+        question: addLocation("What does it mean that:\nThe effective potential difference is approximately -70 millivolts?", "Weekly evaluation 7 C"),
+        correctAnswerText: "The neuron is at its resting membrane potential, with the inside 70mV more negative than the outside.",
+        explanation: "Explains the meaning of resting potential value."
+    },
+
+    // Page 21: Week 9 Class Performance
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("1- Which of the following ions, if its permeability increased, causes the potential difference in the neuron to return to -70 mV after excitation?", "Week 9 Class Performance"),
+        options: ["a- Na+", "b- K+", "c- Ca++", "d- Cl-"],
+        correctAnswer: 1,
+        correctAnswerText: "b- K+",
+        explanation: "Increased K+ permeability and efflux cause repolarization.<br><br><b>Why this answer is correct:</b> K+ efflux repolarizes.<br><br><b>Why other options are incorrect:</b><br>a- Na+ influx depolarizes. c- Ca++ for release. d- Cl- for inhibition/resting."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_9,
+        originalNumber: 2,
+        question: addLocation("2- Which of the following is related to the resting potential?", "Week 9 Class Performance"),
+        options: ["a- Equal distribution of ions.", "b- Insulation by Schwann cells.", "c- Action potential.", "d- Permeability of potassium ions outside the cell"],
+        correctAnswer: 3,
+        correctAnswerText: "d- Permeability of potassium ions outside the cell",
+        explanation: "Selective permeability of the membrane to K+ (often via leak channels) is a primary determinant of the resting potential, allowing K+ to leak out. While phrased awkwardly, it refers to membrane permeability to K+.<br><br><b>Why this answer is correct:</b> Membrane permeability to K+ determines resting potential.<br><br><b>Why other options are incorrect:</b><br>a- Resting potential involves unequal ion distribution. b- Insulation for speed. c- Action potential is excitation."
+    },
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_9,
+        originalNumber: 3,
+        question: addLocation("3- Which of the following does the speed of nerve impulse transmission not depend on?", "Week 9 Class Performance"),
+        options: ["a- The diameter of the nerve fiber.", "b- The presence of acetylcholine.", "c- The presence of myelin sheaths.", "d- An increase in the strength of the stimulus"],
+        correctAnswer: 1,
+        correctAnswerText: "b- The presence of acetylcholine.",
+        explanation: "Acetylcholine is a neurotransmitter for synaptic transmission, not axonal conduction speed.<br><br><b>Why this answer is correct:</b> Acetylcholine does not affect axonal speed.<br><br><b>Why other options are incorrect:</b><br>a, c - Diameter and myelin affect speed. d- Stimulus strength (above threshold) doesn't change impulse speed."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\n1- The state of a nerve cell at the time of excitation, when its outer surface is negative and its inner surface is positive.", "Week 9 Class Performance"),
+        correctAnswerText: "Depolarization (or Action potential peak).",
+        explanation: "Charge reversal during action potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 2,
+        question: addLocation("Write what the following expressions mean:\n2- A short period of time follow nerve excitation, during which the nerve cell membrane regains its physiological properties so that a new nerve impulse can be transmitted. During this period, the nerve does not respond to any stimulus, regardless of its strength.", "Week 9 Class Performance"),
+        correctAnswerText: "Absolute refractory period.",
+        explanation: "Period of unresponsiveness after action potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 3,
+        question: addLocation("Write what the following expressions mean:\n3- The phenomenon of depolarization from -70 mV to +40 mV and then back to -70 mV, which equals 110 mV.", "Week 9 Class Performance"),
+        correctAnswerText: "Action Potential.",
+        explanation: "Total voltage change during an action potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("What happens when:\n1- A neuron is stimulated or excited by another nearby neuron.", "Week 9 Class Performance"),
+        correctAnswerText: "Neurotransmitters are released, potentially causing a depolarization in the receiving neuron. If threshold is reached, an action potential is generated.",
+        explanation: "Describes synaptic transmission and threshold triggering."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 2,
+        question: addLocation("What happens when:\n2- The stimulus acting on the neuron is removed.", "Week 9 Class Performance"),
+        correctAnswerText: "If threshold was reached, the action potential completes and the neuron repolarizes. If sub-threshold, the membrane potential returns to resting.",
+        explanation: "Describes return to resting state."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Explain:\n1- The composition of the nerve cell's plasma membrane contributes to the generation of nerve impulses.", "Week 9 Class Performance"),
+        correctAnswerText: "The membrane contains ion channels and pumps that maintain electrochemical gradients and allow controlled ion flow, which underlies the resting potential and action potential generation.",
+        explanation: "Explains role of membrane components."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 2,
+        question: addLocation("Explain:\n2- The nerve impulse is transmitted in the form of successive waves of depolarization, repolarization, and depolarization.", "Week 9 Class Performance"),
+        correctAnswerText: "Depolarization in one area triggers depolarization in the next, propagating the action potential as a wave. Repolarization follows, preparing the membrane for the next impulse.",
+        explanation: "Describes action potential propagation."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 3,
+        question: addLocation("Explain:\n3- Role of Nissil granules in the nerve cell body.", "Week 9 Class Performance"),
+        correctAnswerText: "Nissl granules are sites of protein synthesis, providing proteins needed for neuronal structure, function, and repair.",
+        explanation: "Explains protein synthesis role."
+    },
+
+    // Page 22: Week 9 Home performances
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("1- Define the following:\na- Depolarization.\nb- Action Potential.", "Week 9 Home performances"),
+        correctAnswerText: "a- Depolarization: Decrease in membrane potential (inside becomes less negative or positive). b- Action Potential: Brief, rapid change in membrane potential propagating along an axon.",
+        explanation: "Provides definitions."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 2,
+        question: addLocation("2- Give reasons for the following:\na- The importance of sodium and potassium pumps.\nb- The difference in nerve impulse velocity is affected by the diameter of the nerve fiber.", "Week 9 Home performances"),
+        correctAnswerText: "a- Maintain ion gradients necessary for resting and action potentials.<br>b- Larger diameter reduces resistance to current flow, allowing faster signal spread.",
+        explanation: "Explains pump importance and diameter effect."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 3,
+        question: addLocation("3- Complete the following table:\n\n| Comparison            | Polarization State | Depolarization State |\n|-----------------------|--------------------|----------------------|\n| Potential Difference  |                    |                      |\n| Inner Membrane Charge |                    |                      |", "Week 9 Home performances"),
+        correctAnswerText: "| Comparison            | Polarization State | Depolarization State |\n|-----------------------|--------------------|----------------------|\n| Potential Difference  | Approx. -70 mV     | Approx. +30 to +40 mV |\n| Inner Membrane Charge | Negative           | Positive             |",
+        explanation: "Fills table with state characteristics."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 4,
+        question: addLocation("4- What happens when:\nA region of the nerve membrane is excited:\n1- during the refractory period.\n2- during the depolarization period.", "Week 9 Home performances"),
+        correctAnswerText: "1- Will not fire (absolute) or needs stronger stimulus (relative).<br>2- No additional effect (absolute refractory period).",
+        explanation: "Describes responsiveness during refractory and depolarization periods."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 5,
+        question: addLocation("5- Determine the effect of the nerve membrane's transition from a polarized state to a depolarized state on:\n1- negative protein ions.\n2- potassium ion concentration.", "Week 9 Home performances"),
+        correctAnswerText: "1- Remain trapped inside.<br>2- Bulk concentration inside remains high; efflux primarily during subsequent repolarization.",
+        explanation: "Describes ion movement/location during depolarization."
+    },
+
+    // Page 23: Week 9 Weekly evaluation A
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("The speed of nerve impulse is affected by all of the following except ..........", "Weekly evaluation 9 A"),
+        options: ["a- The presence of a Ranvier node", "b- Increased stimulus strength", "c- The presence of a myelin sheath", "d- Nerve fiber diameter"],
+        correctAnswer: 1,
+        correctAnswerText: "b- Increased stimulus strength",
+        explanation: "Stimulus strength above threshold does not affect impulse speed.<br><br><b>Why this answer is correct:</b> Speed is all-or-none after threshold.<br><br><b>Why other options are incorrect:</b><br>a, c, d - Nodes, myelin, diameter affect speed."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("What happens when?\nA cell is exposed to a stimulus of a higher intensity than the threshold required for excitation during resting state?", "Weekly evaluation 9 A"),
+        correctAnswerText: "A full action potential will be generated.",
+        explanation: "Suprathreshold stimulus triggers standard action potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\nIt plays a role in maintaining the relative stability of ion distribution.", "Weekly evaluation 9 A"),
+        correctAnswerText: "Sodium-potassium pump (Na<sup>+</sup>/K<sup>+</sup> pump).",
+        explanation: "The pump actively maintains ion gradients."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Give reasons for the following:\nOccurrence of depolarization state", "Weekly evaluation 9 A"),
+        correctAnswerText: "Stimulus reaches threshold, opening voltage-gated Na+ channels. Rapid influx of Na+ ions into the cell reverses the membrane potential, causing depolarization.",
+        explanation: "Explains trigger and ionic cause of depolarization."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Write the number that represents: the action potential of a neuron.", "Weekly evaluation 9 A"),
+        correctAnswerText: "Approx. +30 to +40 mV (peak).",
+        explanation: "Typical peak value of action potential."
+    },
+
+    // Page 24: Week 9 Weekly evaluation B
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("The cell's entry into a depolarized state is caused by a rush of ............", "Weekly evaluation 9 B"),
+        options: ["a- Sodium ions in large quantities to inside", "b- Potassium ions in large quantities to outside", "c- Sodium ions in large quantities to outside", "d- Chloride ions in large quantities inside"],
+        correctAnswer: 0,
+        correctAnswerText: "a- Sodium ions in large quantities to inside",
+        explanation: "Depolarization is caused by Na+ influx.<br><br><b>Why this answer is correct:</b> Influx of Na+ drives depolarization.<br><br><b>Why other options are incorrect:</b><br>b- K+ efflux for repolarization. c- Na+ rushes in. d- Cl- influx for inhibition/hyperpolarization."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("What happens when:\nThe cell is exposed to a stimulus of greater intensity than the threshold required for excitation during the refractory period?", "Weekly evaluation 9 B"),
+        correctAnswerText: "During absolute refractory, no response. During relative refractory, a stronger stimulus can trigger a response.",
+        explanation: "Describes responsiveness during refractory period."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\nPositive charged ions pass from the cell's interior to the outside environment during nervous excitation.", "Weekly evaluation 9 B"),
+        correctAnswerText: "Potassium efflux during repolarization.",
+        explanation: "Outward movement of K+ restores negative potential."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Give reasons for the following:\nThe importance of sodium and potassium pumps.", "Weekly evaluation 9 B"),
+        correctAnswerText: "They maintain the ion gradients required for the resting potential and for resetting the gradients after action potentials, ensuring continuous neuronal excitability.",
+        explanation: "Explains pumps' role in maintaining gradients."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Write the number that represents: the speed of nerve impulses at the myelin sheath.", "Weekly evaluation 9 B"),
+        correctAnswerText: "Approx. 100-120 m/s (speed along myelinated axon).",
+        explanation: "Typical speed of saltatory conduction."
+    },
+
+    // Page 25: Week 9 Weekly evaluation C
+    {
+        type: 'mcq',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("A nerve cell is exposed to a stimulus. Which of the following indicates that the cell membrane will not be affected by this stimulus?", "Weekly evaluation 9 C"),
+        options: ["a) The Electrical potential difference is -70 mV", "b) The Electrical potential difference is +40 mV", "c) The outer surface of the nerve membrane is positive", "d) The inner surface of the nerve cell is negative"],
+        correctAnswer: 0,
+        correctAnswerText: "a) The Electrical potential difference is -70 mV",
+        explanation: "Remaining at the resting potential (-70mV) means the stimulus was insufficient to cause excitation.<br><br><b>Why this answer is correct:</b> -70mV indicates the resting state, no excitation by the stimulus.<br><br><b>Why other options are incorrect:</b><br>b) +40mV is peak action potential (affected). c, d) Describe the resting state, but the potential value (a) is the most direct indicator of being unaffected.",
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Write what the following expressions mean:\nThe period during which the cell membrane of a neuron regains its physiological properties.", "Weekly evaluation 9 C"),
+        correctAnswerText: "Refractory period.",
+        explanation: "Period of recovery and preparation for next impulse."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Explain the following:\nThe \"all or none\" law is from the properties of nerve impulse.", "Weekly evaluation 9 C"),
+        correctAnswerText: "If a stimulus reaches threshold, the action potential fires fully and consistently. If below threshold, it doesn't fire at all. The magnitude is independent of stimulus strength above threshold.",
+        explanation: "Explains the characteristic all-or-none response."
+    },
+    {
+        type: 'essay',
+        topic: Topics.WEEK_9,
+        originalNumber: 1,
+        question: addLocation("Write the number that represents: the velocity of nerve impulse at the node of Ranvier.", "Weekly evaluation 9 C"),
+        correctAnswerText: "Very high (rapid depolarization) but the overall speed of saltatory conduction is approx. 100-120 m/s.",
+        explanation: "Clarifies the speed concept related to nodes in saltatory conduction."
+    },
+];
     </script>
 <script src="script.js" defer></script>
 </body>
