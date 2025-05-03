@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Game Show</title>
+
+    <!-- Embedded CSS Styles -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Link to Google Fonts (Lato) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- jsPDF library for PDF generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div id="lesson-selection" class="container">
+        <h2>Choose a Lesson</h2>
+        <!-- Lesson buttons will be added here by JavaScript -->
+    </div>
+
+    <div class="game-container container hidden">
+        <h1 id="game-title">Math (Application) Game Show!</h1>
+        <div class="question-counter">Question <span id="current-q-num">0</span> of <span id="total-q-num">0</span>
+        </div>
+
+        <div id="question-area">
+            <p id="question-text">Loading question...</p>
+            <div id="answer-buttons">
+                <!-- MCQ Answer buttons will be added here by JavaScript -->
+            </div>
+            <button id="reveal-answer-button" class="action-button hidden">Reveal Answer</button> <!-- New Reveal button -->
+            <div id="essay-self-correction-buttons" class="hidden">
+                <!-- Essay self-correction buttons will be added here by JavaScript -->
+            </div>
+        </div>
+
+        <div id="feedback">
+            <!-- Feedback message (Correct/Incorrect/Skipped/Self-Corrected) will appear here -->
+        </div>
+
+        <div id="explanation-area" class="hidden">
+            <h3>Explanation:</h3>
+            <p id="explanation-text"></p>
+        </div>
+
+        <!-- Add the "Add to Remember" button here -->
+        <button id="add-to-remember-button" class="action-button hidden">Add to Remember List</button>
+
+
+        <div id="score-area">
+            Score: <span id="score">0</span>
+        </div>
+
+        <hr class="separator">
+
+        <!-- Add the Skip button (visible only for MCQs) -->
+        <button id="skip-button" class="action-button hidden">Skip Question</button>
+
+        <button id="next-button" class="action-button hidden">Next Question</button>
+
+        <div id="final-score" class="hidden">
+            <h2>Game Over!</h2>
+            <p>Your final score for this lesson is: <span id="final-score-text">0</span> / <span
+                    id="final-total-text">0</span></p>
+            <button id="download-mistakes-pdf" class="action-button hidden">Download Review PDF</button>
+            <!-- Add the "Export All" button here -->
+            <button id="export-all-pdf-button" class="action-button hidden">Export All Questions with Answers</button>
+            <button id="restart-button" class="action-button">Choose Another Lesson</button>
+        </div>
+
+        <div id="quote-area">
+            <p id="current-quote"></p>
+        </div>
+    </div>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // Define the lesson topic(s) based on the new PDF
+        const Topics = {
+            CHEMISTRY_BONDS: 'Chemistry: Bonds and Forms of Molecules',
+             CHEM_STRUCT: "Chemistry: Chemical Structure" // Example of another topic
+        };
+
+        // Questions data based on the Chemistry PDF images
+        // NOTE: Ensure correct originalNumber based on the source PDF
+        // ADD 'type': 'mcq' or 'essay' to each question
+        const allQuestions = [
+            // Chemistry: Bonds and Forms of Molecules (16 questions)
+             {
+                type: 'mcq', // Added type
+                topic: Topics.CHEMISTRY_BONDS, originalNumber: 2,
+                question: "2 Hydrogen bonds are found between the molecules of each of the following compounds, except .........",
+                options: ["a) HF", "b) HCl", "c) NH<sub>3</sub>", "d) H<sub>2</sub>O"],
+                correctAnswer: 1, // b) HCl (According to key on Page 43)
+                correctAnswerText: "b) HCl",
+                explanation: "Hydrogen bonds typically form when hydrogen is bonded to highly electronegative atoms like Fluorine (F), Oxygen (O), or Nitrogen (N). HF, NH<sub>3</sub>, and H<sub>2</sub>O molecules contain H bonded to F, N, and O respectively, and thus form hydrogen bonds between molecules (Page 72 lists these as examples). In HCl, Chlorine is less electronegative than F, O, or N, and while the bond is polar, the hydrogen bonding between HCl molecules is significantly weaker or negligible compared to the others listed.<br><br><b>Why this answer is correct:</b> HCl does not form strong hydrogen bonds like the other listed compounds.<br><br><b>Why other options are incorrect:</b> HF, NH<sub>3</sub>, and H<sub>2</sub>O all form significant hydrogen bonds.<br><br><b>Reference:</b> See page 72, 'Examples of hydrogen bonds'."
+            },
+             // Add more questions as needed, including essay types
+             {
+                type: 'essay', // Added type
+                topic: Topics.CHEMISTRY_BONDS, originalNumber: 17, // Example new number
+                question: "Describe the difference between ionic and covalent bonds, including how electrons are involved.",
+                correctAnswerText: "Ionic bonds involve the complete transfer of electrons from one atom (typically a metal) to another (typically a nonmetal), forming ions that are attracted by electrostatic forces. Covalent bonds involve the sharing of electrons between two atoms (typically nonmetals), forming molecules.",
+                explanation: "Ionic bonds arise from the strong electrostatic attraction between oppositely charged ions, formed by electron transfer. Covalent bonds result from the mutual attraction of atomic nuclei for the shared electrons, holding the atoms together in a molecule. (See general chemistry texts on bonding)",
+             },
+             // Add many more questions here (especially long ones or ones with long explanations) to test the PDF generation with volume
+        ];
+
+    </script>
+<script src="script.js" defer></script>
+</body>
+
+</html>

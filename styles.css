@@ -1,0 +1,361 @@
+ /* Use the imported Lato font */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #eef2f7;
+            /* Light, cool background */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            /* White container background */
+            padding: 30px;
+            border-radius: 8px;
+            /* Subtle rounding */
+            text-align: center;
+            max-width: 650px;
+            /* Wider container */
+            width: 100%;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            /* Clean shadow */
+        }
+
+        #lesson-selection.container {
+            padding: 40px 30px;
+        }
+
+        #lesson-selection h2 {
+            color: #1a2a6c;
+            /* Deep blue */
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 900;
+            /* Lato Black */
+        }
+
+        .action-button {
+            background-color: #4a69bd;
+            /* Muted blue */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            font-weight: 700;
+            /* Lato Bold */
+            text-transform: uppercase;
+        }
+
+        .action-button:hover:not(:disabled) {
+            background-color: #3b5998;
+            /* Darker blue on hover */
+            transform: translateY(-2px);
+        }
+
+        .action-button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .action-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Specific style for the skip button */
+        #skip-button {
+            background-color: #6c757d;
+            /* Muted grey */
+            margin-top: 15px;
+            /* Space above skip button */
+            margin-bottom: 15px;
+            /* Space below skip button before separator/next */
+        }
+
+        #skip-button:hover:not(:disabled) {
+            background-color: #5a6268;
+            /* Darker grey on hover */
+        }
+
+         /* Specific style for the reveal answer button */
+         #reveal-answer-button {
+             background-color: #17a2b8; /* Info blue */
+             margin-top: 15px;
+             margin-bottom: 15px;
+         }
+         #reveal-answer-button:hover:not(:disabled) {
+             background-color: #138496; /* Darker info blue */
+         }
+
+
+        /* Style for the "Add to Remember" button */
+        #add-to-remember-button {
+            background-color: #ffc107;
+            /* Orange/Yellow */
+            color: #343a40;
+            /* Dark text */
+            font-size: 0.9em;
+            /* Slightly smaller */
+            padding: 8px 15px;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        #add-to-remember-button:hover:not(:disabled) {
+            background-color: #e0a800;
+            /* Darker orange */
+        }
+
+        #add-to-remember-button:disabled {
+            /* Use a lighter version of its own color */
+            background-color: #cccccc; /* Grey color for disabled remember button */
+            color: #666; /* Dark grey text */
+            cursor: not-allowed;
+        }
+
+         /* Style for self-correction buttons (Right/Wrong) */
+        .self-correct-button {
+            background-color: #28a745; /* Green for Right */
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 8px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .self-correct-button.wrong {
+             background-color: #dc3545; /* Red for Wrong */
+        }
+
+        .self-correct-button:hover:not(:disabled) {
+             background-color: #218838; /* Darker green */
+             transform: translateY(-2px);
+        }
+
+        .self-correct-button.wrong:hover:not(:disabled) {
+             background: #c82333; /* Darker red */
+             transform: translateY(-2px);
+        }
+
+        .self-correct-button:active:not(:disabled) {
+             transform: translateY(0);
+        }
+
+        .self-correct-button:disabled {
+             opacity: 0.6;
+             cursor: not-allowed;
+        }
+
+
+        #game-title {
+            color: #1a2a6c;
+            /* Deep blue */
+            margin-bottom: 15px;
+            /* Less margin above counter */
+            font-size: 2em;
+            font-weight: 900;
+        }
+
+        .question-counter {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 25px;
+            /* Space below counter */
+            font-weight: 400;
+            /* Lato Regular */
+        }
+
+        #question-area {
+            margin-bottom: 20px;
+        }
+
+        #question-text {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            /* Lato Bold */
+            line-height: 1.5;
+            color: #444;
+            text-align: left;
+            /* Align question text left */
+        }
+
+        #answer-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+            /* Add margin below answer buttons */
+        }
+
+         #essay-self-correction-buttons {
+             /* Container for essay correction buttons */
+             margin-top: 15px; /* Space above buttons */
+             margin-bottom: 20px; /* Space below buttons */
+         }
+
+
+        .answer-button {
+            background-color: #f0f0f0;
+            /* Light grey button */
+            color: #333;
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            text-align: left;
+            word-wrap: break-word;
+            font-weight: 400;
+        }
+
+        .answer-button:hover:not(:disabled) {
+            background-color: #e0e0e0;
+            /* Slightly darker grey on hover */
+            border-color: #ccc;
+        }
+
+        .answer-button:disabled {
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        /* Visual feedback on answer buttons */
+        .answer-button.correct {
+            background-color: #4CAF50;
+            /* Green */
+            border-color: #4CAF50;
+            color: white;
+            font-weight: 700;
+        }
+
+        .answer-button.incorrect {
+            background-color: #f44336;
+            /* Red */
+            border-color: #f44336;
+            color: white;
+            font-weight: 700;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            font-size: 1.1em;
+            min-height: 1.4em;
+            font-weight: 700;
+            color: #333;
+            /* Neutral color, feedback color set by JS */
+        }
+
+        #explanation-area {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            /* Very light green for explanation */
+            border: 1px solid #c8e6c9;
+            /* Light green border */
+            border-radius: 5px;
+            text-align: left;
+            color: #2e7d32;
+            /* Dark green text */
+            font-size: 0.95em;
+            line-height: 1.5;
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(10px);
+            /* Start slightly lower */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            /* Animation */
+        }
+
+        #explanation-area.visible {
+            /* Class added by JS */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        #explanation-area h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-size: 1em;
+            font-weight: 700;
+            color: #1b5e20;
+            /* Even darker green */
+        }
+
+        #score-area {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #1a2a6c;
+            /* Deep blue */
+            font-weight: 700;
+        }
+
+        .separator {
+            border: none;
+            border-top: 1px solid #eee;
+            /* Very light solid line */
+            height: 1px;
+            margin: 20px 0;
+        }
+
+        #final-score {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        #final-score h2 {
+            color: #1a2a6c;
+            /* Deep blue */
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        #final-score p {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        #final-score .action-button {
+            margin-top: 15px;
+            /* Less space above final score buttons */
+        }
+
+
+        #quote-area {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            /* Very light solid line */
+            color: #6c757d;
+            /* Muted grey text */
+            font-size: 0.9em;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        #current-quote {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .hidden {
+            display: none;
+        }
